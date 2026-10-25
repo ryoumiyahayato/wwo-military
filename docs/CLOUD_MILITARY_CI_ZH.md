@@ -89,8 +89,8 @@ python3 -B tools/ci/validate_military.py --godot godot \
   --suite resolver --case terrain_ammunition_suppression
 ```
 
-`--suite`可重复，取 resolver、roles、attachment-tactical；`--case`须配一个 suite。
-resolver/roles 的 case 是原函数去掉前导下划线的名字；附件目前只开放 incapped。
+`--suite`可重复，取 resolver、roles、attachment-tactical，另可显式选择 continuous；`--case`须配一个 suite。
+resolver/roles/continuous 的 case 是原分组函数去掉前导下划线的名字；附件目前只开放 incapped。continuous 不属于默认三组，可用 `--suite continuous --case equivalence` 只检查原等价场景。
 不传筛选仍运行原三组和原两对回放。筛选时省略的组及回放均为 NOT_RUN；只有显式
 加 `--replays` 才带上原回放。局部成功的总状态是 PARTIAL_PASSED，full_validation=false，
 不能当作原综合验证通过。断言、超时、零检查、缺总结与回放失败的判定保持。
@@ -105,7 +105,7 @@ resolver/roles 的 case 是原函数去掉前导下划线的名字；附件目�
 1. **入口与资源**：选择现存 `research/m-v9/sandbox/sandbox.tscn` 或明确军事场景，补足其传递依赖；`military-godot/` 没有默认正式场景。3D 物理测试已确认缺 `assets/user_derived/models/user_rifleman_armed.glb`；还须按各场景核对模型、地形、材质、媒体及其导入资源和使用许可。
 2. **正式宿主契约**：`WorldState`、`GameClock`、`SimulationStep`、人物/人口/组织、权限、空间及正式存档仍由原宿主独占；13 份 `.txt` 快照仅用于接口参考。需在原合法宿主中装配军事适配器，不能注册第二份权威对象或将快照改后缀直接执行。
 3. **测试夹具**：先恢复合法宿主及原 `tests/vnext`、`tests/formal`、`tools/run_validation.ps1` 等传递依赖，再决定正式集成、持久化往返、GUI/沙盒和完整回归范围。当前 CI 不宣称这些验证通过。
-4. **研究验证边界**：基线中退眠/聚合计数、弹药精确上界、到达截止与附件幸存者前提的有限修订，见对应修复 PR 的逐组依据和实际局部检查。不能由未合并 PR 或局部通过推断完整 CI、真实 coalesce 性能或全体军事正确性；continuous 的两项既有失败仍未处理。
+4. **研究验证边界**：基线中退眠/聚合计数、弹药精确上界、到达截止与附件幸存者前提的有限修订，见对应修复 PR 的逐组依据和实际局部检查。不能由未合并 PR 或局部通过推断完整 CI、真实 coalesce 性能或全体军事正确性；continuous 两项历史失败的后续定位与有限局部结果见 [continuous 说明](../research/m-v9/continuous/README.md)：旧调用预算耗尽及连带的 PENDING 视图比较已在原等价场景复现并修订；完整 continuous suite 仍 NOT_RUN。
 5. **归档**：`provenance/ARCHIVE_GAPS.json` 所列 18 个逻辑 ZIP、114 个附件、7,192,143,243 字节仍在原归档。本阶段不下载、迁移、清理或向 Git 历史添加这些包。
 
 本阶段不提供 APK、完整 3D 恢复或经济集成。以每次实际 Run 的结果为准，工作流文件存在或显示绿色本身不构成军事算法验证完成。

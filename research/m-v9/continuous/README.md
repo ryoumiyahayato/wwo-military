@@ -1,5 +1,51 @@
 # 同一 kernel 的有界连续推进（实验）
 
+## 2026-10-25：continuous 等价场景的有限预算修订
+
+本轮基线为 PR #1 的 e6abddffa2851b17b6b9cce6e1355dd5ca583c66，后续分支依赖该 PR，
+不合并前序 PR。保留此前 continuous 60 checks / 2 failures 的历史记录；本轮只运行
+原 `_equivalence()`（40单位、120秒、quota=1/7/31），未重跑整个60项或前轮1261项检查。
+
+原一百万次调用上限下，局部入口为10 checks / 2 failures：quota=1仍PENDING，
+requested_time=120、committed_time=49、pending_boundary=50、work_units=1、
+total_work_units=1000000、commit_count=50。原snapshot返回PENDING视图；随后快照比较
+是同一次未完成推进的连带失败，不是已经确认的物理分歧。
+quota=7/31均正常完成，分别调用345419/77998次，总工作量同为2417927。
+
+仅修改测试预算、退出原因和比较分类。固定场景的有限工作上界从现有循环推导：
+N=40、L=ceil(log2(N))=6、P=N*N/2=800；merge排序上界 S=N*L+2*N=320，
+range查询上界 Q=2*(L+1)+3+N+S=377。每段预算为
+N*Q+N*(N+1)+5*(P+N+1)+S+27*(N+2)=22379。
+五次contact遍历是weight/fire/incoming/diagnostic/旧contact释放；其余27条适用phase路径
+每条至多N+2个记录/转换。120个一秒段外加一次初始/收尾边界，预算总计2707859个primitive。
+这是该固定输入的测试预算，不能套用于事件密集或其他规模场景；测试另核对参考恰为120段、无外部事件。
+
+quota=1先保留原一百万次时点，再在同一owner/target/quota上用剩余有限调用预算续接一次。
+额外1417927次后COMPLETE；没有反复放大上限、换quota、重建状态、缩短目标或减少单位。
+每次work_units不得超过quota；异常、无工作、调用预算用尽或外部900秒超时仍失败。
+同步参考必须成功，且有界推进为COMPLETE、committed/requested均120、清理完成后，才比较
+原物理快照（仅沿用原counters排除）、资源、随机状态及物理事件序列。
+未完成时comparison=NOT_RUN，同时完成断言失败，不能由跳过比较得到通过。
+完成后有差异时打印首个具体字段及首个不同事件，不删字段或扩大容差。
+
+最终本轮局部为21 checks / 0 failures；三种quota的35个phase计数完全一致，
+每组4841个物理事件与同步顺序相同。未修改AdvanceWork、Authority、SegmentWork或snapshot实现。
+运行器的continuous是显式可选组；默认仍只跑原三组及两对回放。复现命令（目录须为全新）：
+
+```sh
+python3.12 -B tools/ci/validate_military.py --godot godot \
+  --work-dir /workspace/work/continuous-final-project \
+  --output /workspace/work/continuous-final-results \
+  --suite continuous --case equivalence
+```
+
+完整continuous、pending/same_time/combined/mixed_events/varying/public_ports、resolver、roles、
+attachment tactical、回放、长跑与压力本轮均NOT_RUN。Godot固定4.6.3.stable.official.7d41c59c4，
+Python 3.12.14，隔离临时项目；结果是PARTIAL_PASSED，不是完整Actions或正式军事集成通过。
+格式仍war-environment-runtime-v8；正式宿主、GUI、Android未运行，3D未恢复。
+原Artifact逐项日志未读取的限制保留；本轮依据本地原场景复现，不覆盖原运行或日志。
+
+
 `Authority.advance_bounded(target, quota)`请求同一world time推进到target；每次最多quota
 个明确primitive，返回PENDING/COMPLETE/BLOCKED及committed_time。下一调用保留
 target/policy，quota可以改变。只有相关物理、原phase/ID事件和摘要完成才提交边界。
