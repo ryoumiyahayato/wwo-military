@@ -61,8 +61,11 @@ def main() -> int:
     parser.add_argument("--case", help="Select an original test function (requires one --suite)")
     parser.add_argument("--replays", action="store_true", help="Include original replay pairs with a suite selection")
     args = parser.parse_args()
-    if args.case and (not args.suite or len(args.suite) != 1):
-        parser.error("--case requires exactly one --suite")
+    if args.case is not None:
+        if not args.case:
+            parser.error("--case must not be empty")
+        if not args.suite or len(args.suite) != 1:
+            parser.error("--case requires exactly one --suite")
     selected = set(args.suite or [row[0] for row in SUITES])
     replay_selected = not args.suite or args.replays
     partial = bool(args.suite or args.case)

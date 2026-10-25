@@ -15,10 +15,12 @@ func _initialize() -> void:
 func _run() -> void:
 	var cases: Array[String] = ["replay", "conservation", "idle_scaling", "partition_and_resolution", "terrain_ammunition_suppression", "order_symmetry", "boundaries_and_coordination", "frontage_and_sleep", "sleeping_reserves_and_observation", "simultaneous_arrivals"]
 	var selected: String = ""
+	var case_requested: bool = false
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--case="):
+			case_requested = true
 			selected = argument.trim_prefix("--case=")
-	if not selected.is_empty() and not selected in cases:
+	if case_requested and not selected in cases:
 		push_error("Unknown resolver case: " + selected)
 		quit(2)
 		return

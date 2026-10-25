@@ -12,10 +12,12 @@ var resolver: RefCounted = Resolver.new()
 func _initialize() -> void:
 	var cases: Array[String] = ["admission", "permissions", "atomic_validation", "layers_and_boundaries", "no_input_and_scale", "consistency", "coordination_consistency"]
 	var selected: String = ""
+	var case_requested: bool = false
 	for argument: String in OS.get_cmdline_user_args():
 		if argument.begins_with("--case="):
+			case_requested = true
 			selected = argument.trim_prefix("--case=")
-	if not selected.is_empty() and not selected in cases:
+	if case_requested and not selected in cases:
 		push_error("Unknown role case: " + selected)
 		quit(2)
 		return
