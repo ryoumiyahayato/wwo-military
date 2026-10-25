@@ -7,17 +7,22 @@ var failures: int = 0
 var evidence: Dictionary = {}
 
 func _initialize() -> void:
+	var cases: Array[String] = ["equivalence", "pending", "same_time", "combined", "mixed_events", "varying", "public_ports"]
+	var selected: String = ""
+	for argument: String in OS.get_cmdline_user_args():
+		if argument.begins_with("--case="):
+			selected = argument.trim_prefix("--case=")
+			if selected.is_empty() or not selected in cases:
+				push_error("Unknown continuous case: " + selected)
+				quit(2)
+				return
 	var owner: F.Authority = F.Authority.new()
 	owner.configure(F.battle(4))
 	check(owner.has_method("advance_bounded"), "bounded continuation API exists")
 	if owner.has_method("advance_bounded"):
-		_equivalence()
-		_pending()
-		_same_time()
-		_combined()
-		_mixed_events()
-		_varying()
-		_public_ports()
+		for name: String in cases:
+			if selected.is_empty() or selected == name:
+				call("_" + name)
 	print("CONTINUOUS_EVIDENCE_JSON=" + JSON.stringify(evidence))
 	print("Task9 continuous: %d checks, %d failures" % [checks, failures])
 	quit(1 if failures > 0 else 0)
@@ -33,42 +38,138 @@ func physical(state: F.State) -> Dictionary:
 	result.erase("counters")
 	return result
 
-func run(owner: F.Authority, target: float, quota: int) -> Dictionary:
+func run(owner: F.Authority, target: float, quota: int, call_limit: int = 1000000) -> Dictionary:
 	var calls: int = 0
 	var max_units: int = 0
 	var max_usec: int = 0
 	var result: Dictionary = {}
-	while calls < 1000000:
+	var exit_reason: String = "CALL_LIMIT"
+	while calls < call_limit:
 		var start: int = Time.get_ticks_usec()
 		result = owner.advance_bounded(target, quota)
 		max_usec = maxi(max_usec, Time.get_ticks_usec()-start)
 		calls += 1
 		if not result.get("ok", false):
+			exit_reason = "ADVANCE_ERROR"
 			break
 		max_units = maxi(max_units, int(result.work_units))
 		if int(result.work_units) > quota:
+			exit_reason = "QUOTA_EXCEEDED"
 			break
 		if result.status == "COMPLETE":
+			exit_reason = "COMPLETE"
 			break
-	return {"result": result, "calls": calls, "max_units": max_units, "max_call_usec": max_usec}
+		if result.status != "PENDING" or int(result.work_units) <= 0:
+			exit_reason = "UNEXPECTED_STATUS_OR_NO_WORK"
+			break
+	return {"result": result, "calls": calls, "call_limit": call_limit, "exit_reason": exit_reason, "max_units": max_units, "max_call_usec": max_usec}
+
+func _equivalence_work_budget(count: int, segments: int) -> int:
+	# This fixture has one homogeneous scope, no external events, and no
+	# arrival/ammo cut in 120 seconds. N=40, balanced sides; P=N*N/2 contacts.
+	var levels: int = ceili(log(float(count)) / log(2.0))
+	# Merge copies N*levels plus at most 2*N merge-pair transitions.
+	var sort_steps: int = count * levels + 2 * count
+	# Two binary searches and phase transitions, gather, then stable-ID sort.
+	var query_steps: int = 2 * (levels + 1) + 3 + count + sort_steps
+	var pairs: int = count * count / 2
+	# Candidate visits; five contact passes (weight/fire/incoming/diagnostic/
+	# old-contact release); index sort; 27 other applicable phase paths, each
+	# at most N+2 records/transitions in AdvanceWork/SegmentWork for this input.
+	var per_segment: int = count * query_steps + count * (count + 1)
+	per_segment += 5 * (pairs + count + 1) + sort_steps + 27 * (count + 2)
+	# One extra boundary covers initial commit and final plan cleanup.
+	return (segments + 1) * per_segment
+
+
+func _first_difference(left: Variant, right: Variant, path: String) -> Dictionary:
+	if left == right:
+		return {}
+	if left is Dictionary and right is Dictionary:
+		for key: String in F.State.sorted_ids(left):
+			if not right.has(key):
+				return {"field": path + "." + key, "reason": "missing_actual_field"}
+			var child: Dictionary = _first_difference(left[key], right[key], path + "." + key)
+			if not child.is_empty():
+				return child
+		for key: String in F.State.sorted_ids(right):
+			if not left.has(key):
+				return {"field": path + "." + key, "reason": "extra_actual_field"}
+	if left is Array and right is Array:
+		for index: int in range(mini(left.size(), right.size())):
+			var child: Dictionary = _first_difference(left[index], right[index], path + "[%d]" % index)
+			if not child.is_empty():
+				return child
+		return {"field": path + ".size", "expected": left.size(), "actual": right.size()}
+	return {"field": path, "expected": left, "actual": right}
+
 
 func _equivalence() -> void:
 	var normal: F.State = F.battle(40)
 	var reference: F.Authority = F.Authority.new()
 	reference.configure(normal)
-	reference.advance(120.0)
+	var synchronous: Dictionary = reference.advance(120.0)
+	var reference_complete: bool = synchronous.get("ok", false) and normal.time == 120.0 and not normal.public_pending()
+	check(reference_complete, "synchronous reference completes requested time")
+	if not reference_complete:
+		evidence.short_equivalence = {"comparison": "NOT_RUN", "reason": "reference_incomplete"}
+		return
 	var expected: Dictionary = physical(normal)
+	var reference_events: Array = synchronous.events
+	# Fix this input envelope explicitly; never derive a larger cap by retrying.
+	check(normal.counters.segments == 120 and normal.counters.events_processed == 0, "equivalence fixture stays within one-second work envelope")
+	var work_budget: int = _equivalence_work_budget(40, 120)
 	var values: Array[Dictionary] = []
+	var phase_counts: Dictionary = {}
 	for quota: int in [1, 7, 31]:
 		var state: F.State = F.battle(40)
 		var owner: F.Authority = F.Authority.new()
 		owner.configure(state)
-		var measured: Dictionary = run(owner, 120.0, quota)
-		check(measured.result.get("ok", false) and measured.result.status == "COMPLETE" and state.time == 120.0, "quota completes same requested time")
-		check(measured.max_units <= quota and measured.calls > 1, "actual primitive allowance respected")
-		check(expected == physical(state), "quota does not alter physics, order or keyed draws")
-		values.append({"quota": quota, "measurement": measured})
+		var observed_events: Array[Dictionary] = []
+		owner.physical_event_sink = func(event: Dictionary) -> void: observed_events.append(event.duplicate(true))
+		var call_budget: int = ceili(float(work_budget) / float(quota))
+		var initial: Dictionary = run(owner, 120.0, quota, mini(1000000, call_budget))
+		var measured: Dictionary = initial.duplicate(true)
+		var row: Dictionary = {"quota": quota, "work_budget": work_budget, "initial": initial, "comparison": "NOT_RUN"}
+		if initial.exit_reason == "CALL_LIMIT" and initial.result.get("status") == "PENDING":
+			# Preserve the old failure point before one finite continuation on this
+			# exact owner/target/quota. No snapshot of partial physical facts.
+			row.initial_view = state.snapshot()
+			print("CONTINUOUS_CASE_RESULT=" + JSON.stringify({"stage": "original_limit", "quota": quota, "measurement": initial, "comparison": "NOT_RUN", "view": row.initial_view}))
+			var remaining: int = call_budget - int(initial.calls)
+			if initial.result.get("ok", false) and float(initial.result.committed_time) > 0.0 and remaining > 0:
+				var continued: Dictionary = run(owner, 120.0, quota, remaining)
+				row.continuation = continued
+				measured = continued.duplicate(true)
+				measured.calls += int(initial.calls)
+				measured.max_units = maxi(int(initial.max_units), int(continued.max_units))
+				measured.max_call_usec = maxi(int(initial.max_call_usec), int(continued.max_call_usec))
+				measured.call_limit = call_budget
+		var complete: bool = measured.exit_reason == "COMPLETE" and measured.result.get("ok", false) and measured.result.get("status") == "COMPLETE" and state.time == 120.0 and measured.result.get("requested_time") == 120.0 and measured.result.get("committed_time") == 120.0 and measured.result.get("pending_boundary") == -1.0 and measured.result.get("commit_count") == 121 and not state.public_pending()
+		check(complete, "quota completes same requested time")
+		check(measured.max_units <= quota and measured.calls > 1 and measured.calls <= call_budget and int(measured.result.get("total_work_units", work_budget + 1)) <= work_budget, "actual primitive allowance and finite work budget respected")
+		row.measurement = measured
+		if complete:
+			var actual: Dictionary = physical(state)
+			var same_physics: bool = expected == actual
+			var same_events: bool = reference_events == observed_events
+			check(same_physics, "quota does not alter physics, order or keyed draws")
+			check(same_events, "completed physical event sequence matches synchronous reference")
+			check(expected.totals == actual.totals and expected.random_state == actual.random_state, "completed resource totals and random state remain exact")
+			row.comparison = "PASSED" if same_physics and same_events else "FAILED"
+			row.event_count = observed_events.size()
+			if not same_physics or not same_events:
+				print("CONTINUOUS_FIRST_DIFFERENCE=" + JSON.stringify({"physical": _first_difference(expected, actual, "state"), "event": _first_difference(reference_events, observed_events, "events")}))
+			var current_counts: Dictionary = measured.result.phase_work_counts
+			if phase_counts.is_empty():
+				phase_counts = current_counts.duplicate()
+			check(phase_counts == current_counts, "quota and continuation do not repeat cursor phases")
+		else:
+			row.comparison_reason = "bounded_target_incomplete"
+		print("CONTINUOUS_CASE_RESULT=" + JSON.stringify(row))
+		values.append(row)
 	evidence.short_equivalence = values
+
 
 func _pending() -> void:
 	var state: F.State = F.battle(40)

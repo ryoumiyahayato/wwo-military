@@ -28,6 +28,9 @@ SUITES = [
     ("roles", "role_tests.gd", "Role overrides", []),
     ("attachment-tactical", "attachment_continuity/tests.gd", "Tactical continuity local", ["--", "--tactical-continuity"]),
 ]
+OPTIONAL_SUITES = [
+    ("continuous", "continuous/tests.gd", "Task9 continuous", []),
+]
 PROBES = [
     ("resolver", "replay_probe.gd", "REPLAY_SHA256", 180),
     ("roles", "role_replay_probe.gd", "ROLE_REPLAY_SHA256", 240),
@@ -56,7 +59,7 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--work-dir", type=Path, required=True)
     parser.add_argument("--test-timeout", type=int, default=900)
-    parser.add_argument("--suite", action="append", choices=[row[0] for row in SUITES],
+    parser.add_argument("--suite", action="append", choices=[row[0] for row in SUITES + OPTIONAL_SUITES],
                         help="Run only selected original suites; omitted suites/replays are NOT_RUN")
     parser.add_argument("--case", help="Select an original test function (requires one --suite)")
     parser.add_argument("--replays", action="store_true", help="Include original replay pairs with a suite selection")
@@ -204,7 +207,7 @@ def main() -> int:
     else:
         not_run("import", "Engine prerequisite failed")
     headless = ["--headless", "--path", str(work), "--script"]
-    for name, script, summary, extra in SUITES:
+    for name, script, summary, extra in SUITES + OPTIONAL_SUITES:
         if name not in selected:
             not_run(name, "Outside explicit local selection")
         elif ready:
