@@ -1,0 +1,1186 @@
+{
+  "source_archive_commit": "3c48266b335cfa448953d26b9698abb6dd207a34",
+  "release": {
+    "id": 422607066,
+    "html_url": "https://github.com/ryoumiyahayato/wwo/releases/tag/untagged-75a9dbc800223cbf8a18",
+    "tag_name": "archive-military-full-20261024",
+    "draft": true
+  },
+  "packages": [
+    {
+      "name": "military-current-0001.zip",
+      "bytes": 443505922,
+      "sha256": "10903ca247278943bf37a5f189966a7c0b89198044c7460b374a992ae1c52fff",
+      "assets": [
+        {
+          "name": "military-current-0001.zip.part001",
+          "asset_id": 671734702,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "4e231c1be416edfe4234f117f392f4db78a6ae830ddf2669f4ebeb0614a1f074",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0001.zip.part001",
+          "provider_digest": "sha256:4e231c1be416edfe4234f117f392f4db78a6ae830ddf2669f4ebeb0614a1f074"
+        },
+        {
+          "name": "military-current-0001.zip.part002",
+          "asset_id": 671736492,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "0d47d1327f9e3ebbe9f2898fc0988901127b183da60e17961520c22cb09cf812",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0001.zip.part002",
+          "provider_digest": "sha256:0d47d1327f9e3ebbe9f2898fc0988901127b183da60e17961520c22cb09cf812"
+        },
+        {
+          "name": "military-current-0001.zip.part003",
+          "asset_id": 671738714,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "a060435edf1364edc25ff7a588e0c45df50784ef119fcfcec31ec4c00aff9209",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0001.zip.part003",
+          "provider_digest": "sha256:a060435edf1364edc25ff7a588e0c45df50784ef119fcfcec31ec4c00aff9209"
+        },
+        {
+          "name": "military-current-0001.zip.part004",
+          "asset_id": 671741079,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "674ad5e0e236cc1d3e261e9b923f17327b0bea6b6307233a99b640b32dedb7c6",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0001.zip.part004",
+          "provider_digest": "sha256:674ad5e0e236cc1d3e261e9b923f17327b0bea6b6307233a99b640b32dedb7c6"
+        },
+        {
+          "name": "military-current-0001.zip.part005",
+          "asset_id": 671746588,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "e5967c3897744b11a509afccfe3096fccb47b9eed722821689d6f3d22e5e9f7f",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0001.zip.part005",
+          "provider_digest": "sha256:e5967c3897744b11a509afccfe3096fccb47b9eed722821689d6f3d22e5e9f7f"
+        },
+        {
+          "name": "military-current-0001.zip.part006",
+          "asset_id": 671748348,
+          "offset": 335544320,
+          "bytes": 67108864,
+          "sha256": "5dc6235079bf9cb80d34504dfdee19503a65a14ca83f5a67bcc7b814249822d4",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0001.zip.part006",
+          "provider_digest": "sha256:5dc6235079bf9cb80d34504dfdee19503a65a14ca83f5a67bcc7b814249822d4"
+        },
+        {
+          "name": "military-current-0001.zip.part007",
+          "asset_id": 671752107,
+          "offset": 402653184,
+          "bytes": 40852738,
+          "sha256": "ddd1f11d9c6b0fa7c1747d0918ebea3a5ac912e450d8211959a3782fd4937343",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0001.zip.part007",
+          "provider_digest": "sha256:ddd1f11d9c6b0fa7c1747d0918ebea3a5ac912e450d8211959a3782fd4937343"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-current-0002.zip",
+      "bytes": 535202949,
+      "sha256": "f8b076b4c5f8d55b558eb3f1af3071b79fe152772c73c934c7641fc58eba2caa",
+      "assets": [
+        {
+          "name": "military-current-0002.zip.part001",
+          "asset_id": 671754185,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "471f3ceea54ca7b06fd9a1e97f96f7b867624cddb98c1fd868a1de5a031d496b",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0002.zip.part001",
+          "provider_digest": "sha256:471f3ceea54ca7b06fd9a1e97f96f7b867624cddb98c1fd868a1de5a031d496b"
+        },
+        {
+          "name": "military-current-0002.zip.part002",
+          "asset_id": 671756404,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "4b77a8596c1d7ba918b26a92f3255d33b97c95d7dc88f07cc7cf65dfb37f723a",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0002.zip.part002",
+          "provider_digest": "sha256:4b77a8596c1d7ba918b26a92f3255d33b97c95d7dc88f07cc7cf65dfb37f723a"
+        },
+        {
+          "name": "military-current-0002.zip.part003",
+          "asset_id": 671758631,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "2d137bd1550d1c7114ebfdf67001a18e5818928c975bbc66f61107642f779ecf",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0002.zip.part003",
+          "provider_digest": "sha256:2d137bd1550d1c7114ebfdf67001a18e5818928c975bbc66f61107642f779ecf"
+        },
+        {
+          "name": "military-current-0002.zip.part004",
+          "asset_id": 671759937,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "4f74431cbc3b733ec3b47b52130e2bbddf093a25dd6a806ccdf73bc5fad6370c",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0002.zip.part004",
+          "provider_digest": "sha256:4f74431cbc3b733ec3b47b52130e2bbddf093a25dd6a806ccdf73bc5fad6370c"
+        },
+        {
+          "name": "military-current-0002.zip.part005",
+          "asset_id": 671761899,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "e313d3f2c05a3644b87201766ccf6eb8fed0d39ccd992cbac91c76659ea3d842",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0002.zip.part005",
+          "provider_digest": "sha256:e313d3f2c05a3644b87201766ccf6eb8fed0d39ccd992cbac91c76659ea3d842"
+        },
+        {
+          "name": "military-current-0002.zip.part006",
+          "asset_id": 671768454,
+          "offset": 335544320,
+          "bytes": 67108864,
+          "sha256": "337521dc756ed80882eeeb8d4f271637a0d751e3070fc83fea788b82e100e40f",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0002.zip.part006",
+          "provider_digest": "sha256:337521dc756ed80882eeeb8d4f271637a0d751e3070fc83fea788b82e100e40f"
+        },
+        {
+          "name": "military-current-0002.zip.part007",
+          "asset_id": 671770683,
+          "offset": 402653184,
+          "bytes": 67108864,
+          "sha256": "16a4d3aab97f880726566746d2ba9420e37d2c7d87567e932f09c37f9fbb00a7",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0002.zip.part007",
+          "provider_digest": "sha256:16a4d3aab97f880726566746d2ba9420e37d2c7d87567e932f09c37f9fbb00a7"
+        },
+        {
+          "name": "military-current-0002.zip.part008",
+          "asset_id": 671773063,
+          "offset": 469762048,
+          "bytes": 65440901,
+          "sha256": "ba867745db1d862c442dec778cd7327884524d2514345348f86a76eb6754b984",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0002.zip.part008",
+          "provider_digest": "sha256:ba867745db1d862c442dec778cd7327884524d2514345348f86a76eb6754b984"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-current-0003.zip",
+      "bytes": 536409970,
+      "sha256": "b3fc19eaf9b89cec2ab07b18cbb6a8c05800b049a102ef42ad2d2f9f26db958f",
+      "assets": [
+        {
+          "name": "military-current-0003.zip.part001",
+          "asset_id": 671774664,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "f38b7787da1b4d88b6ba1db8749bcd3bfa8fb97fe1d2524664c7acfe6711b24f",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0003.zip.part001",
+          "provider_digest": "sha256:f38b7787da1b4d88b6ba1db8749bcd3bfa8fb97fe1d2524664c7acfe6711b24f"
+        },
+        {
+          "name": "military-current-0003.zip.part002",
+          "asset_id": 671776074,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "88feda66e462a23223f9ab517e01fcab416a5c809c84010c3dc55047c4d0ea32",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0003.zip.part002",
+          "provider_digest": "sha256:88feda66e462a23223f9ab517e01fcab416a5c809c84010c3dc55047c4d0ea32"
+        },
+        {
+          "name": "military-current-0003.zip.part003",
+          "asset_id": 671777175,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "fe6fa568c4e4f2c80d3094f061382a73055576f5ee4f76cbdfcecc39cc2353e0",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0003.zip.part003",
+          "provider_digest": "sha256:fe6fa568c4e4f2c80d3094f061382a73055576f5ee4f76cbdfcecc39cc2353e0"
+        },
+        {
+          "name": "military-current-0003.zip.part004",
+          "asset_id": 671777630,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "0ad7cd3efe4676518c20ca9552e87540005f9c3fecdf0d93575ec7fb61b221ec",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0003.zip.part004",
+          "provider_digest": "sha256:0ad7cd3efe4676518c20ca9552e87540005f9c3fecdf0d93575ec7fb61b221ec"
+        },
+        {
+          "name": "military-current-0003.zip.part005",
+          "asset_id": 671778063,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "53205bbbe7b27a4b53c6deb852ffdb4d8c57c791bf3a385a4e3162e7ebeaf8d6",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0003.zip.part005",
+          "provider_digest": "sha256:53205bbbe7b27a4b53c6deb852ffdb4d8c57c791bf3a385a4e3162e7ebeaf8d6"
+        },
+        {
+          "name": "military-current-0003.zip.part006",
+          "asset_id": 671778393,
+          "offset": 335544320,
+          "bytes": 67108864,
+          "sha256": "a1d18a746128d2c131e6c7a5f15120d90d754d24e3e9bdb8f5552abd4ae59900",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0003.zip.part006",
+          "provider_digest": "sha256:a1d18a746128d2c131e6c7a5f15120d90d754d24e3e9bdb8f5552abd4ae59900"
+        },
+        {
+          "name": "military-current-0003.zip.part007",
+          "asset_id": 671778782,
+          "offset": 402653184,
+          "bytes": 67108864,
+          "sha256": "e61276e9839b1768539c10bf028a828133e728a993cb06bb4c86b2429e6a8e93",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0003.zip.part007",
+          "provider_digest": "sha256:e61276e9839b1768539c10bf028a828133e728a993cb06bb4c86b2429e6a8e93"
+        },
+        {
+          "name": "military-current-0003.zip.part008",
+          "asset_id": 671779208,
+          "offset": 469762048,
+          "bytes": 66647922,
+          "sha256": "9c4adba3a0f05277342594c50827642f86826918d563bf080311512c2a719ed5",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0003.zip.part008",
+          "provider_digest": "sha256:9c4adba3a0f05277342594c50827642f86826918d563bf080311512c2a719ed5"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-current-0004.zip",
+      "bytes": 534537154,
+      "sha256": "169dca49d44ab416994f404fe701bcd7a92f40a6b8db0ae1d4f5adfa06b3d6e1",
+      "assets": [
+        {
+          "name": "military-current-0004.zip.part001",
+          "asset_id": 671779982,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "896091297e5b99f64baafc38a6efa0dc856613d1bb99e1cea854390e6ca1a696",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0004.zip.part001",
+          "provider_digest": "sha256:896091297e5b99f64baafc38a6efa0dc856613d1bb99e1cea854390e6ca1a696"
+        },
+        {
+          "name": "military-current-0004.zip.part002",
+          "asset_id": 671780386,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "ef535408171b2d281f87c26eae5935826dbabf20fc5a73b684663f22688894ba",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0004.zip.part002",
+          "provider_digest": "sha256:ef535408171b2d281f87c26eae5935826dbabf20fc5a73b684663f22688894ba"
+        },
+        {
+          "name": "military-current-0004.zip.part003",
+          "asset_id": 671780837,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "908def2600ca39709792f23b05b6cb9ecb85bc45e6c2b1ddaa96bb82e2228016",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0004.zip.part003",
+          "provider_digest": "sha256:908def2600ca39709792f23b05b6cb9ecb85bc45e6c2b1ddaa96bb82e2228016"
+        },
+        {
+          "name": "military-current-0004.zip.part004",
+          "asset_id": 671781650,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "cbf4c144a9728fabb37ddb9cc12d705d9f52010c74f6f5b19cfec8c833ff637f",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0004.zip.part004",
+          "provider_digest": "sha256:cbf4c144a9728fabb37ddb9cc12d705d9f52010c74f6f5b19cfec8c833ff637f"
+        },
+        {
+          "name": "military-current-0004.zip.part005",
+          "asset_id": 671782149,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "1e031d82eae12737ed2a4419fbbcf218cf0f5c4f1f14a3b961b1b373009e7c70",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0004.zip.part005",
+          "provider_digest": "sha256:1e031d82eae12737ed2a4419fbbcf218cf0f5c4f1f14a3b961b1b373009e7c70"
+        },
+        {
+          "name": "military-current-0004.zip.part006",
+          "asset_id": 671782543,
+          "offset": 335544320,
+          "bytes": 67108864,
+          "sha256": "9ab08735361467461b2486c43253810934449c6eebbc838e1571deadd5cd95be",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0004.zip.part006",
+          "provider_digest": "sha256:9ab08735361467461b2486c43253810934449c6eebbc838e1571deadd5cd95be"
+        },
+        {
+          "name": "military-current-0004.zip.part007",
+          "asset_id": 671783976,
+          "offset": 402653184,
+          "bytes": 67108864,
+          "sha256": "976b4e24c8d9fc293c0421faec4e40b654191f1273d094bd10c99635d441da34",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0004.zip.part007",
+          "provider_digest": "sha256:976b4e24c8d9fc293c0421faec4e40b654191f1273d094bd10c99635d441da34"
+        },
+        {
+          "name": "military-current-0004.zip.part008",
+          "asset_id": 671784627,
+          "offset": 469762048,
+          "bytes": 64775106,
+          "sha256": "916a7fba1eb72e671f7aa7f01b983af33822499012f3e7710caecadbbbdaf414",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0004.zip.part008",
+          "provider_digest": "sha256:916a7fba1eb72e671f7aa7f01b983af33822499012f3e7710caecadbbbdaf414"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-current-0005.zip",
+      "bytes": 207778442,
+      "sha256": "c4225957334a208950cdf942e2f3b4532869fbd7d352d95a731b045ee8116703",
+      "assets": [
+        {
+          "name": "military-current-0005.zip.part001",
+          "asset_id": 671785535,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "5613ebfac3a30427c4b96287a3c24813328dd43a574ca0f65d71c79877757cfa",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0005.zip.part001",
+          "provider_digest": "sha256:5613ebfac3a30427c4b96287a3c24813328dd43a574ca0f65d71c79877757cfa"
+        },
+        {
+          "name": "military-current-0005.zip.part002",
+          "asset_id": 671786598,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "f08235359b838b3f2e868db0d9763acb70b00f7cf0bc80626ba38bb831f908d6",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0005.zip.part002",
+          "provider_digest": "sha256:f08235359b838b3f2e868db0d9763acb70b00f7cf0bc80626ba38bb831f908d6"
+        },
+        {
+          "name": "military-current-0005.zip.part003",
+          "asset_id": 671787391,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "d6f8de0b172d2ca7866bd5c60d086252509e53ca254c842784377ba2c69ff382",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0005.zip.part003",
+          "provider_digest": "sha256:d6f8de0b172d2ca7866bd5c60d086252509e53ca254c842784377ba2c69ff382"
+        },
+        {
+          "name": "military-current-0005.zip.part004",
+          "asset_id": 671787954,
+          "offset": 201326592,
+          "bytes": 6451850,
+          "sha256": "8ee783278fe6265694b2250d0ef8d86ddb05efb834b57ecb282ae006f60bbea4",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-current-0005.zip.part004",
+          "provider_digest": "sha256:8ee783278fe6265694b2250d0ef8d86ddb05efb834b57ecb282ae006f60bbea4"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0006.zip",
+      "bytes": 392845417,
+      "sha256": "7935641dcede4128ec9d76e2b47f48649e0f20dfd28cabf716732918301d7abb",
+      "assets": [
+        {
+          "name": "military-history-0006.zip.part001",
+          "asset_id": 671788074,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "b28ca560e8b80c086baae0ec5a68349627c3be43af299c28f9346c39f0628fc8",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0006.zip.part001",
+          "provider_digest": "sha256:b28ca560e8b80c086baae0ec5a68349627c3be43af299c28f9346c39f0628fc8"
+        },
+        {
+          "name": "military-history-0006.zip.part002",
+          "asset_id": 671788917,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "41c6e06c938c28f0e5599ec6193f2cdcc0e93d8dc01210645f2b8ef64b780905",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0006.zip.part002",
+          "provider_digest": "sha256:41c6e06c938c28f0e5599ec6193f2cdcc0e93d8dc01210645f2b8ef64b780905"
+        },
+        {
+          "name": "military-history-0006.zip.part003",
+          "asset_id": 671789648,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "5e9c58ed99784ae94ef67c9f522e8b3f2536ac3179676a5f49eaa1a329805775",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0006.zip.part003",
+          "provider_digest": "sha256:5e9c58ed99784ae94ef67c9f522e8b3f2536ac3179676a5f49eaa1a329805775"
+        },
+        {
+          "name": "military-history-0006.zip.part004",
+          "asset_id": 671790450,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "b8147f77b2bfff982d4cb286d96c6eb25a416cfcf4565ab879a182d88e2c43ec",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0006.zip.part004",
+          "provider_digest": "sha256:b8147f77b2bfff982d4cb286d96c6eb25a416cfcf4565ab879a182d88e2c43ec"
+        },
+        {
+          "name": "military-history-0006.zip.part005",
+          "asset_id": 671790993,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "3803f54aac21d1d248277e7b657a732f7c73b4ed98188651f67e47ece65b5b6e",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0006.zip.part005",
+          "provider_digest": "sha256:3803f54aac21d1d248277e7b657a732f7c73b4ed98188651f67e47ece65b5b6e"
+        },
+        {
+          "name": "military-history-0006.zip.part006",
+          "asset_id": 671791649,
+          "offset": 335544320,
+          "bytes": 57301097,
+          "sha256": "9f8544b12a3c08db78ca866c1fdace5dbbd6f3bf1e566bf8d73bf97ce014c129",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0006.zip.part006",
+          "provider_digest": "sha256:9f8544b12a3c08db78ca866c1fdace5dbbd6f3bf1e566bf8d73bf97ce014c129"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0007.zip",
+      "bytes": 319331680,
+      "sha256": "0c26359becffc913f5d0d7ac3dbb1f0dbe61951a01819e0b677ece2d47bc4eb6",
+      "assets": [
+        {
+          "name": "military-history-0007.zip.part001",
+          "asset_id": 671802240,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "317ad6e3b8b2a0a7a70c28bc034e593a5b3a504b3627787fcadd9ce678dd484d",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0007.zip.part001",
+          "provider_digest": "sha256:317ad6e3b8b2a0a7a70c28bc034e593a5b3a504b3627787fcadd9ce678dd484d"
+        },
+        {
+          "name": "military-history-0007.zip.part002",
+          "asset_id": 671803632,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "f2b447e61c88918b75b385acf381e32b1d3943729c441c7b763bb1719b04cfc1",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0007.zip.part002",
+          "provider_digest": "sha256:f2b447e61c88918b75b385acf381e32b1d3943729c441c7b763bb1719b04cfc1"
+        },
+        {
+          "name": "military-history-0007.zip.part003",
+          "asset_id": 671804179,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "063d6839521a08c9a3c86945bd21e395c0c2e5f74f63796c5b01d589c0f46356",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0007.zip.part003",
+          "provider_digest": "sha256:063d6839521a08c9a3c86945bd21e395c0c2e5f74f63796c5b01d589c0f46356"
+        },
+        {
+          "name": "military-history-0007.zip.part004",
+          "asset_id": 671804857,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "82d8b4d01fdfe7259de58ce7cc4d97b48e9d2b3356370725c336dada736af68c",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0007.zip.part004",
+          "provider_digest": "sha256:82d8b4d01fdfe7259de58ce7cc4d97b48e9d2b3356370725c336dada736af68c"
+        },
+        {
+          "name": "military-history-0007.zip.part005",
+          "asset_id": 671805636,
+          "offset": 268435456,
+          "bytes": 50896224,
+          "sha256": "04a8ed11625638b5627ee9e949e7de24f80840c938258cae783b3c8ab47108ff",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0007.zip.part005",
+          "provider_digest": "sha256:04a8ed11625638b5627ee9e949e7de24f80840c938258cae783b3c8ab47108ff"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0008.zip",
+      "bytes": 536196672,
+      "sha256": "3905f0cc3c5c8a7fcdcd1cbad2ce79448206a422fb7dd8af56313fbfa1b32eaa",
+      "assets": [
+        {
+          "name": "military-history-0008.zip.part001",
+          "asset_id": 671806131,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "3a30b19b70bce639b6e5130f1b308afcafbcbeb03198342ea7ba8a1262ec1fda",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0008.zip.part001",
+          "provider_digest": "sha256:3a30b19b70bce639b6e5130f1b308afcafbcbeb03198342ea7ba8a1262ec1fda"
+        },
+        {
+          "name": "military-history-0008.zip.part002",
+          "asset_id": 671807267,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "cf56bd11c30152706878e7197819db099f6d4d0d391f58d8dd2565480af51bdc",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0008.zip.part002",
+          "provider_digest": "sha256:cf56bd11c30152706878e7197819db099f6d4d0d391f58d8dd2565480af51bdc"
+        },
+        {
+          "name": "military-history-0008.zip.part003",
+          "asset_id": 671808318,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "1f5f24bb3e47c72ca05a8694bba919048efa73119df4388ab991766b604e1e04",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0008.zip.part003",
+          "provider_digest": "sha256:1f5f24bb3e47c72ca05a8694bba919048efa73119df4388ab991766b604e1e04"
+        },
+        {
+          "name": "military-history-0008.zip.part004",
+          "asset_id": 671809002,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "23ea79c5129d5e367cada9f873f113a577bd61ffa7b34fc0165b5733097999d0",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0008.zip.part004",
+          "provider_digest": "sha256:23ea79c5129d5e367cada9f873f113a577bd61ffa7b34fc0165b5733097999d0"
+        },
+        {
+          "name": "military-history-0008.zip.part005",
+          "asset_id": 671809642,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "9b10469c52633beacc09c74c45dd9ff3c1b14dd7c19739029837b451844c3fb2",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0008.zip.part005",
+          "provider_digest": "sha256:9b10469c52633beacc09c74c45dd9ff3c1b14dd7c19739029837b451844c3fb2"
+        },
+        {
+          "name": "military-history-0008.zip.part006",
+          "asset_id": 671810256,
+          "offset": 335544320,
+          "bytes": 67108864,
+          "sha256": "6f5dd3c6e845d54875c083f49523854866acbb8b039d3924046a43921b73f732",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0008.zip.part006",
+          "provider_digest": "sha256:6f5dd3c6e845d54875c083f49523854866acbb8b039d3924046a43921b73f732"
+        },
+        {
+          "name": "military-history-0008.zip.part007",
+          "asset_id": 671810811,
+          "offset": 402653184,
+          "bytes": 67108864,
+          "sha256": "1331bf8884a83c014fdfbcf8956447abe70a014b1b17f6e36020aa172f2215d1",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0008.zip.part007",
+          "provider_digest": "sha256:1331bf8884a83c014fdfbcf8956447abe70a014b1b17f6e36020aa172f2215d1"
+        },
+        {
+          "name": "military-history-0008.zip.part008",
+          "asset_id": 671811209,
+          "offset": 469762048,
+          "bytes": 66434624,
+          "sha256": "ee19fdae3b5db9f1b1c8bc1ebe89c4c2dc123151faddcda7c9af79b53c8b1879",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0008.zip.part008",
+          "provider_digest": "sha256:ee19fdae3b5db9f1b1c8bc1ebe89c4c2dc123151faddcda7c9af79b53c8b1879"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0009.zip",
+      "bytes": 537027548,
+      "sha256": "14eb15156be9e530cd309c469c829acf8594a17d7a53967fda4c2cc4f16b145b",
+      "assets": [
+        {
+          "name": "military-history-0009.zip.part001",
+          "asset_id": 671811626,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "5d3d146e79dbb2fc37a7b2a2407a5c24bad2766ff5a97637f33287755c28a05e",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0009.zip.part001",
+          "provider_digest": "sha256:5d3d146e79dbb2fc37a7b2a2407a5c24bad2766ff5a97637f33287755c28a05e"
+        },
+        {
+          "name": "military-history-0009.zip.part002",
+          "asset_id": 671812070,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "34556f1f624ef9e8c541fa1ed75057fa57c4f39fa3e1d749ff2584a98865968c",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0009.zip.part002",
+          "provider_digest": "sha256:34556f1f624ef9e8c541fa1ed75057fa57c4f39fa3e1d749ff2584a98865968c"
+        },
+        {
+          "name": "military-history-0009.zip.part003",
+          "asset_id": 671812685,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "46a77bf6b0e904f0e55b219ad33e5a9ff9f256fec3a90996bc976e4f52d4a2b1",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0009.zip.part003",
+          "provider_digest": "sha256:46a77bf6b0e904f0e55b219ad33e5a9ff9f256fec3a90996bc976e4f52d4a2b1"
+        },
+        {
+          "name": "military-history-0009.zip.part004",
+          "asset_id": 671813119,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "036cafe0152cb594f4ad0db74ac30137099256ac4b1a4451465f41d504e6f76e",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0009.zip.part004",
+          "provider_digest": "sha256:036cafe0152cb594f4ad0db74ac30137099256ac4b1a4451465f41d504e6f76e"
+        },
+        {
+          "name": "military-history-0009.zip.part005",
+          "asset_id": 671813424,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "96cad33980629db41dd22cbedc39b1b6b7d265a43a7c1ab1252fe409a41846e5",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0009.zip.part005",
+          "provider_digest": "sha256:96cad33980629db41dd22cbedc39b1b6b7d265a43a7c1ab1252fe409a41846e5"
+        },
+        {
+          "name": "military-history-0009.zip.part006",
+          "asset_id": 671813894,
+          "offset": 335544320,
+          "bytes": 67108864,
+          "sha256": "eb17862e57c299153ce77ca5846120fcae23d7eb7a364563a4bb9f02fc9b5876",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0009.zip.part006",
+          "provider_digest": "sha256:eb17862e57c299153ce77ca5846120fcae23d7eb7a364563a4bb9f02fc9b5876"
+        },
+        {
+          "name": "military-history-0009.zip.part007",
+          "asset_id": 671814279,
+          "offset": 402653184,
+          "bytes": 67108864,
+          "sha256": "18003a66f61a97742aec740e27aea79294de970db79ce05f39836cef56b03103",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0009.zip.part007",
+          "provider_digest": "sha256:18003a66f61a97742aec740e27aea79294de970db79ce05f39836cef56b03103"
+        },
+        {
+          "name": "military-history-0009.zip.part008",
+          "asset_id": 671814882,
+          "offset": 469762048,
+          "bytes": 67108864,
+          "sha256": "da6722687d9b5fe11ed686ec479660a21802ba37a54f8e49fd62fc0fbeee8685",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0009.zip.part008",
+          "provider_digest": "sha256:da6722687d9b5fe11ed686ec479660a21802ba37a54f8e49fd62fc0fbeee8685"
+        },
+        {
+          "name": "military-history-0009.zip.part009",
+          "asset_id": 671815683,
+          "offset": 536870912,
+          "bytes": 156636,
+          "sha256": "1a2a87a932f07c5d32b903db84fee7746c17c87f70ecb191a76d812fc4de99b3",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0009.zip.part009",
+          "provider_digest": "sha256:1a2a87a932f07c5d32b903db84fee7746c17c87f70ecb191a76d812fc4de99b3"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0010.zip",
+      "bytes": 537024560,
+      "sha256": "c194cc8edae54d95f8b2791cfc03547295e1f558a8fd42c3734e9217f885db0d",
+      "assets": [
+        {
+          "name": "military-history-0010.zip.part001",
+          "asset_id": 671815789,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "f9842e87e8c5003ce9da95f30ee69e5fd097866cef8d962893693189f1ca45bd",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0010.zip.part001",
+          "provider_digest": "sha256:f9842e87e8c5003ce9da95f30ee69e5fd097866cef8d962893693189f1ca45bd"
+        },
+        {
+          "name": "military-history-0010.zip.part002",
+          "asset_id": 671816345,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "d3df5a803cb5febc37c0153dcb004a1fb6a3980572b1932e4f4bdc734fd11021",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0010.zip.part002",
+          "provider_digest": "sha256:d3df5a803cb5febc37c0153dcb004a1fb6a3980572b1932e4f4bdc734fd11021"
+        },
+        {
+          "name": "military-history-0010.zip.part003",
+          "asset_id": 671816778,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "ca91ae858304419bbe5a41377d9d2a74cf32fb69c74d7bf9f61c692f05c3536f",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0010.zip.part003",
+          "provider_digest": "sha256:ca91ae858304419bbe5a41377d9d2a74cf32fb69c74d7bf9f61c692f05c3536f"
+        },
+        {
+          "name": "military-history-0010.zip.part004",
+          "asset_id": 671817450,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "e0de89d2f5f81406cd6f1e439b40f674a6153db21e3b03700b31c89a9f8df05f",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0010.zip.part004",
+          "provider_digest": "sha256:e0de89d2f5f81406cd6f1e439b40f674a6153db21e3b03700b31c89a9f8df05f"
+        },
+        {
+          "name": "military-history-0010.zip.part005",
+          "asset_id": 671817983,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "8d4c7f5d007353cd8278639c6de589190b6a42f674350ef1fdd4011ef25b814a",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0010.zip.part005",
+          "provider_digest": "sha256:8d4c7f5d007353cd8278639c6de589190b6a42f674350ef1fdd4011ef25b814a"
+        },
+        {
+          "name": "military-history-0010.zip.part006",
+          "asset_id": 671818728,
+          "offset": 335544320,
+          "bytes": 67108864,
+          "sha256": "a1ea60576c050aa5377f5a32083fd603202a8ce9684c9c8457bf633e46f15d14",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0010.zip.part006",
+          "provider_digest": "sha256:a1ea60576c050aa5377f5a32083fd603202a8ce9684c9c8457bf633e46f15d14"
+        },
+        {
+          "name": "military-history-0010.zip.part007",
+          "asset_id": 671819063,
+          "offset": 402653184,
+          "bytes": 67108864,
+          "sha256": "653a9d3bb3d589f81f6585de832d3a5718c001f389f4254b7f30f6550478057d",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0010.zip.part007",
+          "provider_digest": "sha256:653a9d3bb3d589f81f6585de832d3a5718c001f389f4254b7f30f6550478057d"
+        },
+        {
+          "name": "military-history-0010.zip.part008",
+          "asset_id": 671819605,
+          "offset": 469762048,
+          "bytes": 67108864,
+          "sha256": "02188ee9f999180564a73520f62a59ab5dba761c3584e0f75b90c138db8b1249",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0010.zip.part008",
+          "provider_digest": "sha256:02188ee9f999180564a73520f62a59ab5dba761c3584e0f75b90c138db8b1249"
+        },
+        {
+          "name": "military-history-0010.zip.part009",
+          "asset_id": 671819964,
+          "offset": 536870912,
+          "bytes": 153648,
+          "sha256": "36e3e7e39ee4431c3a94a1caaaf9e2f75674179660374e43608214cc54b2594a",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0010.zip.part009",
+          "provider_digest": "sha256:36e3e7e39ee4431c3a94a1caaaf9e2f75674179660374e43608214cc54b2594a"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0011.zip",
+      "bytes": 534485552,
+      "sha256": "81bd32c4308451341323e8e0adff29f18f67e673ddc9485f8d71e9223bb645ed",
+      "assets": [
+        {
+          "name": "military-history-0011.zip.part001",
+          "asset_id": 671820066,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "d555814547459893b598e058acd1a7debfb656475adde3ab5a9dc6a382971cef",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0011.zip.part001",
+          "provider_digest": "sha256:d555814547459893b598e058acd1a7debfb656475adde3ab5a9dc6a382971cef"
+        },
+        {
+          "name": "military-history-0011.zip.part002",
+          "asset_id": 671820627,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "f396dc7bf960bf99ae2a2a2af1226ef5d6fc702acc02a933b85d082a82b147dc",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0011.zip.part002",
+          "provider_digest": "sha256:f396dc7bf960bf99ae2a2a2af1226ef5d6fc702acc02a933b85d082a82b147dc"
+        },
+        {
+          "name": "military-history-0011.zip.part003",
+          "asset_id": 671821183,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "bde5733bbef03705340eedd8f025b3c7c34faa727bbc46769eb8d933b81b3183",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0011.zip.part003",
+          "provider_digest": "sha256:bde5733bbef03705340eedd8f025b3c7c34faa727bbc46769eb8d933b81b3183"
+        },
+        {
+          "name": "military-history-0011.zip.part004",
+          "asset_id": 671822332,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "999d734c64c5b08d5d6e78b0151e3371a1fdcd712edd66da49715140635f225c",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0011.zip.part004",
+          "provider_digest": "sha256:999d734c64c5b08d5d6e78b0151e3371a1fdcd712edd66da49715140635f225c"
+        },
+        {
+          "name": "military-history-0011.zip.part005",
+          "asset_id": 671822636,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "e22dd70433ac722270ec7579e3ce1294a7404453555b377a8ec2331cd81578d3",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0011.zip.part005",
+          "provider_digest": "sha256:e22dd70433ac722270ec7579e3ce1294a7404453555b377a8ec2331cd81578d3"
+        },
+        {
+          "name": "military-history-0011.zip.part006",
+          "asset_id": 671823057,
+          "offset": 335544320,
+          "bytes": 67108864,
+          "sha256": "737f6ba46c9d63089fb39168de17fa88a10683610d0eeb285325b54a39d36469",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0011.zip.part006",
+          "provider_digest": "sha256:737f6ba46c9d63089fb39168de17fa88a10683610d0eeb285325b54a39d36469"
+        },
+        {
+          "name": "military-history-0011.zip.part007",
+          "asset_id": 671823680,
+          "offset": 402653184,
+          "bytes": 67108864,
+          "sha256": "10cdfad206b6ced0bdc453cc91114143f1c9ee02573d867107a30b4e7d75f763",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0011.zip.part007",
+          "provider_digest": "sha256:10cdfad206b6ced0bdc453cc91114143f1c9ee02573d867107a30b4e7d75f763"
+        },
+        {
+          "name": "military-history-0011.zip.part008",
+          "asset_id": 671824203,
+          "offset": 469762048,
+          "bytes": 64723504,
+          "sha256": "e6138480a4f457e03b3e91cee51471ca4f78d08b6ab642ffe0c29c71a950cd80",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0011.zip.part008",
+          "provider_digest": "sha256:e6138480a4f457e03b3e91cee51471ca4f78d08b6ab642ffe0c29c71a950cd80"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0012.zip",
+      "bytes": 380803116,
+      "sha256": "56ce19302e37be9ac4f4ac487d36de16354be2b153085c1df2b5dc73696ff986",
+      "assets": [
+        {
+          "name": "military-history-0012.zip.part001",
+          "asset_id": 671824652,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "2c05acdcef3c9124c2d4217cd4c3368479e27b8d0e4dbf78ffc354a2a23c4442",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0012.zip.part001",
+          "provider_digest": "sha256:2c05acdcef3c9124c2d4217cd4c3368479e27b8d0e4dbf78ffc354a2a23c4442"
+        },
+        {
+          "name": "military-history-0012.zip.part002",
+          "asset_id": 671825120,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "9681e118869ea1d36cb9f3c2765f107863fb70f4639cb5d8eb73c26842188d28",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0012.zip.part002",
+          "provider_digest": "sha256:9681e118869ea1d36cb9f3c2765f107863fb70f4639cb5d8eb73c26842188d28"
+        },
+        {
+          "name": "military-history-0012.zip.part003",
+          "asset_id": 671826113,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "1ddd7130780605feda846868a8fcc5bd0dcc91201ff885a39f135019980eb4c1",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0012.zip.part003",
+          "provider_digest": "sha256:1ddd7130780605feda846868a8fcc5bd0dcc91201ff885a39f135019980eb4c1"
+        },
+        {
+          "name": "military-history-0012.zip.part004",
+          "asset_id": 671826697,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "5c844f85af42ef013ef845da5abd562e056fd0e9891da9d6c5a653b4166d68af",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0012.zip.part004",
+          "provider_digest": "sha256:5c844f85af42ef013ef845da5abd562e056fd0e9891da9d6c5a653b4166d68af"
+        },
+        {
+          "name": "military-history-0012.zip.part005",
+          "asset_id": 671827246,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "86cec53d311585b67ef6a378243f20f7d1e01eb1cb96712c3923aa66f35163dd",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0012.zip.part005",
+          "provider_digest": "sha256:86cec53d311585b67ef6a378243f20f7d1e01eb1cb96712c3923aa66f35163dd"
+        },
+        {
+          "name": "military-history-0012.zip.part006",
+          "asset_id": 671827810,
+          "offset": 335544320,
+          "bytes": 45258796,
+          "sha256": "800240cebdaddb95480b4ec4ced1ec0aebad189af6badd3d787ea1a6443e139f",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0012.zip.part006",
+          "provider_digest": "sha256:800240cebdaddb95480b4ec4ced1ec0aebad189af6badd3d787ea1a6443e139f"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0013.zip",
+      "bytes": 403664832,
+      "sha256": "9f7ce8b6817a223201f940ef6a370032834e2d4329ccbbfa52770e6e33d74071",
+      "assets": [
+        {
+          "name": "military-history-0013.zip.part001",
+          "asset_id": 671828107,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "9777ff4fa51b2e4ab5b524fc36814e19e4936d0edc86e0eb808ef2bf2e89dbaf",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0013.zip.part001",
+          "provider_digest": "sha256:9777ff4fa51b2e4ab5b524fc36814e19e4936d0edc86e0eb808ef2bf2e89dbaf"
+        },
+        {
+          "name": "military-history-0013.zip.part002",
+          "asset_id": 671828552,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "95e602c3dd51d5574ae0293237c23125b678656ea36186b167504f282976000a",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0013.zip.part002",
+          "provider_digest": "sha256:95e602c3dd51d5574ae0293237c23125b678656ea36186b167504f282976000a"
+        },
+        {
+          "name": "military-history-0013.zip.part003",
+          "asset_id": 671829050,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "2f4705be1405db5a9defd536397d05c373bddf980daa54e80ce1ccef6d805a5d",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0013.zip.part003",
+          "provider_digest": "sha256:2f4705be1405db5a9defd536397d05c373bddf980daa54e80ce1ccef6d805a5d"
+        },
+        {
+          "name": "military-history-0013.zip.part004",
+          "asset_id": 671829502,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "d51cf4ed3ccf7560819a77eb87d9a4762e18a306cf414e649d05b381c01a17ce",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0013.zip.part004",
+          "provider_digest": "sha256:d51cf4ed3ccf7560819a77eb87d9a4762e18a306cf414e649d05b381c01a17ce"
+        },
+        {
+          "name": "military-history-0013.zip.part005",
+          "asset_id": 671829983,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "e35b29594e5d5146830fa3fe9b3af155d776a141571d03ae38b696e2ba254275",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0013.zip.part005",
+          "provider_digest": "sha256:e35b29594e5d5146830fa3fe9b3af155d776a141571d03ae38b696e2ba254275"
+        },
+        {
+          "name": "military-history-0013.zip.part006",
+          "asset_id": 671831390,
+          "offset": 335544320,
+          "bytes": 67108864,
+          "sha256": "ace90afa588526bc7ad90db26888435fe2c3ba20585f76057aadba2d915c3c6f",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0013.zip.part006",
+          "provider_digest": "sha256:ace90afa588526bc7ad90db26888435fe2c3ba20585f76057aadba2d915c3c6f"
+        },
+        {
+          "name": "military-history-0013.zip.part007",
+          "asset_id": 671831991,
+          "offset": 402653184,
+          "bytes": 1011648,
+          "sha256": "58d42167e90665ba973f00a55e13e4cc986b5f21cc560c8d4cd6bba4ab8f2010",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0013.zip.part007",
+          "provider_digest": "sha256:58d42167e90665ba973f00a55e13e4cc986b5f21cc560c8d4cd6bba4ab8f2010"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0014.zip",
+      "bytes": 376841840,
+      "sha256": "713a0743cb8c04d7418a0c231ab8a888a6ad1e5f90ce944786d37a3cbfdc9a6d",
+      "assets": [
+        {
+          "name": "military-history-0014.zip.part001",
+          "asset_id": 671832065,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "94cecdda46108c0b5353a2e7bce6f5fd4420b32bd4ce7ba2577ecee344883503",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0014.zip.part001",
+          "provider_digest": "sha256:94cecdda46108c0b5353a2e7bce6f5fd4420b32bd4ce7ba2577ecee344883503"
+        },
+        {
+          "name": "military-history-0014.zip.part002",
+          "asset_id": 671832575,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "1dc8e8b2f6aea686769548e9a4c9c94c92428f959415d3995e5a72ef4f408f19",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0014.zip.part002",
+          "provider_digest": "sha256:1dc8e8b2f6aea686769548e9a4c9c94c92428f959415d3995e5a72ef4f408f19"
+        },
+        {
+          "name": "military-history-0014.zip.part003",
+          "asset_id": 671833047,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "2d65bb3c69e199073fa59d1b43977ad232e239fbf652e300d6c5ab544bec0559",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0014.zip.part003",
+          "provider_digest": "sha256:2d65bb3c69e199073fa59d1b43977ad232e239fbf652e300d6c5ab544bec0559"
+        },
+        {
+          "name": "military-history-0014.zip.part004",
+          "asset_id": 671834221,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "61f5f509cbfb1859c06b918a07ee94043f30690e841dd10e08a0d7a82798f7fc",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0014.zip.part004",
+          "provider_digest": "sha256:61f5f509cbfb1859c06b918a07ee94043f30690e841dd10e08a0d7a82798f7fc"
+        },
+        {
+          "name": "military-history-0014.zip.part005",
+          "asset_id": 671834794,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "c4cae4dcb2a66298e7135ea0618eb9fa32b10c6f4cb7cce8484af9446c2f107e",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0014.zip.part005",
+          "provider_digest": "sha256:c4cae4dcb2a66298e7135ea0618eb9fa32b10c6f4cb7cce8484af9446c2f107e"
+        },
+        {
+          "name": "military-history-0014.zip.part006",
+          "asset_id": 671835437,
+          "offset": 335544320,
+          "bytes": 41297520,
+          "sha256": "bea0784bac233fc98296dfaa3497ecb5a774f5c24b53a74a8ad884c4e0bf62c9",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0014.zip.part006",
+          "provider_digest": "sha256:bea0784bac233fc98296dfaa3497ecb5a774f5c24b53a74a8ad884c4e0bf62c9"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0015.zip",
+      "bytes": 376425348,
+      "sha256": "20059e12998fde660ca5594a2109da81482ad4052f1cad51fcb8c49430ca753f",
+      "assets": [
+        {
+          "name": "military-history-0015.zip.part001",
+          "asset_id": 671835752,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "ef6cd7acc2fc47dc690d0ce4c43d1e3cf3e0d4009892afc54bb6b38d2df9714b",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0015.zip.part001",
+          "provider_digest": "sha256:ef6cd7acc2fc47dc690d0ce4c43d1e3cf3e0d4009892afc54bb6b38d2df9714b"
+        },
+        {
+          "name": "military-history-0015.zip.part002",
+          "asset_id": 671836457,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "8256a2578c81cd6cd2447ddd9899bafed5863f543e43cda5792e7844af4365c4",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0015.zip.part002",
+          "provider_digest": "sha256:8256a2578c81cd6cd2447ddd9899bafed5863f543e43cda5792e7844af4365c4"
+        },
+        {
+          "name": "military-history-0015.zip.part003",
+          "asset_id": 671837119,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "cb131f56e0a2e5bbbf6f3ae46fc138dfe79e65ae15e1bcdf56af8763e5e665f1",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0015.zip.part003",
+          "provider_digest": "sha256:cb131f56e0a2e5bbbf6f3ae46fc138dfe79e65ae15e1bcdf56af8763e5e665f1"
+        },
+        {
+          "name": "military-history-0015.zip.part004",
+          "asset_id": 671837722,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "3ad921b1e7cad17daa4611ac5650ba7588788f7f3fd56d09a2ed63e8350414db",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0015.zip.part004",
+          "provider_digest": "sha256:3ad921b1e7cad17daa4611ac5650ba7588788f7f3fd56d09a2ed63e8350414db"
+        },
+        {
+          "name": "military-history-0015.zip.part005",
+          "asset_id": 671838384,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "9b58106fb13b6189867c1942913ee685c931f1510a936e82a01bfd002b9cf086",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0015.zip.part005",
+          "provider_digest": "sha256:9b58106fb13b6189867c1942913ee685c931f1510a936e82a01bfd002b9cf086"
+        },
+        {
+          "name": "military-history-0015.zip.part006",
+          "asset_id": 671839026,
+          "offset": 335544320,
+          "bytes": 40881028,
+          "sha256": "9c3499389d0eb3de18888a3c3878370cbc63c29b480417e80761c6dbe2fb3161",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0015.zip.part006",
+          "provider_digest": "sha256:9c3499389d0eb3de18888a3c3878370cbc63c29b480417e80761c6dbe2fb3161"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0016.zip",
+      "bytes": 389861113,
+      "sha256": "742c38d3afa236fee69d93f29579d02531612343bda590d45b38e34d89ecdc93",
+      "assets": [
+        {
+          "name": "military-history-0016.zip.part001",
+          "asset_id": 671839608,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "9552bb57a8f765f9f6646af6d85f4b05ac3a1a0e9cbe1b33f5cc5443e90918d6",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0016.zip.part001",
+          "provider_digest": "sha256:9552bb57a8f765f9f6646af6d85f4b05ac3a1a0e9cbe1b33f5cc5443e90918d6"
+        },
+        {
+          "name": "military-history-0016.zip.part002",
+          "asset_id": 671841017,
+          "offset": 67108864,
+          "bytes": 67108864,
+          "sha256": "43d8560d45a95495cb013a41ca30abb8df2b5b0c20ae41278239120b7f2480b5",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0016.zip.part002",
+          "provider_digest": "sha256:43d8560d45a95495cb013a41ca30abb8df2b5b0c20ae41278239120b7f2480b5"
+        },
+        {
+          "name": "military-history-0016.zip.part003",
+          "asset_id": 671841641,
+          "offset": 134217728,
+          "bytes": 67108864,
+          "sha256": "7822056240eb1a98d39d062551bc69af0faf967a1434e90231705cf602fc928e",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0016.zip.part003",
+          "provider_digest": "sha256:7822056240eb1a98d39d062551bc69af0faf967a1434e90231705cf602fc928e"
+        },
+        {
+          "name": "military-history-0016.zip.part004",
+          "asset_id": 671842224,
+          "offset": 201326592,
+          "bytes": 67108864,
+          "sha256": "2a5a5f1252ee0acf24ef9ccf299467a590a97016e4f4cf29068a51a1788431ec",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0016.zip.part004",
+          "provider_digest": "sha256:2a5a5f1252ee0acf24ef9ccf299467a590a97016e4f4cf29068a51a1788431ec"
+        },
+        {
+          "name": "military-history-0016.zip.part005",
+          "asset_id": 671842685,
+          "offset": 268435456,
+          "bytes": 67108864,
+          "sha256": "978977af5fc8cf13c2a4f9bf0bfa0a8e69cb24094927bffff204ee28479d45e3",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0016.zip.part005",
+          "provider_digest": "sha256:978977af5fc8cf13c2a4f9bf0bfa0a8e69cb24094927bffff204ee28479d45e3"
+        },
+        {
+          "name": "military-history-0016.zip.part006",
+          "asset_id": 671843178,
+          "offset": 335544320,
+          "bytes": 54316793,
+          "sha256": "c89b06c23921b5d3a0321403d1813b2bc061207fe619b27be2bea9c2ce6160cb",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0016.zip.part006",
+          "provider_digest": "sha256:c89b06c23921b5d3a0321403d1813b2bc061207fe619b27be2bea9c2ce6160cb"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-history-0017.zip",
+      "bytes": 90312407,
+      "sha256": "43292d34534d99fc90f085c04fd53b6f403d5a1f7be9cba6c8e9f3db120fa354",
+      "assets": [
+        {
+          "name": "military-history-0017.zip.part001",
+          "asset_id": 671843721,
+          "offset": 0,
+          "bytes": 67108864,
+          "sha256": "e9405f1b088ac546dbb4ee1e2ce47c9d236171e0af0b884adccd6ba58c4edd8e",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0017.zip.part001",
+          "provider_digest": "sha256:e9405f1b088ac546dbb4ee1e2ce47c9d236171e0af0b884adccd6ba58c4edd8e"
+        },
+        {
+          "name": "military-history-0017.zip.part002",
+          "asset_id": 671844652,
+          "offset": 67108864,
+          "bytes": 23203543,
+          "sha256": "23f1d1d95153ec3e625c2cafde94d4224191e739d95ddf9dd26902d772ed521c",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-history-0017.zip.part002",
+          "provider_digest": "sha256:23f1d1d95153ec3e625c2cafde94d4224191e739d95ddf9dd26902d772ed521c"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    },
+    {
+      "name": "military-private-0018.zip",
+      "bytes": 59888721,
+      "sha256": "34bcbd81e1b8efd51d134a54919f9cd23cb53bf51aad79c35f28f2aadcfed0bc",
+      "assets": [
+        {
+          "name": "military-private-0018.zip.part001",
+          "asset_id": 671801512,
+          "offset": 0,
+          "bytes": 59888721,
+          "sha256": "34bcbd81e1b8efd51d134a54919f9cd23cb53bf51aad79c35f28f2aadcfed0bc",
+          "private_url": "https://github.com/ryoumiyahayato/wwo/releases/download/untagged-75a9dbc800223cbf8a18/military-private-0018.zip.part001",
+          "provider_digest": "sha256:34bcbd81e1b8efd51d134a54919f9cd23cb53bf51aad79c35f28f2aadcfed0bc"
+        }
+      ],
+      "mirrored_to_new_repository": false
+    }
+  ],
+  "package_count": 18,
+  "total_bytes": 7192143243,
+  "full_history_mirrored": false,
+  "old_branches_deleted": false,
+  "remaining_scope": "All 18 logical ZIP packages remain in original WWO private release; selected M source extraction does not mirror these assets. Current full media/dependencies and private_state, other historical source/report/cache/recording/archive files remain there. Old APK original and unverified external Drive objects are not recovered by this migration."
+}

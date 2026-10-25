@@ -1,0 +1,14 @@
+.godot/
+.import/
+__pycache__/
+*.pyc
+.env
+.env.*
+*.p12
+*.jks
+*.keystore
+*.pem
+*.key
+user/
+private_state/
+*.apk

@@ -1,0 +1,12 @@
+{
+  "repository": "ryoumiyahayato/wwo",
+  "archive_commit": "3c48266b335cfa448953d26b9698abb6dd207a34",
+  "archive_prefix": "wwo-person-attachment-20261011T0010/experiments/war_resolver/",
+  "materialized_files": 422,
+  "materialized_bytes": 11874680,
+  "old_source_reads": false,
+  "resource_hardlinks_created": false,
+  "metadata_path_changes": [],
+  "status": "HISTORICAL_FILE_RESTORE_VERIFIED_ENGINE_NOT_RUN",
+  "scope": "exact archived file contents; historical launch/dependency limitations remain as originally documented"
+}

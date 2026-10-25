@@ -1,0 +1,4836 @@
+{
+  "files": [
+    {
+      "path": ".gitattributes",
+      "size": 9,
+      "sha256": "8b9c3028d6467ff3be7c793141927841d70f47f52d0590677438f488ca154992"
+    },
+    {
+      "path": ".gitignore",
+      "size": 124,
+      "sha256": "28b9f7a3448c05d5453420bb1ed6146e34505c6ddfb87c9c69c307214c6a01de"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/battle_state.gd",
+      "size": 6697,
+      "sha256": "5796ee4e414922fc68793477a756c6254f4424ed5e31cae03eb7eeced2e9f599"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/battle_state.gd.uid",
+      "size": 19,
+      "sha256": "8a18027c327c1e2221ff39f5bb38b9df145bdd7be6dc6b0175832d1777e5ef81"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/benchmark.gd",
+      "size": 3711,
+      "sha256": "8fb09d68c8b2f6a3358936b6e82f93d0aba7a85b03e4e1d20565a2b01979e45b"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/benchmark.gd.uid",
+      "size": 20,
+      "sha256": "2a162f78e4947c37b1f62a15c3364ecccbb5c69ea7bacf88f0bc996e95bc19a0"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/data.gd",
+      "size": 1383,
+      "sha256": "ffff4828bd65058519a1ca761f19458e85417552225bd0a5dcd5d72ea7dd716b"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/data.gd.uid",
+      "size": 20,
+      "sha256": "e8a977ef07e084401b9c2064f6b5858fc26668eba3c326eb9ded91a0bc328c1f"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/evidence/results.json",
+      "size": 163721,
+      "sha256": "d716f860e1fac37ce308f28d00f5d71681c27a2a583052600c7d541cf6646b65"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/README.md",
+      "size": 6214,
+      "sha256": "3fb12061e6e2eaaaf336c25d6017b33e3d4586d8a0cc89640ed1ad289a340bbe"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/replay_probe.gd",
+      "size": 527,
+      "sha256": "529757d052438b1e6c6e0bfd04afef56888e18bc9b7e07ac0b2b572e56b4de4b"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/replay_probe.gd.uid",
+      "size": 19,
+      "sha256": "3d0f2ba6f4b0074d75fd83620e013db0e52a91c147b370cfef5c135157c1811d"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/resolver.gd",
+      "size": 19358,
+      "sha256": "20f134346707902f085fa291004d24a6929fb2a4430d7b2d7cc456ecfa62bb83"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/resolver.gd.uid",
+      "size": 20,
+      "sha256": "7c7736f8f4b3ec34bea88476fde08b5d9c31b90c597a402428d0a1f5e6761f49"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/scenarios.gd",
+      "size": 2241,
+      "sha256": "9326f6e8e103edc821e8e9a0aabe7ff0ce7e3fe0dd7a5534412c0811028632e8"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/scenarios.gd.uid",
+      "size": 19,
+      "sha256": "9452cb2b5454352de571263341b86efd2abdbd786b10b9cf733f7f29094728a9"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/tests.gd",
+      "size": 17934,
+      "sha256": "e830d6b5979625d312ad42153feb09b7269715039cc130adfc1bb3ac6f69d614"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/tests.gd.uid",
+      "size": 20,
+      "sha256": "98e01e92b1ddf8223852d6d36245f72cf177a386c2bc16b88f3dae2f44142f71"
+    },
+    {
+      "path": "legacy-research/war-resolver-v0/validate.py",
+      "size": 5385,
+      "sha256": "565dfdae9231562436631b58b365b0f88fbf95e10ce4d6af1c58935afe0e516d"
+    },
+    {
+      "path": "MIGRATION_SCOPE.md",
+      "size": 3440,
+      "sha256": "d763901c19a6dab272fb61de8f677d21d0be689a1750e0d695579072b86eb57c"
+    },
+    {
+      "path": "military-godot/authority/application.gd",
+      "size": 4249,
+      "sha256": "b2ddb035e46977c0fd79243394e9fbd880174d5b220a22062fac1dfe35a71566"
+    },
+    {
+      "path": "military-godot/authority/checks.gd",
+      "size": 12476,
+      "sha256": "9414ed85b58f47964451adee22de91aeede4dfa4083c2726662572cfaaaba74f"
+    },
+    {
+      "path": "military-godot/authority/main.tscn",
+      "size": 2215,
+      "sha256": "7ca9bbe3821dce2e1cdb95e7dfd82d605ea150d2248ed4ab98a2de60ca6e97ea"
+    },
+    {
+      "path": "military-godot/authority/read_save.gd",
+      "size": 5630,
+      "sha256": "23eb7369a7cecb8811d4af7f6ea24b5c7e9c2a4d1ccb5a39a93651279c13e9d8"
+    },
+    {
+      "path": "military-godot/authority/recovery_checks.gd",
+      "size": 5551,
+      "sha256": "5fff2a284c4b3fe453974170e8028422eef6bcfdb050e8b9bb1ab10634b9fe9a"
+    },
+    {
+      "path": "military-godot/authority/revocation.gd",
+      "size": 2438,
+      "sha256": "8b613fc1037958df78c2f60ca60f2be2eecced85def51215463774d09ff11741"
+    },
+    {
+      "path": "military-godot/cedar/asset_build_receipt.json",
+      "size": 245,
+      "sha256": "5804288771e89defd11d3ae79a80306ddff30156b5a7e963dd85f336dffc399c"
+    },
+    {
+      "path": "military-godot/cedar/assets/map.json",
+      "size": 67930,
+      "sha256": "13db75a242c22cd6b155737b20913cfe88ea99241e5904b211499fae4af7d045"
+    },
+    {
+      "path": "military-godot/cedar/cedar_art.gd",
+      "size": 2546,
+      "sha256": "c424c1d6bd4bb573c3ea70ca984ed5e7f9d79d3f06f4c31216f4b84be8921148"
+    },
+    {
+      "path": "military-godot/cedar/cedar_art.gd.uid",
+      "size": 20,
+      "sha256": "053c70402be4764d8eb16590b16275ff84eea1d9cbe82b70237ae18a2a9dc5c2"
+    },
+    {
+      "path": "military-godot/cedar/heightfield.gd",
+      "size": 1228,
+      "sha256": "8b0c48fb8378123741a8548cb299a264592a7a96ed5755ba4e88384c3de40bba"
+    },
+    {
+      "path": "military-godot/cedar/heightfield.gd.uid",
+      "size": 20,
+      "sha256": "249c7db512e2c503969d3c5429b696175246be66393d70bfb801cc6743776edd"
+    },
+    {
+      "path": "military-godot/cedar/review/changes.json",
+      "size": 1957,
+      "sha256": "6d7614e92fadbc9e00511558ea8751a29af1901938d0e6ea50315d47183e05c1"
+    },
+    {
+      "path": "military-godot/cedar/review/static_checks.json",
+      "size": 23213,
+      "sha256": "a772f8a450ea7043a00854628446ec56086969afccb1bae2c56a903b6005d0c3"
+    },
+    {
+      "path": "military-godot/cedar/shaders/ground.gdshader",
+      "size": 1439,
+      "sha256": "36b8ac711a93d15b02587aa2b4447e2b47cd8a48fd53def4e0a4b9ecee3bd789"
+    },
+    {
+      "path": "military-godot/cedar/shaders/ground.gdshader.uid",
+      "size": 20,
+      "sha256": "b5f53f17dc5d9275f9e1576522d2caadee542f9a1407f468e13ae041cad52319"
+    },
+    {
+      "path": "military-godot/cedar/shaders/puff_art.gdshader",
+      "size": 868,
+      "sha256": "aac36e4eafe62828bcd0fbd9b6416e8f2af4503f6e3e5c5a62495c05e499dad0"
+    },
+    {
+      "path": "military-godot/cedar/shaders/puff_art.gdshader.uid",
+      "size": 20,
+      "sha256": "475e94915afbd440a4187b3c770bdcc8f2520fc530e8a7bb5af42fc7e19ce521"
+    },
+    {
+      "path": "military-godot/cedar/system_font.tres",
+      "size": 178,
+      "sha256": "7b897c7fc1e4940fa47d2d4e9e5507a8577f37290cf5bff42e68acf3da659a03"
+    },
+    {
+      "path": "military-godot/cedar/terrain.gd",
+      "size": 3475,
+      "sha256": "4b1ad1a7e0fbf6965cb6868670dcd576fff4f3e5895b95d02e42d5341e5a6894"
+    },
+    {
+      "path": "military-godot/cedar/terrain.gd.uid",
+      "size": 20,
+      "sha256": "0131a1ee8af453661ac511f3727d2b3eacb9eaccb5ca2ef291a81591477bd4a9"
+    },
+    {
+      "path": "military-godot/cedar/tests/test_cedar_native.gd",
+      "size": 1853,
+      "sha256": "cd21c77fd0b644c6e3178d6b7cfd915da9f494ca58aac70d19c4a98737584e10"
+    },
+    {
+      "path": "military-godot/cedar/tests/test_cedar_native.gd.uid",
+      "size": 20,
+      "sha256": "426e84ae56ee836fb9e5274c986459bf752d33d25823c84a05f8cc6c4ebc3c2f"
+    },
+    {
+      "path": "military-godot/cedar/tools/build_cedar_assets.py",
+      "size": 19497,
+      "sha256": "86888dfddab550c561ad45f5a7c6b7d54654f896bb1f45f13f46de3fbb3bfa26"
+    },
+    {
+      "path": "military-godot/cedar/tools/validate_cedar_assets.py",
+      "size": 7053,
+      "sha256": "5e5fe5842ab0a58e44eee04dd8e5d3647f8c48f24f0851d508406381d6d821f6"
+    },
+    {
+      "path": "military-godot/cedar/world.gd",
+      "size": 5175,
+      "sha256": "01142fb75689d0f73687cc90adbeae3d5710ef3b45690491dfd42af9c40660af"
+    },
+    {
+      "path": "military-godot/cedar/world.gd.uid",
+      "size": 20,
+      "sha256": "22e5f9f29b2f16611336db99b04c221bd1c910a4202820f3a615b2e905f76364"
+    },
+    {
+      "path": "military-godot/continuous/assets/region.json",
+      "size": 40702,
+      "sha256": "638d8d4acaf8c895c6f5d63333f42cab6123541079be2bb56da9be79d48080f7"
+    },
+    {
+      "path": "military-godot/continuous/ground.gdshader",
+      "size": 1833,
+      "sha256": "ab1b4da0bc400aacb52604dc114e00a2b65b8120adec3bf4a9ff359e2aab58cd"
+    },
+    {
+      "path": "military-godot/continuous/ground.gdshader.uid",
+      "size": 20,
+      "sha256": "25b5f93cf53c5bd0d0add445628db0dbf9ab85da29b6613a7e54887e5181072d"
+    },
+    {
+      "path": "military-godot/continuous/main.tscn",
+      "size": 176,
+      "sha256": "62c87ed5cc2fc14f0ade9ffb282adf2e9ead1ea3e034ae5a18e8ee1fca06d810"
+    },
+    {
+      "path": "military-godot/continuous/navigation.gd",
+      "size": 8074,
+      "sha256": "59e113e6986c09a056fa02c1fa883538060f2a9a61c5efd082455d1f6c82b2bf"
+    },
+    {
+      "path": "military-godot/continuous/navigation.gd.uid",
+      "size": 20,
+      "sha256": "8fb3933104eda342e248415aa88ea767483084378c4eae149d4a4bcaf6b3c4f0"
+    },
+    {
+      "path": "military-godot/continuous/region_world.gd",
+      "size": 7587,
+      "sha256": "ef6798510907e39a3bc8b17ec457a873ffba6e774fb71bdcb05dbabc1ea7ff0c"
+    },
+    {
+      "path": "military-godot/continuous/region_world.gd.uid",
+      "size": 20,
+      "sha256": "76e255aba9040bb4c77b4d128955efcf927c2430d40b822a2a4488405c7bf71a"
+    },
+    {
+      "path": "military-godot/continuous/shell.gd",
+      "size": 9989,
+      "sha256": "7633d1b28d484b3aa702598cf8098ee783dc3633d46353193c1bd7410f8a6423"
+    },
+    {
+      "path": "military-godot/continuous/shell.gd.uid",
+      "size": 20,
+      "sha256": "e76498b8f02f68b92e5bc604338f0f5b1c04901a738bdbcebf00846420c52ba9"
+    },
+    {
+      "path": "military-godot/continuous/tour.gd",
+      "size": 6376,
+      "sha256": "dc6e872675402ed67d6c858d58b33e5bea71b2b1385c44575e9f9d0a40139902"
+    },
+    {
+      "path": "military-godot/continuous/tour.gd.uid",
+      "size": 20,
+      "sha256": "5502f891fd3cf366fd4bbbfaebeb72e66ace0a4dbf8e61396670593aba799674"
+    },
+    {
+      "path": "military-godot/custody/depot_1900.json",
+      "size": 848,
+      "sha256": "d2b5f288ab08e775c780bd89882ae457d72c22bc2eb747f13853a5cda07bd165"
+    },
+    {
+      "path": "military-godot/custody/main.tscn",
+      "size": 295,
+      "sha256": "700b01c238e5dcda9ea608bd52a0f5e667c9c2ae69e4d63357e652c591cc55aa"
+    },
+    {
+      "path": "military-godot/custody/native_use.gd",
+      "size": 949,
+      "sha256": "7bbc079976e0700e99815a9d3102347263c5b5aae28db5f5e8a9661412384505"
+    },
+    {
+      "path": "military-godot/custody/native_use.gd.uid",
+      "size": 20,
+      "sha256": "4bee2d876209bcd36f4a8a90aa872bcecee6f511c78a99113e651960904dd50e"
+    },
+    {
+      "path": "military-godot/custody/scenario.gd",
+      "size": 3018,
+      "sha256": "d63af34ed77976a6d89b98772690740f4d638e55d0893d6d6574e695591f9a74"
+    },
+    {
+      "path": "military-godot/custody/scenario.gd.uid",
+      "size": 20,
+      "sha256": "8e1fe9ee07d81f40f25eee5ad4dac56ce0a64715f52a52088cd0d2dc79251171"
+    },
+    {
+      "path": "military-godot/custody/test_material.gd",
+      "size": 15861,
+      "sha256": "8ee74e1d56c63aecbe9e88eb683099aac1977e7b582079964c29fc575a128a3e"
+    },
+    {
+      "path": "military-godot/custody/test_material.gd.uid",
+      "size": 20,
+      "sha256": "1cb44d813a182a1a6cea1c1f5886bbd479d4fe407e8b2e9b97a4aa7ede0e6f77"
+    },
+    {
+      "path": "military-godot/custody/workbench.gd",
+      "size": 12151,
+      "sha256": "b8e2630936df7ff5c3dce2179c3df246bb6c14a14c724b10939e6f2f22ab37b0"
+    },
+    {
+      "path": "military-godot/custody/workbench.gd.uid",
+      "size": 20,
+      "sha256": "d57d37a101605d04c3fa69b8b8d5ee60fea6b863dadef2282612b7930c3c4f0e"
+    },
+    {
+      "path": "military-godot/delegation/application.gd",
+      "size": 3100,
+      "sha256": "9f641ff0cfd1be3d44dd3074e55fd1c474b61aa898d0e091f4ea9ab2e44026ba"
+    },
+    {
+      "path": "military-godot/delegation/application.gd.uid",
+      "size": 20,
+      "sha256": "ed60328ae8179155fea847321b83993cb293b49a78a6f06e0d44047858f7c4fc"
+    },
+    {
+      "path": "military-godot/delegation/checks.gd",
+      "size": 6723,
+      "sha256": "802ae539c204be816b7040d6d17352882d979c81b2b38a621861aab8eff3de00"
+    },
+    {
+      "path": "military-godot/delegation/checks.gd.uid",
+      "size": 20,
+      "sha256": "3399ea648979bb0ee2fb12e3812421ef55c1ed70eb3353e72068461f28029cfe"
+    },
+    {
+      "path": "military-godot/delegation/main.tscn",
+      "size": 2216,
+      "sha256": "390e28a921cfcf68120249e53d86df4902df435f16de7655b6fcf418d84b8bde"
+    },
+    {
+      "path": "military-godot/delegation/view.gd",
+      "size": 8752,
+      "sha256": "d64ed5e8e9512bf0c0c0bc2149958241fa8b32ec730c2f8c0fdf5442ee0280c4"
+    },
+    {
+      "path": "military-godot/delegation/view.gd.uid",
+      "size": 20,
+      "sha256": "c6bc2035e0f316964d6353d5027adcba4e3183638606fb3b2635d31a7549faa7"
+    },
+    {
+      "path": "military-godot/duty/checks.gd",
+      "size": 4295,
+      "sha256": "357612ed36ffef8d9fbcaf4471ad8a5d8f1d9495a939f002109ad5302ae4861d"
+    },
+    {
+      "path": "military-godot/duty/checks.gd.uid",
+      "size": 20,
+      "sha256": "dbaeed67fe8ae6083bcce2b025690955e52004e99e39eb838f89bbcf26b2a658"
+    },
+    {
+      "path": "military-godot/duty/compat.gd",
+      "size": 2851,
+      "sha256": "dc52a3ee36ad20725f05c56b632eb376719bc07d1f35c1739d4e1c2274891512"
+    },
+    {
+      "path": "military-godot/duty/compat.gd.uid",
+      "size": 20,
+      "sha256": "b9004d08f2270ab8075f85eb17463e073ec8cc110e973eadeda9cdad85ddb6a4"
+    },
+    {
+      "path": "military-godot/duty/main.tscn",
+      "size": 171,
+      "sha256": "83154ae93fa1fe21c28f2580dbf0bbe0313e3c711a8be94e6492f3e66b830f08"
+    },
+    {
+      "path": "military-godot/duty/replay.gd",
+      "size": 4960,
+      "sha256": "f4c17a28b4b039c0b34968c920f9e89f02b9bd96b0931fcc5b4417bcd88d5e4b"
+    },
+    {
+      "path": "military-godot/duty/replay.gd.uid",
+      "size": 20,
+      "sha256": "1e688d8160f29d063a3f8eda17fe0dc3ab8eb53c87e3bb6503ccab5fade59be9"
+    },
+    {
+      "path": "military-godot/duty/scenario.gd",
+      "size": 4784,
+      "sha256": "5ed5b6f8ad98d77a5ab68f49fdf3429141a9cfc0c45c6d5c58ec74d1b8d9f913"
+    },
+    {
+      "path": "military-godot/duty/scenario.gd.uid",
+      "size": 19,
+      "sha256": "e29a0178c8337d66df14a92e613ba303f934910e5bf44a2ce70cc658ae072b1a"
+    },
+    {
+      "path": "military-godot/duty/view.gd",
+      "size": 14033,
+      "sha256": "808b4c29f8d17584831b215e0d76ba44ddc32f56bfeb39745d5dbbf6fe8da12b"
+    },
+    {
+      "path": "military-godot/duty/view.gd.uid",
+      "size": 20,
+      "sha256": "0f5d6d60000c4ad8fbc5b0f0ec643c63db7cdd412142d8e7797e92f4d2738f62"
+    },
+    {
+      "path": "military-godot/formal_link/application.gd",
+      "size": 8149,
+      "sha256": "c0991e258f5399e9eb14c83df9ea50a120f7d3707a0a784c1d1d3bf746d95fe6"
+    },
+    {
+      "path": "military-godot/formal_link/application.gd.uid",
+      "size": 20,
+      "sha256": "d1da2d1b4bb0186b225300e488fa969120907217d60af68b8069fa7d34e36761"
+    },
+    {
+      "path": "military-godot/formal_link/application.tscn",
+      "size": 2215,
+      "sha256": "3a0cec8491107ec13e8cfad07d23c920fa29a7f3218991b1dd999cddc803f5cf"
+    },
+    {
+      "path": "military-godot/formal_link/authority.gd",
+      "size": 4916,
+      "sha256": "119b32bb5b0051b31f79f7cc6ca401ee259610bad40ce2502010c15ada576343"
+    },
+    {
+      "path": "military-godot/formal_link/authority.gd.uid",
+      "size": 20,
+      "sha256": "a03df740c54af932ae9d41aebbb610e8ca42938a72744da579609f79585c716f"
+    },
+    {
+      "path": "military-godot/formal_link/host.gd",
+      "size": 18439,
+      "sha256": "2133c5ba38025d312cb9bab0da4ef8fab9fa0f31714a914583706213e4a7b777"
+    },
+    {
+      "path": "military-godot/formal_link/host.gd.uid",
+      "size": 20,
+      "sha256": "9b83474501482281406256eebc16e7e7df251893283205a821f34706d162db4c"
+    },
+    {
+      "path": "military-godot/formal_link/local_session.gd",
+      "size": 13732,
+      "sha256": "ad49fda9003f9be720343883faea3af2581752e1f537624198133df264a1d5df"
+    },
+    {
+      "path": "military-godot/formal_link/local_session.gd.uid",
+      "size": 20,
+      "sha256": "f20f2b24e8a7863cf9b64d948cea8cae9b2ffc853c1840f7b7c9538e0a934b77"
+    },
+    {
+      "path": "military-godot/formal_link/main.tscn",
+      "size": 177,
+      "sha256": "f10f07e9dba35f1ae4692a25f2455901534bb1bf8f127459561bf9a489ec509f"
+    },
+    {
+      "path": "military-godot/formal_link/port.gd",
+      "size": 1571,
+      "sha256": "3e80305df344175d886007559560a0ab6dd95add83ee1e74f522f62846319dc1"
+    },
+    {
+      "path": "military-godot/formal_link/port.gd.uid",
+      "size": 20,
+      "sha256": "80db3458d6c46def10589e296d5235166c1af150b351b1c7d6163afb0a47342d"
+    },
+    {
+      "path": "military-godot/formal_link/test_authority.gd",
+      "size": 15525,
+      "sha256": "433ff1c30ff7e2569cdd9f6d0b15631caf39dc7997ba1789b73be0e6ffb41ad9"
+    },
+    {
+      "path": "military-godot/formal_link/test_authority.gd.uid",
+      "size": 19,
+      "sha256": "4502510c6cabb7258f8409723b60d7e93aaba2755c2b425262408545bf0ea3ab"
+    },
+    {
+      "path": "military-godot/formal_link/test_session.gd",
+      "size": 6516,
+      "sha256": "49c76d5c7440f0e416a537359614535637a067081ff3e7a47fd4b04a21385c35"
+    },
+    {
+      "path": "military-godot/formal_link/test_session.gd.uid",
+      "size": 19,
+      "sha256": "a640b7442f733c92bbc568f6e17e7b29abca5e5c6635ad2f4d2b8ef9102d135a"
+    },
+    {
+      "path": "military-godot/formal_link/tour.gd",
+      "size": 6194,
+      "sha256": "bc5bda2c0ef25b2110fd54caee3b838dc5326a7575baa1412fcac132c5ba671b"
+    },
+    {
+      "path": "military-godot/formal_link/tour.gd.uid",
+      "size": 20,
+      "sha256": "2c1c770bdfd5c6cb8b8d32b96b07ce3a60e082f8c5b3c94e28738edeb17847cd"
+    },
+    {
+      "path": "military-godot/global_link/host.gd",
+      "size": 12208,
+      "sha256": "5db722b68b2d66a958502aa2f70350113095af4905ea6fc7899355dfec5c5e0c"
+    },
+    {
+      "path": "military-godot/global_link/host.gd.uid",
+      "size": 20,
+      "sha256": "1fc5219a91b5499210fe6892c2a87ff14dc1e7c6252a06c69566baeb436c0d79"
+    },
+    {
+      "path": "military-godot/global_link/main.tscn",
+      "size": 171,
+      "sha256": "84222386aa7076ee495af9292bd25775800aeb3e7848892274502b50140ea070"
+    },
+    {
+      "path": "military-godot/global_link/shared_globe.gd",
+      "size": 14912,
+      "sha256": "d57c16191145a2eb7a42d96b192cc27448885629c38923d2ca147373ad293d29"
+    },
+    {
+      "path": "military-godot/global_link/shared_globe.gd.uid",
+      "size": 20,
+      "sha256": "71761006a8b091daf74806ad507ca30394853ad8d05f33d92d385705741ff08c"
+    },
+    {
+      "path": "military-godot/global_link/shared_map_index.json",
+      "size": 11914,
+      "sha256": "6e43bd805705f1c6329b65e125c95607ec2b3f33eab98241055ed54b162714b6"
+    },
+    {
+      "path": "military-godot/global_link/tour.gd",
+      "size": 8810,
+      "sha256": "20eb02a2b3e617db7080eeee00ccd81b9eba8cf4e0cac37ac4448bb91b5a3eb9"
+    },
+    {
+      "path": "military-godot/global_link/tour.gd.uid",
+      "size": 20,
+      "sha256": "e8b8d7de35fb403d623c9a27fe95cc08f80efe76ed6978a135399e2d858e6ec0"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/armor_host.gd",
+      "size": 28143,
+      "sha256": "76fa91a08e36fa9c60c3948da532a5b47f2a5f3d3052c0f014b18bd87cba151c"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/armor_host.gd.uid",
+      "size": 19,
+      "sha256": "4027543bac0825804f6e94024f360105021ecadeeb414533fd4fb376b3af961b"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/combat_audit.gd",
+      "size": 1443,
+      "sha256": "bf0dbd1e8cc7f113a56b49d9cc06accda9488efb649d0fbc76ea0324f5c7df82"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/combat_audit.gd.uid",
+      "size": 20,
+      "sha256": "2b6e2a8fcf664a89acfd51101965c6f96ca6aed551fc27ab57cd0b452e0f5387"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/deployment_terrain.gd",
+      "size": 1465,
+      "sha256": "b104cc26d6c96c782fe6cbeaec73438e4d37085c62e686348126cc8cab6263c8"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/deployment_terrain.gd.uid",
+      "size": 20,
+      "sha256": "3810b5cb9ce3ce98f460ffdabaaf5d3856dddcd9c18c126859362a9846939106"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/gunnery_solution.gd",
+      "size": 1257,
+      "sha256": "6e9d6d50cbb998eea869193ed2b851639ca30904ec3625b5a992a6e2eeec4ad2"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/gunnery_solution.gd.uid",
+      "size": 20,
+      "sha256": "2c3bd4cb1fa3ddaace8d7041a8bfcc67a9a39cc09c7abd10694b0057cc11e0df"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/README.md",
+      "size": 2658,
+      "sha256": "2fbff335377cdbb52b97153836b4eacc8595eb67668014c4e6802c9139e7c346"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/vehicle_damage_feedback.gd",
+      "size": 4299,
+      "sha256": "79958afb4187aea277438f0fd0a1c0ab15c7fc49e2a78b541d2457fe2e5a5200"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/vehicle_damage_feedback.gd.uid",
+      "size": 20,
+      "sha256": "ea6d90bd5bc94e885be4ed70d3967679cf3c9d69016e0a388769c5d5003092ec"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/visual_contact.gd",
+      "size": 1819,
+      "sha256": "c3bcf3ef097706c04b92b104d3cbb53e722aec123f9954899312f45d836962e5"
+    },
+    {
+      "path": "military-godot/modules/ai_armor/visual_contact.gd.uid",
+      "size": 20,
+      "sha256": "5738ef0228ff1362cbcbb54a547ef045307075bc563029879e58dc6399d709e0"
+    },
+    {
+      "path": "military-godot/modules/ai_safety/friendly_safety.gd",
+      "size": 2170,
+      "sha256": "69cdf154a0f8cd2c6c2996dc9d363cd536ad22128416dcbcb78b290ff8a56694"
+    },
+    {
+      "path": "military-godot/modules/ai_safety/friendly_safety.gd.uid",
+      "size": 19,
+      "sha256": "24e819f1b4dd8cf93a26e865d509fd84126c27a1ba0f00e23eed28db4e883cc5"
+    },
+    {
+      "path": "military-godot/modules/artillery/arc_collision.gd",
+      "size": 1626,
+      "sha256": "b0deb62a4029bef6cc36ab70b838463e9bacabe669fc6d8c9ff8ea12a9b9af60"
+    },
+    {
+      "path": "military-godot/modules/artillery/arc_collision.gd.uid",
+      "size": 20,
+      "sha256": "cbdc373ab78bfd67cc15168b0582015d77d4b8e0d39090e0997efc6ad6e90101"
+    },
+    {
+      "path": "military-godot/modules/artillery/arc_solution.gd",
+      "size": 814,
+      "sha256": "23b848f4098c468e7c11dbc3696c18e86f3f5c97b353544a81b299dd9a102028"
+    },
+    {
+      "path": "military-godot/modules/artillery/arc_solution.gd.uid",
+      "size": 20,
+      "sha256": "4607c781f2247f569c768732509135abfde72d21af961703207acbc1d61fcb62"
+    },
+    {
+      "path": "military-godot/modules/artillery/artillery_aim.gd",
+      "size": 6433,
+      "sha256": "8163393e2de298e28078f1f6d8050549ca3c002815ed7abc333e402ac9bd5b24"
+    },
+    {
+      "path": "military-godot/modules/artillery/artillery_aim.gd.uid",
+      "size": 20,
+      "sha256": "84fe8e423a117d9e7fd7498e3291b9f2921fdbaea54034fbd85353cb929ed509"
+    },
+    {
+      "path": "military-godot/modules/artillery/artillery_fire.gd",
+      "size": 5652,
+      "sha256": "40f57d892409771a115e6af03f52c75ed1e2cacc145f8724457aaed30ef66935"
+    },
+    {
+      "path": "military-godot/modules/artillery/artillery_fire.gd.uid",
+      "size": 20,
+      "sha256": "b65322a510379f94fc4e5dbcfec0edf4dbd18d381b5156d8578e5f1b257710e7"
+    },
+    {
+      "path": "military-godot/modules/artillery/artillery_shell.gd",
+      "size": 4628,
+      "sha256": "ddbb626388c6f8083bb4de5ba8217721b008ac0e960655c0a43d426d8a97a792"
+    },
+    {
+      "path": "military-godot/modules/artillery/artillery_shell.gd.uid",
+      "size": 20,
+      "sha256": "d102b2e39c103f2cf88db8897939abd179db0a4a21d79c547884adf11901ab4f"
+    },
+    {
+      "path": "military-godot/modules/artillery/mortar_adapter.gd",
+      "size": 12831,
+      "sha256": "66e454c15a9b2f5f41c81fbcd741b8fffe97ad1d3ac3786168b758fbe8d6f16b"
+    },
+    {
+      "path": "military-godot/modules/artillery/mortar_adapter.gd.uid",
+      "size": 20,
+      "sha256": "9b23ba4ba2c2155ffab1e8c95e8d5befc6bbf4b03a51f0ec67a77690f8534f92"
+    },
+    {
+      "path": "military-godot/modules/artillery/terrain_sampler.gd",
+      "size": 2123,
+      "sha256": "c603889be3baa97f19ca78e81a659bffa8e7112c8ae3200e9ec16189ba418a1d"
+    },
+    {
+      "path": "military-godot/modules/artillery/terrain_sampler.gd.uid",
+      "size": 20,
+      "sha256": "018241ecff2283b2d150aec115717ad5383e638d3ade9eff89c72b312d0d48d0"
+    },
+    {
+      "path": "military-godot/modules/artillery/vehicle_lod.gd",
+      "size": 1114,
+      "sha256": "c96b2b63511f262ec3e0c5b25ca55dbe2516fe41de839a18b1fb2f1a451bcdfc"
+    },
+    {
+      "path": "military-godot/modules/artillery/vehicle_lod.gd.uid",
+      "size": 20,
+      "sha256": "9f90e5088e3d65db4facf68bdbdaceecdec48bebc47116c906d556c3c48ea13e"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/battle_diagnostics.gd",
+      "size": 14816,
+      "sha256": "58304ed39dcb846f0ff8ef2fcf2169c4908da13f76eec0841ac93426a939fec7"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/battle_diagnostics.gd.uid",
+      "size": 20,
+      "sha256": "a0311c23b2985967251741a2aaebf37b39c9f9aa78acf9ad34ad4a5a3755100f"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_actor.gd",
+      "size": 1754,
+      "sha256": "1cfad7897df9dc9f373dc85b9a85930ade37b06b404bb5928fb18303deec592a"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_actor.gd.uid",
+      "size": 20,
+      "sha256": "e6d5543ca9d64230eaf8b8371e7efd78a8131fe8ea74e50c440bc59bae6474ef"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_armor.gd",
+      "size": 470,
+      "sha256": "f1a774542514a892b48085a58f44cda09e4319b1fd2ab5eee6c560cf7a31d8e5"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_armor.gd.uid",
+      "size": 20,
+      "sha256": "59c2f57b4010cf652b03ac04c62f8feb28aab2039b5e20c66c189647ccbe04d2"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_brain.gd",
+      "size": 365,
+      "sha256": "7f93f7e379d981a3f391aeb26aade2988c69dd36358cf0a97477a79c076160ef"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_brain.gd.uid",
+      "size": 20,
+      "sha256": "c59db2489c127b6e210442e4f979347e65cd72ac88abc3f628576e0abbffc708"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_combat.gd",
+      "size": 971,
+      "sha256": "0ee1df4b092ef0d7983e678891fe2f6629136aa27b0d2a8b2efd49e31648cb47"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_combat.gd.uid",
+      "size": 20,
+      "sha256": "55d893437cb5c39c29bb4f5358d6f0fe2e498803d29e6779350c2c21e0e217a4"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_contacts.gd",
+      "size": 681,
+      "sha256": "5c8142b8ab5a158fa11efaf009423800934a56915b12026c284c13f615d3ea15"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_contacts.gd.uid",
+      "size": 19,
+      "sha256": "b872e6febfd6d7b2c507e3bd5ab5ea4c9c7ae72d26897675c713de036b32c4df"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_controls.gd",
+      "size": 535,
+      "sha256": "6aee2f551dbcd8768b8e831ade189d5749b3c555c8be6ff44622dbf594faa27d"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_controls.gd.uid",
+      "size": 20,
+      "sha256": "af46f726d472399a51d89c64ffdfbe1a856ee1bd74a9477160f1f75c186404f9"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_main.gd",
+      "size": 864,
+      "sha256": "f14694773ac481bef2c089f75f8aa0f2a3fcd2d05b9ba238f4759c5416db6f64"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_main.gd.uid",
+      "size": 20,
+      "sha256": "7012c5e940790c5b9c31cd840f54bce7e8bab3871e29154677a5d761b85d28f4"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_navigation.gd",
+      "size": 312,
+      "sha256": "00706b6b1d9387f88c1f7d04ff5f7ffd1b628c46581547e2b7373ccca7162c08"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_navigation.gd.uid",
+      "size": 20,
+      "sha256": "ff0c1f55d061e5d17c054a46fea48ba333c37e122af0a03ec814602cb2bd99fa"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_terrain.gd",
+      "size": 941,
+      "sha256": "9b782f5168b228e20163564baf4e087b1946abc2fbf07faa1bdac93d0fae01ad"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_terrain.gd.uid",
+      "size": 20,
+      "sha256": "5d8aed0a4268a13ed5f503bf0f2ea188b3074daa26d2624dde0746b1e529fdf5"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_vfx.gd",
+      "size": 777,
+      "sha256": "eb1ce89a3e16843dad259385e26bb6e9b81f019614d1dc2df47e73dfbb54eb06"
+    },
+    {
+      "path": "military-godot/modules/battle_diagnostics/profile_vfx.gd.uid",
+      "size": 20,
+      "sha256": "ae7057dbb0733dbaf42610e70acafada9127b8cc1e38d4da331580f0de483096"
+    },
+    {
+      "path": "military-godot/modules/construction/autonomous_planner.gd",
+      "size": 2663,
+      "sha256": "d6925a60e7a142bc96d33c6b74f533132a8140b07799661a49b4bc8f0e9affae"
+    },
+    {
+      "path": "military-godot/modules/construction/autonomous_planner.gd.uid",
+      "size": 20,
+      "sha256": "411ddd818b61b6b2dfe17ac81c36e63cfeca7641b06d4c7fc5dc27ede61206d7"
+    },
+    {
+      "path": "military-godot/modules/construction/construction_host.gd",
+      "size": 50564,
+      "sha256": "88935a32c9757550e37e6f8561f43e4641c88007c4a206e6992a63eb022f21ad"
+    },
+    {
+      "path": "military-godot/modules/construction/construction_host.gd.uid",
+      "size": 20,
+      "sha256": "cf8cd79dd3e2cb6ffd1c467d0416875613e6f2ba72b991abcbb6959eef3637f2"
+    },
+    {
+      "path": "military-godot/modules/construction/construction_system.gd",
+      "size": 9598,
+      "sha256": "8e74e891e0d026be3e761ab23bd360a453c90625c1006b72c820eb5fbdaff6d3"
+    },
+    {
+      "path": "military-godot/modules/construction/construction_system.gd.uid",
+      "size": 20,
+      "sha256": "8e41f2fa8879ee8cc84234cfedcd8fe12e52b236599eb4eaef4f654aced75906"
+    },
+    {
+      "path": "military-godot/modules/construction/construction_view.gd",
+      "size": 6934,
+      "sha256": "9599f42838427764b7df651e48a69d1a5a946d3cb5902d47f6cc9dab0ebe7962"
+    },
+    {
+      "path": "military-godot/modules/construction/construction_view.gd.uid",
+      "size": 20,
+      "sha256": "6b7a5678ef0d9c337e15db15600a29abc8c27c7bd48673188a20899fb8ee78f0"
+    },
+    {
+      "path": "military-godot/modules/construction/demo.tscn",
+      "size": 190,
+      "sha256": "1ad05ab4e8dc8dc80e55dbdfe2e627d3c1a81e11ba7ce2948cce6c38f052c771"
+    },
+    {
+      "path": "military-godot/modules/construction/demo_host.gd",
+      "size": 2219,
+      "sha256": "c7435392166994f601a30e2961537b6bb7fd1ac7b26aee53d124de4c0380594a"
+    },
+    {
+      "path": "military-godot/modules/construction/demo_host.gd.uid",
+      "size": 20,
+      "sha256": "afc0db1876a640ad1337eb806c945b0a74a492479101672b25b9cc618a5a190e"
+    },
+    {
+      "path": "military-godot/modules/construction/excavation_patch.gd",
+      "size": 2022,
+      "sha256": "88e9b6f943283ca9165cef03fa20cde64349ab65b3fd481d3909d7720384d7fb"
+    },
+    {
+      "path": "military-godot/modules/construction/excavation_patch.gd.uid",
+      "size": 19,
+      "sha256": "d2b71518628523079478c79356dc14522ba6ec13ec2a9aa3b92e2e903db84939"
+    },
+    {
+      "path": "military-godot/modules/construction/INTEGRATION.md",
+      "size": 16608,
+      "sha256": "ffc2ec8ce62c358821182c6d8e791c9f51702b29a19e7ac51ccb32e3ca55414b"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/character_detail_lod.gd",
+      "size": 4327,
+      "sha256": "8901552a11ef10ac917b987d219f91a723b8764fd38244f981624c89c7e1e570"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/character_detail_lod.gd.uid",
+      "size": 19,
+      "sha256": "1e9a4dd7c7096b8c485f1d6e343c37ccb8a6577fdde6cfe3a7ca444f857c1f4a"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/diagnose_main_ai.gd",
+      "size": 3747,
+      "sha256": "703522ab1bb40b12f8043f29a6353643f634b6b870a58cbdb3ff3f5b3f280089"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/diagnose_main_ai.gd.uid",
+      "size": 19,
+      "sha256": "06a711408c1cc5893303549310e51b5de35bcdbbc7dd2c39f7f9d09374ebb9ef"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/infantry_actor.gd",
+      "size": 43028,
+      "sha256": "d2b01f4d203c5a4b39e247861c3204b468ed786c10e85974920d5a31bc368bd9"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/infantry_actor.gd.uid",
+      "size": 20,
+      "sha256": "1e6d7323845069532a31a4ce0f0f4c46051cd2e69dcce430c9ec67fb64329949"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/infantry_brain.gd",
+      "size": 7941,
+      "sha256": "19a138927303938b13a79ae0cde17d08a2486ceb0d9a7c6b1a5395c93638ffc5"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/infantry_brain.gd.uid",
+      "size": 20,
+      "sha256": "ebbffecd4c2740ef2be60f4d68271bdecf0b795ed8928f6833f7ccd099470276"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/infantry_host.gd",
+      "size": 27808,
+      "sha256": "7760220260b5d7669224a2c366fcebbe1e035b04bd41163a4bebdf45b95f7283"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/infantry_host.gd.uid",
+      "size": 20,
+      "sha256": "75fee9ae51bd440d65f07839b0ca8f0069284f8d9508290ba647eee67ad0dd80"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/infantry_navigation.gd",
+      "size": 5709,
+      "sha256": "0351ed58eaeba4a88deb768ed11286ff310b4594306b0f4dc98babd65dc87f2b"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/infantry_navigation.gd.uid",
+      "size": 19,
+      "sha256": "f0180d67e175b0fd38e87bb61dab2806284d01e0464de36af9432da39ea9674a"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/infantry_stance.gd",
+      "size": 1963,
+      "sha256": "09a82fda64379d866e1f51bde03821168b4ccebcd93ef6a2f61a8371e389812b"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/infantry_stance.gd.uid",
+      "size": 20,
+      "sha256": "a06cadd996bc4bf2a21ee68aab8f5bdcf6d4731c975b5bcecae29d93e01d71ce"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/loot_fixture.gd",
+      "size": 223,
+      "sha256": "81c2526c417b7d38c1788fb648f11677c800a68d5d6dab9b0baa7fe3b1188a2e"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/loot_fixture.gd.uid",
+      "size": 19,
+      "sha256": "99ca56bd20241ec4903b909d88829edf148ccdb1b1141be5747b79693abef434"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/README.md",
+      "size": 7588,
+      "sha256": "fbb95f26efee1e0222b9339d62c3d0ae0e9d1fb96d94af24dc33cbb6ea583ea3"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/skirmish_host.gd",
+      "size": 9624,
+      "sha256": "2fdbf229ea05543f6dc8021f3a946962e1af6c8d9ac7b6bcb0ae105f01fdd95d"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/skirmish_host.gd.uid",
+      "size": 20,
+      "sha256": "c0c7f753bc98bcc13e4163e72cce940948017ed2dced681c7b61049548cab546"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_autonomous_search.gd",
+      "size": 1604,
+      "sha256": "6fe3efa08f5568c67fe6b542c3fec90bcebdc5b6a2dd54108d16e7582f4e54af"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_autonomous_search.gd.uid",
+      "size": 20,
+      "sha256": "df624a7768135067257e8ea06ca60f8f342ef372c9f617cb80c6728a884a4aae"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_character_detail_lod.gd",
+      "size": 1430,
+      "sha256": "ba49c5f1641585147bf8c3f72b21419f054b2de67f0ec9b4c862050d94c228d3"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_character_detail_lod.gd.uid",
+      "size": 20,
+      "sha256": "e2fb971ab16a22fda67372c4106632111f0118f580e121e844c04a908da35f7b"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_crew_registry_loot.gd",
+      "size": 4556,
+      "sha256": "7ab2229ef9885a682e88937911eda89f9aca85b62390b90029752eaa8eec2be9"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_crew_registry_loot.gd.uid",
+      "size": 20,
+      "sha256": "076f6d34407967af04563e4c59c61778c092a8d79800d243174e5ea06a2cd410"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_crew_route_loot.gd",
+      "size": 5131,
+      "sha256": "fb48d271c7c76f5b28b9ccde0cb517b30520dd246b5358d634a53c526395ae52"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_crew_route_loot.gd.uid",
+      "size": 20,
+      "sha256": "6498a21daca063b7bef27deb1e8717f74428ebdb5019b26c6f16ee9917a997d1"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_embarked_callback_boundaries.gd",
+      "size": 1416,
+      "sha256": "b5bb41b2049da7eba81240735a6c97280b92447747509efe074f95ac2d53e0f8"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_embarked_callback_boundaries.gd.uid",
+      "size": 20,
+      "sha256": "43584a5b5e035938cd8ba458db63e72be48b4292019a872693da7ea73448f089"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_infantry_ai.gd",
+      "size": 4201,
+      "sha256": "9e257255e22fc42dc57c9bbee37e06366701e40bddddeafe14f275cdbaa06789"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_infantry_ai.gd.uid",
+      "size": 20,
+      "sha256": "fa931a82d33736b825b6bcabc500e0c461611defa6ecd29538437b5ebaa4061b"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_infantry_physics.gd",
+      "size": 5052,
+      "sha256": "915177a5ceb60e02df0c04c071de40a4a973a41eaa6dddbbe83393adc182fc57"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_infantry_physics.gd.uid",
+      "size": 19,
+      "sha256": "9cfacfe93e2da1c89ec539bc2abd3d2e073f61c90e4ab2c1d760374f849a1854"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_infantry_stance_candidate.gd",
+      "size": 5067,
+      "sha256": "1d97a7d737449e989625a59c942de4fd0f234ae49690cbd2fa8d7ef9465d2579"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_infantry_stance_candidate.gd.uid",
+      "size": 20,
+      "sha256": "3a79f1d4b21d0e048f039ef97a03347e15d7cd785609450b45e24f9696f7ac60"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_loot_physics.gd",
+      "size": 3308,
+      "sha256": "ece0bbf72e5cedd82584ff8d927fc1923641ac56da1b7932bdf9006883818b78"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_loot_physics.gd.uid",
+      "size": 19,
+      "sha256": "1d10cd85497f567263c511aba94034f75d9cdd74c4100d041fe3e8ee27d1a88a"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_minimap_visibility.gd",
+      "size": 2994,
+      "sha256": "a6c96628bf95cf34f9d96e97cca07c95775ac1343d232937dd21fca8e1d9e240"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_minimap_visibility.gd.uid",
+      "size": 20,
+      "sha256": "4f19027bc72bc673699e83d8dff2fe49e79d3f5e75e7dcb90c801d7c168ae817"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_opening_cover.gd",
+      "size": 1438,
+      "sha256": "f03447caa19f7de4175b1d293c908994f4cdf7534dc27a0ead1fbdb2121c08ac"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_opening_cover.gd.uid",
+      "size": 20,
+      "sha256": "9dd0948ad1ac512201edde292cdffedfc272b05bcb10913a7cf5d518a96be5f5"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_physics_bridge.gd",
+      "size": 396,
+      "sha256": "fb8527281ad8517353043d4036fbdbba0a213ad8b320ff5cecb27fd92f655be6"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_physics_bridge.gd.uid",
+      "size": 20,
+      "sha256": "6e01874ca0c3e9361236fc561ded2ab2551c1d94e20a98b27cf2e9421859ff90"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_playable_locomotion.gd",
+      "size": 2030,
+      "sha256": "05c28fa2a98c2da2c74d8609af9427237195b10a9d82909cae2b56b4ffc51cd4"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_playable_locomotion.gd.uid",
+      "size": 19,
+      "sha256": "f36e507d61cf93b4cbe0e7dde0ca46c0490e2bf4bb6ec828164a3814f5ede70d"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_reconstructed_far_battle.gd",
+      "size": 3333,
+      "sha256": "604ddf90c026e50dbea31d0e43935581a66cfa5d47e7d791b6eb71ac4a3f5031"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_reconstructed_far_battle.gd.uid",
+      "size": 20,
+      "sha256": "9bf78627a678f756b43fefdd2d8d8e48a05a62314d00735a713922c81eabb512"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_suppression_profiles.gd",
+      "size": 1200,
+      "sha256": "53813df1515661ce292d7cd4bf312b324dfef31396ca0dd4a4193518001986ce"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_suppression_profiles.gd.uid",
+      "size": 20,
+      "sha256": "160dfb8c423dafdb043a832651150dd5672a7b242c47cbc6c66ac87543b3dc73"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_target_fallback.gd",
+      "size": 2900,
+      "sha256": "a6b8de8da6b7f271f8f9dcefe04aedb77da7e709e3dfd1b81975295d4b6407f6"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_target_fallback.gd.uid",
+      "size": 20,
+      "sha256": "3d564a3f81be3f0cc8e44465a4bf3a9b4b994b9e2a055a59a7cddecf10e08c99"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_weapon_drops.gd",
+      "size": 2887,
+      "sha256": "4a0ed9086d29e4f5f453b530bc0ba951d7f9a68650c113ed9134aaa0bebc6692"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/test_weapon_drops.gd.uid",
+      "size": 19,
+      "sha256": "4dbc588549dbb2166bdd231c037701b044d9c20d6a9665a789215c41c1e69098"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/weapon_drops.gd",
+      "size": 2996,
+      "sha256": "5fd06f3e55aba7e232a7b6157345801f9cb9f13e7f44bee148021fb56d0c29f2"
+    },
+    {
+      "path": "military-godot/modules/infantry_ai/weapon_drops.gd.uid",
+      "size": 20,
+      "sha256": "02c182a4520d11ffde73bb74bcaa9229023f029488ccbddf1222d53e899c8c08"
+    },
+    {
+      "path": "military-godot/modules/mlrs/export_preview.gd",
+      "size": 467,
+      "sha256": "0e7f91171f9734781cccfb5f67eef37309af094318f09fe9f01b0e1fa63ee5df"
+    },
+    {
+      "path": "military-godot/modules/mlrs/export_preview.gd.uid",
+      "size": 20,
+      "sha256": "c90c7267ad4ddef85c4c53fb830078de3bbe872225d1186f50a35f0caa6c8cb0"
+    },
+    {
+      "path": "military-godot/modules/mlrs/host_adapter.gd",
+      "size": 4619,
+      "sha256": "f7ca19464017804f748df4e664ab5ba91759bbc23acd3b34e29708a1c9859eef"
+    },
+    {
+      "path": "military-godot/modules/mlrs/host_adapter.gd.uid",
+      "size": 20,
+      "sha256": "d67b2d5964516e9f1c5409e0cd01b514abddbc5428cd433fd10d80dc6e4ab333"
+    },
+    {
+      "path": "military-godot/modules/mlrs/launcher_visual.gd",
+      "size": 2631,
+      "sha256": "754fda6c05545fcf4430dd14bc36a24d9a4ed89281d9e70256189450c4107bc9"
+    },
+    {
+      "path": "military-godot/modules/mlrs/launcher_visual.gd.uid",
+      "size": 20,
+      "sha256": "38318f009667493b594f26f06243618b44996eb3eeab29a73b58bb66f953fbb8"
+    },
+    {
+      "path": "military-godot/modules/mlrs/rocket.gd",
+      "size": 1177,
+      "sha256": "782d69105169d25bbbc41dde988908f9598a48cd672a86fe30935cc9a896af58"
+    },
+    {
+      "path": "military-godot/modules/mlrs/rocket.gd.uid",
+      "size": 20,
+      "sha256": "3c6f9c9369e43026796e1684d941dddf8741a402ee1fac11dab8a9d765b3b983"
+    },
+    {
+      "path": "military-godot/modules/mlrs/salvo_controller.gd",
+      "size": 4366,
+      "sha256": "d662ea2ddb39405e213b082dac3be844d0663937757ca886ffd9fcbbe09d5578"
+    },
+    {
+      "path": "military-godot/modules/mlrs/salvo_controller.gd.uid",
+      "size": 19,
+      "sha256": "e196e039fb75a1ed610a71b26d68ee11f1666e3255181a389b4809c227a61463"
+    },
+    {
+      "path": "military-godot/modules/mlrs/test_live.gd",
+      "size": 2844,
+      "sha256": "3932642699444e43fddc67602ed0cbfe5ea2b5c4720e63518e09442c566ac909"
+    },
+    {
+      "path": "military-godot/modules/mlrs/test_live.gd.uid",
+      "size": 19,
+      "sha256": "8618c19c47a1f4618873ea8e152c84fedfce516da7c26e218aca2be840e67a8c"
+    },
+    {
+      "path": "military-godot/modules/mlrs/test_mlrs.gd",
+      "size": 6290,
+      "sha256": "a11616a5813a91c05c029822a06cdc6a02160a1b80ec21332ebe335e20f0237d"
+    },
+    {
+      "path": "military-godot/modules/mlrs/test_mlrs.gd.uid",
+      "size": 20,
+      "sha256": "64fe137629a9c1637adbd7291c3fbe19d170e488087c86dbd1f5364fe5db364f"
+    },
+    {
+      "path": "military-godot/modules/mlrs/test_vfx_direction.gd",
+      "size": 2815,
+      "sha256": "38855f17a785dfb0caa9157ea2dec9205fd957f9cee2e8189b6a61d40901650c"
+    },
+    {
+      "path": "military-godot/modules/mlrs/test_vfx_direction.gd.uid",
+      "size": 20,
+      "sha256": "581375445e6e7bbbb4c15ccf3675dad15b9a95bc034712feb6e6755ca0205d8e"
+    },
+    {
+      "path": "military-godot/modules/terrain_damage/README.md",
+      "size": 4681,
+      "sha256": "add16845e445ed33076ad579333d445157984eea429e79c03cc5d9145b0afd9c"
+    },
+    {
+      "path": "military-godot/modules/terrain_damage/streamed_battle_terrain.gd",
+      "size": 19699,
+      "sha256": "c8306e855e27f0612cf213f8d760142629432c8e9dc6b6f225bdee6918c87c88"
+    },
+    {
+      "path": "military-godot/modules/terrain_damage/streamed_battle_terrain.gd.uid",
+      "size": 20,
+      "sha256": "706cb307f161eb148f6ff3f19fa0049a7feddf5be2e31f5deb2e7829be6bdb90"
+    },
+    {
+      "path": "military-godot/modules/terrain_damage/STREAMED_WORLD.md",
+      "size": 4965,
+      "sha256": "5b06e310e0053dd32be6845716532f146d28d70fe80e95c5bf5d4835e7785c52"
+    },
+    {
+      "path": "military-godot/modules/terrain_damage/terrain_damage.gd",
+      "size": 11469,
+      "sha256": "8660f6b5ccd4a6d222797229a48302db7aaf305f12a14b81f275afb0d8eb17ff"
+    },
+    {
+      "path": "military-godot/modules/terrain_damage/terrain_damage.gd.uid",
+      "size": 20,
+      "sha256": "71207024c36353e171875922a892854f62695bc34deeb650511fbf6d7f92371e"
+    },
+    {
+      "path": "military-godot/modules/terrain_damage/test_terrain_damage.gd",
+      "size": 5027,
+      "sha256": "8a12ac9dfa1b5e7bf4fd7bc429cdf9e5c837fb1506ee81aa670697195e391c02"
+    },
+    {
+      "path": "military-godot/modules/terrain_damage/test_terrain_damage.gd.uid",
+      "size": 19,
+      "sha256": "32821a471dedab63cc70aae65c32c06da2add8f42f8e67270db2c0cb9015b8fb"
+    },
+    {
+      "path": "military-godot/modules/vehicle_ammo/ammo_config.gd",
+      "size": 700,
+      "sha256": "d5e3cd09d0888e2b6052c3758cb09d4404c2b88e9b97676b49294f8cc5c5ecd5"
+    },
+    {
+      "path": "military-godot/modules/vehicle_ammo/ammo_config.gd.uid",
+      "size": 20,
+      "sha256": "e7c751171097031507eb1fd98f0e9b0755b4ceedeb407df515b7474a294ac630"
+    },
+    {
+      "path": "military-godot/modules/vehicle_ammo/vehicle_ammo.gd",
+      "size": 11780,
+      "sha256": "fdc0185fbf912d507b3a71ee0d5f747bad722cf9ad4499cc5b752a58e0005203"
+    },
+    {
+      "path": "military-godot/modules/vehicle_ammo/vehicle_ammo.gd.uid",
+      "size": 19,
+      "sha256": "588c427a1f0459dba60cede0668a2de1eb29843fce9183290dabd47cb2d458d1"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/crew_registry.gd",
+      "size": 10374,
+      "sha256": "5e59553a1d3c5595cadd3235ae0372d0218703be5f9ddd39137b35d77b5653bd"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/crew_registry.gd.uid",
+      "size": 19,
+      "sha256": "b9c487aadd8d9d41c4ce63b6dde496f648de4a2fd9a61dc89df9977e454531c9"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/diagnose_live_return.gd",
+      "size": 2422,
+      "sha256": "7570352f0887aae7c112936bd36070545e39ea79a14669086845af386af2c9ef"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/diagnose_live_return.gd.uid",
+      "size": 19,
+      "sha256": "8aba680a9e7943a36254dff9e80988ca46a6448044c1d2f76a2f645c76814c37"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/exit_clearance.gd",
+      "size": 948,
+      "sha256": "463aa0f71c96f28b85cbb3185f15af5471fd3ec22f3e588ef74e3b0eacf685f2"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/exit_clearance.gd.uid",
+      "size": 20,
+      "sha256": "baa81d8aba20e7c0667ace9ed138c180275a635572256d926925bfaff14fb9b3"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/player_infantry_controller.gd",
+      "size": 8093,
+      "sha256": "1a96fa7ec63f90d7a4870f770b5e0f4df581cbdee3c5568ce0cae6d1df29bcb9"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/player_infantry_controller.gd.uid",
+      "size": 20,
+      "sha256": "a7b84e633ea15d130ac2bfdec4a6b0deafe0998c7d02f886038769dab7b715f2"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/README.md",
+      "size": 9268,
+      "sha256": "35b68d82384a947d2871934e12c97dd75e65424c039e1c22374c72f5779ac696"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/role_capability.gd",
+      "size": 910,
+      "sha256": "c0fc975c3e81310d8aac03e0f86f7cc21efcd87b87eb4af0d118eacd8c83df66"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/role_capability.gd.uid",
+      "size": 20,
+      "sha256": "d092bd8cfaca09ec593756d855ed643990ff458efaf5de2788f83453414b101e"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_batch_exit.gd",
+      "size": 4330,
+      "sha256": "d37f683713ef7f5ef2c5f1e79c87974cbd874b4fc58011bf548c5cc7b58504bf"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_batch_exit.gd.uid",
+      "size": 20,
+      "sha256": "4c39c2d72dc4eada487e72f2da5608f5b89f864a12d9d2b9d1bda1c8e38b30b4"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_commander_continuity.gd",
+      "size": 12428,
+      "sha256": "b212a30d90c781ff901b89f580a4cb6d725d9710d2d57c83a04371a8c8b3d37a"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_commander_continuity.gd.uid",
+      "size": 20,
+      "sha256": "69f31d7ae229d4667d510458510fc6ad525138cba29671dbabbe8d0432c98feb"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_commander_pickup.gd",
+      "size": 10680,
+      "sha256": "b776454226f03b7d518c0cfb65735446f4d8575a5a0f8cfb53b8bd13d7d44108"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_commander_pickup.gd.uid",
+      "size": 20,
+      "sha256": "c753ebc5ba83c64b24eda2664cf4706f0b9edb6d1657fb24634fa1434ce38196"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_crew.gd",
+      "size": 4633,
+      "sha256": "79b425e0f85c40873bafe5e08a538f7ec919646e2630e5d66eeea50920ae61d9"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_crew.gd.uid",
+      "size": 20,
+      "sha256": "37c9a9a100e68d5d2bf4fbcc015eea717da0158bd5b46d065f140b4a99c11902"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_host.gd",
+      "size": 4011,
+      "sha256": "02dc911cfa9d2115812e1a7c389f178b110a86cd70d5183f1d01a72a2dc6a2b7"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_host.gd.uid",
+      "size": 20,
+      "sha256": "f717b30668b57578dba66e85e236b1440080715ba70f63f76c63314c3357883b"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_player_infantry_control.gd",
+      "size": 6750,
+      "sha256": "93da188c8de3d065e26b500443a9f550623f67218b574e28cf36300a8f62f9ea"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_player_infantry_control.gd.uid",
+      "size": 20,
+      "sha256": "2e49e65b4fa017382ce09956a0c51199a2eb1d401c254d2da1bfc996815582b6"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_return.gd",
+      "size": 6022,
+      "sha256": "f6719ee97cd85fa8b73d79cf84927bccdfc52f972537e629c698aed528ba6f26"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_return.gd.uid",
+      "size": 20,
+      "sha256": "269c7cdb72bcaa50e45cf7df473ff86365059c13f4017c686f6f1e4e7351e509"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_return_construction.gd",
+      "size": 2098,
+      "sha256": "9c1b6f0cbe07575873ffb13d6f5312962021eae9596923b045fad3b91c4ca328"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/test_return_construction.gd.uid",
+      "size": 20,
+      "sha256": "83660e2c545654f2050bb88597a4b8002ad510c019219edc091cacb7b5be0e00"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/vehicle_crew_host.gd",
+      "size": 22887,
+      "sha256": "e0447bcbe78532fbbf9bdcbb3c13411ccaaced3ea2fd1d0cf9dbaaa92eb8ce05"
+    },
+    {
+      "path": "military-godot/modules/vehicle_crew/vehicle_crew_host.gd.uid",
+      "size": 20,
+      "sha256": "a2e8624309f7dd8b8610276d6a9d7c40e91547f9c2d0a7483d3f401ec8a97db8"
+    },
+    {
+      "path": "military-godot/modules/vehicle_fire_control/gunner_intent.gd",
+      "size": 7672,
+      "sha256": "eb68b3b820e93b53cf53e3d2846755b6eb800f391fbfa6baa93f5cce6b84c810"
+    },
+    {
+      "path": "military-godot/modules/vehicle_fire_control/gunner_intent.gd.uid",
+      "size": 20,
+      "sha256": "fc52dbb46ddd9a6187c8442f37ac4bffe38bb16b4d0399c4d497fe172259de7e"
+    },
+    {
+      "path": "military-godot/modules/vehicle_selector/vehicle_selector.gd",
+      "size": 14794,
+      "sha256": "2211771405836c665343e65d12902557e4bd39b097c1a3882f41ac75f77a5e47"
+    },
+    {
+      "path": "military-godot/modules/vehicle_selector/vehicle_selector.gd.uid",
+      "size": 20,
+      "sha256": "ffbe5eb71e942835b3da6315c3d60c297eab1f26917a0d3be6559059b22ae144"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/README.md",
+      "size": 3813,
+      "sha256": "9651fd43c467809b16d0441c84b3014b4207f6638981073584e43ebb47284228"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/short_rocket.gd",
+      "size": 4192,
+      "sha256": "0036d901a742922d4292456123aa67b2d0dbcba0d474b72bc34a25b2b78977eb"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/short_rocket.gd.uid",
+      "size": 19,
+      "sha256": "2fe1cb083043e42cbd0d2cbfd8dce66e66619a5f8af164eb41b885213c246c2a"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/tank_ballistics.gd",
+      "size": 2373,
+      "sha256": "f066b2360e60f7543ad8c4146eb491f1f8932fcf37a361833c9d32f50dc64449"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/tank_ballistics.gd.uid",
+      "size": 20,
+      "sha256": "472d54e4ea292a2c5323bcdcc4bf37ddfe4afab176f083b9ff5644d73ec1c41f"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/tank_shell_fire.gd",
+      "size": 9222,
+      "sha256": "bef2d8aca761b19b4138b1ff59a992b5aad0cbbbae41737017f40c032bf79d47"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/tank_shell_fire.gd.uid",
+      "size": 20,
+      "sha256": "9f004563885385791526c7fbc9e2acda64b913df2f3aa23ce170ec9cd29d3c90"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/tank_sight.gd",
+      "size": 2457,
+      "sha256": "fa531fed092e62dc74bd50c870f67d76fcb0d03f0c67632d45cd44db00b91b56"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/tank_sight.gd.uid",
+      "size": 20,
+      "sha256": "53f169f1a72ff12605a20dba9ddcdf425d4467b4ba2fd068e158bc0eb5cbf07f"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/test_vehicle_weapons.gd",
+      "size": 10703,
+      "sha256": "5bb3742bec9e3fab7f7e4736fb2ba08d9574563faa1cb7971c0242c591e0b5c2"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/test_vehicle_weapons.gd.uid",
+      "size": 20,
+      "sha256": "7c3bc6adb40fd1e01f0fd5df817f49d2a7a8f7d21eecfdea80cd513c8ece3ab9"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/weapon_presets.gd",
+      "size": 1990,
+      "sha256": "95580ee7ffd5f20f968654d3e6796f114ca96850f1ee2fd970a6b6b357e97d36"
+    },
+    {
+      "path": "military-godot/modules/vehicle_weapons/weapon_presets.gd.uid",
+      "size": 19,
+      "sha256": "04e58d528022550d00063aad5322c00447b958e0fd243da0528040d98a06af0b"
+    },
+    {
+      "path": "military-godot/practice/actor.gd",
+      "size": 1026,
+      "sha256": "641c06727eda6aded86bebc3e6b3776c84707db3426d6cd8a08a018d460d7a5e"
+    },
+    {
+      "path": "military-godot/practice/actor.gd.uid",
+      "size": 20,
+      "sha256": "60002ffd4f8addf272779ef3e94fdc740f33f0c979469d02d31831906bec81f0"
+    },
+    {
+      "path": "military-godot/practice/application.gd",
+      "size": 12363,
+      "sha256": "b1744c271b805005e2191ea11077a8d40998c5827688651c56c7dba75d14e76a"
+    },
+    {
+      "path": "military-godot/practice/application.gd.uid",
+      "size": 19,
+      "sha256": "1e31a1da1b84b19d12c7b2d096cf266c9c460a1dd3f7102bed454e1979bd4ed1"
+    },
+    {
+      "path": "military-godot/practice/continuous_replay.gd",
+      "size": 3315,
+      "sha256": "e0706a4636bd9610c9590ce19cd52827ff7b47c1efda3a736b2376c93c8bbc2a"
+    },
+    {
+      "path": "military-godot/practice/continuous_replay.gd.uid",
+      "size": 20,
+      "sha256": "adfbf334001674e51875ea7d29f065fd6fdf2310abddb90d501538ddbdd8bb24"
+    },
+    {
+      "path": "military-godot/practice/group_replay.gd",
+      "size": 5014,
+      "sha256": "fa7a4d5d218d0053782293ac81c82f1d6ee47da9e7742c5f6fd5d9f0b05516ba"
+    },
+    {
+      "path": "military-godot/practice/group_replay.gd.uid",
+      "size": 20,
+      "sha256": "5957d72151993ad9f785a106a904fa40b472262fe6741fe1b50f0e8428d85d9d"
+    },
+    {
+      "path": "military-godot/practice/group_view.gd",
+      "size": 6458,
+      "sha256": "d55ba7ecc58c8aade69ea9724c8491a7b2606c9e57ec6fcbd69960ecfc3e7a0c"
+    },
+    {
+      "path": "military-godot/practice/group_view.gd.uid",
+      "size": 19,
+      "sha256": "9c43bf4c7419829b0dd15085ad919bc5d465907db0e50ec6efcbe918d605ecfb"
+    },
+    {
+      "path": "military-godot/practice/main.tscn",
+      "size": 178,
+      "sha256": "0e48b11332531839b8fe8423e6f2a08699f15deb899461631b13cf3c20bad2ea"
+    },
+    {
+      "path": "military-godot/practice/native_return.gd",
+      "size": 2992,
+      "sha256": "cf016d57db44a2e68e8e8fb206613c0c325f48837af0f26a8cd532c593b6fdc7"
+    },
+    {
+      "path": "military-godot/practice/native_return.gd.uid",
+      "size": 20,
+      "sha256": "cc17484803b8629a1b50ec29f862569fc7b37330ff0d51ee3ddefa6a0ef64023"
+    },
+    {
+      "path": "military-godot/practice/range.gd",
+      "size": 37535,
+      "sha256": "f7b3e55eb42bd1c427e5e99ccb48a7f40cbd2c2faa11e2447c7dff2c450f2950"
+    },
+    {
+      "path": "military-godot/practice/range.gd.uid",
+      "size": 20,
+      "sha256": "664cd793c91d9f6d130b3a216c8a8096b2705444c84931259180e739b5beed0e"
+    },
+    {
+      "path": "military-godot/practice/recovery.gd",
+      "size": 6618,
+      "sha256": "0cc1f8653312ae40601a6a9fc18aa2421fa7b5d459308d186536f565a75d4f1b"
+    },
+    {
+      "path": "military-godot/practice/recovery.gd.uid",
+      "size": 20,
+      "sha256": "940aed15caf4689611d68762ed792959fa7c9afa888df9439618b4b9d8373646"
+    },
+    {
+      "path": "military-godot/practice/replay.gd",
+      "size": 5327,
+      "sha256": "36c18ffe998a7dd0cfda11ed66f4be876258188a184b42aab433ab0f6c409b8f"
+    },
+    {
+      "path": "military-godot/practice/replay.gd.uid",
+      "size": 20,
+      "sha256": "2069373aa1f5a67a8063f47a09b027bbc58d3fb378d854d6a3c534f4f163557a"
+    },
+    {
+      "path": "military-godot/practice/scenario.gd",
+      "size": 4436,
+      "sha256": "f8cdfb1fa9fe3fcbc5664e4cac9e326e28112fe067965aee0457b2ad48c43f83"
+    },
+    {
+      "path": "military-godot/practice/scenario.gd.uid",
+      "size": 19,
+      "sha256": "008537ef397797532169ad1959132b18f7237bc7baf835d979000af7d1a3bdc5"
+    },
+    {
+      "path": "military-godot/practice/shot_contract.gd",
+      "size": 3559,
+      "sha256": "1947bcea20f7bdc56888bc95801c608a500952a9c51a78e9e1187ae90191e692"
+    },
+    {
+      "path": "military-godot/practice/shot_contract.gd.uid",
+      "size": 20,
+      "sha256": "5e6e7ee737c95f4a9af532f9837f654135ae946228f9c407c427d3eac24f6cdc"
+    },
+    {
+      "path": "military-godot/practice/test_group.gd",
+      "size": 6101,
+      "sha256": "cf2e80c4a1a8e1640f6b8adc283f8d82677e256a4e559a03f5d5d865bb02f792"
+    },
+    {
+      "path": "military-godot/practice/test_group.gd.uid",
+      "size": 20,
+      "sha256": "5b5db2e579fefc79c5bc44c2828a6ccf42fc9873fad3224ea2b781a5a862b89e"
+    },
+    {
+      "path": "military-godot/practice/test_physical_save.gd",
+      "size": 5290,
+      "sha256": "c8fa573680897055c21227a3bf27c75f775122188dcb4c55dafc63d6e5e68cc3"
+    },
+    {
+      "path": "military-godot/practice/test_physical_save.gd.uid",
+      "size": 20,
+      "sha256": "b733117d240f3934a266e9e8ec843344c1df3dff7e2ea7396c25e419aa326d96"
+    },
+    {
+      "path": "military-godot/practice/test_recovery.gd",
+      "size": 5495,
+      "sha256": "93f667590cfbc09d54433711370fc017805f377f6ef3e74399551b2bf33f0f25"
+    },
+    {
+      "path": "military-godot/practice/test_recovery.gd.uid",
+      "size": 20,
+      "sha256": "04eb866fecfcdb277a3a348f4cc20e09cde661fe00a6ccd9ff50c5933716888f"
+    },
+    {
+      "path": "military-godot/project.godot",
+      "size": 2627,
+      "sha256": "4a01e226f698dc1a87a9143bf417baf4b8ea19c1644f86fdefa10531b19a637c"
+    },
+    {
+      "path": "military-godot/ridgevale/assets/map.json",
+      "size": 40494,
+      "sha256": "2bddc33a6a34ede904bdde127937b2f3f2e43139e8cdecbe5b83975418f5b623"
+    },
+    {
+      "path": "military-godot/ridgevale/detail/base/generation_receipt.json",
+      "size": 2366,
+      "sha256": "75bdd075bdaa30c9ebf6dfcd5c71294deb1acfd45343d43b5c3a1f26a0c15998"
+    },
+    {
+      "path": "military-godot/ridgevale/detail/base/map.json",
+      "size": 24126,
+      "sha256": "562f332e1b81a0346e3ab441e7a3d35c7614590f90afba606b29db3d8d52df86"
+    },
+    {
+      "path": "military-godot/ridgevale/DETAIL_REFINEMENT_ZH.md",
+      "size": 7898,
+      "sha256": "caab78f8761e333dbc257ead291df0cd8e11bd3051dd36cb346ca24ec8eb8acb"
+    },
+    {
+      "path": "military-godot/ridgevale/heightfield.gd",
+      "size": 1447,
+      "sha256": "ea416f069c8f046b334520f56047c4fd16e6c287d0dbbb42038bd7cdeb8bf7f4"
+    },
+    {
+      "path": "military-godot/ridgevale/heightfield.gd.uid",
+      "size": 20,
+      "sha256": "83c00092fb10fb703059245b9e6accb3930d5ca3a55cb1ded8785860f5136bb3"
+    },
+    {
+      "path": "military-godot/ridgevale/README_ZH.md",
+      "size": 6061,
+      "sha256": "4b388e25a30db9da231c015bbd093399d9cb8c705066c32399e9e7d10de238b4"
+    },
+    {
+      "path": "military-godot/ridgevale/review/detail_generation_receipt.json",
+      "size": 1176,
+      "sha256": "5ad6f9f00fe83ae3906b0f45b810e95a1c5506394a893a628035430e17e48a6e"
+    },
+    {
+      "path": "military-godot/ridgevale/review/detail_reproducibility.json",
+      "size": 376,
+      "sha256": "ef2d7565b3b2d8824343a12e5d85abec4d3ca05e99da9629a560288b7b787c60"
+    },
+    {
+      "path": "military-godot/ridgevale/review/detail_static_contract.json",
+      "size": 1736,
+      "sha256": "aafec5f2f4dfea828661f2ea5e69fbeece8f5a5aab6c06569c1e1d8e005a1035"
+    },
+    {
+      "path": "military-godot/ridgevale/review/first_generation_receipt.json",
+      "size": 2366,
+      "sha256": "c011057ceae6650ff910014c9ff2d051cde560d30bb6702f87059f9433513347"
+    },
+    {
+      "path": "military-godot/ridgevale/review/generation_receipt.json",
+      "size": 2426,
+      "sha256": "d1be60d4b92658d39c107f8a6e0c1e634b11be53227f0fa6b16a8d993d9f3a1c"
+    },
+    {
+      "path": "military-godot/ridgevale/review/native_contract.json",
+      "size": 2327,
+      "sha256": "95908f157e75f48fba573660130da1703824cd1f17afbefe020404b2ca327d28"
+    },
+    {
+      "path": "military-godot/ridgevale/review/reproducibility.json",
+      "size": 615,
+      "sha256": "0e0aec5ef0dcb45c7a26ff97699eafe2abd13ed7d9026ed09fecd309f4ae61e2"
+    },
+    {
+      "path": "military-godot/ridgevale/review/reproducibility_after_soil.json",
+      "size": 101,
+      "sha256": "141167cafcac5da552131f6d59f5f87f3b3bf3ef50b59bafbe5e027e975ccd4c"
+    },
+    {
+      "path": "military-godot/ridgevale/review/static_contract.json",
+      "size": 208,
+      "sha256": "120f6503a082aee646adb3a49d2c4c856195cbeec0daa2a5061456682528231c"
+    },
+    {
+      "path": "military-godot/ridgevale/review/yard_approaches.json",
+      "size": 1385,
+      "sha256": "853061b68c53484abfa4e58f5e81f0d09afb3d2a5bcde064d3a9e6e400a7fbba"
+    },
+    {
+      "path": "military-godot/ridgevale/terrain.gd",
+      "size": 3588,
+      "sha256": "f99c518fa0479d90bf81247f66aa0ef9699eb58bfa85101b70494700fdf20904"
+    },
+    {
+      "path": "military-godot/ridgevale/terrain.gd.uid",
+      "size": 20,
+      "sha256": "957e8a775687332c213ee480dc5505d050f01068488943f81656a871d95b7e93"
+    },
+    {
+      "path": "military-godot/ridgevale/tests/test_ridgevale_native.gd",
+      "size": 16317,
+      "sha256": "b7e36091a41b736ae0a31bf83ad9223658aa056ec13bacc2aa2cbc91d356d5fd"
+    },
+    {
+      "path": "military-godot/ridgevale/tests/test_ridgevale_native.gd.uid",
+      "size": 19,
+      "sha256": "9c208949c7ffb54cbc0fcd6fd791a0a414944998908869d03235de2896b6e7a9"
+    },
+    {
+      "path": "military-godot/ridgevale/tools/build_ridgevale_assets.py",
+      "size": 12086,
+      "sha256": "9c0fc5aa4ed121ce9ec46f2224b5e788f5894a57807dd9433db9dbfff6396248"
+    },
+    {
+      "path": "military-godot/ridgevale/tools/refine_existing_village.py",
+      "size": 10945,
+      "sha256": "6f34dba3377dc78544688558b1d03a606da77452c73047206e0a2dc2f55f22e1"
+    },
+    {
+      "path": "military-godot/ridgevale/tools/validate_existing_village_detail.py",
+      "size": 7200,
+      "sha256": "042597e9ed5dbd9b78636cf51c2573319f804b4458fa32e501ffeefbe7156d45"
+    },
+    {
+      "path": "military-godot/ridgevale/tools/validate_ridgevale_assets.py",
+      "size": 4361,
+      "sha256": "45dee4108bc3d6ff7667473399f5c20d544888dbf9100e4432c7a380e8f4de07"
+    },
+    {
+      "path": "military-godot/ridgevale/world.gd",
+      "size": 5719,
+      "sha256": "b84c47233e9db02c5e913b8d0456ce4bb20ac1f5fed332fbffbffee1ca925241"
+    },
+    {
+      "path": "military-godot/ridgevale/world.gd.uid",
+      "size": 19,
+      "sha256": "c981ee89479036e9bdc97f516b8834429bd5d69f1b60735f6ec9b1a8ba56ae15"
+    },
+    {
+      "path": "military-godot/rivergate/assets/hydrology.json",
+      "size": 65777,
+      "sha256": "d5c5ee938b9bec6fb72ed550b23ae04537cff336a1e4d5c9af3685cdec058ad5"
+    },
+    {
+      "path": "military-godot/rivergate/assets/map.json",
+      "size": 46938,
+      "sha256": "44941cb7c78909a85c4ee2d5896351bb6bf0ed229905773ff48dbd5209ca3ecb"
+    },
+    {
+      "path": "military-godot/rivergate/heightfield.gd",
+      "size": 2266,
+      "sha256": "a442e77865c006270eede1ad9799c208d79932a0f9736d8c38dc1dd0e5cc1f41"
+    },
+    {
+      "path": "military-godot/rivergate/heightfield.gd.uid",
+      "size": 20,
+      "sha256": "00e422ef1f2e4d5c3dd44cc97f20e89bcbfb75852004704ee17aa1d260dc2ae5"
+    },
+    {
+      "path": "military-godot/rivergate/review/base_preservation.json",
+      "size": 133,
+      "sha256": "9894daa01677b7f3060344552330fa25b649cb66b876032b3358415bbd5934d4"
+    },
+    {
+      "path": "military-godot/rivergate/review/static_validation.json",
+      "size": 833,
+      "sha256": "a181941d9bb02124d8edaad4f745dd67877014cb7840f16547f6d472749a17e1"
+    },
+    {
+      "path": "military-godot/rivergate/terrain.gd",
+      "size": 3736,
+      "sha256": "11d069f1248f6eee814686cac3248892350b22fb218e30ba17db0e6750bc8838"
+    },
+    {
+      "path": "military-godot/rivergate/terrain.gd.uid",
+      "size": 18,
+      "sha256": "a9034ec728f1ac447503b18562283fcd181631acfe25ac1998052b18ac77a80f"
+    },
+    {
+      "path": "military-godot/rivergate/tests/test_rivergate_native.gd",
+      "size": 3759,
+      "sha256": "b0542ec03c0fd048812b47203a95102a31e19fe0170ccbf3020f1fbb7b267171"
+    },
+    {
+      "path": "military-godot/rivergate/tests/test_rivergate_native.gd.uid",
+      "size": 19,
+      "sha256": "d1b783c6da0279fdfd0449ec78a43849314bb0974dea032991d45054fafb368c"
+    },
+    {
+      "path": "military-godot/rivergate/tools/build_rivergate.py",
+      "size": 11458,
+      "sha256": "e61d313c5fd65051c7de52e1ab6a4a5865f364d32a7a4abcd541ff41aed0b623"
+    },
+    {
+      "path": "military-godot/rivergate/tools/render_layout_preview.py",
+      "size": 3783,
+      "sha256": "8e9999c913bbae5465510d6e33b96797efa3415838f733d637edacb466594e20"
+    },
+    {
+      "path": "military-godot/rivergate/tools/validate_rivergate.py",
+      "size": 5141,
+      "sha256": "6b02526377a9335704c057fea1d0d503d7ab3714928683a8a7ef1686361756a6"
+    },
+    {
+      "path": "military-godot/rivergate/water.gd",
+      "size": 1789,
+      "sha256": "28782f777df7171fc63a210d4d24f9ba715d449ac9cfe0b91b0f57355dc1c3a7"
+    },
+    {
+      "path": "military-godot/rivergate/water.gd.uid",
+      "size": 20,
+      "sha256": "f174557e620b7914129b5c20287ca254b8b1df9577cfeb7940efd7737be0c718"
+    },
+    {
+      "path": "military-godot/rivergate/water.gdshader",
+      "size": 804,
+      "sha256": "74be49fbd6e147b330caf7a05e11f18d9d6ba7fcfab6a9c5f3bbf3f288400c48"
+    },
+    {
+      "path": "military-godot/rivergate/water.gdshader.uid",
+      "size": 19,
+      "sha256": "a35421028d6cd6cb9f40cff1acb88c00885b81bbba751e4b72928810e2decdd5"
+    },
+    {
+      "path": "military-godot/rivergate/world.gd",
+      "size": 10800,
+      "sha256": "911542407248a73aad2222f73eaa064ea09826b6bc37449d106385672875395f"
+    },
+    {
+      "path": "military-godot/rivergate/world.gd.uid",
+      "size": 20,
+      "sha256": "2a308a0e5de2314e1ca96dc85d973c9cbd48379e0742a7eb94e06992e21164ef"
+    },
+    {
+      "path": "military-godot/scripts/ammo_profiles.gd",
+      "size": 852,
+      "sha256": "f36589ab5aee2d864d43aa68684475c82ca98b2b67ad1173ae09c5e0d42b7fd3"
+    },
+    {
+      "path": "military-godot/scripts/ammo_profiles.gd.uid",
+      "size": 20,
+      "sha256": "2c4a7cf57acec775120848edfa243e6847e7bcf115cc215f9c17ee1702a64ea8"
+    },
+    {
+      "path": "military-godot/scripts/armor_collision.gd",
+      "size": 1328,
+      "sha256": "d2b36e54b6204ae182c8c6541b49728141a11efb1b2c9b20418cd2c83cb25968"
+    },
+    {
+      "path": "military-godot/scripts/armor_collision.gd.uid",
+      "size": 20,
+      "sha256": "a8bdefc59e95ca33ec5c1f127c690451ddef665326f562461a5c01055bd75868"
+    },
+    {
+      "path": "military-godot/scripts/battle_ai_presets.gd",
+      "size": 862,
+      "sha256": "c5748628af6b2211aa48c4ff8afc966a98ceba26591d07fb57181250cc3e893b"
+    },
+    {
+      "path": "military-godot/scripts/battle_ai_presets.gd.uid",
+      "size": 18,
+      "sha256": "bbc3ba0c8774eaffbfe3087d57ffeb4446c26f71a1da551f9af7adc86110da46"
+    },
+    {
+      "path": "military-godot/scripts/battle_hud_events.gd",
+      "size": 1677,
+      "sha256": "9dd4803c4f3c196477d2f2aec20644f6498be423fd73eeedd45257a6c13b964c"
+    },
+    {
+      "path": "military-godot/scripts/battle_hud_events.gd.uid",
+      "size": 19,
+      "sha256": "6b77780d36e1fbf6c24528c0eba7ddc4c6f0f0a48df5263491eacbd02f63a2a3"
+    },
+    {
+      "path": "military-godot/scripts/battle_live_history.gd",
+      "size": 2267,
+      "sha256": "3095da59421187afbbea25b6c7fefcf072beee3e6570ebb3f4f5659e3446f809"
+    },
+    {
+      "path": "military-godot/scripts/battle_live_history.gd.uid",
+      "size": 20,
+      "sha256": "979990c2bb318009536f3dcb837a64e6e3a6e8c0100321b4f2ddebb77d077d27"
+    },
+    {
+      "path": "military-godot/scripts/battle_minimap.gd",
+      "size": 12734,
+      "sha256": "fe9958bd1c506d83a73e44647c68c00d247805da4d6a17092ec6c756565aefe6"
+    },
+    {
+      "path": "military-godot/scripts/battle_minimap.gd.uid",
+      "size": 20,
+      "sha256": "efbe0df93d45c337898c86bd9068cd709d3c8fd8b0ad46a4efb50d16a04bff0b"
+    },
+    {
+      "path": "military-godot/scripts/battle_performance_status.gd",
+      "size": 6285,
+      "sha256": "b280a210e17dc3c2ec7ef684c0b49958711a1c2fe7c39b42d451d07486efd84b"
+    },
+    {
+      "path": "military-godot/scripts/battle_performance_status.gd.uid",
+      "size": 20,
+      "sha256": "63cb171f6ab9cf579bc345930c0cb90a2551f6b2dc423611445ea1fd1ffcba84"
+    },
+    {
+      "path": "military-godot/scripts/battle_scenery.gd",
+      "size": 2631,
+      "sha256": "5964dcd6a88a39b1e4c53e55dc9cd8dcb46c0bb83b4b7043a5a87290ebf0c04a"
+    },
+    {
+      "path": "military-godot/scripts/battle_scenery.gd.uid",
+      "size": 20,
+      "sha256": "68318e5927ecb1b5e4b8ce1b53f726e5eb1da63d5aaec09706b96cc397ef67a6"
+    },
+    {
+      "path": "military-godot/scripts/battle_simulation_rate.gd",
+      "size": 1592,
+      "sha256": "f7b01f30d53095a6f52e31081c099d95c1374387793621449b017ab7a2ecc91b"
+    },
+    {
+      "path": "military-godot/scripts/battle_simulation_rate.gd.uid",
+      "size": 20,
+      "sha256": "c9c7be8669de511790b947f543198da61b384aa8071e62cd318289cbd95a78bc"
+    },
+    {
+      "path": "military-godot/scripts/battle_vfx_billows.gdshader",
+      "size": 1902,
+      "sha256": "dfa12d6a82d5905d483c83d3396c4c3db8f1db46e743c1d9f708184db907c475"
+    },
+    {
+      "path": "military-godot/scripts/battle_vfx_billows.gdshader.uid",
+      "size": 20,
+      "sha256": "75c13b87e54aa64bcfcba1d38a17671fb70508601c9056f0ef97df90fa144caa"
+    },
+    {
+      "path": "military-godot/scripts/battle_vfx_fire.gd",
+      "size": 1423,
+      "sha256": "f4054ec8e28cda6a4a189011ab0ca90b791aff0f04f34dbb91c43f978fb38c8b"
+    },
+    {
+      "path": "military-godot/scripts/battle_vfx_fire.gd.uid",
+      "size": 20,
+      "sha256": "cf6898ec30732c820312e176050a7043d300d2c9e80dab3b7b2c76ad81c6bb52"
+    },
+    {
+      "path": "military-godot/scripts/battle_vfx_layers.gd",
+      "size": 5080,
+      "sha256": "186c10545d15857184e47b4fb84fd62216db797c6da09e4d95ef22288c168dd7"
+    },
+    {
+      "path": "military-godot/scripts/battle_vfx_layers.gd.uid",
+      "size": 20,
+      "sha256": "88e925b70a6867026fd47d9a873c9992cb09736b331070a059f47035e3b60634"
+    },
+    {
+      "path": "military-godot/scripts/bottom_vehicle_hud.gd",
+      "size": 11050,
+      "sha256": "586854ec0e21ca32d7d9c453ab6bbaff1547882de2dc31b707852cbe27362950"
+    },
+    {
+      "path": "military-godot/scripts/bottom_vehicle_hud.gd.uid",
+      "size": 20,
+      "sha256": "e1ac5870fdde8021bf84f015f86c5ea8a05a29e6411c8618c3147550257b3876"
+    },
+    {
+      "path": "military-godot/scripts/combat.gd",
+      "size": 8757,
+      "sha256": "21d0768c1f55afc878e26ba289908b5eaeeaf8b0666f98c48d7a842079b6798c"
+    },
+    {
+      "path": "military-godot/scripts/combat.gd.uid",
+      "size": 20,
+      "sha256": "3e38aa4dbffa24970aff193d220eacc1f805e075fb3dc3a756c3b0a1e4e08dad"
+    },
+    {
+      "path": "military-godot/scripts/combat_effects.gd",
+      "size": 11279,
+      "sha256": "ff89bc4e92e21778d7ab0b6def0f6892700dd51a0e9bea2a28e665a01c08436d"
+    },
+    {
+      "path": "military-godot/scripts/combat_effects.gd.uid",
+      "size": 20,
+      "sha256": "6d1d80cbb511426ec1780ad0fd859ae1079d34785666523bdde280b804bc568c"
+    },
+    {
+      "path": "military-godot/scripts/dual_machinegun_mounts.gd",
+      "size": 1785,
+      "sha256": "328af72b660303f205b328c6a24b2e203f1a4890dfeec19963bbe096476533d0"
+    },
+    {
+      "path": "military-godot/scripts/dual_machinegun_mounts.gd.uid",
+      "size": 20,
+      "sha256": "2204e0fc42f9f59e5288fb9ff732d9c2ece7d856b73c69832bd959e8e05034b3"
+    },
+    {
+      "path": "military-godot/scripts/engagement_observer.gd",
+      "size": 2676,
+      "sha256": "4429c332b0b9b62210577703fdbae1400e7c4366048abb55da1f42ce4daeb309"
+    },
+    {
+      "path": "military-godot/scripts/engagement_observer.gd.uid",
+      "size": 20,
+      "sha256": "1f91254d25c28e08b9f219eddf491e1c6d3f98bf3e1cd58dbf027cad6a41cae7"
+    },
+    {
+      "path": "military-godot/scripts/hit_feedback.gd",
+      "size": 1694,
+      "sha256": "2b0df83141aca905a0390db1155ebee2707b4239b373098c484d4b73e0543333"
+    },
+    {
+      "path": "military-godot/scripts/hit_feedback.gd.uid",
+      "size": 20,
+      "sha256": "dfd60bcefb36f27478b5f18c7052eaa886e113a006c2f10ac9c237bcae1d1d0a"
+    },
+    {
+      "path": "military-godot/scripts/hit_mark.gdshader",
+      "size": 430,
+      "sha256": "c1e0f475fb8fe6dd5a1b8f0dded1d0a82ce32edc976ba2357ff2778db6dd12e4"
+    },
+    {
+      "path": "military-godot/scripts/hit_mark.gdshader.uid",
+      "size": 19,
+      "sha256": "ae57095e9428c97b2fd6fce8fb6e5cb6275209d5753513b295366a1c7546b6aa"
+    },
+    {
+      "path": "military-godot/scripts/hit_response_layers.gd",
+      "size": 3634,
+      "sha256": "ac24d88c81ecf6ef6ac9f3bb7f84d001d8759e80436d97d2f5506ac767c5de0c"
+    },
+    {
+      "path": "military-godot/scripts/hit_response_layers.gd.uid",
+      "size": 19,
+      "sha256": "632aac301648793553f154c6a9d7066cd3c02390fc646918159f1a5ddbe6a8d2"
+    },
+    {
+      "path": "military-godot/scripts/machinegun_mount.gd",
+      "size": 3211,
+      "sha256": "97929c84a93d8bbad5094f7e76d6cba7fc59ff63baa49ea3a7ed79746cad83dd"
+    },
+    {
+      "path": "military-godot/scripts/machinegun_mount.gd.uid",
+      "size": 19,
+      "sha256": "e50bcb98135f919eda967eea8f6bd9ff60f49b881b9ce635fa46155ecdfd1f50"
+    },
+    {
+      "path": "military-godot/scripts/main.gd",
+      "size": 106753,
+      "sha256": "fadccc4fdde2afca380d85e73a9e05c1d5171923608188b9ef68e8bdbabbb1bc"
+    },
+    {
+      "path": "military-godot/scripts/main.gd.uid",
+      "size": 19,
+      "sha256": "592e8d8ac98785a3a9fe38cec3374061317cebb0313d66cc41ae3ce004abfbb9"
+    },
+    {
+      "path": "military-godot/scripts/mobile_battle.gd",
+      "size": 42945,
+      "sha256": "182b78fd9d44b1022dcdc44584a8dfab5f022d7a87d3bdabd3f3d3c199ef3f49"
+    },
+    {
+      "path": "military-godot/scripts/mobile_battle.gd.uid",
+      "size": 20,
+      "sha256": "0663d41577a0849e7aefdb7861edddbab7f27eeec8845f0e70bedb25066d9de3"
+    },
+    {
+      "path": "military-godot/scripts/mobile_render_budget.gd",
+      "size": 2459,
+      "sha256": "4871772433060e0f5c2869ba4dfa0b7633b801144f630d699eb618c2b468eea1"
+    },
+    {
+      "path": "military-godot/scripts/mobile_render_budget.gd.uid",
+      "size": 20,
+      "sha256": "e4c9316e5297b7f9010a67473bea790f2f14d8dbef07dd504b98ebd6aca4309e"
+    },
+    {
+      "path": "military-godot/scripts/qa_capture.gd",
+      "size": 2043,
+      "sha256": "6590e5b1cba17691fbf073e9de11b31232a05f08447f9e602852872346250821"
+    },
+    {
+      "path": "military-godot/scripts/qa_capture.gd.uid",
+      "size": 20,
+      "sha256": "8ede6419403c34d053a9e4a598d836ac3ae227b30ba9b1393788974f6fa90388"
+    },
+    {
+      "path": "military-godot/scripts/reticle.gd",
+      "size": 842,
+      "sha256": "4a9a6174cfe2d29b9b71ec9070716803674b97937b5940cdacadb57b1acbc3c6"
+    },
+    {
+      "path": "military-godot/scripts/reticle.gd.uid",
+      "size": 20,
+      "sha256": "7b73a9394d3b5ae69e9e30516cca06bba4c2a92648e034855d5ec47b5ea2b039"
+    },
+    {
+      "path": "military-godot/scripts/running_gear.gd",
+      "size": 12387,
+      "sha256": "8d1a795b0fa51d64e68c33b20e027ecea8c063a49073d90c7c35abfcf76e6eac"
+    },
+    {
+      "path": "military-godot/scripts/running_gear.gd.uid",
+      "size": 20,
+      "sha256": "a7b27668f56a9c6c99e2ec474100714a8792bcbec0b9aeb8eec8c4aad464b21e"
+    },
+    {
+      "path": "military-godot/scripts/smoke_cloud.gd",
+      "size": 3929,
+      "sha256": "6ff61662da26ed4c910154b3f63b799b9678be729c21db49160e7a935a5e4499"
+    },
+    {
+      "path": "military-godot/scripts/smoke_cloud.gd.uid",
+      "size": 20,
+      "sha256": "a6af19855153d8cbdd360a0ae03936e3584791329bd436ab3cd05da678a6df3f"
+    },
+    {
+      "path": "military-godot/scripts/smoke_puff.gdshader",
+      "size": 705,
+      "sha256": "a9877f3b895007d2c55a92c0bd4a54d11090952df9f3b4cf3197cbc1f7d27b5f"
+    },
+    {
+      "path": "military-godot/scripts/smoke_puff.gdshader.uid",
+      "size": 20,
+      "sha256": "e616c4ec6a7e83060fd4f5f8f757a8344be2cc06ef936003b6e5a11f8fe3415e"
+    },
+    {
+      "path": "military-godot/scripts/tactical_attack_orders.gd",
+      "size": 3919,
+      "sha256": "8afc0d14e3c874ae35d34c69f0d08cb8e2e630aaf1650b49a8c6a810ba15f246"
+    },
+    {
+      "path": "military-godot/scripts/tactical_attack_orders.gd.uid",
+      "size": 20,
+      "sha256": "254a7c5a0667bc71ec3bf2849e3e8bc6f12026b3b981dfe6475a42f1b33d7503"
+    },
+    {
+      "path": "military-godot/scripts/vehicle_contact_resolver.gd",
+      "size": 14960,
+      "sha256": "fd1bc3b3a8667c1c03b77ff21a6359d4dcb8efc9a1b9be5008f832ebc0ebe54d"
+    },
+    {
+      "path": "military-godot/scripts/vehicle_contact_resolver.gd.uid",
+      "size": 19,
+      "sha256": "84b6e4fce739dcee162f1b4b62b33ab6c1ac4ccd7205a018b86f415efb167bcf"
+    },
+    {
+      "path": "military-godot/scripts/vehicle_ground_support.gd",
+      "size": 4544,
+      "sha256": "18a5c96f3ae7494ebeb87dc7d398f7b48da4c04e22e220ed023b327fc8600997"
+    },
+    {
+      "path": "military-godot/scripts/vehicle_ground_support.gd.uid",
+      "size": 20,
+      "sha256": "208dd693ac569d405a033229d8b9ac61ae8013039b5a778977f59c2ab97e1778"
+    },
+    {
+      "path": "military-godot/scripts/visibility.gd",
+      "size": 914,
+      "sha256": "d173cac4c783e04f7dded12979919cb1fab8d15afd7890aed84801cba7a93687"
+    },
+    {
+      "path": "military-godot/scripts/visibility.gd.uid",
+      "size": 20,
+      "sha256": "f4593e6bcaedde1ae5e290f59c6224fc7b1bceb15bbdcead64cea6fce27aa00d"
+    },
+    {
+      "path": "military-godot/scripts/vnext/map/military_map_adapter.gd",
+      "size": 21438,
+      "sha256": "9a59366a96145b25b90ff47d464cb534f668d576ff1df9ef0fffb0b625f4bb80"
+    },
+    {
+      "path": "military-godot/scripts/vnext/map/military_map_adapter.gd.uid",
+      "size": 20,
+      "sha256": "8bcf059c4c2bffe1fa4d20446129916f370b4ef820592a63f061ab9bb2abbfff"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_combat_authority_service.gd",
+      "size": 10748,
+      "sha256": "d79c20b511e0df1277140017dd78b3eb5e8b54ecf205428295c89c1e9f078d82"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_combat_authority_state.gd",
+      "size": 4913,
+      "sha256": "6e8d6d1fb53691973e5c739d3072c4a051a2e3a9952344d8022a6054856a360e"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_delegation_service.gd",
+      "size": 6558,
+      "sha256": "1e50ff9f6790b91b09a098f95dc7c12d0b7b3336a16d8109b5ff868f0d37186b"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_delegation_service.gd.uid",
+      "size": 20,
+      "sha256": "60df1d95f7a3e6aac54507ffcbaca7983062344ed6ffc5a5114a37ede9feeb9e"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_delegation_state.gd",
+      "size": 6874,
+      "sha256": "0b3cac46a1e4001fb674c74ae045f9766d647dc3adf164cedc6d06eb3720898b"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_delegation_state.gd.uid",
+      "size": 20,
+      "sha256": "58780e7c2830591f06c212b4524aa2a7922e0a9a2a09442dfa144629fec03f1e"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_duty_service.gd",
+      "size": 8272,
+      "sha256": "5acf395f146f61fdc3cdde6a82da0be95a0fd81906486d408dc1bda3e6f47aad"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_duty_service.gd.uid",
+      "size": 19,
+      "sha256": "3460c7ff07f2894f8dd7b46ef733a224c859f43881d3061545fae66970eb2e39"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_duty_state.gd",
+      "size": 10919,
+      "sha256": "ae2b41b32995dc6e8f86a1e4feedfe8c64fcb7612f8d9d2a855998691e55978c"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_duty_state.gd.uid",
+      "size": 20,
+      "sha256": "28dae2a35e24dfaa7bdf9fe44ac222a1c1ad21b2e9cf61f0032baedd3cfba624"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_formation.gd",
+      "size": 11685,
+      "sha256": "405c78b4b9de657e418f7bf3941a9a4a731b3d9e5936d8b842b4ac77a37faf95"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_formation.gd.uid",
+      "size": 20,
+      "sha256": "3a8c77f2fcb19fdb182f20b1763113dfa4ae956438e0564dd83e674bbfbf2c06"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_local_state.gd",
+      "size": 15768,
+      "sha256": "9a18c56a4062150e2a8500645bab2e0ceb6102960ad56ebde98bf91d135fa624"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_local_state.gd.uid",
+      "size": 20,
+      "sha256": "91cb44d91ae13666a98e42586905aee8ad260e65093ed2c75a5987fd95e37768"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_material_service.gd",
+      "size": 9584,
+      "sha256": "d1a7982ee5f281bfcf551ad3fad2bed42dc213a2bb69476bd7b2a8225507f16c"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_material_service.gd.uid",
+      "size": 19,
+      "sha256": "a91011b8c4b3700b4405b8b9521ec01f9b11d60def7c9ed3bf62c2cb059fc9c6"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_material_state.gd",
+      "size": 11518,
+      "sha256": "c7742bfa3550815c6da364da85d7151cda3a5910dc2731b5b04b0e30c41557b4"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_material_state.gd.uid",
+      "size": 19,
+      "sha256": "91b2d2a667dcf8ada2286c4d447a98586ce6e6da9980e5d84bc7a543a9489f24"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_service.gd",
+      "size": 81648,
+      "sha256": "9cb0389eb364dabebcac501998ed67bca26e61989e7d379336fb75aebde8d68a"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_service.gd.uid",
+      "size": 19,
+      "sha256": "54eb11f0bdb0464bf8f6ddb49b9280a3e6e8aac36e5c9b5bc3f27af6eb3f28cb"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_state.gd",
+      "size": 42485,
+      "sha256": "13894774a709743da32ca0ab2bad0b0794403faa00a2a5d51b34324c1f906c63"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_state.gd.uid",
+      "size": 20,
+      "sha256": "be71df189f0775f857fd5c2622b8feee0ae6595a593a2e9b19ed2aa9e6c90973"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_state_invariants.gd",
+      "size": 11363,
+      "sha256": "7356329267c2f126f019c75d67c119d7e1db936390bfbdb33d3a85a038596fa6"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_state_invariants.gd.uid",
+      "size": 20,
+      "sha256": "aea1449b265ac782a799694ca908ec242c6d0ebed58548ac3ac72163d538ee92"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_training_service.gd",
+      "size": 7699,
+      "sha256": "b39ca965945f980e627203206ba40c8736433aa8d3c3f5f4f240eb13ca45a79c"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_training_service.gd.uid",
+      "size": 20,
+      "sha256": "89d25c4298f4c74af57b9e6f7ae695d69100b30d0febe5d27b191eb8893ba008"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_training_state.gd",
+      "size": 7094,
+      "sha256": "0bcfb7300a0dfd0ca01f89f067af8504b91b5f0ce20569567ce1d21d73c04a5b"
+    },
+    {
+      "path": "military-godot/scripts/vnext/military/military_training_state.gd.uid",
+      "size": 20,
+      "sha256": "70aab8e80a1c63190fe59617df0b0a9532e168f401d9d03153ae1a91ca6c54c3"
+    },
+    {
+      "path": "military-godot/scripts/weapon_vfx_profile.gd",
+      "size": 2777,
+      "sha256": "9a38fd744c7192a818aec0f7aabfb6a5bd939babaa1904fbcb91396e5983509f"
+    },
+    {
+      "path": "military-godot/scripts/weapon_vfx_profile.gd.uid",
+      "size": 20,
+      "sha256": "798c6a265987408f4172afac945b17e74c66f9e4e8caf95cb7c586fe86cda1f6"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/france_surface.gdshaderinc.uid",
+      "size": 20,
+      "sha256": "b153abbc4d658744dab40faac51c1dd1ce003ff20519c143617a0b7ea2ac3088"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/globe_boundary.gdshader",
+      "size": 5096,
+      "sha256": "6fdda2af0acc22ec606296ff60afa40cb1f83e46314c3fb68ce41ee5523855f0"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/globe_boundary.gdshader.uid",
+      "size": 20,
+      "sha256": "295178134e1b6535333ff16f0e36d9a62959598ab0c10e5a1772c88d946e7b5d"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/globe_water_surface.gdshader",
+      "size": 3312,
+      "sha256": "16d8b8dc41d405ec5fca0ff335bb4598754cdcb9a2360385d5182d0806587413"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/globe_water_surface.gdshader.uid",
+      "size": 20,
+      "sha256": "f4e82f2edadc0c9ca847e094b167320d5fd03c05c0817d5f224a23bdecc8f10e"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/hemisphere_surface.gdshader",
+      "size": 595,
+      "sha256": "352376f6b776874a6f2817eca6c442ae17df06853cb9bbe60f2e92e002bf64c0"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/hemisphere_surface.gdshader.uid",
+      "size": 19,
+      "sha256": "ce11f25d9a7cf7c301caac05439c3c33fbc901693a207167d919b86e9f906809"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/local_chart.gdshaderinc.uid",
+      "size": 20,
+      "sha256": "d42ed0b8e21dc52601bd7915498b408879afa1c18bcf712dba7a2b5cbb02cd6c"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/local_terrain.gdshader",
+      "size": 3773,
+      "sha256": "92d52fdb5ab060531f02e92a8f36b70e57c2192f622ab177f4b693a876f3f075"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/local_terrain.gdshader.uid",
+      "size": 20,
+      "sha256": "9eb697a036e933d219d5e8567ef9c3928e340ec403ea5f2345e2f6dccdeda1cf"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/moon_surface.gdshader",
+      "size": 2024,
+      "sha256": "d3022fbb16a079a0dbf24386a4e1d5249260891e52d63b4692c8733fc37b5836"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/moon_surface.gdshader.uid",
+      "size": 20,
+      "sha256": "fed6e3d6d4d67140c5b992ece7338eea6f86f70be3492fc3512b04a36f8a6dc2"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/ocean_globe.gdshaderinc.uid",
+      "size": 20,
+      "sha256": "8bbeb4beeaa7dc635bf94796ef8a9805905397b9f63b59e6e4d433c75c358203"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/political_surface.gdshader",
+      "size": 9845,
+      "sha256": "86314c3a115f02b7e6704c6a6e068df718f525756af76f6a86d4e4d3969b0540"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/political_surface.gdshader.uid",
+      "size": 19,
+      "sha256": "deeb3ba9ef7ac28bd0a69f47f766ee1d4e98f1b7ee67047407f6cb486649e8e3"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/regional_relief.gdshaderinc.uid",
+      "size": 19,
+      "sha256": "6ff3fda6174bb80fab70db2d1be656a3c1c70b57d8d5aa4ade3244055ad759d3"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/relief_background.gdshader",
+      "size": 219,
+      "sha256": "4664df37f5115c63231cb1c6532286582bea747c4fc9f46cffded079bec8ae59"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/relief_background.gdshader.uid",
+      "size": 19,
+      "sha256": "7a4a211e8c35a65e7003aa674b7934acd92e15876aaa115b15d6d231e8ce4c5b"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/solar_globe.gdshaderinc.uid",
+      "size": 20,
+      "sha256": "1903104b0a6767a7643ad0faaa6b14cf5fe67756571a226b4ac0d3eb24d229b1"
+    },
+    {
+      "path": "military-godot/shaders/presentation/map/terrain_palette.gdshaderinc.uid",
+      "size": 19,
+      "sha256": "57a86cc7c8054a2c5a893a60dee048963db41e15078bd175e2849cf473af0d0f"
+    },
+    {
+      "path": "military-godot/shaders/presentation/ui/instrument_hemisphere.gdshader",
+      "size": 1582,
+      "sha256": "2cd6c82a20018c446b7ec3f3e0f58c3fd0e9dd22f71f5327a78c09d329197bac"
+    },
+    {
+      "path": "military-godot/shaders/presentation/ui/instrument_hemisphere.gdshader.uid",
+      "size": 19,
+      "sha256": "5a7b2be8765c30d594f658da8184d15a4f3b4f8c6b5156124c898e765f3b9b8b"
+    },
+    {
+      "path": "military-godot/shaders/presentation/ui/loading_strip.gdshader",
+      "size": 281,
+      "sha256": "04e1c39f01132184edbfde4ddd644bbb379f765e2f8e3d9939fe7281f4debae8"
+    },
+    {
+      "path": "military-godot/shaders/presentation/ui/loading_strip.gdshader.uid",
+      "size": 19,
+      "sha256": "3e3e949050fdbf0a66587a20d961fac5fe18ea1f6d113f23d5b2a0938deffc42"
+    },
+    {
+      "path": "military-godot/shaders/presentation/ui/menu_painting.gdshader",
+      "size": 428,
+      "sha256": "a0feae2a45dbe2b2e92f67332a891842a4bdf81c9a43ce769ee42a64e9bb8c77"
+    },
+    {
+      "path": "military-godot/shaders/presentation/ui/menu_painting.gdshader.uid",
+      "size": 20,
+      "sha256": "bd9ad174e8455270d764841060597def23d1fe185415e98b14e757cd6012df5d"
+    },
+    {
+      "path": "military-godot/shaders/presentation/ui/menu_shade.gdshader",
+      "size": 172,
+      "sha256": "9e5be2d19d2bcb62d8fd8679bc05225a5097fdc5f413b0df9260b444665f0714"
+    },
+    {
+      "path": "military-godot/shaders/presentation/ui/menu_shade.gdshader.uid",
+      "size": 19,
+      "sha256": "d5e59cdbeaa9af9293829a64109dc14f49502240d38e9b7b226f8a7ee64fea02"
+    },
+    {
+      "path": "military-godot/tests/formal/formal_military_authorized_defend_integration_test.gd",
+      "size": 24609,
+      "sha256": "ff76a85ae3093e1276e8a31b05debdc9972f0a02edf02c555d9069c41fd0d362"
+    },
+    {
+      "path": "military-godot/tests/formal/formal_military_authorized_defend_integration_test.gd.uid",
+      "size": 20,
+      "sha256": "c6646e4e855da2240047049f1fb2ef88c9611261a5a6e2423e734502614ec5cf"
+    },
+    {
+      "path": "military-godot/tests/vnext/military_r3_findings_test.gd",
+      "size": 24864,
+      "sha256": "fabfdc3a7d5e10a997c30c6fc2e5841720675f793a75f494ef75787f46464dc3"
+    },
+    {
+      "path": "military-godot/tests/vnext/military_r3_findings_test.gd.uid",
+      "size": 20,
+      "sha256": "3a644c91563163b0e02a0d66aafd7940682e0e7799f63e407b198aaf66ad8543"
+    },
+    {
+      "path": "military-godot/tests/vnext/military_spatial_capacity_integration_test.gd",
+      "size": 15901,
+      "sha256": "982b1d915e8391fa807e9521561233f6786feaf272b90c506714c89d2a2f6eb9"
+    },
+    {
+      "path": "military-godot/tests/vnext/military_spatial_capacity_integration_test.gd.uid",
+      "size": 20,
+      "sha256": "409e35d76bf32164196fbcffbf7eab6dcc6a0cbc592af7e727683f10499ae2fa"
+    },
+    {
+      "path": "military-godot/tests/vnext/military_strategy_test.gd",
+      "size": 41639,
+      "sha256": "59d90ff430f944b11a139f7e0ae8d5691679984ec27da6bf287a3ddbb3b39dff"
+    },
+    {
+      "path": "military-godot/tests/vnext/military_strategy_test.gd.uid",
+      "size": 20,
+      "sha256": "2fd8ec425bbb3fa8a1ad041a3bf5105dd25fd17ce5c4dbbfd01b92744039028c"
+    },
+    {
+      "path": "military-godot/triple/admin_reference.json",
+      "size": 11604,
+      "sha256": "d857852307afc23131c7e50babe05b222765eab350ce7094289484fd317627ac"
+    },
+    {
+      "path": "military-godot/triple/atlas15_01_layout.json",
+      "size": 13539,
+      "sha256": "cac455b8478aa575ef78278cba46093c02d379474f7c3996f497c71d3b95f011"
+    },
+    {
+      "path": "military-godot/triple/battle.gd",
+      "size": 1027,
+      "sha256": "7e33a9a1b8c1e5fe6fe202ba3f7475bc7d416b95b7b780832b8eef3fd60f890b"
+    },
+    {
+      "path": "military-godot/triple/battle.gd.uid",
+      "size": 20,
+      "sha256": "8bbd287f29ab85d7968df75770c7a0aff3bc813546d437f4da4ed20bc902bed7"
+    },
+    {
+      "path": "military-godot/triple/default_request.json",
+      "size": 2485,
+      "sha256": "1b5b32993ecdd36fe93542c0e8b2bf3c16d10db0e7e7dcd5956ebcd86d06749c"
+    },
+    {
+      "path": "military-godot/triple/local_host.gd",
+      "size": 293,
+      "sha256": "ed8edbe74ab07a283cdb40c6cd276983446e6cfe30f7073fe586005dd759e8f0"
+    },
+    {
+      "path": "military-godot/triple/local_host.gd.uid",
+      "size": 20,
+      "sha256": "75de10e3ccca8d9b2a059e94c20a6fe69d74095460349c91bb98eab20e87a1a2"
+    },
+    {
+      "path": "military-godot/triple/main.tscn",
+      "size": 166,
+      "sha256": "4d77be68ed8be49a0443af3e7502542c09c86484773f83c4be72f4a4ca981f38"
+    },
+    {
+      "path": "military-godot/triple/map_view.gd",
+      "size": 4457,
+      "sha256": "95971a73afddfc884809771c50a7f321ce1d150a0d7bee997920634e219c7318"
+    },
+    {
+      "path": "military-godot/triple/map_view.gd.uid",
+      "size": 20,
+      "sha256": "fcbf9b398556b21bdd03ffb3878ff88f063f965212f78edc64a16ea73a06b987"
+    },
+    {
+      "path": "military-godot/triple/port.gd",
+      "size": 7618,
+      "sha256": "ed1619b0b50c0d145dc581ef5479be42342fcb221ad2bbb2292b9b108464f424"
+    },
+    {
+      "path": "military-godot/triple/port.gd.uid",
+      "size": 20,
+      "sha256": "f9c5e3207b7bbe77135ce19c66bd95e42f382b006db110b89a06c7ae8773fb0d"
+    },
+    {
+      "path": "military-godot/triple/shell.gd",
+      "size": 12189,
+      "sha256": "90b37a4c9020176e4ee7217e2b3dcdddb342c13c9198e765a6218940d01d9671"
+    },
+    {
+      "path": "military-godot/triple/shell.gd.uid",
+      "size": 19,
+      "sha256": "7eec4e43d9df915430a9996797104b11690c0c633ceac45eb70ad931b60fb416"
+    },
+    {
+      "path": "military-godot/triple/space.gd",
+      "size": 2802,
+      "sha256": "da0ebb6216a9d5a41d35630339fa182c79ecc3d56935f53d04dcf35b15488ebb"
+    },
+    {
+      "path": "military-godot/triple/space.gd.uid",
+      "size": 20,
+      "sha256": "ee16f602476ad16ed4a66808b8b1983961ee3a6f7b81e45bc8217c24baf1320d"
+    },
+    {
+      "path": "military-godot/triple/test_continuity.gd",
+      "size": 6178,
+      "sha256": "f0026e39df72cb9068c4194d64b17b7e6a723acf264e7aeaeeda6f986acdbd22"
+    },
+    {
+      "path": "military-godot/triple/test_continuity.gd.uid",
+      "size": 20,
+      "sha256": "50ce8a4365c6a064ca16b7b24aebbee7d2aeed91b380cd7612af9d2c516bcc79"
+    },
+    {
+      "path": "provenance/archive/manifest.json.gz",
+      "size": 41435618,
+      "sha256": "c7526d78138aedc437eac833286ca699b8b3f1513738ed0d334735b4655089e2"
+    },
+    {
+      "path": "provenance/archive/restore_military.py",
+      "size": 11422,
+      "sha256": "d4d1243266c3df3c7a02f32259086ccb77a1130fd271a8a9b0f587332f4517ac"
+    },
+    {
+      "path": "provenance/ARCHIVE_GAPS.json",
+      "size": 63930,
+      "sha256": "0a6fb1547d6b1ed7c513274434f9ea3c9ca66f7a4163fb4bd481f603ba0c245c"
+    },
+    {
+      "path": "provenance/ORIGIN.json",
+      "size": 1108,
+      "sha256": "1fbf0079157e7edb71b13bacc207345c00418c9894700d4a38a6d76b6144df99"
+    },
+    {
+      "path": "provenance/SCOPE_EXCLUSIONS.json",
+      "size": 39298,
+      "sha256": "af0b2579bcaa30f72d5a2f1360016062089cbcbeae38d5abd387d73e99b79664"
+    },
+    {
+      "path": "README.md",
+      "size": 2492,
+      "sha256": "854efc787e57a265a7c3966cc29cd93bee42cbb0dd4760d46505d92e9f4f63bf"
+    },
+    {
+      "path": "research/m-v9/aggregation/authority.gd",
+      "size": 25142,
+      "sha256": "c70969b67ce49af9c6ca724845714caa0ab2b59ac9f3729686b555a8d799b232"
+    },
+    {
+      "path": "research/m-v9/aggregation/authority.gd.uid",
+      "size": 21,
+      "sha256": "c32f4be1567fb489ef408d1450f31b1de3c2ceb5a2253a59c15442c62a76cd07"
+    },
+    {
+      "path": "research/m-v9/aggregation/benchmark.gd",
+      "size": 3498,
+      "sha256": "a7ec93a6258d0029019eec1a5cc053921d340f157cb3e68c9ff2540eca64df72"
+    },
+    {
+      "path": "research/m-v9/aggregation/benchmark.gd.uid",
+      "size": 21,
+      "sha256": "e0d200622706a45a99c29228b398e14fcf9b715aa0eb64d8f8cc9bf1bf90d15f"
+    },
+    {
+      "path": "research/m-v9/aggregation/contact_index.gd",
+      "size": 1597,
+      "sha256": "24bdc0a765194e11c94163952e04bbc0cc3045a85e2695ebf820861e78595d76"
+    },
+    {
+      "path": "research/m-v9/aggregation/contact_index.gd.uid",
+      "size": 21,
+      "sha256": "c02d7fcca27f22f12eeded2788a43b604fa58fa84b5d581da9ae1dadf9d6f8e8"
+    },
+    {
+      "path": "research/m-v9/aggregation/evidence/windows-20261007.json",
+      "size": 108533,
+      "sha256": "5ab33bbb4cae9c9966ad0b46895b0cd51a40d48d0b3c27503f6877e463eb7203"
+    },
+    {
+      "path": "research/m-v9/aggregation/fixtures.gd",
+      "size": 2710,
+      "sha256": "06dca3fc167ea7069d2d1181911669b5b78e21089006c589dafe665608073010"
+    },
+    {
+      "path": "research/m-v9/aggregation/fixtures.gd.uid",
+      "size": 20,
+      "sha256": "5b5c75e2f077e74025c4c8e919402aaeb933ea74f766dbdf587ccf5247b390a6"
+    },
+    {
+      "path": "research/m-v9/aggregation/indexed_resolver.gd",
+      "size": 1409,
+      "sha256": "400f374b5e925e7dfca3d6683d0aafd6096f8320332e42a0db512ec0515376d5"
+    },
+    {
+      "path": "research/m-v9/aggregation/indexed_resolver.gd.uid",
+      "size": 21,
+      "sha256": "60526f18649a93a9bce9613f574d586941de749988f7802bb9574e04fd4d6e12"
+    },
+    {
+      "path": "research/m-v9/aggregation/README.md",
+      "size": 9655,
+      "sha256": "a76dbfb56c9a779a088c75264321b7b23fb7baee270902373b00f1fc6a89a8b1"
+    },
+    {
+      "path": "research/m-v9/aggregation/replay_probe.gd",
+      "size": 1053,
+      "sha256": "8036a52cf689746b0219cac8f9dacaf97364d0f8bd505aa6e6b3bf32d5f90ee5"
+    },
+    {
+      "path": "research/m-v9/aggregation/replay_probe.gd.uid",
+      "size": 21,
+      "sha256": "47e5589ee30e2cf766df2d9dcdf93eabf9e2ae6f4da31f9f14813c7690ca2a4d"
+    },
+    {
+      "path": "research/m-v9/aggregation/spatial_hierarchy.gd",
+      "size": 3873,
+      "sha256": "2361ce09dc841b7c7477b99a3e7e33a7ed9b218b7568a5456de571f3d3ccffcb"
+    },
+    {
+      "path": "research/m-v9/aggregation/spatial_hierarchy.gd.uid",
+      "size": 21,
+      "sha256": "bbb5566a91f99ded232c250927c3f83261dd60243f5e06b25659ce09d6886b0f"
+    },
+    {
+      "path": "research/m-v9/aggregation/TASK4_LOCAL_VALIDATION.md",
+      "size": 8475,
+      "sha256": "544cfe3ee614f70cdede5140a887c58eef97bdcebb30a89d8b3fcf2b06afec54"
+    },
+    {
+      "path": "research/m-v9/aggregation/tests.gd",
+      "size": 23767,
+      "sha256": "1f6d70045f28c92c62503c6091b3c50ce58b9594406063e2b27362d648313b76"
+    },
+    {
+      "path": "research/m-v9/aggregation/tests.gd.uid",
+      "size": 21,
+      "sha256": "e0da2660956ecb82fe27590177de6599a387f0c28b757ea241446817766e6ac6"
+    },
+    {
+      "path": "research/m-v9/aggregation/validate.py",
+      "size": 6666,
+      "sha256": "0f79cd60864e74a71741a3d104278e6a1fa9ae27268546497f41abfca12ac8e9"
+    },
+    {
+      "path": "research/m-v9/ARCHIVE_FILE_RESTORE_RECEIPT.json",
+      "size": 542,
+      "sha256": "2962ba5e6a8785302946d443da1fbae901d5f5feb0ab56df7d618702017731e5"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/ATTACHMENT_CONTINUITY_CONTRACT.md",
+      "size": 3294,
+      "sha256": "4ab7c8b5b9a738494f3376817643242492def75e6432d0781481483c60891e15"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/checkpoint_file.gd",
+      "size": 1746,
+      "sha256": "805db1b2aa8eef0d6bde746650cb5bf810cb502b95e7589e4ffd21f710bdb1a5"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/e2e_tests.py",
+      "size": 14025,
+      "sha256": "66df9d1330f9ef29f33dc256151b892ad9a4e9ec603f5780725156e607ebcc8d"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/host_boundary.gd",
+      "size": 30412,
+      "sha256": "3adaf17967e44359d56d95d410a6830e6757d70e46806f4b0001cd64f83021eb"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/PROGRESS_ZH.md",
+      "size": 106765,
+      "sha256": "e9e6f3e7dfda4762552e4731341ddc20922b37a0c5e8104210feaca47c2e7287"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/reader.gd",
+      "size": 7096,
+      "sha256": "9d416f6505402e943315d80bf734b8c8387b32f5a0e124981e31bebe0ad84ef4"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/reader.gd.uid",
+      "size": 20,
+      "sha256": "9ab3d666c2c6dda104267ec8f25e7bdbc7cda7792d8cc23c5f830e61eacce0db"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/README.md",
+      "size": 129751,
+      "sha256": "c6cca12e2587aa767695efcddf90c6cf6cdac5c861e471a9db266572a2f26b62"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/scenario.gd",
+      "size": 44312,
+      "sha256": "1ea5ab7ce0f8a439e2108a5d3066d622e81e35ce3fa0e19138823ec2dfb40a6f"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/scenario.gd.uid",
+      "size": 20,
+      "sha256": "3cc0dca2e01f5771324c47fe2aa13027c37cfcf1242c150b9f607ca0d5bbd137"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/scripts/A1.txt",
+      "size": 162,
+      "sha256": "3ff689c46d1531010e6990742e59d36971e858750495a70413126d3c19271f44"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/scripts/A2.txt",
+      "size": 182,
+      "sha256": "d082fc9794d19e000031cb56918830b11f96cc088c69a2f619370f38d38e0fde"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/scripts/A2_old.txt",
+      "size": 137,
+      "sha256": "2f9aaf9e3298d87bcb7a36058889a0087fb406b70611ae4c2b82b993a215ffac"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/scripts/A2_soldier.txt",
+      "size": 120,
+      "sha256": "0acc72068e2729ce2a04def9118926c026b0c1aa667e2881b761d7317d1bf0d8"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/scripts/A3.txt",
+      "size": 548,
+      "sha256": "47ffbf0aea741b94f8831b6619c15d0fe1d5e4916eb222fc532439582eb21e7e"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/server.gd",
+      "size": 227,
+      "sha256": "9187eb20a37042b7a73110823c136811e6b70d116d4c9e910387b2d410e35aee"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/server.gd.uid",
+      "size": 19,
+      "sha256": "68d08108987955021eb2de5542535b0988bb2c8d1e897b0d937854c9f3547880"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/session.gd",
+      "size": 22599,
+      "sha256": "89f6782b012bda7b6277976e31334d3f3e1eb9a2a872ac681a97e3bafc0680dd"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/session.gd.uid",
+      "size": 20,
+      "sha256": "38af2d7b98a51c3a5dda8f0650b7e5f65cf589f85ebfd333bc7f288293200bce"
+    },
+    {
+      "path": "research/m-v9/attachment_continuity/tests.gd",
+      "size": 46826,
+      "sha256": "d1ca281d0282c360df21339ddf8a41c2878beddd9d92256785f272c05ce2ca3e"
+    },
+    {
+      "path": "research/m-v9/battle_state.gd",
+      "size": 15637,
+      "sha256": "4975330b0c484b609c0b067a2acb848e408bf945a662fc117852fcf2ebdc7b8c"
+    },
+    {
+      "path": "research/m-v9/battle_state.gd.uid",
+      "size": 20,
+      "sha256": "aa592e9b260ec7002bb49b9801daadb61f39a7e0526cf28d712894dd2cedd3b2"
+    },
+    {
+      "path": "research/m-v9/benchmark.gd",
+      "size": 3777,
+      "sha256": "cc177c3758e6332fb43299c509bae92d7726460ea3e331c039bf3235b69d700d"
+    },
+    {
+      "path": "research/m-v9/benchmark.gd.uid",
+      "size": 21,
+      "sha256": "228ba1ca5586b7f9bc13d8a84f585f47e235287fe665e04bbe4529bcfd69e79c"
+    },
+    {
+      "path": "research/m-v9/continuity/contract_tests.gd",
+      "size": 7467,
+      "sha256": "1eb7fe348343aeedb8a0340ed0fd54ea575d384075622047de6a61b1a88bbedb"
+    },
+    {
+      "path": "research/m-v9/continuity/contract_tests.gd.uid",
+      "size": 21,
+      "sha256": "115f42e8f4a1b739e0e639a215fa41b523e0ebadb315fbf8ca615a0d4e33c864"
+    },
+    {
+      "path": "research/m-v9/continuity/policy.gd",
+      "size": 2777,
+      "sha256": "39b6ed334ba984a7b8c43057a3470ed7867dd979a75943caf7ce8021b8de67c7"
+    },
+    {
+      "path": "research/m-v9/continuity/policy.gd.uid",
+      "size": 21,
+      "sha256": "b400e218da9e93da78cd4a7f276df890d08181980c27d8ee32a6ffd1a1e9ddfc"
+    },
+    {
+      "path": "research/m-v9/continuity/README.md",
+      "size": 2624,
+      "sha256": "5e1752bc4f493983be897106a8b875042d21046426055301fc7a0999e7a6d149"
+    },
+    {
+      "path": "research/m-v9/continuity/run.gd",
+      "size": 6581,
+      "sha256": "455114b53bf5ef4d9bd5ae5f444997ea3a2958ac6ffe7811188491803fb61f55"
+    },
+    {
+      "path": "research/m-v9/continuity/run.gd.uid",
+      "size": 21,
+      "sha256": "b2c652fb6ee4ecdb70079724a74e1660d819ecd9942c12f2b30a9f1a5e4752dd"
+    },
+    {
+      "path": "research/m-v9/continuity/run_scenario.py",
+      "size": 3435,
+      "sha256": "e6131b8e3ce2771186c5a52ff98e0222d6afccfa2b824d92eea1a5a385d58221"
+    },
+    {
+      "path": "research/m-v9/continuity/scenario.gd",
+      "size": 13435,
+      "sha256": "b5bff4e1152888ae1e49b16733165bf692a347e3c5952ca17a22a068e790c69f"
+    },
+    {
+      "path": "research/m-v9/continuity/scenario.gd.uid",
+      "size": 21,
+      "sha256": "cf6586bc894a718bb60e68dd2b73c994a14a0097272d9b805d672db8e23ab0ba"
+    },
+    {
+      "path": "research/m-v9/continuity/tests.gd",
+      "size": 12034,
+      "sha256": "a5e6d049dd9c73a999aadb08e7d67720b8ae04a5900cad33d1ef4c3b6eeb6cda"
+    },
+    {
+      "path": "research/m-v9/continuity/tests.gd.uid",
+      "size": 21,
+      "sha256": "98064722bdd681d2345ce91242116c63249cf5c23e781881129411bc27abf840"
+    },
+    {
+      "path": "research/m-v9/continuity/trace.gd",
+      "size": 2778,
+      "sha256": "5be96d48c83f34b00d4f371808bb374a401f3b95299a51a81306c6467d1833d7"
+    },
+    {
+      "path": "research/m-v9/continuity/trace.gd.uid",
+      "size": 20,
+      "sha256": "60171d56db1aeb725716f2cd252539bad60d8882555beb0e43d42d0ba8bd629f"
+    },
+    {
+      "path": "research/m-v9/continuous/advance_work.gd",
+      "size": 20267,
+      "sha256": "b154a0de9e92b3ce7564c39db821cb8cf20b8ea1185d6e22aba8153c51fbdfab"
+    },
+    {
+      "path": "research/m-v9/continuous/advance_work.gd.uid",
+      "size": 20,
+      "sha256": "680d4393dbdd9d50eb46187e29c709604b0b38a96c51afbcb1180a461a9e1eb5"
+    },
+    {
+      "path": "research/m-v9/continuous/cursor_tests.gd",
+      "size": 1763,
+      "sha256": "70b16e3b57e2542d7c08b857852441e31e8974fea5957b5fdd3c96cabc2a3b89"
+    },
+    {
+      "path": "research/m-v9/continuous/cursor_tests.gd.uid",
+      "size": 21,
+      "sha256": "ce49ad38593497a7546e58213ea2c572d20a6afe0bfbf6ef8f9d3f90b1de12fd"
+    },
+    {
+      "path": "research/m-v9/continuous/load_tests.gd",
+      "size": 8974,
+      "sha256": "b552dd6e2c265774270e57650beaea5b44f169c956b5089383e6ae9035409e4f"
+    },
+    {
+      "path": "research/m-v9/continuous/load_tests.gd.uid",
+      "size": 21,
+      "sha256": "d2b644c9f9d8d6f5136438f07d3a10a22bcc30be0d06564914215976cd7fd7dc"
+    },
+    {
+      "path": "research/m-v9/continuous/long_tests.gd",
+      "size": 7695,
+      "sha256": "6ccd126b615f0f12933f6a5eb4c4aa6825bd1c8da7cd5ae918ceb3daea3d9d42"
+    },
+    {
+      "path": "research/m-v9/continuous/long_tests.gd.uid",
+      "size": 21,
+      "sha256": "abb99fa34006e0429073930bb6f80ea4a986613c2b2e64526e45f8cc64de49ec"
+    },
+    {
+      "path": "research/m-v9/continuous/profile_after.gd",
+      "size": 2485,
+      "sha256": "183de2ae7d74f2187f1718aa30af9123e80e15378ed391cbfd97d3ae40952c5f"
+    },
+    {
+      "path": "research/m-v9/continuous/profile_after.gd.uid",
+      "size": 21,
+      "sha256": "1139049bfdf3fce8f48220ad0e43739d01a152b27805d018c4b66b811824bb25"
+    },
+    {
+      "path": "research/m-v9/continuous/profile_before.gd",
+      "size": 2994,
+      "sha256": "6ac27114af2d7eb4685ae91e3a960abcfd67ffc9a5f0482fc7f738d69560ed2d"
+    },
+    {
+      "path": "research/m-v9/continuous/profile_before.gd.uid",
+      "size": 20,
+      "sha256": "ee2d2b30c13461cb6f40815db70e8f21f7a6eae00a6f8ddcd19735f2c9e01575"
+    },
+    {
+      "path": "research/m-v9/continuous/range_cursor.gd",
+      "size": 1523,
+      "sha256": "478ad6a69f7f8c1dd6396a423f3f556a15b84de2419fcbfdbd028900fa553d3a"
+    },
+    {
+      "path": "research/m-v9/continuous/range_cursor.gd.uid",
+      "size": 21,
+      "sha256": "8cdafc0c40a6efb756990c45d947a4f9867893087a93f7ae0f23b7a0cebeb6d7"
+    },
+    {
+      "path": "research/m-v9/continuous/README.md",
+      "size": 5664,
+      "sha256": "fa0f3ef2798048ad6e5f916843ecd83568f401ed7b4ccaf6c2dbf305488211c3"
+    },
+    {
+      "path": "research/m-v9/continuous/retirement_tests.gd",
+      "size": 3399,
+      "sha256": "11be88f9f2dbb702f2112890baddd3322774ebe7d3638914ba9a95f2516cfd3f"
+    },
+    {
+      "path": "research/m-v9/continuous/retirement_tests.gd.uid",
+      "size": 21,
+      "sha256": "a80a1db131a80f9f49dcc01736a32c159cba35e658774c035bad3b60ead6018c"
+    },
+    {
+      "path": "research/m-v9/continuous/segment_work.gd",
+      "size": 25865,
+      "sha256": "a7b6d6d1bc65451d8eead182a3b7444c4d3af08510a3e787ff2a3476d4ddca43"
+    },
+    {
+      "path": "research/m-v9/continuous/segment_work.gd.uid",
+      "size": 20,
+      "sha256": "a07d1a14463f0a60a208942413d502e290144d1da3ecc3edc3b6c6c95be365f9"
+    },
+    {
+      "path": "research/m-v9/continuous/sort_cursor.gd",
+      "size": 1552,
+      "sha256": "a7e7ae98b10d944cad6274fefd8bf14d39b16fd6700e208e90e714d99e5fe271"
+    },
+    {
+      "path": "research/m-v9/continuous/sort_cursor.gd.uid",
+      "size": 21,
+      "sha256": "422c03d36b301f344172e0d2441840244666de9de5dbdf7a84503b2855a2d58e"
+    },
+    {
+      "path": "research/m-v9/continuous/tests.gd",
+      "size": 11761,
+      "sha256": "28fe2f1608312ba4f6404caafca8a068ea23ed45c3a7a661eea70403f03ad94f"
+    },
+    {
+      "path": "research/m-v9/continuous/tests.gd.uid",
+      "size": 21,
+      "sha256": "28f601fe1c94f21a0c58188230afc7e3bcb17a9ede7ccd7ac0772b6efb15ffc7"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/.gitattributes",
+      "size": 39,
+      "sha256": "9caf54820e8b99755f1c60bc2023cc0738918f2671688d7e152778566ebbab5f"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/CANDIDATE_DECISION.md",
+      "size": 645,
+      "sha256": "7553b9626370d69fa00999b03dffedcb2d5e63251920114caae0e41da0de4418"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/CLOUD_PUBLICATION_RECEIPT.json",
+      "size": 3833,
+      "sha256": "3efd6e9932ff9294ef2f51b0dddbb69c3578d11629ed95f27dcac47fdb5b7092"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/CONCLUDE_ZH.md",
+      "size": 2843,
+      "sha256": "9758e6a09e28c4a56fc605498dc0b85f03c401dfd21c1f9ef1fe5922b1f57228"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/COST_PROFILE.json",
+      "size": 353481,
+      "sha256": "6594a0ed8e0d66d8aa9dcf04cca37a3898b0c8f7a9d053e5aa06581aea651334"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/COUNTEREXAMPLE_RESULT.md",
+      "size": 1121,
+      "sha256": "5619a7075ae6a59ddd38cf3e3f30a24c2e7465be90973bcaa57d6592489dc017"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/EVIDENCE_CHECKSUMS.json",
+      "size": 1746,
+      "sha256": "ddb211ed41481377b0763c3830e241bb224e3328303b80198dc71623602cf89b"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/FINAL_VALIDATION.json",
+      "size": 67317,
+      "sha256": "fd1b6c364e0ee39a9b18c33794fc71b2b3d039d896ee5a756d077934e40bacb5"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/HEADS_AND_SOURCE.json",
+      "size": 9296,
+      "sha256": "2e827f777cd23bdbde2fa386f60823379d3534a1450055ee52deb6b79221ab58"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/MEASUREMENT_SCOPE.md",
+      "size": 3422,
+      "sha256": "402d9806b081f310fc13dd44a2101f74e28f72609c783a84dcf5f5cd7f4f4371"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/raw-evidence.zip",
+      "size": 3947236,
+      "sha256": "4b34109e78e78704335949b29102d411e32792eaaa9bd497faee47cc558c83e4"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/REPRODUCE_WINDOWS.md",
+      "size": 2954,
+      "sha256": "3494ce862d69ac35362af19de4e6c1c630fab6781a23befd58ad8e5f63360dc0"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/evidence/20261009T191132-step-cost/WINDOWS_BASELINE.json",
+      "size": 18698,
+      "sha256": "9a4fadc19f6f36ca4a5833972da8157ea52ced72bda9db26335f0a27b4bca325"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/probe.gd",
+      "size": 12091,
+      "sha256": "afbbbb79d2522f2382a4b6c2cfd35de2788274eb0a0971ae4c1b29e0d570bd5f"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/probe.gd.uid",
+      "size": 20,
+      "sha256": "00cd313d35a8eddbad8489b05eb61ae72ca910a806778f11dca20a309e5d5351"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/run.gd",
+      "size": 6173,
+      "sha256": "e6ba0c044665ed8f6267157bf674b188ec09ea37b177891ad48071ca96845880"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/run.gd.uid",
+      "size": 21,
+      "sha256": "81f0baba86570e4bddc179f77c42d154b33d1d06e8457928b9816cd50bc400d0"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/tests.gd",
+      "size": 3972,
+      "sha256": "56b595bef667c15541b0d87aa922d71664be73644eb5cae3917d49fd896bae64"
+    },
+    {
+      "path": "research/m-v9/cost_attribution/tests.gd.uid",
+      "size": 21,
+      "sha256": "1b6afa420d9cce3e4f8993698e75e49268f90b53696988ffea14bf4e3c08f222"
+    },
+    {
+      "path": "research/m-v9/data.gd",
+      "size": 1410,
+      "sha256": "5b34dda92ce041fe0f47804a66f31e4d9980ead5b45b19a0b140bc5bb8ee479e"
+    },
+    {
+      "path": "research/m-v9/data.gd.uid",
+      "size": 21,
+      "sha256": "5ad6d7cb828870cd7f780555444107795973a812438b97c650922faa31f03fa5"
+    },
+    {
+      "path": "research/m-v9/decision/adapter.gd",
+      "size": 676,
+      "sha256": "d0ce793032547c085f557e6ad76d6076d5e0a9ad4807626ba6282229893f0177"
+    },
+    {
+      "path": "research/m-v9/decision/adapter.gd.uid",
+      "size": 21,
+      "sha256": "e37653f23d4632dde5ea203cd287089bd7afab44ba3b3cd5ecf7d9204d7b9e51"
+    },
+    {
+      "path": "research/m-v9/decision/benchmark.gd",
+      "size": 3431,
+      "sha256": "d4c0fadb098af91ae5e422ac61216155d7abc096294d8dfdc088c82bce0b2119"
+    },
+    {
+      "path": "research/m-v9/decision/benchmark.gd.uid",
+      "size": 21,
+      "sha256": "a5b41ab44e19f6651e6253460fa81e79af3e182a4c14a34269eead9e96e10a23"
+    },
+    {
+      "path": "research/m-v9/decision/decision_context.gd",
+      "size": 7764,
+      "sha256": "974fee4ec2631ca0f3e23005e41a50704a42638ae93ba1e1c1e2611a40907158"
+    },
+    {
+      "path": "research/m-v9/decision/decision_context.gd.uid",
+      "size": 21,
+      "sha256": "ceff050dd9a70a7dc2a1cfb36f5cd3ae1da445f200cb98a4fdf1e58c18d69272"
+    },
+    {
+      "path": "research/m-v9/decision/evidence/due-person-heap-probe.txt",
+      "size": 1273,
+      "sha256": "d0bb21288ac0fd5f14c7e14edfecdfba76f9c3dbd52e6876b41fe420702c8a7e"
+    },
+    {
+      "path": "research/m-v9/decision/evidence/windows-20261007.json",
+      "size": 378908,
+      "sha256": "8f0b0fbede107690d0f7aa25d39ad7b6eff3500b3b4bdef022424c58f51200e6"
+    },
+    {
+      "path": "research/m-v9/decision/fixtures.gd",
+      "size": 10035,
+      "sha256": "6493df0f8d6960e9e2fc4d5f4e5584b03fcf270bddded4f8e8218073f90438ec"
+    },
+    {
+      "path": "research/m-v9/decision/fixtures.gd.uid",
+      "size": 21,
+      "sha256": "a5fec196631f05e87a430ce3408b69f2baf6bf8317d4a92efac678591e8bbbdb"
+    },
+    {
+      "path": "research/m-v9/decision/README.md",
+      "size": 8714,
+      "sha256": "54cd71453ba6448a745284fb7fa92904d48225954db3a65d5bb4ff2a2eb32bca"
+    },
+    {
+      "path": "research/m-v9/decision/replay_probe.gd",
+      "size": 1726,
+      "sha256": "314eaa1ce1320db324334363e8bc146a52f086011bbc02bf4a98409357eb15d2"
+    },
+    {
+      "path": "research/m-v9/decision/replay_probe.gd.uid",
+      "size": 20,
+      "sha256": "21a7e3f1208d34e17e3590dd03db2c05d4fea059c5e3f3669599535da17c7e71"
+    },
+    {
+      "path": "research/m-v9/decision/service.gd",
+      "size": 32604,
+      "sha256": "7b43afaf7ebd608ab2a550e4321f71a3905689c62d41462c2f33d2c6f15e5833"
+    },
+    {
+      "path": "research/m-v9/decision/service.gd.uid",
+      "size": 21,
+      "sha256": "5719c22bb0e55932598ae028962c0333ef8948c20a4cc3dcbccd8f56df842cf3"
+    },
+    {
+      "path": "research/m-v9/decision/TASK8_LOCAL_VALIDATION.md",
+      "size": 10634,
+      "sha256": "333b33787feff55f23d58d12801c5d1e3a981784cbef41916ca5b50bd0605e90"
+    },
+    {
+      "path": "research/m-v9/decision/test_policy.gd",
+      "size": 2242,
+      "sha256": "d291d5fc96ec622fef97651a7303951c8af98bd85d1a97231490a77f8df12c5e"
+    },
+    {
+      "path": "research/m-v9/decision/test_policy.gd.uid",
+      "size": 21,
+      "sha256": "0be895ed4943dc81562587d412f35097a1cc5597801d13b17e568bd5d51eb1c8"
+    },
+    {
+      "path": "research/m-v9/decision/tests.gd",
+      "size": 15878,
+      "sha256": "bd5f564718e2f96f8adb3bc1503086542dea728e6e8dd4bde5f6e7fa51a54a11"
+    },
+    {
+      "path": "research/m-v9/decision/tests.gd.uid",
+      "size": 21,
+      "sha256": "150ec65cbf22764a53c8c71c7e321aaee658de2b2fc90c743d9d63b823891282"
+    },
+    {
+      "path": "research/m-v9/decision/validate.py",
+      "size": 14275,
+      "sha256": "c60c7c74b2e2e7ae6eb63426a61fd5ad999435e9023a3bb8dd691b2c7c0b6d02"
+    },
+    {
+      "path": "research/m-v9/evidence/results.json",
+      "size": 163746,
+      "sha256": "58a83eba926ca3073926370041ef148f090ef8a670ec0327af3bc87407b4c437"
+    },
+    {
+      "path": "research/m-v9/evidence/role_results.json",
+      "size": 133756,
+      "sha256": "e1ea1faaa3b7d4cb47b1cdb6762bb7168e5cfda3706b2762cee27a30b3889ae7"
+    },
+    {
+      "path": "research/m-v9/evidence/sandbox_results.json",
+      "size": 908626,
+      "sha256": "8bdd323d04bdcc26a10412687ececcacb3da541ff04a3eef8ae937a78ae66233"
+    },
+    {
+      "path": "research/m-v9/gameplay/air_defense.gd",
+      "size": 6264,
+      "sha256": "623d483658ee1cfbe61fa984e7ba5b2f95db086e0ef27ada0658810ad5b9c8a3"
+    },
+    {
+      "path": "research/m-v9/gameplay/air_operations.gd",
+      "size": 39490,
+      "sha256": "f049ab67fef86527380223aa082a30238af790a8994d97cc6f1c1df864878743"
+    },
+    {
+      "path": "research/m-v9/gameplay/air_recovery.gd",
+      "size": 10593,
+      "sha256": "7d26b15b9b963d057ac03bc6826c8a588d3e1ce0a890e4e6e1dc763748eb99ee"
+    },
+    {
+      "path": "research/m-v9/gameplay/air_support.gd",
+      "size": 8340,
+      "sha256": "d499b1f246502bb6faba2a9fb12fb89d3f5ee4e197ccef7472b743d949177c75"
+    },
+    {
+      "path": "research/m-v9/gameplay/autonomous_policy.gd",
+      "size": 145974,
+      "sha256": "e12de5a8e266222fac7c7a81e04a9fbfaea95ef49d64a246c2e6f26f90562290"
+    },
+    {
+      "path": "research/m-v9/gameplay/benchmark.gd",
+      "size": 5962,
+      "sha256": "4e52ae7d542165c8e7ef809206f50bfc9428853073aeb054a434bff60f455cba"
+    },
+    {
+      "path": "research/m-v9/gameplay/benchmark.gd.uid",
+      "size": 20,
+      "sha256": "e836d6516a4bc3a4a680cfa4f23c8d7d7a27b190dbd5c2976b56988caaad0e10"
+    },
+    {
+      "path": "research/m-v9/gameplay/CONCLUDE_ZH.md",
+      "size": 8050,
+      "sha256": "62980029c7c7da5495506a15e7dada8015085881acb81b442f2f484af338a18a"
+    },
+    {
+      "path": "research/m-v9/gameplay/COST_RESULTS.json",
+      "size": 65395,
+      "sha256": "1b54f0b95ce825d1e6380365ba4365dcd32ca6615a655861f4061e7094a13152"
+    },
+    {
+      "path": "research/m-v9/gameplay/example_inputs.json",
+      "size": 143,
+      "sha256": "b1c2c1ba28a9e6e32a083a67eb0688aaaa8b242dc3841be96d93a3b51fa65592"
+    },
+    {
+      "path": "research/m-v9/gameplay/FINAL_VALIDATION.json",
+      "size": 49542,
+      "sha256": "84d37a220c25bc0f6f7dfefdf3861d7e85973fd222e840d3acf22bde133d191a"
+    },
+    {
+      "path": "research/m-v9/gameplay/fixtures.gd",
+      "size": 20363,
+      "sha256": "68963b2ddd698b2570aa152a901c9e548b734eda3de4bdeb99d664ccefc650b8"
+    },
+    {
+      "path": "research/m-v9/gameplay/fixtures.gd.uid",
+      "size": 21,
+      "sha256": "948941fddbfaae85c5a7cad14372c42dab08bda1ff085166912ddf71f80f1ecf"
+    },
+    {
+      "path": "research/m-v9/gameplay/focus_continuity.gd",
+      "size": 5473,
+      "sha256": "0d3852dc22da5c60bff52fbf05392ee5dcff4f86326c85a039252dd4219e0d90"
+    },
+    {
+      "path": "research/m-v9/gameplay/GAMEPLAY_ACCEPTANCE.md",
+      "size": 8598,
+      "sha256": "da64292ec39d206267c56bec0f6e63d1ea74833a5ed9f7e335cbc5d99098a785"
+    },
+    {
+      "path": "research/m-v9/gameplay/HEADS_AND_SOURCE.json",
+      "size": 2008,
+      "sha256": "6ba17b99c441601894f1f0d888ca14759459f8110a3b98532c4027df7a2e230a"
+    },
+    {
+      "path": "research/m-v9/gameplay/land_transport.gd",
+      "size": 98521,
+      "sha256": "2947adaf8095129777704b0f285ea0316bbc9caa1135ac4ae0a8e71817da085f"
+    },
+    {
+      "path": "research/m-v9/gameplay/long_tests.gd",
+      "size": 2043,
+      "sha256": "bd71126296059cd35e46ef28e0eb87aa1222f17493fd209655086f9dbdedaf4f"
+    },
+    {
+      "path": "research/m-v9/gameplay/long_tests.gd.uid",
+      "size": 20,
+      "sha256": "01d62af6296a924fd817458d4d9d29b25e1faa89f70f02c7416f28d666fc78cb"
+    },
+    {
+      "path": "research/m-v9/gameplay/medical.gd",
+      "size": 28279,
+      "sha256": "243e482197814a701dbe9894f085b3f2c2b85b199de7f020f9855d04edd60dab"
+    },
+    {
+      "path": "research/m-v9/gameplay/observation.gd",
+      "size": 6183,
+      "sha256": "6db34c68d333399073f4271e52434498a3e4176fd1c8736dbefa483839fd72c5"
+    },
+    {
+      "path": "research/m-v9/gameplay/observation.gd.uid",
+      "size": 20,
+      "sha256": "4d124db29a1696663a7fd8c37e9a8cd5602c856ad11cf7416dbd407233bb0d29"
+    },
+    {
+      "path": "research/m-v9/gameplay/operations.gd",
+      "size": 92614,
+      "sha256": "e9332a4257eee6229a8eca8bbda3b910f6fe70cff4f3ace1f14f18675345ea63"
+    },
+    {
+      "path": "research/m-v9/gameplay/participants.gd",
+      "size": 107605,
+      "sha256": "a16d4a4990fe0819096a4fc37b5b73d3eb23987fa663c4ae504bb35be60288ef"
+    },
+    {
+      "path": "research/m-v9/gameplay/participants.gd.uid",
+      "size": 20,
+      "sha256": "0baf4286685f59d1932c671334f313058e43a70668f52bb6d519a1503964230a"
+    },
+    {
+      "path": "research/m-v9/gameplay/participation_tests.gd",
+      "size": 10877,
+      "sha256": "618af49e51291d2e30b1bcf554a1ec950d28b1349f31ce288289de04aaf19406"
+    },
+    {
+      "path": "research/m-v9/gameplay/participation_tests.gd.uid",
+      "size": 21,
+      "sha256": "cad9680ba0aef16e52f916dd05db93098dfc1186adcea7fe085d1c7cf1581b0a"
+    },
+    {
+      "path": "research/m-v9/gameplay/policy.gd",
+      "size": 13298,
+      "sha256": "75c0df34c6600391ff17a9a62b624886678019871b20061913b5a5a9b5df8cda"
+    },
+    {
+      "path": "research/m-v9/gameplay/policy.gd.uid",
+      "size": 21,
+      "sha256": "c464728df082975f5d2d788489a1f30c058fcd04b8536b59c99dbac9ec7e8e57"
+    },
+    {
+      "path": "research/m-v9/gameplay/prerequisites.gd",
+      "size": 8460,
+      "sha256": "7131359ca7386aaa431a10dfd372570b00e0517dd64c76bdfe8375becd2bd3a8"
+    },
+    {
+      "path": "research/m-v9/gameplay/PROTOTYPE_RULES.md",
+      "size": 6289,
+      "sha256": "6352eb0973d15e4877cb757db3185ad4f190ffdb043d7ee7c3e2521d91269e5f"
+    },
+    {
+      "path": "research/m-v9/gameplay/README.md",
+      "size": 5657,
+      "sha256": "d43b0e1b8851b519b94d41748a28c940d5d766261bb32cb5cd7644446b5554ac"
+    },
+    {
+      "path": "research/m-v9/gameplay/reserves.gd",
+      "size": 4654,
+      "sha256": "5a163a0492cbe7733362609e61c637ab578649dc9ecd7dd8d0fc16a763f65901"
+    },
+    {
+      "path": "research/m-v9/gameplay/run.gd",
+      "size": 6751,
+      "sha256": "259e850582c1685491cd54f56ae572e5ac433ccc9fda977347175e8cc9bc54d5"
+    },
+    {
+      "path": "research/m-v9/gameplay/run.gd.uid",
+      "size": 21,
+      "sha256": "16919d8556b0d344bdeda9f48d3554daaa86efeea92a1c6528621925760e2caa"
+    },
+    {
+      "path": "research/m-v9/gameplay/scenario.gd",
+      "size": 12418,
+      "sha256": "aaae5c16f68ff192f41f0fad34a6a53cef878cdbf267e90b486a7d276287597d"
+    },
+    {
+      "path": "research/m-v9/gameplay/scenario.gd.uid",
+      "size": 21,
+      "sha256": "be465d2980f7ebe301c2b65784061f6884cd42cf6c1d87378a5435ebd488d1ca"
+    },
+    {
+      "path": "research/m-v9/gameplay/SCENARIO_RESULTS.json",
+      "size": 146220,
+      "sha256": "b945e9b145a4d619e36b8a889b7726ee7eb2531aa649d95bb77c3c21f3649350"
+    },
+    {
+      "path": "research/m-v9/gameplay/scenario_tests.gd",
+      "size": 15205,
+      "sha256": "742602c23f04b6d1ac96d3179c745f5236618e9451572a195f88fe7ed2e86a56"
+    },
+    {
+      "path": "research/m-v9/gameplay/scenario_tests.gd.uid",
+      "size": 21,
+      "sha256": "0a9d8a1ef612e4aae5f3410dbc7295045dd3f88b091df040980195d06a2c5ed7"
+    },
+    {
+      "path": "research/m-v9/gameplay/sea_operations.gd",
+      "size": 39103,
+      "sha256": "a9f2b365bb5ee12161cb81df11d58de60b600a53390401ba5c905b3c5e19127f"
+    },
+    {
+      "path": "research/m-v9/gameplay/sea_recovery.gd",
+      "size": 20952,
+      "sha256": "7b7ef493bd873155e4325e7611aac85fc36e444019750196c96f438d8665335d"
+    },
+    {
+      "path": "research/m-v9/gameplay/sea_support.gd",
+      "size": 13121,
+      "sha256": "b22c1188b222e120a6601a02ce9df7046cdaf9239d400b577eef2f0f09759905"
+    },
+    {
+      "path": "research/m-v9/gameplay/sea_transport.gd",
+      "size": 44320,
+      "sha256": "4e914bb3f7d7ca54b8954712f7729e84ec2f513733a47979bb017d4d62c03da9"
+    },
+    {
+      "path": "research/m-v9/gameplay/service.gd",
+      "size": 45115,
+      "sha256": "bd65f3e37b831d1171b01b16edab6e220a438e1ae0f331ded04136ac6db367c6"
+    },
+    {
+      "path": "research/m-v9/gameplay/service.gd.uid",
+      "size": 20,
+      "sha256": "905e3850dd2b6a290e407ef4ea77c3f3e9f5940e8fda52cc663a179e43fc240d"
+    },
+    {
+      "path": "research/m-v9/gameplay/tactical_actions.gd",
+      "size": 178716,
+      "sha256": "9e0e9b14fa130dad48ce871f77e9c0de48445f84e5836c0e814c4edbbe1f82c7"
+    },
+    {
+      "path": "research/m-v9/gameplay/tests.gd",
+      "size": 7950,
+      "sha256": "0fc7f28e7d2866fab3dfcfe13f720ffab44292f13e166b324a834d28a500f571"
+    },
+    {
+      "path": "research/m-v9/gameplay/tests.gd.uid",
+      "size": 20,
+      "sha256": "86c528f8d13351b0fc9bde4f3422509e628a968a1a35a6c0178e5c06eb17c5c1"
+    },
+    {
+      "path": "research/m-v9/information/benchmark.gd",
+      "size": 3189,
+      "sha256": "0f67b43bff6065b3dc560dac7baa50dd85fef59e05fba70a30ee52093fdb7d47"
+    },
+    {
+      "path": "research/m-v9/information/benchmark.gd.uid",
+      "size": 20,
+      "sha256": "f4eeb6eda9cc42b7cca5d000cbbe0ad6a8752f02f8db282d186231dd044a6714"
+    },
+    {
+      "path": "research/m-v9/information/decision.gd",
+      "size": 669,
+      "sha256": "a773c0fc951c2454b27b8fabf8a69442afb64f0515f529bc09f7fb4dc326d141"
+    },
+    {
+      "path": "research/m-v9/information/decision.gd.uid",
+      "size": 20,
+      "sha256": "f37bc5bcc2300d4821535301b80769795d204a9c947340c159db60271232a97c"
+    },
+    {
+      "path": "research/m-v9/information/evidence/knowledge-parity-probe.txt",
+      "size": 1484,
+      "sha256": "58e0d8d35614af9c6950fd2304d7653df75680dd4269b05b2aae443f8e277f66"
+    },
+    {
+      "path": "research/m-v9/information/evidence/windows-20261007.json",
+      "size": 264536,
+      "sha256": "3293d0e83dad021d57276f3ec89fb72f6c567fafc0684849dff2e187b4d2cf1d"
+    },
+    {
+      "path": "research/m-v9/information/fixtures.gd",
+      "size": 4286,
+      "sha256": "6d4c8c646bc06e7c3ce5ae932f3754a17a841c45a7a64f56e0f4a7651dd03ee7"
+    },
+    {
+      "path": "research/m-v9/information/fixtures.gd.uid",
+      "size": 21,
+      "sha256": "3cb08c0d54ae95d0b8b727f64de338598fcb58842a322c59db0cad62a921a153"
+    },
+    {
+      "path": "research/m-v9/information/reader.gd",
+      "size": 892,
+      "sha256": "817364cea8383fc1bc6bede3fdd83f36b83e3182bac07b646a3d05045e32e116"
+    },
+    {
+      "path": "research/m-v9/information/reader.gd.uid",
+      "size": 21,
+      "sha256": "640a97c5735d54799a3f7e8585e09a75fbf26b0d303e5acca3b6578479048bdd"
+    },
+    {
+      "path": "research/m-v9/information/README.md",
+      "size": 8527,
+      "sha256": "dfa4fc2148e19bbc0298c8094cf9913117d165984385617c40ca4cf92f1bafd9"
+    },
+    {
+      "path": "research/m-v9/information/replay_probe.gd",
+      "size": 1825,
+      "sha256": "7941d978f04cd11c39e058c657e2ff4ebc5c292465fb648e4db2e91cdd3c6c43"
+    },
+    {
+      "path": "research/m-v9/information/replay_probe.gd.uid",
+      "size": 21,
+      "sha256": "f2f4ba23e3a37ca5f259a510894943fd3d74cc8101b6240f59fe9dda468faa1e"
+    },
+    {
+      "path": "research/m-v9/information/service.gd",
+      "size": 74371,
+      "sha256": "3420e192856312493e795c807a7b6484e634042e3395401f733d091fc9d2b3af"
+    },
+    {
+      "path": "research/m-v9/information/service.gd.uid",
+      "size": 21,
+      "sha256": "1f345de446e38033c4d7e18ecaf495e824da1fcfbc9a210e6f54d3a04b842a98"
+    },
+    {
+      "path": "research/m-v9/information/TASK7_LOCAL_VALIDATION.md",
+      "size": 11712,
+      "sha256": "3793becadd11e30b88947dc8a12e5dd592b009a069194a2f6572535a92acfc08"
+    },
+    {
+      "path": "research/m-v9/information/tests.gd",
+      "size": 18577,
+      "sha256": "14e1428e573bcdc6a73772c07a3e88636e664d0cadcd91d9149b31a0bf432bc6"
+    },
+    {
+      "path": "research/m-v9/information/tests.gd.uid",
+      "size": 21,
+      "sha256": "9f46634a19abe19993e629f59cc5d7db170370a1a57e06e9d642ad7cee1ba1c9"
+    },
+    {
+      "path": "research/m-v9/information/validate.py",
+      "size": 12794,
+      "sha256": "c478a29a191f8f5155712fd7f74ce98cf2f666410d5ac066b9b8954b3bb577f3"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/admission_fixture.gd",
+      "size": 312,
+      "sha256": "ab6fc79fa5e3c0c92d196753a9e1f46405e10f2b1da3c26fd9ae2920a78c0206"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/admission_fixture.gd.uid",
+      "size": 21,
+      "sha256": "7c2d260a8e4c6e04c0c19cffcf4e286df108a84d748d98f383c5563f018bf445"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/audit.gd",
+      "size": 2044,
+      "sha256": "10c2676dc0dccbf95fd02f82e0cbd02f6b5f284b576f2035c8bec2d5b504a094"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/audit.gd.uid",
+      "size": 20,
+      "sha256": "c6de2681df824420f1dd508626b92aea994fe67875edae002f10a940df68cd4d"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/benchmark.gd",
+      "size": 4545,
+      "sha256": "3df141f59aa62ca534dbe2e05314941ad7b47be46af5b1d1d636eedbcaf86cf8"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/benchmark.gd.uid",
+      "size": 21,
+      "sha256": "48550c2830221cffa1aa90e2db9cd27f1c62fa851e0042813c11a8c14e00bf87"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/bound_scenario.gd",
+      "size": 1699,
+      "sha256": "16c99a6f07151199ed12d1393c6ef4b5a9dc2a2d7b6ee66601b4ba5134d9fb53"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/bound_scenario.gd.uid",
+      "size": 20,
+      "sha256": "3c0888eee00880b62d0cbbeef044202afab49df36a2d5e8260c87aa44e84b990"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/client.py",
+      "size": 24297,
+      "sha256": "0003d47b760c03e47e0975bd8aced9f3f98a62a2549646a77efa99b722a4ed7b"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/CONCLUDE_ZH.md",
+      "size": 2503,
+      "sha256": "d7a4a8493e9923883c997a3b5578c4728c001ff16bb61046a27262abc0a43c82"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/COST_RESULTS.json",
+      "size": 115292,
+      "sha256": "9a07889a8aba9766e0b24af5c43f14a56369aaad70aff08282e90c6f2b10bae5"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/costs.py",
+      "size": 2888,
+      "sha256": "482d069276f8dc199fcf9c2a72244f5de3b6902f3529f15f1c46400bf0b2d709"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/e2e_tests.py",
+      "size": 17476,
+      "sha256": "e67b0bb8580f5103abfdafa151d8f4777c3bd3430d818c34f8ebf4a7b18d3fa3"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/FINAL_VALIDATION.json",
+      "size": 62446,
+      "sha256": "169ee50b96402153296342dbe24e6c319b54b2732605fd2725a56f39c176841e"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/HEADS_AND_SOURCE.json",
+      "size": 4252,
+      "sha256": "80592e1182e0166dda28a1d3049dd85ff4ba7f644cf93fbcbba25ac3f2a0da8c"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/input_provider.gd",
+      "size": 705,
+      "sha256": "f7fec3698710b01e733434594de22e35e920fd4c25131843d045ee4c34096e05"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/input_provider.gd.uid",
+      "size": 21,
+      "sha256": "b5755fc9d2a57004fbfbf750c2ecbbe8f7d55d4d12f28b86a9061e5523801dd2"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/INTERACTION_CONTRACT.md",
+      "size": 5507,
+      "sha256": "4196064908da426583ea38d8a2beb4db7ef409300aa574eacb99e9357cd9b82b"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/reader.gd",
+      "size": 5847,
+      "sha256": "163e44e23934fe26afc80a9ed4de7cf9a9618121bb270aec699e2136fb799d83"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/reader.gd.uid",
+      "size": 20,
+      "sha256": "ab056c75460364bf5fe8e5fc69dba7325ee683b9a7405b9594b2eee1cad0c3d2"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/README.md",
+      "size": 892,
+      "sha256": "47215f67f3559e5d2fdbfb4d6b2af00ff8af6162a69e0915df6b7a967faca47c"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/reference.gd",
+      "size": 1392,
+      "sha256": "7e8945d97e39d28c077bfcc4eb739ee62a07116ff06df8c08bb571539c615f53"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/reference.gd.uid",
+      "size": 20,
+      "sha256": "bbc6d11b26cf5c65afc089c4fb82f2fe35bef914a031d891ffdf3beb0e6bcd79"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/scripts/company.txt",
+      "size": 98,
+      "sha256": "979d9ff98e71acea1558681ada6a705411f4fbc2487eeefddb7655fd8b9bd5bc"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/scripts/S1.txt",
+      "size": 122,
+      "sha256": "574188150f461ca2651a4daa059b41e511c050184327193a232ed6424fe64690"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/scripts/S2.txt",
+      "size": 162,
+      "sha256": "fc038aa71c02b44f0f61bc4621c84b614bdfb611534e885ef5564860ed945c14"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/scripts/S3.txt",
+      "size": 180,
+      "sha256": "82f45936fb7492d8c417e4530a0e64e9fc2161bcf8190f2766700cccbd93aa49"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/server.gd",
+      "size": 3337,
+      "sha256": "52147f52f3c3c129dafbc97a43cef5462dd88e4f76159702fa5082d07efd7f59"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/server.gd.uid",
+      "size": 21,
+      "sha256": "f95c7f1586efc1e7365ac914f145a000278d620acdd403b9804c822e59a66205"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/session.gd",
+      "size": 14522,
+      "sha256": "c6b3b21d01e2786462ebb23fa532fd785936d10ef2f0d6a0446625541dc73c4e"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/session.gd.uid",
+      "size": 21,
+      "sha256": "7396e0542c539969e22ddb788539396da84e91ad989f9b053c671cff6357f519"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/SESSION_RESULTS.json",
+      "size": 10772,
+      "sha256": "71d98a248ca41f81dcccfe3afd94698a15059daf9d3821a1f58132c13db6fb5c"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/START_WINDOWS.md",
+      "size": 2334,
+      "sha256": "67bdf846a41d3dbfc97c19640cbc87bc7b75b92d62d2c30f49f1e450c55abb58"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/tests.gd",
+      "size": 11613,
+      "sha256": "3ac3dddd258dcedf1a6518f04c939b7954ed46d85cb1221e95ab186134b44915"
+    },
+    {
+      "path": "research/m-v9/interactive_observer/tests.gd.uid",
+      "size": 21,
+      "sha256": "e37b1f9373286b7858ce58fee01e885dd500edbc61f4197848ad4715ecd8ff99"
+    },
+    {
+      "path": "research/m-v9/iteration/ACCEPTANCE.md",
+      "size": 4919,
+      "sha256": "c04f898c5fed55c8c91ed4499096fb0623d8c71a29b4a1b322a3aafa915907e5"
+    },
+    {
+      "path": "research/m-v9/iteration/cloud_validate.py",
+      "size": 14290,
+      "sha256": "95faebfa5b72d5c2cc46a45ac8e30cd11df322304e77ce7e00cd6f70a6c391c2"
+    },
+    {
+      "path": "research/m-v9/iteration/DESIGN.md",
+      "size": 1893,
+      "sha256": "5bf31beefc48899046d38228ec4d24862a70975dbfc95d71a63def99b38a1498"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/audit.txt",
+      "size": 1715,
+      "sha256": "99fa4072cb7f60e5d7541a0873ac1e029062f6eb8f67d7beea7e59baf8510bec"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/baseline-known-failure.txt",
+      "size": 946,
+      "sha256": "a28737837795741db99a6f745c15aa65e3e5260dbad31a849ccf19c606427136"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/continuous.txt",
+      "size": 10372,
+      "sha256": "33cdcc0ad501e203448bdb54e567938bf6b00b28b6b6f3842377e3003fdbd70e"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/contracts.txt",
+      "size": 126,
+      "sha256": "d837fa6f404fcd0319eb079b49eca3978021583e8e2f03b6ca70e05e80de77f8"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/cursors.txt",
+      "size": 112,
+      "sha256": "0af24bfa9f458b9938c4fdcdbec499c9e7df05e6f5fb5c098f921cccaf85ee76"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/gate.json",
+      "size": 72040,
+      "sha256": "73a5dec7585d6761dcb0ea869957c9d3b1e44ec98dd96758e239e018979e7727"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/integrated.txt",
+      "size": 119349,
+      "sha256": "7c5a6599e9778f97c7f581b9f312bc1e163fa7c0f87180447a8ad89a6c623881"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/load.txt",
+      "size": 4633,
+      "sha256": "157a1ffda6479f2695b39e2a0116fd3e6746b011d0d3f023e8db256fa355863a"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/long-cli-summary.json",
+      "size": 3526,
+      "sha256": "65c2ee83ee75bf36e9f09cf1280b332cbf025367b82f3e48bba68f058596d608"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/long-provenance.json",
+      "size": 10350,
+      "sha256": "a563fb9a148749aa6025b3a68aafc9a3d5e4e003e00c9eed9fbdb774d60c067a"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/long.txt",
+      "size": 15405,
+      "sha256": "67e687ddc3c545f9e65faa4ec53382b2e762e585a2c9671a99b60b9a53584dd6"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/main-provenance.json",
+      "size": 10348,
+      "sha256": "7a179b21257174e8d63045ee7292c6705acfeec8c6021128844df0b2e9d92d15"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/main.json",
+      "size": 134924,
+      "sha256": "0625d6d712e427e8c47005cb65ef148342221ced2f5ab382f5447261c5e8162e"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/metrics.json",
+      "size": 29955,
+      "sha256": "ba84f5403e59f9da04e020306a17a6a604786457498a1e372fe69934cbac8d9f"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/profile.txt",
+      "size": 9004,
+      "sha256": "9dccb1b5a9df54eb801c93a3aab6f9beebe6ae08d291ccd4eedae32f20cf7fdc"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/range-review.json",
+      "size": 1250,
+      "sha256": "808f0af3bdf0c4b0792cf35a1e6a01992922b71ced189df182df1b922439beda"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/raw-index.json",
+      "size": 3284,
+      "sha256": "c620b4a36d0fd677067aa65c913b8f3827acac8c72078c66d338aeacb774dab2"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/retirement.txt",
+      "size": 5716,
+      "sha256": "daa1e6958a5d2a58f2417f6df41d740d592f8bb2de2ab4e6ea8b508244a8e8cf"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/spatial.txt",
+      "size": 318,
+      "sha256": "2438aa806a553fbec0eb0f95921fc97e07a8a2c1f10b7a908f705134122581b6"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/timeline.txt",
+      "size": 10950,
+      "sha256": "e661239a79f27d0fd3ed52cdfe69857dc7d301f60b4df7e5d4c8e960fa839d6f"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/version.txt",
+      "size": 33,
+      "sha256": "d906c418ae6e060c0f77d2fb75185b47b281d5822819309477027188554afe12"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/final-linux/world-data.txt",
+      "size": 8112,
+      "sha256": "56231a8b25d17e692fda9f5b1be0eaa6c5fad6d6b4f107690a894602f52a2c2b"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m0-linux/baseline_golden_independent.txt",
+      "size": 946,
+      "sha256": "a28737837795741db99a6f745c15aa65e3e5260dbad31a849ccf19c606427136"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m0-linux/codex_audit.txt",
+      "size": 1715,
+      "sha256": "99fa4072cb7f60e5d7541a0873ac1e029062f6eb8f67d7beea7e59baf8510bec"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m0-linux/evidence.json",
+      "size": 56946,
+      "sha256": "2fba353bac1926b6fdf9c9e4f47d39db693bf96840dfa9561540b766ab607552"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m0-linux/unified_formal_world_economy_golden_test.txt",
+      "size": 946,
+      "sha256": "a28737837795741db99a6f745c15aa65e3e5260dbad31a849ccf19c606427136"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m0-linux/version.txt",
+      "size": 33,
+      "sha256": "d906c418ae6e060c0f77d2fb75185b47b281d5822819309477027188554afe12"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m1-linux/expanded-spatial.txt",
+      "size": 318,
+      "sha256": "b5f2b1ed83818a2faa8231dc2859c7ee900a67090fd4b4ed3b13da49d41cff81"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m1-linux/expanded.json",
+      "size": 29848,
+      "sha256": "b312c8d7d5c2199864adfc0f49237160e8f9fe55d4a34839452a3c531f6dddfd"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m1-linux/knowledge-spatial.txt",
+      "size": 318,
+      "sha256": "2438aa806a553fbec0eb0f95921fc97e07a8a2c1f10b7a908f705134122581b6"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m1-linux/knowledge.json",
+      "size": 9683,
+      "sha256": "e9c047cd0e0aeadfda66f87cc39298abda48dc6435b2dd6ada4507b1702f44e9"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m1-linux/reuse.json",
+      "size": 1204,
+      "sha256": "b7db8e7416b51743902f966d5ce20910eecde7c13b596a52a1daa3b0f3e536f9"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m2-linux/contracts.txt",
+      "size": 126,
+      "sha256": "d837fa6f404fcd0319eb079b49eca3978021583e8e2f03b6ca70e05e80de77f8"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m2-linux/gate.json",
+      "size": 32091,
+      "sha256": "5331ac442e683afdf6130bc4c90828ffbd54bcfee720ecf21cfe29f634f13c61"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m2-linux/integrated.txt",
+      "size": 116919,
+      "sha256": "c9963c5b6882daf090a6abae29c07050519faba4eff7ee31bb273b03aeff71e7"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m2-linux/main-provenance.json",
+      "size": 8945,
+      "sha256": "1bfd8d84b6df313694b5acba20a8c677c3c464316b6b3aaf69a27761688a0ab2"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m2-linux/main.json",
+      "size": 129793,
+      "sha256": "057848facf89c556644d6d04a7ab878a2106b82bceae063d43eadcdd7a5d2b9d"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m2-linux/timeline.txt",
+      "size": 9735,
+      "sha256": "28b2e47464cb1f03916ec572eb8885b30d3d8fcd3210f4f2a02017c2febd3b54"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/before.json",
+      "size": 10726,
+      "sha256": "4e56c6c8e3068d0bc3ee077e837c7f9b9e7ef7cd7190aaa65dc3ee7b1e4b8a2e"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/before.txt",
+      "size": 5845,
+      "sha256": "aec8f1e7e48e3293a16000acac5aabf12d8c0134df031bc3e7582dfb78a69603"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/continuous.txt",
+      "size": 4107,
+      "sha256": "5b0933f31a5f569307c368ebff3e88a938fdd098d2764082de24e966217c82fb"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/gate.json",
+      "size": 40223,
+      "sha256": "d4266f1054e7955c2eff32fcaf9a62738f95de27d4c52bdda6e3bba94b0275ea"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/load.txt",
+      "size": 3324,
+      "sha256": "7ae24743f80fee0bbcd942ffa917da98bc0e89191dffae7155c4f24278739908"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/long-cli-summary.json",
+      "size": 2128,
+      "sha256": "bf7465058e2010954e00a3490d05a8e1da1b78139b55f4e28f63982c2d2f891a"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/long-provenance.json",
+      "size": 10218,
+      "sha256": "7e8eec1bfded750aa55b1d9e3226aa0fb66a0d9ba1fc3afa0a3c7a95584c6d40"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/long.txt",
+      "size": 7657,
+      "sha256": "98217645ffa851ff3cf9e6b6d348ff18526af83f18d9e5a54e85c03905fb4329"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/main-provenance.json",
+      "size": 10216,
+      "sha256": "8fbb27dea36384991d99075aeaf738c20d4dbf37c74d6c6745dca7e89d9c168c"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/profile.txt",
+      "size": 8984,
+      "sha256": "71f914b24499180b9a20b596289c6ebfeac932d47134d8e3fd2ade1d1f66c716"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m3-linux/timeline.txt",
+      "size": 10950,
+      "sha256": "e661239a79f27d0fd3ed52cdfe69857dc7d301f60b4df7e5d4c8e960fa839d6f"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/environment-interrupted-completed-long.txt",
+      "size": 15440,
+      "sha256": "f050bda34fea9ef7597d1173a560ffdb7676f690dbe9a5b7767b2f5546a59815"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/environment-interrupted-steps.json",
+      "size": 70247,
+      "sha256": "09a579ebf2d3c3183f3ab7748429aa8c0f17184f0bd59ba6a39db0d4e2f3a450"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/environment-interruption.json",
+      "size": 625,
+      "sha256": "39ae524c4d3c8a15dba0f7c3b501d58e589c5f747c61366896830a18ac4305fe"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/long-cli-summary.json",
+      "size": 3484,
+      "sha256": "a689ab01843e6217acaa9566fd226901c050b939ea1f2202762f6dd0ce47983d"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/long-provenance.json",
+      "size": 10218,
+      "sha256": "e550f389d9ced4c0fe7d83cc04f8c1af0177adc5318616c74a0598335d163121"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/main-provenance.json",
+      "size": 10216,
+      "sha256": "cf0b85ff51366665535743262b7b2ed34bd26a208c6b422c11a453a5e478b0a4"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/main.json",
+      "size": 134918,
+      "sha256": "09cb91b5143abe4275186906f16521f30f7707247eeb490962c7c45913519078"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/pre-retirement-final.json",
+      "size": 71113,
+      "sha256": "7da7c55fac0ac650529fd8f659994b0462d7566dd131d9d690a2fe47b7924b36"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/range-review-candidate.json",
+      "size": 1086,
+      "sha256": "e3ced6e3a101f3ca62f46862a76118a55372b3f59dee1d2f69d0bf7dfda046cf"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/retirement-after-provenance.json",
+      "size": 675,
+      "sha256": "f935ff4b2dc3d890d78dd31595db1b67a5a25b37ed3864472a3d75d701f4319e"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/retirement-after.txt",
+      "size": 1369,
+      "sha256": "2331dc822d05cd03d8b76677b3dc61a00027aa21c6055dc2dea6226ca7539a70"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/retirement-before-provenance.json",
+      "size": 586,
+      "sha256": "958a20c3d45fef8fe832e2448caafd87dabfb31ea17b63a3f618e01e4e5110b6"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/retirement-before.txt",
+      "size": 1357,
+      "sha256": "e8a72ce732f19b9b4fa4eb97d6e3dd12288df4f83882498faadb504470120489"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/retirement-counterexample.gd.txt",
+      "size": 1438,
+      "sha256": "efafdb6775ce68d30e026fe03f5d2facfd10e4cb4f27ffa0d8c31cfbb0b5b018"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/retirement-targeted.json",
+      "size": 13738,
+      "sha256": "2f50130f4263f1d03c3649e2baea0e6793ee38a4f7dbd4a102fad378db86bdc2"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/retirement-targeted.txt",
+      "size": 5707,
+      "sha256": "d5d163e797eae4575b73154fe50f7eab36832b7e4ff61515403391cf3163539d"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/retirement-test-field-failure.json",
+      "size": 13821,
+      "sha256": "334583f43afe5c1e38a425b2d3009b5296e78decc426f09e2c2745ca24a340f1"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/retirement-test-field-failure.txt",
+      "size": 3002,
+      "sha256": "3d8bed9379ce3ab4e87a91bea5e2f93c3735a03cf99feedb62cf8ad585bc5634"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/m4-linux/timeline.txt",
+      "size": 10950,
+      "sha256": "e661239a79f27d0fd3ed52cdfe69857dc7d301f60b4df7e5d4c8e960fa839d6f"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/STOP_SUMMARY.json",
+      "size": 718,
+      "sha256": "0fdd60f321df7d4fb5f4414c1c14cab694ae1170f7f8e32375c7fd6c964b5fd3"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-counterexamples-executed-new_experiments__war_resolver__spatial__tests.txt",
+      "size": 978,
+      "sha256": "a6db42352f285f9bb25cd8a851ef7be3a1518331fc52ad337d419e7ddc2ac59e"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-counterexamples-executed.json",
+      "size": 9853,
+      "sha256": "13e739bf8b4ee271e1e4dbb763c2ff37b3e6cfb1f3820becba65b44c9fdee9f4"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-first-new_tests.txt",
+      "size": 319,
+      "sha256": "fbc294109cc6ad6dc0e5696322b3eef0d922b3b1cd044c563af2f8963b12e122"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-first.json",
+      "size": 9507,
+      "sha256": "52d834b0cc14dd0926d79c9ef0df12ac71794016bdfa8a7c2819821d489c09f1"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-gate-new_experiments__war_resolver__spatial__tests.txt",
+      "size": 318,
+      "sha256": "4a0f6c38df8db0751246bc19ac2b010d84a885bcbf45f543d7cc49cb98ef8791"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-gate.json",
+      "size": 29851,
+      "sha256": "3b14cdb1c0d87a0a72125e1922b21b3d6f88c081ba13bb8dd6303f338a78c7aa"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-lod-counterexample-new_tests.txt",
+      "size": 834,
+      "sha256": "a14acefe42c7668d3f56bdb840b30dbfa2b222bf60a2931b7179791d662dfb17"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-lod-counterexample.json",
+      "size": 9539,
+      "sha256": "c1a2f9382f003db3787b9c593d7fb376f511c9a1be1b34b5c872ea77897c4656"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-lod-fixed-new_tests.txt",
+      "size": 318,
+      "sha256": "4a0f6c38df8db0751246bc19ac2b010d84a885bcbf45f543d7cc49cb98ef8791"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-lod-fixed.json",
+      "size": 9507,
+      "sha256": "ef245ed9c973f04178a558e5e1767c513dd56fc6df5910ba45245d7644d04415"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-physical-counterexamples-new_experiments__war_resolver__spatial__tests.txt",
+      "size": 6741,
+      "sha256": "e62dc5ad63272eefd755d4c9907150154334d0cb6ceb0ce240848f381f36d180"
+    },
+    {
+      "path": "research/m-v9/iteration/evidence/stopped-linux/task9-m1-physical-counterexamples.json",
+      "size": 9852,
+      "sha256": "fb251bdae1c78d35ac58ce479e1046881d451f557057481b8c6eb38b6fa2ac3b"
+    },
+    {
+      "path": "research/m-v9/iteration/FINAL_ACCEPTANCE.md",
+      "size": 11289,
+      "sha256": "11596f3cdf14db810cf37804ad5d6eff1f9d2bb092f77606181efd31311938d7"
+    },
+    {
+      "path": "research/m-v9/iteration/GOAL.md",
+      "size": 1907,
+      "sha256": "84c808659aafefc67d817bad93b043205bc7f5bba2b8c12b772e510d5a058a0f"
+    },
+    {
+      "path": "research/m-v9/iteration/ITERATIONS.md",
+      "size": 11528,
+      "sha256": "fa921a8b0f5525bde7e6673ed7a01a5068990d5a01714b396233398f27a3a40d"
+    },
+    {
+      "path": "research/m-v9/iteration/M2_SCENARIOS.md",
+      "size": 3361,
+      "sha256": "88f708f298209ce8fde2946a9464448b1427e3ba8663fbfe7713cfca0ee23060"
+    },
+    {
+      "path": "research/m-v9/iteration/M3_CONTRACT.md",
+      "size": 4080,
+      "sha256": "ccccdd118025f3407f82a5c642140d6a1ed0089c85e7bf047dba7c38dc802b49"
+    },
+    {
+      "path": "research/m-v9/iteration/M3_IMPLEMENTATION_NOTES.md",
+      "size": 5561,
+      "sha256": "1f3b9e6397f33c8bffa7965e94be09746dfaa70f482586ff5d5f655987efd823"
+    },
+    {
+      "path": "research/m-v9/iteration/NEXT.md",
+      "size": 951,
+      "sha256": "e6c98b579edacf9889cef6393d7981a224db74964b6f55ccadac8a00230e43ed"
+    },
+    {
+      "path": "research/m-v9/iteration/PROTECTION_REVIEW.md",
+      "size": 3717,
+      "sha256": "cfbe2529a8d20cef4a2591b78dd4a5a7e18bedef70c24da159400c6ce967b11a"
+    },
+    {
+      "path": "research/m-v9/iteration/REPRODUCE.md",
+      "size": 3694,
+      "sha256": "0d0ce160d5bfee09c7eb8a8cbc48f12e114e38eeb5cbab2958895d8d31d43bfc"
+    },
+    {
+      "path": "research/m-v9/iteration/RUN_STATE.json",
+      "size": 7211,
+      "sha256": "9180b68e8e55f44704363ef46ea8798b7b6df98d45537b1bf0f422b3d3f674f6"
+    },
+    {
+      "path": "research/m-v9/iteration/STOPPED_CHECKPOINT.md",
+      "size": 4717,
+      "sha256": "d6c9539602ba87bf9f99002c76fdd10d6dd1854b572413111d4e6d206307a14e"
+    },
+    {
+      "path": "research/m-v9/logistics/benchmark.gd",
+      "size": 2803,
+      "sha256": "1b52155c4579369ef5977b02db7d02d6b6007311ffafae168651c393916f5c5b"
+    },
+    {
+      "path": "research/m-v9/logistics/benchmark.gd.uid",
+      "size": 21,
+      "sha256": "e3d1d7a5eedad81a5cb24c14839e861e1e7d81923b15d86fb3084269da80b3af"
+    },
+    {
+      "path": "research/m-v9/logistics/commands.gd",
+      "size": 516,
+      "sha256": "cbb4f8fbb1804b7d4ca5bf279b480e82c9fb73895245052e5b615b90133939a0"
+    },
+    {
+      "path": "research/m-v9/logistics/commands.gd.uid",
+      "size": 21,
+      "sha256": "b1f720377e5cf4b795c70a252f9cf0ea088da2838720a9dc96b6620be19fc2bc"
+    },
+    {
+      "path": "research/m-v9/logistics/evidence/windows-20261007.json",
+      "size": 201576,
+      "sha256": "2117e36c409ccc0cda8a5145c12580fa28bd1ddf4d2350ae8bbb44a981469d90"
+    },
+    {
+      "path": "research/m-v9/logistics/fixtures.gd",
+      "size": 4734,
+      "sha256": "ef1717c94da140bef04d1c87dc6de91385ad99187a1b41059a13f11bfea3b2cc"
+    },
+    {
+      "path": "research/m-v9/logistics/fixtures.gd.uid",
+      "size": 21,
+      "sha256": "bfb837979f9436b1f85a0b4a3d885082ba7e0f49a75905decbc1dd93514f9284"
+    },
+    {
+      "path": "research/m-v9/logistics/README.md",
+      "size": 12049,
+      "sha256": "83a4adfab8fb1a50bc2a3afd02bd1022232c8549cf1ef89dd88eac6810bf35fa"
+    },
+    {
+      "path": "research/m-v9/logistics/replay_probe.gd",
+      "size": 1834,
+      "sha256": "fe8eee1d10d1f9231776db5c70dd8037ea810e3048c8f75691b7c5601b4346ab"
+    },
+    {
+      "path": "research/m-v9/logistics/replay_probe.gd.uid",
+      "size": 20,
+      "sha256": "b35f4522ee056ef9eb90dafc8391580ceed6165264f3ff395bc8166d6c1f1c85"
+    },
+    {
+      "path": "research/m-v9/logistics/service.gd",
+      "size": 60890,
+      "sha256": "9271b338037539c89afea4ff6d4c051121a910ed0f1a70ab1c8626b9272d0f80"
+    },
+    {
+      "path": "research/m-v9/logistics/service.gd.uid",
+      "size": 21,
+      "sha256": "1db0010673448e94f5fb3273a443beab35b3fa61beb4d3dd93151da24735c033"
+    },
+    {
+      "path": "research/m-v9/logistics/TASK6_LOCAL_VALIDATION.md",
+      "size": 10455,
+      "sha256": "35161bfa76b78873ccb2135f0e00c37c602bd241a6c120ae524d00f1b6c52e5d"
+    },
+    {
+      "path": "research/m-v9/logistics/tests.gd",
+      "size": 22976,
+      "sha256": "1c752e7a3f7d192766711852f6a1aae98afaac8159297da752e6943e79240286"
+    },
+    {
+      "path": "research/m-v9/logistics/tests.gd.uid",
+      "size": 21,
+      "sha256": "cfc680288c7096af60f88d187bf89e4eeaa04dd83881e6096580d9633c8f0a4b"
+    },
+    {
+      "path": "research/m-v9/logistics/validate.py",
+      "size": 13984,
+      "sha256": "82fcc2da2da794549324b74be1dfaa931ce81b8dd0505ff8de303d95b1c77ddc"
+    },
+    {
+      "path": "research/m-v9/MILITARY_DECISION_REQUIREMENTS.md",
+      "size": 5352,
+      "sha256": "766d3401444802e55c481b52581a5fe57b3feea0f902b8176a92451e2000814b"
+    },
+    {
+      "path": "research/m-v9/MILITARY_ECONOMY_REQUIREMENTS.md",
+      "size": 2749,
+      "sha256": "16662e42211354881d5f0a577c1bc8dd0c9a5f6939db2347d00875acadc20a3c"
+    },
+    {
+      "path": "research/m-v9/MILITARY_INFORMATION_REQUIREMENTS.md",
+      "size": 5464,
+      "sha256": "6b4397999663f0bd03d3993ba12ed1186c70b8d75d445ec120dd50bf2dd16da4"
+    },
+    {
+      "path": "research/m-v9/MILITARY_ORGANIZATION_REQUIREMENTS.md",
+      "size": 15361,
+      "sha256": "2656f0d96cc1139fa3b4607d5c1e566a520c3c847688002cdf0f8bc503476c21"
+    },
+    {
+      "path": "research/m-v9/MILITARY_TECHNOLOGY_REQUIREMENTS.md",
+      "size": 2134,
+      "sha256": "7d0ad26267a0fed7e6204197881cfa5290bc2425fb1b00fb52caa769204fa114"
+    },
+    {
+      "path": "research/m-v9/README.md",
+      "size": 13773,
+      "sha256": "48c3666d953259a1f1472978961ea01b59ab928cf7246cc7d93ae91f8f41d274"
+    },
+    {
+      "path": "research/m-v9/replay_probe.gd",
+      "size": 540,
+      "sha256": "e82c63ea5996162366cda1cdf4c39462188145da234a1854462bf6cb8fb71733"
+    },
+    {
+      "path": "research/m-v9/replay_probe.gd.uid",
+      "size": 20,
+      "sha256": "339839a7a36abc0fd47df97bf3123e9edebd2a4d958e880aa673cbc94a21ede5"
+    },
+    {
+      "path": "research/m-v9/resolver.gd",
+      "size": 19605,
+      "sha256": "f05442501bf37b42ed314a36e04a417742af0ff8ae33f49df6bb6fbb54c45e2f"
+    },
+    {
+      "path": "research/m-v9/resolver.gd.uid",
+      "size": 21,
+      "sha256": "d98d4591fdd09e0372a82b19ae80743de084698224e4eb45302ceedb189cd435"
+    },
+    {
+      "path": "research/m-v9/role_overrides.gd",
+      "size": 31934,
+      "sha256": "14ba5370667e8df2c579f45bf412e17eecd0381b062aacc479df56d1ce9f6c3e"
+    },
+    {
+      "path": "research/m-v9/role_overrides.gd.uid",
+      "size": 21,
+      "sha256": "e26eece66e402364a6287a74cfcbabc1573c5a10a4b614ae3fd7b221064643db"
+    },
+    {
+      "path": "research/m-v9/role_replay_probe.gd",
+      "size": 1825,
+      "sha256": "e5d64882242075cd0072ea72965527f16cfdf243304923f59ff44efa8bc50dfc"
+    },
+    {
+      "path": "research/m-v9/role_replay_probe.gd.uid",
+      "size": 21,
+      "sha256": "c4bcef3315f1ef9265e269c4c38589509a216511f9df8d239b5fe93c8fdd1d40"
+    },
+    {
+      "path": "research/m-v9/role_scenarios.gd",
+      "size": 3141,
+      "sha256": "7abc5e580d833583e7d2c4ee194450daaa2216e06fc274d7495df45dc00dc222"
+    },
+    {
+      "path": "research/m-v9/role_scenarios.gd.uid",
+      "size": 21,
+      "sha256": "fd65924f8474e8c3708191b37c3c7bfb4603a3e0b830d1042dd456eff97ba866"
+    },
+    {
+      "path": "research/m-v9/role_tests.gd",
+      "size": 18196,
+      "sha256": "39295958433fe123e72a6fd4f078027d00e7ead6587c300f18363bfa5f9807d9"
+    },
+    {
+      "path": "research/m-v9/role_tests.gd.uid",
+      "size": 21,
+      "sha256": "c5dde8a7b39c45aca0241b64da4d5970440e7d82fbcf99fd531c822b59d9084b"
+    },
+    {
+      "path": "research/m-v9/sandbox/canvas.gd",
+      "size": 3341,
+      "sha256": "3155dd727b21de1ac3b6fe776daad4fa0f2f2693197444c2cbd13f1666db8ee8"
+    },
+    {
+      "path": "research/m-v9/sandbox/canvas.gd.uid",
+      "size": 21,
+      "sha256": "b0a14fe477027db1a36b9fc0f63c7c7dec9cbb134e313d230701f2187cf11adc"
+    },
+    {
+      "path": "research/m-v9/sandbox/fixtures.gd",
+      "size": 986,
+      "sha256": "75decec2c8b277e8496f3f93e37cfdb04d3ef910aab65a9431a976a2eb71b103"
+    },
+    {
+      "path": "research/m-v9/sandbox/fixtures.gd.uid",
+      "size": 20,
+      "sha256": "469daf187bc9aded0f515d6126690b8949825d69da84ad823be7ded5a944e72a"
+    },
+    {
+      "path": "research/m-v9/sandbox/observation_probe.gd",
+      "size": 2785,
+      "sha256": "e7f3c013ef924b17e55a45a5c8e9d629a53dd49e3d5df5f87024ad92dca83e3e"
+    },
+    {
+      "path": "research/m-v9/sandbox/observation_probe.gd.uid",
+      "size": 21,
+      "sha256": "c2f49d0f0e81a65346747b356cce0b788643b008823896c0d4eaf055670a2cca"
+    },
+    {
+      "path": "research/m-v9/sandbox/OBSERVATION_REPORT.md",
+      "size": 11080,
+      "sha256": "591f8018bb8d6791f19cb3ed4e995e0208e5550fa72f1a0980bc445acaaa7f17"
+    },
+    {
+      "path": "research/m-v9/sandbox/README.md",
+      "size": 4293,
+      "sha256": "d5359cdec32cadff0f24ccdf1b98254a046668d274876e1da079eea28221d2f2"
+    },
+    {
+      "path": "research/m-v9/sandbox/sandbox.gd",
+      "size": 12202,
+      "sha256": "e158cb91551768f93aacc26032b8dfbce4e10a0086bf48495cefa4f635efa993"
+    },
+    {
+      "path": "research/m-v9/sandbox/sandbox.gd.uid",
+      "size": 21,
+      "sha256": "303d182bdc87b7e562113b3f33ee6695dab5a1e8f2c6d6f693ce2e173817f38c"
+    },
+    {
+      "path": "research/m-v9/sandbox/sandbox.tscn",
+      "size": 330,
+      "sha256": "018b738d4ba386b849b119dbee180457fc9b66d4c036b660f667e5762311af2f"
+    },
+    {
+      "path": "research/m-v9/sandbox/session.gd",
+      "size": 5617,
+      "sha256": "dfbfc749cbb7a8e51a84c9d504f81511996cf3b2fc2cca125bc483a3f554359c"
+    },
+    {
+      "path": "research/m-v9/sandbox/session.gd.uid",
+      "size": 21,
+      "sha256": "2db84ff6c4f6dd4228a8435f104c32e119e587607da05dd3cd7fa193976aefa2"
+    },
+    {
+      "path": "research/m-v9/sandbox/tests.gd",
+      "size": 12395,
+      "sha256": "0534b6c5650e4dd6b243b538df2f80c5ca9d9003d501a6f8768ccbbab33ed372"
+    },
+    {
+      "path": "research/m-v9/sandbox/tests.gd.uid",
+      "size": 21,
+      "sha256": "98796dddc986b7f0e87f2c82f05e166ba2553bc6ece810f3e9955a744f41a307"
+    },
+    {
+      "path": "research/m-v9/scenarios.gd",
+      "size": 2296,
+      "sha256": "fc74132c90e1e9cc7f9e541792559a3a2cc49186e8558359e556d6b5e46bf581"
+    },
+    {
+      "path": "research/m-v9/scenarios.gd.uid",
+      "size": 20,
+      "sha256": "f783554cf49cd3ca39b8f3f73f85985bb103d7b6c940f1fcc410ce94bc0342ad"
+    },
+    {
+      "path": "research/m-v9/spatial/fixtures.gd",
+      "size": 9148,
+      "sha256": "180265bced8599f00fffa61d3ca2dbf0b9092f25fb6edcc2e1ad3905680d7042"
+    },
+    {
+      "path": "research/m-v9/spatial/fixtures.gd.uid",
+      "size": 21,
+      "sha256": "20c0634926aafb299c59fc0cb64ad2e692a11bae1b63a24f445eda8ec2920d8d"
+    },
+    {
+      "path": "research/m-v9/spatial/README.md",
+      "size": 3642,
+      "sha256": "df05aadbac3946808047e1aa6dbef8489460e195aa0bbfe0227a42c21ddcac65"
+    },
+    {
+      "path": "research/m-v9/spatial/space.gd",
+      "size": 50602,
+      "sha256": "b109ae9b779b08cfd824466f61dbccc26fc9b9aa9cfdace5a788cb21f7b3a351"
+    },
+    {
+      "path": "research/m-v9/spatial/space.gd.uid",
+      "size": 21,
+      "sha256": "7984c06f26889ee098c4671520f55185331fc58ff1a94b37cb24493f2aef4fbd"
+    },
+    {
+      "path": "research/m-v9/spatial/tests.gd",
+      "size": 16599,
+      "sha256": "2169f6bf78035b35d03e0b49199fe2148a6fa14e53428e130567245916071c3e"
+    },
+    {
+      "path": "research/m-v9/spatial/tests.gd.uid",
+      "size": 20,
+      "sha256": "11cccec771a3b271c848b530876e2ebc54e3db3c76b136cd64b0b574d73eb342"
+    },
+    {
+      "path": "research/m-v9/step_cost/ACCEPTANCE_AND_MEASUREMENT.md",
+      "size": 4948,
+      "sha256": "7faba8f049788d501513172d7e4684293e9a983bd69bde61c87cc91b2400f8af"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/CHECKPOINT.json",
+      "size": 1430,
+      "sha256": "385cb78ea7130dd5ec2f8166b856734b5b433c7ca54494400ba9dd3980a48aa2"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/ENVIRONMENT.json",
+      "size": 583,
+      "sha256": "1ac08dac16c23b08ab57c8d661c501b4083e8ed5b22fe329ce19de85ecd2a8d7"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/environment.txt",
+      "size": 2140,
+      "sha256": "a8e77cbd1290e81aea0b4465a2aaeb6a121f666c0be335cba1bb09ad7b5472bd"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/local_commit_failure.txt",
+      "size": 641,
+      "sha256": "f8e8e8ba5318e2803a77b7f31e6deebefe8f62fe4a3497e9c7af2a9f4e33f11d"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/raw-index.json",
+      "size": 2118,
+      "sha256": "192d8650ee2b433af1ef299bf1cb4c65fd5999ba8661e5bcef0262fbc1d32b85"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/RESULTS.json",
+      "size": 796,
+      "sha256": "e76426a36acb4f0c68629b15f299c8665e3ba0938f2696fce14dc1675f8858c0"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/source/acquired_manifest.json",
+      "size": 157423,
+      "sha256": "a87a8e6ceb64da73b3258f42e8cd29199f73072f95665869ac16e86db0310336"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/source/ACQUISITION.json",
+      "size": 556,
+      "sha256": "e149439f06be0059b13ec548fede31d8075a76ab70f4a308106e9e2b25b0e136"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/source/base_commit.json",
+      "size": 1150,
+      "sha256": "31e4ae68d5c3f4d04c7f8fd5088d3401048baf22e7420c17613e7616923424aa"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/source/base_tree.json",
+      "size": 458176,
+      "sha256": "1e708878c13e0e633c89c551f8bf9ce7be50d90a9b13f2b7cc97283517f2206a"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/source/base_tree_summary.json",
+      "size": 935,
+      "sha256": "731ab1226d6c15c91221525d46d66d1421c415f40fee1f5922ba24ffad4719a9"
+    },
+    {
+      "path": "research/m-v9/step_cost/evidence/source/source_failure.json",
+      "size": 947,
+      "sha256": "0ca5c552a551784b7044971c9f89aa9b1957ef4631984375657052372b7f4152"
+    },
+    {
+      "path": "research/m-v9/step_cost/HEADS.json",
+      "size": 2679,
+      "sha256": "e03880f7e34ecdcffebea99aa576e8f34c02a6a260eb4a63999cf5ba5f88a4d9"
+    },
+    {
+      "path": "research/m-v9/step_cost/PUBLICATION_MANIFEST.json",
+      "size": 8386,
+      "sha256": "19f67dc1dac27ac2d1ed64d746bebf3b2a233ab79c9a25480558b694a96a3945"
+    },
+    {
+      "path": "research/m-v9/step_cost/README.md",
+      "size": 6138,
+      "sha256": "66a5b1ce59ad1d9d09e18eda69f239751c51366a87ebd6c038fdafcc67e8eeae"
+    },
+    {
+      "path": "research/m-v9/step_cost/SEALED_README.txt",
+      "size": 795,
+      "sha256": "804d4564667905f0e64947787f16f4817ffe159736f2ef7c4a26f6ea27a13603"
+    },
+    {
+      "path": "research/m-v9/step_cost/STEP_COST_LOCAL_VALIDATION.md",
+      "size": 7670,
+      "sha256": "efcfbf4dbfb95667243b44db9a919b3b911442f6502f4c1f138a3eec9d49a35e"
+    },
+    {
+      "path": "research/m-v9/step_cost/TASK9_FOLLOWUP_READ_ONLY_ANALYSIS_ZH.md",
+      "size": 26583,
+      "sha256": "91c8fa2bd1d9732ff03383e5e17ebb61180f7bd11a602a52fd0fa67cb1ccc5a8"
+    },
+    {
+      "path": "research/m-v9/structure/benchmark.gd",
+      "size": 2818,
+      "sha256": "116073b3daa82442ad5418204e02cbc8e55993dd142270b28f2ec554efd93373"
+    },
+    {
+      "path": "research/m-v9/structure/benchmark.gd.uid",
+      "size": 21,
+      "sha256": "4c011c9e4dce0f49f3ac22bb4aa7c0cf7e21bfbbb300efffc73c64efe6ff6355"
+    },
+    {
+      "path": "research/m-v9/structure/commands.gd",
+      "size": 520,
+      "sha256": "cdbf9f50ed25a3207ab606d6ed40a7597961f1ff282b51ced7e262700a769848"
+    },
+    {
+      "path": "research/m-v9/structure/commands.gd.uid",
+      "size": 21,
+      "sha256": "91f9e0bae0e249e380fe3d27bccefcc954bb2659845c0d4142311ddf09e4856b"
+    },
+    {
+      "path": "research/m-v9/structure/evidence/windows-20261007.json",
+      "size": 27212,
+      "sha256": "249bca1519b5ad07b77f6302e6cba8dd4cc68d3ad52c752339f37bac58b26cd2"
+    },
+    {
+      "path": "research/m-v9/structure/fixtures.gd",
+      "size": 4656,
+      "sha256": "c037473015da77667eb3ad300ae4e0058cf90b7fe58cbd9e40603ecf6de92ef0"
+    },
+    {
+      "path": "research/m-v9/structure/fixtures.gd.uid",
+      "size": 20,
+      "sha256": "2d72b4ee99dda61b1c3a7451ea260127ba06a9b0ceab5691b793b55ed630d956"
+    },
+    {
+      "path": "research/m-v9/structure/member_adjustments.gd",
+      "size": 31346,
+      "sha256": "850609de8a9ffa7c83db646ceb92ca2a206af836a88e5c5ae3df6dbb6472a0c8"
+    },
+    {
+      "path": "research/m-v9/structure/movements.gd",
+      "size": 25922,
+      "sha256": "52d89bbb14e6489a4e944b3e0410a9c2cc91334fcbc2ccc0b5cc5edcf6e98b14"
+    },
+    {
+      "path": "research/m-v9/structure/README.md",
+      "size": 10603,
+      "sha256": "3cb1f8ee2a279046563656f00b179adbbb18902f3208db599afd84691fd8ed0d"
+    },
+    {
+      "path": "research/m-v9/structure/replay_probe.gd",
+      "size": 1312,
+      "sha256": "0f4e4106ecd20da42d380e3c5bb0176e70846c3992bdb3a3230f3785b67d0c55"
+    },
+    {
+      "path": "research/m-v9/structure/replay_probe.gd.uid",
+      "size": 20,
+      "sha256": "ca73116bb6c55e5de910932c58bbd17592fd1b179c4f36fe20b6314c255eabdf"
+    },
+    {
+      "path": "research/m-v9/structure/service.gd",
+      "size": 38018,
+      "sha256": "9687e35e56f730a313c2eaa3a2e179fcbc86ea939d2e0d675ed10d3443f1bd29"
+    },
+    {
+      "path": "research/m-v9/structure/service.gd.uid",
+      "size": 21,
+      "sha256": "47d1b21acf9e92a2e8631a413ff48757d2036a20a5609fe964a2d783e8020df0"
+    },
+    {
+      "path": "research/m-v9/structure/TASK5_LOCAL_VALIDATION.md",
+      "size": 8949,
+      "sha256": "a4e64439388dd2c56f3ab0c1e15ae5751b2f417a754df78769590c8f60b4454e"
+    },
+    {
+      "path": "research/m-v9/structure/tests.gd",
+      "size": 26069,
+      "sha256": "022a4f49be26f6c8b8484748bed388230385f072091fd4aeef4234dfe018e514"
+    },
+    {
+      "path": "research/m-v9/structure/tests.gd.uid",
+      "size": 21,
+      "sha256": "a45f5df52a8fcc3aa9f2484ef70a10feb865b0b780a155a95a6094be704776f4"
+    },
+    {
+      "path": "research/m-v9/structure/validate.py",
+      "size": 5311,
+      "sha256": "9d79014df459ba42ddf5cfc82c9a7d226bd5cee97bad54e34760295152490d5d"
+    },
+    {
+      "path": "research/m-v9/tests.gd",
+      "size": 18247,
+      "sha256": "2e520ff1234f4bdfd4779f2cbd06ebed4a8f675a184a0d9b31e5d14a5a29c7b1"
+    },
+    {
+      "path": "research/m-v9/tests.gd.uid",
+      "size": 21,
+      "sha256": "3e8e39e13c49e19ea477d11353d07fa62b5fd49e623dc1a12d6825273f67d736"
+    },
+    {
+      "path": "research/m-v9/validate.py",
+      "size": 8175,
+      "sha256": "ad5d2954283bd0f0fb19518a218175f046328cd97ffd58e72d39a65ed4dfc261"
+    }
+  ],
+  "file_count": 966,
+  "total_bytes": 55889628
+}
