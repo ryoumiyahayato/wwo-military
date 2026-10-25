@@ -1,0 +1,123 @@
+{
+  "schema": "wwo-military-external-host-reference-v1",
+  "source_repository": "ryoumiyahayato/wwo",
+  "source_ref": "archive/military-full-20261024",
+  "source_commit": "3c48266b335cfa448953d26b9698abb6dd207a34",
+  "target_repository": "ryoumiyahayato/wwo-military",
+  "target_directory": "provenance/external-host-api",
+  "policy": "Exact Git blob bytes preserved as inert .txt backup; NEVER active WorldState/host runtime",
+  "validation": "Original Git blob sha1 equals copied blob sha1 for every source before commit; no game execution claim",
+  "files": [
+    {
+      "original_path": "current/runtime/scripts/world/world_state.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/world/world_state.gd.txt",
+      "git_blob_sha1": "02aee9634a9b10e3da5042bbf84772c7a8057b63",
+      "bytes": 1732,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/simulation/game_clock.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/simulation/game_clock.gd.txt",
+      "git_blob_sha1": "bafe78f6982284d5e17b6ea35ae9a04cf481ee96",
+      "bytes": 1526,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/simulation/simulation_step.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/simulation/simulation_step.gd.txt",
+      "git_blob_sha1": "b1d53cc7de2553626ccf57ace4960e914d9f41ff",
+      "bytes": 8416,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/persistence/formal_persistence.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/persistence/formal_persistence.gd.txt",
+      "git_blob_sha1": "5f8b050e37e5edefa5b7c449371d3f0a9e66f684",
+      "bytes": 41876,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/authorization/authorization_check.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/authorization/authorization_check.gd.txt",
+      "git_blob_sha1": "43e3f564f8e7334b6e18f6524301249f37a3d577",
+      "bytes": 25683,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/world/organization_state.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/world/organization_state.gd.txt",
+      "git_blob_sha1": "3970b5cb5b311ca7a375dda854bcaf3929f25d09",
+      "bytes": 106511,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/vnext/spatial/spatial_world.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/vnext/spatial/spatial_world.gd.txt",
+      "git_blob_sha1": "cb8ddd55ac873cd164343e15102f2958bedeb00e",
+      "bytes": 47308,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/content/world_bootstrap.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/content/world_bootstrap.gd.txt",
+      "git_blob_sha1": "e3f4c3ef2c1d1d30fc3f0d1e104d106960608264",
+      "bytes": 37105,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/formal/formal_world_application.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/formal/formal_world_application.gd.txt",
+      "git_blob_sha1": "79a1a8423fad5bd01475dc2e1f7fe8b8b102ebbf",
+      "bytes": 62214,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/save/atomic_json_file_store.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/save/atomic_json_file_store.gd.txt",
+      "git_blob_sha1": "b74855b25992ea09e1bda180c161eb702ad712a4",
+      "bytes": 2629,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/save/save_operation_result.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/save/save_operation_result.gd.txt",
+      "git_blob_sha1": "7afde82f3c0a6ad8f0966a78d0d06a2cceb5651b",
+      "bytes": 690,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/scripts/vnext/persistence/world_snapshot_store.gd",
+      "backup_path": "provenance/external-host-api/snapshot/scripts/vnext/persistence/world_snapshot_store.gd.txt",
+      "git_blob_sha1": "05445e5c8732be1f94cfa84f9d832c70f0662616",
+      "bytes": 3974,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    },
+    {
+      "original_path": "current/runtime/project.godot",
+      "backup_path": "provenance/external-host-api/snapshot/project.godot.txt",
+      "git_blob_sha1": "e73f1ec411bbc816e49ba2e0083ce7d5525ec749",
+      "bytes": 2609,
+      "kind": "INERT_REFERENCE_NOT_RUNTIME"
+    }
+  ],
+  "missing_private_history": {
+    "logical_zip_packages": 18,
+    "release_asset_parts": 114,
+    "bytes": 7192143243,
+    "status": "NOT_MIRRORED_TO_MILITARY_REPO"
+  },
+  "engine": {
+    "version": "Godot 4.6.3",
+    "renderer": "Compatibility",
+    "godot_binary_included": false,
+    "android_sdk_included": false,
+    "godot_runtime_tested_in_this_change": false
+  },
+  "latest_research": {
+    "development": "v9",
+    "runtime_schema": "war-environment-runtime-v8",
+    "path": "research/m-v9"
+  },
+  "host_dependency_still_required": true,
+  "source_branch_deletion": false
+}
