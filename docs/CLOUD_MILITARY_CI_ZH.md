@@ -31,7 +31,7 @@ gh workflow run military-ci.yml --repo ryoumiyahayato/wwo-military --ref main -f
 a035258da32b77f966a5376f9fa29c30a6adde826a85ba918e1605bd1fc9823eba7d85f1dd5e748956bd2ba72827c0025ffa11bb82aec91128c407a2e723c99c
 ```
 
-`tools/ci/validate_military.py` 在仓库外的新建临时目录生成自己的 `project.godot`，把 `research/m-v9/` 中的 GDScript、UID 和场景/资源文件逐字节复制到 `experiments/war_resolver/`，校验并记录源文件 SHA-256。完成后再次比较两侧文件，检测意外写入。原始研究代码、`military-godot/project.godot` 均不修改。临时运行数据使用独立 XDG 目录。
+`tools/ci/validate_military.py` 在仓库外的新建临时目录生成自己的 `project.godot`，把 `research/m-v9/` 中的 GDScript、UID 和场景/资源文件逐字节复制到 `experiments/war_resolver/`，装配时和完成后均直接比较源文件与临时副本字节，检测意外写入；不生成新的源码指纹清单或日志哈希。装配过程不修改研究源码或 `military-godot/project.godot`。临时运行数据使用独立 XDG 目录。
 
 M v9 是开发阶段；运行态格式仍是 **`war-environment-runtime-v8`**。CI 不转换快照、不创建正式宿主，也不执行 `provenance/external-host-api/snapshot/**`。
 
@@ -59,7 +59,6 @@ resolver/roles 各限 900 秒；附件测试使用现有 `--tactical-continuity`
 
 - `results/results.json`：提交、Python/引擎版本、引擎二进制摘要、每条完整命令、退出码、检查/失败数量、超时/诊断、回放哈希和源文件不变检查。
 - `results/*.log`：实际导入、测试、两次独立回放的原始输出。
-- `results/source-sha256.json`：临时项目使用的源码摘要清单。
 - `results/summary.md`：可读表格；同样写入 Actions Summary。
 - `bootstrap/`：官方下载/校验日志、发布校验清单、固定摘要、实际版本和初始磁盘情况。
 
@@ -82,16 +81,31 @@ python3 -B tools/ci/validate_military.py \
   --test-timeout 900
 ```
 
+局部定位仍使用同一个入口。例如：
+
+```sh
+python3 -B tools/ci/validate_military.py --godot godot \
+  --work-dir /tmp/m-v9-local-project --output /tmp/m-v9-local-results \
+  --suite resolver --case terrain_ammunition_suppression
+```
+
+`--suite`可重复，取 resolver、roles、attachment-tactical；`--case`须配一个 suite。
+resolver/roles 的 case 是原函数去掉前导下划线的名字；附件目前只开放 incapped。
+不传筛选仍运行原三组和原两对回放。筛选时省略的组及回放均为 NOT_RUN；只有显式
+加 `--replays` 才带上原回放。局部成功的总状态是 PARTIAL_PASSED，full_validation=false，
+不能当作原综合验证通过。断言、超时、零检查、缺总结与回放失败的判定保持。
+原引擎完整性校验和原回放入口的校验保留，不另计算研究文件或日志的新哈希。
+
 ## 已知边界与下一阶段清单
 
-建设时本地完整 resolver 测试得到 **1875 checks、12 failures、exit 1**，涉及聚合段数、弹药、同时到达/控制及退眠扫描断言；roles 得到 **3762 checks、1 failure、exit 1**，为 `division command preserves aggregate interval/work`。附件限定测试得到 **209 checks、3 failures、exit 1**：`incapacity actual dose and survivor`、`surviving squad moves and expiry restores`、`body cannot borrow moved squad position`。这是未修改源码中的真实失败；CI 应保留失败。另行运行的 continuous suite 得到 **60 checks、2 failures**，涉及 quota 完成时间和物理/顺序/随机抽样一致性；不把这项未列入首批流水线的结果冒充通过。所有远端结果以实际 Run Artifact 为准。
+建设时本地完整 resolver 测试得到 **1875 checks、12 failures、exit 1**，涉及聚合段数、弹药、同时到达/控制及退眠扫描断言；roles 得到 **3762 checks、1 failure、exit 1**，为 `division command preserves aggregate interval/work`。附件限定测试得到 **209 checks、3 failures、exit 1**：`incapacity actual dose and survivor`、`surviving squad moves and expiry restores`、`body cannot borrow moved squad position`。这是基线 `cf7dc0e`（正式运行 [40167081531](https://github.com/ryoumiyahayato/wwo-military/actions/runs/40167081531)）的历史失败，原运行和日志保留。后续局部修复的实际结果见对应 PR，不用此历史计数替代当前运行。另行运行的 continuous suite 得到 **60 checks、2 failures**，涉及 quota 完成时间和物理/顺序/随机抽样一致性；不把这项未列入首批流水线的结果冒充通过。所有远端结果以实际 Run Artifact 为准。
 
 恢复完整沙盒需要另行确定并验证：
 
 1. **入口与资源**：选择现存 `research/m-v9/sandbox/sandbox.tscn` 或明确军事场景，补足其传递依赖；`military-godot/` 没有默认正式场景。3D 物理测试已确认缺 `assets/user_derived/models/user_rifleman_armed.glb`；还须按各场景核对模型、地形、材质、媒体及其导入资源和使用许可。
 2. **正式宿主契约**：`WorldState`、`GameClock`、`SimulationStep`、人物/人口/组织、权限、空间及正式存档仍由原宿主独占；13 份 `.txt` 快照仅用于接口参考。需在原合法宿主中装配军事适配器，不能注册第二份权威对象或将快照改后缀直接执行。
 3. **测试夹具**：先恢复合法宿主及原 `tests/vnext`、`tests/formal`、`tools/run_validation.ps1` 等传递依赖，再决定正式集成、持久化往返、GUI/沙盒和完整回归范围。当前 CI 不宣称这些验证通过。
-4. **研究缺陷**：独立复现并定位聚合步长/工作量、退眠扫描、弹药守恒、同时到达/控制事件、身体/伤亡/归属和 quota 断言失败；核对当前契约与历史测试的差异。修复属于后续算法任务，不在本轮修改核心或放宽测试。
+4. **研究验证边界**：基线中退眠/聚合计数、弹药精确上界、到达截止与附件幸存者前提的有限修订，见对应修复 PR 的逐组依据和实际局部检查。不能由未合并 PR 或局部通过推断完整 CI、真实 coalesce 性能或全体军事正确性；continuous 的两项既有失败仍未处理。
 5. **归档**：`provenance/ARCHIVE_GAPS.json` 所列 18 个逻辑 ZIP、114 个附件、7,192,143,243 字节仍在原归档。本阶段不下载、迁移、清理或向 Git 历史添加这些包。
 
 本阶段不提供 APK、完整 3D 恢复或经济集成。以每次实际 Run 的结果为准，工作流文件存在或显示绿色本身不构成军事算法验证完成。

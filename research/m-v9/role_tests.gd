@@ -10,13 +10,21 @@ var resolver: RefCounted = Resolver.new()
 
 
 func _initialize() -> void:
-	_admission()
-	_permissions()
-	_atomic_validation()
-	_layers_and_boundaries()
-	_no_input_and_scale()
-	_consistency()
-	_coordination_consistency()
+	var cases: Array[String] = ["admission", "permissions", "atomic_validation", "layers_and_boundaries", "no_input_and_scale", "consistency", "coordination_consistency"]
+	var selected: String = ""
+	var case_requested: bool = false
+	for argument: String in OS.get_cmdline_user_args():
+		if argument.begins_with("--case="):
+			case_requested = true
+			selected = argument.trim_prefix("--case=")
+	if case_requested and not selected in cases:
+		push_error("Unknown role case: " + selected)
+		quit(2)
+		return
+	_check(Resolver.INTEGRATION_SECONDS == 1.0, "current whole-second integration contract")
+	for name: String in cases:
+		if selected.is_empty() or selected == name:
+			call("_" + name)
 	print("Role overrides: %d checks, %d failures" % [checks, failures])
 	quit(1 if failures > 0 else 0)
 
@@ -219,7 +227,11 @@ func _no_input_and_scale() -> void:
 	# Sleeping input contributes initial global inventory, but no active outcomes/work.
 	_check(left.counters == right.counters and left.state_delta == right.state_delta and left.events == right.events and left.summary.units == right.summary.units and left.summary.missions == right.summary.missions and left.summary.control == right.summary.control, "division override work/outcomes independent of 10000 sleeping areas")
 	_check(small_units == 10 and sleeping_units == 30010 and small.state.units.size() == small_units and sleeping.state.units.size() == sleeping_units, "higher control instantiates zero combat/person nodes")
-	_check(left.summary.policy == Resolver.AGGREGATE and left.counters.segments == 36 and left.counters.contacts_resolved == 1728, "division command preserves aggregate interval/work")
+	# No coalescing occurs in Fixtures.scripted: ten leaves remain live.
+	_check(left.summary.policy == Resolver.AGGREGATE and small.state.settlement_owner == null and small_units == 10, "division command keeps requested policy on uncoalesced leaves")
+	_check(left.counters.segments >= ceili(3600.0 / Resolver.INTEGRATION_SECONDS) and left.counters.segments <= ceili(3600.0 / Resolver.INTEGRATION_SECONDS) + 2 * small_units, "division command preserves intrinsic cadence and finite physical cuts")
+	_check(left.counters.areas_examined == left.counters.segments and left.counters.contacts_resolved == 2 * 6 * 4 * left.counters.segments, "division work visits one active area and its directed pairs per segment")
+	_check(left.counters.units_examined <= 400 * left.counters.areas_examined and small.state.touched_units.size() == small_units and small.state.touched_areas == {"field": true} and sleeping.state.active_areas == {"field": true}, "division indexed reads and output stay within current active objects")
 	print("ROLE_SCALE_COUNTERS=" + JSON.stringify(left.counters))
 
 

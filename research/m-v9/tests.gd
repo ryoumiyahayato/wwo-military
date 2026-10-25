@@ -13,16 +13,21 @@ func _initialize() -> void:
 
 
 func _run() -> void:
-	_replay()
-	_conservation()
-	_idle_scaling()
-	_partition_and_resolution()
-	_terrain_ammunition_suppression()
-	_order_symmetry()
-	_boundaries_and_coordination()
-	_frontage_and_sleep()
-	_sleeping_reserves_and_observation()
-	_simultaneous_arrivals()
+	var cases: Array[String] = ["replay", "conservation", "idle_scaling", "partition_and_resolution", "terrain_ammunition_suppression", "order_symmetry", "boundaries_and_coordination", "frontage_and_sleep", "sleeping_reserves_and_observation", "simultaneous_arrivals"]
+	var selected: String = ""
+	var case_requested: bool = false
+	for argument: String in OS.get_cmdline_user_args():
+		if argument.begins_with("--case="):
+			case_requested = true
+			selected = argument.trim_prefix("--case=")
+	if case_requested and not selected in cases:
+		push_error("Unknown resolver case: " + selected)
+		quit(2)
+		return
+	_check(Resolver.INTEGRATION_SECONDS == 1.0, "current whole-second integration contract")
+	for name: String in cases:
+		if selected.is_empty() or selected == name:
+			call("_" + name)
 	print("War resolver: %d checks, %d failures" % [checks, failures])
 	quit(0 if failures == 0 else 1)
 
@@ -103,7 +108,13 @@ func _idle_scaling() -> void:
 		previously_active.wake(area_id)
 	resolver.resolve_until(previously_active, 30.0)
 	var resumed: Dictionary = resolver.resolve_until(previously_active, 60.0)
-	_check(resumed.counters.areas_examined == 1 and resumed.summary.units.size() == 10 and resumed.summary.control.size() == 1, "previously active sleeping regions add no resolver or output scan")
+	var control: State = Scenarios.create()
+	resolver.resolve_until(control, 30.0)
+	var expected: Dictionary = resolver.resolve_until(control, 60.0)
+	_check(resumed.counters == expected.counters, "formerly active sleeping areas add zero integration, area, unit or contact work")
+	_check(previously_active.active_areas == {"field": true} and previously_active.touched_areas == {"field": true}, "only current active area is indexed and touched")
+	_check(State.sorted_ids(previously_active.touched_units) == State.sorted_ids(control.units) and resumed.summary.units == expected.summary.units and resumed.summary.control == expected.summary.control, "previously active sleeping regions add no output scan")
+	_check(resumed.counters.areas_examined == resumed.counters.segments and resumed.counters.contacts_resolved == 2 * 6 * 4 * resumed.counters.segments, "single active area and directed pairs bound each integration segment")
 
 
 func _compare(a: State, b: State, label: String, tolerance: float) -> void:
@@ -135,7 +146,16 @@ func _partition_and_resolution() -> void:
 		resolver.resolve_until(aggregate, 3600.0, Resolver.AGGREGATE)
 		_compare(detailed, aggregate, name + " resolution", 0.20)
 		_check(float(detailed.totals.casualties) > 0.0 and float(aggregate.totals.casualties) > 0.0, name + " both modes resolve real contact")
-		_check(int(aggregate.counters.segments) < int(detailed.counters.segments), name + " aggregate requires fewer segments")
+		print("UNCOALESCED_POLICY_WORK ", name, " detailed=", detailed.counters, " aggregate=", aggregate.counters)
+		# These calls have ten live leaves and no Authority/coalesce operation.
+		# AGGREGATE selects a policy ceiling; it does not reduce representation here.
+		for state: State in [detailed, aggregate]:
+			_check(state.settlement_owner == null and state.units.size() == 10, name + " uncoalesced leaf path")
+			# Defenders can fire from t=0 even while attackers await orders.
+			var active_seconds: float = 3600.0
+			_check(state.counters.segments >= ceili(active_seconds / Resolver.INTEGRATION_SECONDS) and state.counters.segments <= ceili(active_seconds / Resolver.INTEGRATION_SECONDS) + 2 * state.units.size(), name + " intrinsic cadence plus finite arrival/exhaustion cuts")
+			_check(state.counters.areas_examined == state.counters.segments and state.counters.contacts_resolved > 0 and state.counters.contacts_resolved <= 2 * 6 * 4 * state.counters.segments, name + " active scope and directed contact work bounded per segment")
+			_check(state.counters.units_examined <= 400 * state.counters.areas_examined and state.touched_units.size() == 10 and state.touched_areas == {"field": true}, name + " indexed visits and output scope bounded")
 	# Caller boundaries off the accuracy lattice must also preserve direction/ranges.
 	var a: State = Scenarios.create()
 	var b: State = Scenarios.create()
@@ -152,10 +172,27 @@ func _terrain_ammunition_suppression() -> void:
 		var low: State = Scenarios.create("ammo_shortage")
 		resolver.resolve_until(open, 3600.0, policy)
 		resolver.resolve_until(cover, 3600.0, policy)
+		var initial_ammunition: float = float(low.units.attack_00.ammunition)
+		var depletion: Dictionary = resolver.resolve_until(low, 60.0, policy)
+		var spent_at_depletion: float = float(low.units.attack_00.ammo_spent)
+		# GDScript float is binary64. Sequential subtraction/addition has a
+		# forward error bounded by gamma_n * initial stock (n*u/(1-n*u)).
+		# Bound inventory and ledger operations in this first-minute depletion
+		# window, including native cuts. This is a numerical error bound, not a
+		# gameplay tolerance; a material overspend must still fail this check.
+		var operations: int = 2 * int(depletion.counters.segments) + 1
+		var nu: float = float(operations) * pow(2.0, -52.0)
+		var roundoff: float = initial_ammunition * nu / (1.0 - nu)
+		print("AMMUNITION_DIAGNOSTIC ", policy, " initial=%.17f remaining=%.17f spent=%.17f supply=0 difference=%.17f roundoff_bound=%.17f" % [initial_ammunition, low.units.attack_00.ammunition, spent_at_depletion, float(low.units.attack_00.ammunition) + spent_at_depletion - initial_ammunition, roundoff])
+		_check(low.units.attack_00.ammunition == 0.0 and spent_at_depletion <= initial_ammunition + roundoff and absf(float(low.units.attack_00.ammunition) + spent_at_depletion - initial_ammunition) <= roundoff, policy + " cannot invent ammunition beyond binary64 summation error")
 		resolver.resolve_until(low, 3600.0, policy)
+		_check(low.units.attack_00.ammunition == 0.0 and low.units.attack_00.ammo_spent == spent_at_depletion, policy + " exhausted stock cannot fire again")
+		for contact: Dictionary in low.contacts.get("field", []):
+			if contact.source == "attack_00":
+				_check(contact.usable_fire_per_minute == 0.0, policy + " exhausted shooter contributes no fire")
+		_resources(low, policy + " ammunition shortage")
 		_check(float(cover.units.defend_00.casualties) < float(open.units.defend_00.casualties), policy + " cover reduces defensive casualties")
 		_check(float(low.units.defend_00.casualties) < float(open.units.defend_00.casualties) * 0.1, policy + " scarce ammo limits inflicted casualties")
-		_check(low.units.attack_00.ammunition == 0.0 and float(low.units.attack_00.ammo_spent) <= 3.0, policy + " cannot invent ammunition")
 		var clear: State = Scenarios.create()
 		var suppressed: State = Scenarios.create()
 		for index: int in range(6):
@@ -291,23 +328,48 @@ func _sleeping_reserves_and_observation() -> void:
 	_check(after.counters.areas_examined == 0, "completed withdrawal stops ongoing work")
 
 
-func _simultaneous_arrivals() -> void:
+func _arrival_fixture(reverse_insertion: bool) -> State:
 	var state: State = State.new()
 	state.add_area(Data.area("destination"))
-	for source: String in ["a_source", "z_source"]:
+	var sources: Array[String] = ["a_source", "z_source"]
+	if reverse_insertion:
+		sources.reverse()
+	for source: String in sources:
 		state.add_area(Data.area(source))
 		state.areas[source].links.destination = true
-		# Reach on the first accuracy boundary, before fatigue changes the speed.
 		var mission: Dictionary = Data.mission("move_" + source, "advance", 1.0, 0.04)
 		mission.destination = "destination"
 		state.add_mission(mission)
 		state.add_unit(Data.unit(source, "blue" if source == "a_source" else "red", source, mission.id))
-	var result: Dictionary = resolver.resolve_until(state, 30.0)
-	_check(state.units.a_source.area_id == "destination" and state.units.z_source.area_id == "destination", "simultaneous opposing arrivals at exact boundary")
-	_check(state.areas.destination.control == "contested", "simultaneous arrival control uses both sides")
-	var claims: int = 0
-	for event: Dictionary in result.events:
-		if event.kind == "control_changed" and event.area_id == "destination":
-			claims += 1
-			_check(event.control == "contested", "no transient faction-first claim on simultaneous arrival")
-	_check(claims == 1, "single final control event per arrival boundary")
+	return state
+
+
+func _simultaneous_arrivals() -> void:
+	var reference: Dictionary = {}
+	var reference_events: Array[Dictionary] = []
+	for reverse_insertion: bool in [false, true]:
+		var state: State = _arrival_fixture(reverse_insertion)
+		# Repeated one-second preparation includes fatigue. The old 30-second
+		# horizon stops before the real ETA; keep the original distance and rules.
+		var before: Dictionary = resolver.resolve_until(state, 30.0)
+		_check(before.ok and state.units.a_source.area_id == "a_source" and state.units.z_source.area_id == "z_source", "fatigue keeps both arrivals beyond old horizon")
+		var result: Dictionary = resolver.resolve_until(state, 31.0)
+		_check(result.ok and state.units.a_source.area_id == "destination" and state.units.z_source.area_id == "destination", "simultaneous opposing arrivals through actual movement")
+		_check(state.areas.destination.control == "contested", "simultaneous arrival control uses both sides")
+		var arrival_times: Array[float] = []
+		var claim_times: Array[float] = []
+		var arrived: Dictionary = {}
+		for event: Dictionary in result.events:
+			if event.kind == "area_transition":
+				arrival_times.append(float(event.time))
+				arrived[event.unit_id] = true
+			if event.kind == "control_changed" and event.area_id == "destination":
+				claim_times.append(float(event.time))
+				_check(event.control == "contested" and arrived.size() == 2, "both migrations precede control; no transient faction-first claim")
+		_check(arrival_times.size() == 2 and arrival_times[0] == arrival_times[1] and arrival_times[0] > 30.0 and arrival_times[0] < 31.0, "original motion produces a real common fractional arrival boundary")
+		_check(claim_times.size() == 1 and claim_times[0] == arrival_times[0], "single final control event at the arrival boundary")
+		if not reverse_insertion:
+			reference = state.snapshot()
+			reference_events = result.events
+		else:
+			_check(reference == state.snapshot() and reference_events == result.events, "arrival physics and event order independent of insertion")

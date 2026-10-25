@@ -17,6 +17,16 @@ func check(condition: bool, label: String) -> void:
 		print("FAIL: " + label)
 
 func _initialize() -> void:
+	for argument: String in OS.get_cmdline_user_args():
+		if argument.begins_with("--case="):
+			if argument != "--case=incapped":
+				push_error("Unknown attachment case: " + argument)
+				quit(2)
+				return
+			_incapped()
+			print("Tactical continuity local: %d checks, %d failures" % [checks, failures])
+			quit(0 if failures == 0 else 1)
+			return
 	if "--tactical-continuity" in OS.get_cmdline_user_args():
 		_tactical_transfers()
 		_tactical_carried_location()
@@ -450,20 +460,43 @@ func _cycles(seed_value: int, quota: int, end: float) -> Dictionary:
 	return result
 
 func _incapped() -> void:
-	env = F.setup(71, {"personal": true, "npc": true, "blue_ammunition": 0.0, "red_ammunition": 7.0})
+	env = F.setup(71, {"personal": true, "npc": true, "blue_ammunition": 0.0, "red_ammunition": 6.0})
 	check(env.structure.enable_attachment_continuity(), "incap continuity admitted")
-	# Existing physical overkill fixture; no supplied health or injury outcome.
+	# Finite initial fire: the old seven-round stock exhausted all capacity
+	# under one-second re-preparation. Six rounds still incapacitate the exposed
+	# member, but exhaust before the covered member dies. No health is supplied.
 	for id: String in ["unit_002", "unit_003"]:
 		env.state.units[id].weapon.lethality = 3.5
 	check(env.gameplay.admit_standing("unit_000", "initial_hold", "squad", F.intent("hold", "A")).ok, "incap initial goal")
 	check(F.report(env, "npc", "npc_local", "cover", "npc_cover", "npc") and F.advance(env, 0.0).ok, "npc lawful received cover")
 	check(F.local(env, "npc", "npc_action", "take_cover").ok and F.advance(env, 30.0).ok, "same original fire incapacitates exposed person")
+	var soldier: Dictionary = env.gameplay.participants._member("soldier")
+	var npc: Dictionary = env.gameplay.participants._member("npc")
+	print("INCAP_DIAGNOSTIC exposed_health=", soldier.health, " exposed_life=", soldier.life_state, " covered_health=", npc.health, " covered_actionable=", npc.actionable, " red_spent=", [env.state.units.unit_002.ammo_spent, env.state.units.unit_003.ammo_spent])
+	check(soldier.injury > 0.0 and npc.injury > 0.0 and not soldier.actionable and env.state.units.unit_002.ammunition == 0.0 and env.state.units.unit_003.ammunition == 0.0, "shared finite fire actually damages both and exhausts source stock")
+	var identity: Dictionary = env.gameplay.participants._units.duplicate()
+	var mission_id: String = str(env.state.units.unit_000.mission_id)
+	var goal: Dictionary = env.state.missions[mission_id].duplicate(true)
+	var stock: Dictionary = _stocks(env)
+	var body_xy: Array = env.gameplay.participants.position("soldier")
+	var survivor_health: float = float(npc.health)
 	check(env.gameplay.participants._member("soldier").health == 0.0 and env.gameplay.participants._member("npc").actionable, "incapacity actual dose and survivor")
 	check(env.structure.submit("company", {"id": "incap_attach", "kind": "attach", "effective_time": 35.0,
 		"values": {"target": "node_unit_000", "parent": "blue_destination", "until": 500.0}}).ok, "incap leaf legal attach")
-	check(F.advance(env, 35.0).ok and not F.local(env, "soldier", "revive_attempt", "wait").ok, "attach cannot revive")
-	check(F.command(env, "squad", "survivor_move", F.intent("withdraw", "C", ["AC"])).ok and F.advance(env, 900.0).ok, "surviving squad moves and expiry restores")
-	check(env.state.units.unit_000.spatial.node == "C" and env.gameplay.participants.position("soldier") == [0.0, 0.0], "body cannot borrow moved squad position")
+	check(F.advance(env, 35.0).ok, "attachment boundary advances")
+	check(not F.local(env, "soldier", "revive_attempt", "wait").ok and soldier.health == 0.0 and not soldier.actionable, "attach cannot revive")
+	check(env.gameplay.participants._units == identity and env.state.units.unit_000.mission_id == mission_id and env.state.missions[mission_id] == goal and _stocks(env) == stock, "attach preserves identities, mission, deadline and existing stocks")
+	var command: Dictionary = F.command(env, "squad", "survivor_move", F.intent("withdraw", "C", ["AC"]))
+	print("INCAP_COMMAND_DIAGNOSTIC ", command)
+	check(command.ok, "survivor move command accepted")
+	var advanced: Dictionary = F.advance(env, 900.0)
+	check(advanced.ok and env.state.time == 900.0 and env.structure.parent("node_unit_000") == "blue_platoon" and env.information._messages.get("survivor_move", {}).get("status") == "EXECUTED", "surviving squad moves and expiry restores")
+	var movement_goal: Dictionary = F.current(env).get("goal_v1", {})
+	var delivered_at: float = float(command.get("delivery_time", -1.0))
+	check(movement_goal.get("actor") == "squad" and movement_goal.get("started_at") == delivered_at and movement_goal.get("deadline") == delivered_at + float(env.gameplay.rules.deadline_seconds), "expiry cannot restart the delivered movement goal or deadline")
+	check(env.gameplay.participants._units == identity and soldier.health == 0.0 and not soldier.actionable and npc.health == survivor_health and _stocks(env) == stock, "expiry preserves people, casualty adoption and exhausted stock")
+	print("INCAP_ADVANCE_DIAGNOSTIC ", advanced.get("ok"), " time=", env.state.time, " node=", env.state.units.unit_000.spatial.node, " body=", env.gameplay.participants.position("soldier"))
+	check(env.state.units.unit_000.spatial.node == "C" and env.gameplay.participants.position("soldier") == body_xy and body_xy == [0.0, 0.0], "body cannot borrow moved squad position")
 	check(not env.information.observe("soldier", {"id": "borrowed", "source_ref": "soldier_local", "subject_kind": "unit", "subject_ref": "unit_000", "fact_kind": "contact"}).ok, "incap observation uses own body")
 	evidence.append({"scene": "incap", "person": env.gameplay.participants.view("soldier"), "group_node": env.state.units.unit_000.spatial.node, "relation": env.structure.relation("node_unit_000")})
 	env.clear()
