@@ -29,8 +29,13 @@ reserves. Events explain decisions. Fractional personnel losses, ammunition and
 equipment have conserved ledgers. Keyed randomness is only ±4%. No CombatPower
 comparison, nodes, frame loops, physics, projectiles or soldier planner is used.
 
-DETAILED evaluates tactical groups at maximum 30-second intervals; AGGREGATE uses
-the same rules at maximum 120-second intervals, without formation coalescing yet.
+Current integration uses an absolute one-second lattice in both synchronous and
+bounded advancement: `min(INTEGRATION_SECONDS, INTERVALS[policy])`. The historical
+policy ceilings remain DETAILED=30 and AGGREGATE=120 seconds; they do not enlarge
+the intrinsic step. Native events and arrivals retain fractional timestamps.
+See the 2026-10-16 contract in [attachment continuity](attachment_continuity/README.md).
+Passing AGGREGATE to this original leaf resolver does not coalesce formations;
+actual representation reduction is a separate [Authority operation](aggregation/README.md).
 Observation summaries are pure reads. Quiet holds/reserves sleep; due events or
 indexed dependencies wake affected areas. Idle time jumps to the next event or
 horizon. Heap work is O(log events); contact discovery is O(n²) per active area.
@@ -39,6 +44,11 @@ and due events. Input construction/diagnostic snapshots are excluded. Per-call
 output scope prevents formerly active sleeping areas accumulating output scans.
 
 ## Verification
+
+The counts, benchmark timings and broad commands below are retained historical
+evidence from the original host. They predate the one-second contract and are
+not current acceptance results. For the extracted repository use the isolated
+[CI runner and local selectors](../../docs/CLOUD_MILITARY_CI_ZH.md).
 
 From the repository root (`python` on Windows; supply the pinned engine path):
 
