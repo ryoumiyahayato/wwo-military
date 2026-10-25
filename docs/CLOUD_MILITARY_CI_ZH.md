@@ -7,6 +7,14 @@ gh workflow run military-ci.yml --repo ryoumiyahayato/wwo-military --ref main
 gh run list --repo ryoumiyahayato/wwo-military --workflow military-ci.yml
 ```
 
+若 Artifact 上传报告 `Artifact storage quota has been hit`，可在账户 Billing 提供可用额度后，或调整仓库可见性后，独立触发短上传诊断：
+
+```sh
+gh workflow run military-ci.yml --repo ryoumiyahayato/wwo-military --ref main -f artifact_probe=true
+```
+
+该运行明确命名为 **Artifact storage probe (no Godot tests)**，只上传带运行 ID 和提交 SHA 的 `probe.json`，军事测试标记 `NOT_RUN`。其成功仅证明存储传输，不能作为军事算法通过的证据。诊断与原生验证分别限一个并发；诊断限 5 分钟，制品保留 1 天。不会清理历史制品或归档。首轮 [40163386464](https://github.com/ryoumiyahayato/wwo-military/actions/runs/40163386464) 的上传因配额被 GitHub 拒绝，原始失败仍保留。
+
 目前只有 `workflow_dispatch`；提交或 PR 不自动启动。GitHub 托管 `ubuntu-24.04`、Python **3.12.14**，只用标准库。作业的 `GITHUB_TOKEN` 只有 `contents: read`；检出后不保留 Git 凭据。同一 ref 串行执行、不取消已开始的运行，作业上限 60 分钟。
 
 ## 固定引擎与源码装配

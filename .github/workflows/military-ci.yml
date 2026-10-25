@@ -1,17 +1,25 @@
 name: Military Godot CI
+run-name: ${{ inputs.artifact_probe && 'Artifact storage probe (no Godot tests)' || 'Native military Godot validation' }}
 
 on:
   workflow_dispatch:
+    inputs:
+      artifact_probe:
+        description: 'Only verify artifact storage; no Godot tests'
+        type: boolean
+        default: false
+        required: false
 
 permissions:
   contents: read
 
 concurrency:
-  group: military-ci-${{ github.ref }}
+  group: military-ci-${{ github.ref }}${{ inputs.artifact_probe && '-artifact-probe' || '' }}
   cancel-in-progress: false
 
 jobs:
   military:
+    if: ${{ !inputs.artifact_probe }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     env:
@@ -63,3 +71,22 @@ jobs:
           if-no-files-found: error
           retention-days: 14
           compression-level: 6
+  artifact-probe:
+    if: ${{ inputs.artifact_probe }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Prepare transport metadata (Godot tests NOT_RUN)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/military-artifact-probe"
+          printf '{"kind":"artifact-transport-probe","godot_tests":"NOT_RUN","commit":"%s","run_id":"%s"}\n' "$GITHUB_SHA" "$GITHUB_RUN_ID" > "$RUNNER_TEMP/military-artifact-probe/probe.json"
+      - name: Verify actual artifact upload
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: military-artifact-probe-${{ github.run_id }}
+          path: ${{ runner.temp }}/military-artifact-probe/probe.json
+          if-no-files-found: error
+          retention-days: 1
