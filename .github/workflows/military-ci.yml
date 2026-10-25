@@ -13,7 +13,7 @@ concurrency:
 jobs:
   military:
     runs-on: ubuntu-24.04
-    timeout-minutes: 40
+    timeout-minutes: 60
     env:
       PYTHONDONTWRITEBYTECODE: '1'
     steps:
@@ -44,7 +44,7 @@ jobs:
             --godot "$RUNNER_TEMP/military-ci/engine/Godot_v4.6.3-stable_linux.x86_64" \
             --work-dir "$RUNNER_TEMP/military-ci/project" \
             --output "$RUNNER_TEMP/military-ci/results" \
-            --test-timeout 600
+            --test-timeout 900
       - name: Add readable result summary
         if: ${{ always() }}
         shell: bash

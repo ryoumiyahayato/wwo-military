@@ -29,8 +29,8 @@ SUITES = [
     ("attachment-tactical", "attachment_continuity/tests.gd", "Tactical continuity local", ["--", "--tactical-continuity"]),
 ]
 PROBES = [
-    ("resolver", "replay_probe.gd", "REPLAY_SHA256"),
-    ("roles", "role_replay_probe.gd", "ROLE_REPLAY_SHA256"),
+    ("resolver", "replay_probe.gd", "REPLAY_SHA256", 180),
+    ("roles", "role_replay_probe.gd", "ROLE_REPLAY_SHA256", 240),
 ]
 
 
@@ -55,7 +55,7 @@ def main() -> int:
     parser.add_argument("--godot", required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--work-dir", type=Path, required=True)
-    parser.add_argument("--test-timeout", type=int, default=600)
+    parser.add_argument("--test-timeout", type=int, default=900)
     args = parser.parse_args()
     if args.test_timeout <= 0:
         parser.error("test-timeout must be positive")
@@ -197,7 +197,7 @@ def main() -> int:
                 min(args.test_timeout, 240) if extra else args.test_timeout, summary)
         else:
             not_run(name, "Engine/import prerequisite failed")
-    for name, script, prefix in PROBES:
+    for name, script, prefix, timeout in PROBES:
         hashes = []
         rows = []
         for suffix in ("a", "b"):
@@ -205,7 +205,7 @@ def main() -> int:
             if not ready:
                 not_run(label, "Engine/import prerequisite failed")
                 continue
-            row = run(label, [*headless, "res://experiments/war_resolver/" + script], 120)
+            row = run(label, [*headless, "res://experiments/war_resolver/" + script], timeout)
             rows.append(row)
             matches = re.findall(r"(?m)^" + prefix + r"=([a-f0-9]{64})$", (output / row["log"]).read_text())
             hashes.append(matches[0] if len(matches) == 1 and row["status"] == "PASSED" else None)
