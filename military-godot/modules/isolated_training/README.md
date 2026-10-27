@@ -87,3 +87,12 @@ controller.start({"viewport": observer_viewport, "world_root": optional_identity
 - `f1f5a09` 尝试精确活读后复用不可变local record/path；同开场无伤亡/零步兵枪的capture99.47→112.58µs、layout61.39→70.76µs，shape_pose约20.68→20.59µs，未证实净收益，`2baf779` 已回退该层。未用额外缓存掩盖失败。
 - `a48bc75` 原native完整本体test_move补支撑证据，32255次全命中原静态terrain，未知支撑门未放松；实际平均28.17Hz（20.32–50.94），全部150人曾低风险，结算仍max.05sim。36射手76枪、150身份/移动/本人ray与20车/62座/212人保持；但测得仅1.304–1.526FPS，默认关闭诊断的同源码轮也只有1.129–1.426FPS、36射手67枪，均明确失败。该两轮墙时范围与19:39:38启动的外部3-worker地形采样重叠；OS快照还见第二个Godot与约237%单核等量Python负载，未停止他线。它们不能作干净算法AB，也不能用并行负载解释此前已存在的约2FPS失败。默认关闭的诊断不能算作零ray，报告已区分counter unavailable。
 - `a48bc75` 诊断完整8tick慢帧other179.490ms中risk77.997/brain44.318/aim-fire4.432/sync3.752，native support30.488ms属motor；新风险索引本身已有明显成本，不因求解率下降就宣称收益。下一步梳理此热循环与原运动/车辆接触大头，在不与外部地形采样争资源的窗口复核，不猜地面、不改视觉预算或射击条件。不以自然伤亡、空弹、全会话主动暂停的60FPS当完整负载通过。不合并、不导出、不发布Release。
+
+## 本轮成本收敛与延长窗口：未达30FPS
+
+- 先核对正式宿主、军事计算、隔离初始化及历史研究：没有可删的第二套crew/ammo/health owner，registry保留同Combat.crew/person refs；Armor think已有0.65s门，Actor局部planner按阻塞/重试/全Host最多一次/physics预算执行，不是150份每帧完整5km图。原细节LOD只换共享Mesh/pose interval，不冻结远方physics/fire。研究/诊断源码不因本入口未安装而删。
+- `a20df84`仅[Actor](../infantry_ai/infantry_actor.gd)/[Host](../infantry_ai/infantry_host.gd)同call风险读取与即时几何去重；`0490c8e`仅[Resolver](../../scripts/vehicle_contact_resolver.gd)每capture紧凑fresh Transform/整数路径，去逐节点record与逐shape path快照容器。不跨capture比较/COW，不改原插值/形状/.045步长/query/callback，旧pose/失效结构保持独立。无新通用平台。
+- 既有主宿主driver延长30s运动/30s玩家静止AI活动/30s接战/60sHE/30s烟/60s持续，记录P99和每phase存活/physics/弹药。`0490c8e`默认关闭诊断约247.65s活动采样；20车/150兵/62双向座/212人起步，150全移动>1m、19AI车全移动/16实射。双方69步兵射手154枪，末仍150ID/实例、57活兵、17AI车活。原HP7伤臂车长同Actor实走返seat0；后续真实受伤至3，不治疗/重置。AP1/HE3/SMK1真实消耗；驾驶仅1.322m，玩法失败。
+- 默认开场1.165FPS/P95 1034.489/P99 1073.738ms，玩家静止1.105/1061.497/1125.734，接战1.295/912.870/954.539，HE1.232/962.184/1035.569，持续1.421/845.245/896.630。CPU约一核99–101%，工作集1323–1351MiB、private1738–1775MiB，整卡GPU1–4%含桌面，不是进程GPU帧时间。模拟/墙时约.132–.190。默认HE阶段仅2发，不称爆炸密集已通过；诊断轮3发实际达成但FPS仍失败。
+- 开场风险81.985→39.481→69.282µs/callback，同时未改的车辆控制组32.763→16.993ms/physics；未证实稳定净增益，不拿行数/容器压缩/原始减半归因。`a20df84`尾44–60FPS时车长阵亡、battle_finished且physics-active=0，已作无效失败，绝不是承载通过。后续原部署密度、自然伤亡/空弹/全局结束都不能替代初始负载。
+- 当前native terrain保留64阈值事件中main_update最大49.481ms（同次两块build42.479），单块最大35.003ms含mesh_data16.888/shape_set_faces8.673/space_registration7.761；不是旧观察51.777ms同帧归因，旧167.555ms仍未关闭。无SCRIPT ERROR/ERROR，仍原两类warning；正式世界/人物/相机与同会话重入比较保留。不合并、导出或发布。详表与四轮原始本地报告位置在主仓既有[说明](https://github.com/ryoumiyahayato/wwo/blob/feat/layered-military-region-20261026/docs/maps/layered_military_region.md)。
