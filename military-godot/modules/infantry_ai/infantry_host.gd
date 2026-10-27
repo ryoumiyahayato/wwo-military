@@ -48,7 +48,7 @@ func _battle_timing_advance_frame() -> void:
  if frame == _battle_timing_frame: return
  if not _battle_timing_current.is_empty():
   _battle_timing_frames += 1
-  for key: String in ["total_usec","actor_total_usec","sense_usec","sense_candidates_usec","sense_visibility_usec","sense_ray_usec","sense_shared_usec","nav_usec","motor_usec","motor_solve_usec","motor_heading_usec","other_usec","pose_usec"]:
+  for key: String in ["total_usec","actor_total_usec","sense_usec","sense_candidates_usec","sense_visibility_usec","sense_ray_usec","sense_shared_usec","motor_support_usec","other_brain_usec","other_risk_usec","other_sync_usec","other_aim_fire_usec","nav_usec","motor_usec","motor_solve_usec","motor_heading_usec","other_usec","pose_usec"]:
    _battle_timing_maxima[key] = maxi(int(_battle_timing_maxima.get(key,0)),int(_battle_timing_current[key]))
   if int(_battle_timing_current.total_usec)>=16000:
    if _battle_timing_events.size()>=64:
@@ -56,9 +56,9 @@ func _battle_timing_advance_frame() -> void:
     _battle_timing_overwritten += 1
    _battle_timing_events.append(_battle_timing_current.duplicate(true))
  _battle_timing_frame = frame
- _battle_timing_current = {"frame":frame,"frame_role":"render","physics_frame_first":Engine.get_physics_frames(),"physics_frame_last":Engine.get_physics_frames(),"start_usec":0,"end_usec":0,"total_usec":0,"actor_total_usec":0,"sense_usec":0,"sense_candidates_usec":0,"sense_visibility_usec":0,"sense_ray_usec":0,"sense_shared_usec":0,"nav_usec":0,"motor_usec":0,"motor_solve_usec":0,"motor_heading_usec":0,"other_usec":0,"pose_usec":0,"actor_callbacks":0,"pose_callbacks":0,"skipped":{},"slowest_callback":{}}
+ _battle_timing_current = {"frame":frame,"frame_role":"render","physics_frame_first":Engine.get_physics_frames(),"physics_frame_last":Engine.get_physics_frames(),"start_usec":0,"end_usec":0,"total_usec":0,"actor_total_usec":0,"sense_usec":0,"sense_candidates_usec":0,"sense_visibility_usec":0,"sense_ray_usec":0,"sense_shared_usec":0,"motor_support_usec":0,"other_brain_usec":0,"other_risk_usec":0,"other_sync_usec":0,"other_aim_fire_usec":0,"nav_usec":0,"motor_usec":0,"motor_solve_usec":0,"motor_heading_usec":0,"other_usec":0,"pose_usec":0,"actor_callbacks":0,"pose_callbacks":0,"skipped":{},"slowest_callback":{}}
 
-func record_actor_timing(id: String, operation: String, start_usec: int, end_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "", motor_solve_usec: int = 0, motor_heading_usec: int = 0, sense_candidates_usec: int = 0, sense_visibility_usec: int = 0, sense_ray_usec: int = 0, sense_shared_usec: int = 0) -> void:
+func record_actor_timing(id: String, operation: String, start_usec: int, end_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "", motor_solve_usec: int = 0, motor_heading_usec: int = 0, sense_candidates_usec: int = 0, sense_visibility_usec: int = 0, sense_ray_usec: int = 0, sense_shared_usec: int = 0, motor_support_usec: int = 0, other_brain_usec: int = 0, other_risk_usec: int = 0, other_sync_usec: int = 0, other_aim_fire_usec: int = 0) -> void:
  if not _battle_timing_enabled: return
  _battle_timing_advance_frame()
  var duration: int = maxi(0,end_usec-start_usec)
@@ -73,6 +73,11 @@ func record_actor_timing(id: String, operation: String, start_usec: int, end_use
   _battle_timing_current.sense_visibility_usec += sense_visibility_usec
   _battle_timing_current.sense_ray_usec += sense_ray_usec
   _battle_timing_current.sense_shared_usec += sense_shared_usec
+  _battle_timing_current.motor_support_usec += motor_support_usec
+  _battle_timing_current.other_brain_usec += other_brain_usec
+  _battle_timing_current.other_risk_usec += other_risk_usec
+  _battle_timing_current.other_sync_usec += other_sync_usec
+  _battle_timing_current.other_aim_fire_usec += other_aim_fire_usec
   _battle_timing_current.nav_usec += nav_usec
   _battle_timing_current.motor_usec += motor_usec
   _battle_timing_current.motor_solve_usec += motor_solve_usec
@@ -84,7 +89,7 @@ func record_actor_timing(id: String, operation: String, start_usec: int, end_use
   _battle_timing_current.pose_usec += duration
  _battle_timing_current.total_usec = int(_battle_timing_current.actor_total_usec)+int(_battle_timing_current.pose_usec)
  if duration>int(_battle_timing_current.slowest_callback.get("total_usec",-1)):
-  _battle_timing_current.slowest_callback = {"actor_id":id,"operation":operation,"total_usec":duration,"sense_usec":sense_usec,"nav_usec":nav_usec,"motor_usec":motor_usec,"motor_solve_usec":motor_solve_usec,"motor_heading_usec":motor_heading_usec,"sense_candidates_usec":sense_candidates_usec,"sense_visibility_usec":sense_visibility_usec,"sense_ray_usec":sense_ray_usec,"sense_shared_usec":sense_shared_usec}
+  _battle_timing_current.slowest_callback = {"actor_id":id,"operation":operation,"total_usec":duration,"sense_usec":sense_usec,"nav_usec":nav_usec,"motor_usec":motor_usec,"motor_solve_usec":motor_solve_usec,"motor_heading_usec":motor_heading_usec,"sense_candidates_usec":sense_candidates_usec,"sense_visibility_usec":sense_visibility_usec,"sense_ray_usec":sense_ray_usec,"sense_shared_usec":sense_shared_usec,"motor_support_usec":motor_support_usec,"other_brain_usec":other_brain_usec,"other_risk_usec":other_risk_usec,"other_sync_usec":other_sync_usec,"other_aim_fire_usec":other_aim_fire_usec}
 
 var _perception_next: Dictionary = {}
 var _perception_quota: Dictionary = {}
@@ -189,16 +194,22 @@ func report_contact(team: String, observation: Dictionary) -> void:
  report.reported=true
  report.expires=_loot_clock+Visibility.MEMORY_TTL
  team_contacts[team][str(report.actor_id)]=report
-func shared_contacts(team: String) -> Array:
+func shared_contacts(team: String, absolute_expiry: bool = false) -> Array:
  var result: Array=[]
  var records: Dictionary=team_contacts.get(team,{})
  for id in records.keys():
-  if float(records[id].expires)<=_loot_clock:
+  var stored: Dictionary = records[id]
+  if float(stored.expires)<=_loot_clock:
    records.erase(id)
    continue
-  var report: Dictionary=records[id].duplicate()
-  report.remaining=float(report.expires)-_loot_clock
-  result.append(report)
+  if absolute_expiry:
+   # Read-only contract: report_contact always replaces a copied packet, never
+   # mutates an older packet. Consumers derive age from expires and their sim clock.
+   result.append(stored)
+  else:
+   var report: Dictionary=stored.duplicate()
+   report.remaining=float(report.expires)-_loot_clock
+   result.append(report)
  return result
 
 
@@ -444,18 +455,25 @@ func infantry_candidates(observer_id: String) -> Array:
    if a.length_squared()!=b.length_squared(): return a.length_squared()<b.length_squared()
    return a.x<b.x if a.x!=b.x else a.y<b.y)
   _sense_offsets[reach]=offsets
- var center: Vector2i = _sense_cell(observer.global_position)
+ var observer_position: Vector3 = observer.global_position
+ var observer_team: String = str(observer.brain.team_id)
+ var observer_weapon: String = str(observer.weapon)
+ var center: Vector2i = _sense_cell(observer_position)
  var result: Array = []
  for offset: Vector2i in _sense_offsets[reach]:
   for id in _candidate_grid.get(center+offset,[]):
    var record: Dictionary = _candidate_records[id]
    var actor = record.node
-   if not is_instance_valid(actor) or actor.embarked or actor.brain.hp<=0.0 or actor.brain.team_id==observer.brain.team_id: continue
-   record.position=actor.global_position+Vector3.UP*actor.aim_height
-   record.visibility_position=actor.global_position+Vector3.UP*1.1
-   if observer.global_position.distance_to(record.position)>radius+2.0: continue
+   if not is_instance_valid(actor) or actor.embarked: continue
+   var target_brain = actor.brain
+   if target_brain.hp<=0.0 or str(target_brain.team_id)==observer_team: continue
+   var target_position: Vector3 = actor.global_position
+   var aim_point: Vector3 = target_position+Vector3.UP*actor.aim_height
+   if observer_position.distance_to(aim_point)>radius+2.0: continue
+   record.position=aim_point
+   record.visibility_position=target_position+Vector3.UP*1.1
    result.append(record)
- if observer.weapon in ["at","rocket","grenade","grenade_launcher","heavy_grenade"]:
+ if observer_weapon in ["at","rocket","grenade","grenade_launcher","heavy_grenade"]:
   for id in fortifications:
    var fort: Dictionary = fortifications[id]
    if is_instance_valid(fort.node) and float(fort.hp)>0.0:

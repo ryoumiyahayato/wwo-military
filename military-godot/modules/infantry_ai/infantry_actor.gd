@@ -81,6 +81,10 @@ var _timing_sense_candidates: int = 0
 var _timing_sense_visibility: int = 0
 var _timing_sense_ray: int = 0
 var _timing_sense_shared: int = 0
+var _timing_other_brain: int = 0
+var _timing_other_risk: int = 0
+var _timing_other_sync: int = 0
+var _timing_other_aim_fire: int = 0
 
 func performance_snapshot() -> Dictionary:
  var result: Dictionary = {"enabled":_battle_timing_enabled,"shot_sequence":shot_sequence}
@@ -94,13 +98,13 @@ func performance_snapshot() -> Dictionary:
    var observed: float = float(packet.get("observed_sim",-1.0))
    own_packets.append({"actor_id":str(packet.actor_id),"team_id":str(packet.get("team_id","")),"actor_kind":str(packet.get("actor_kind","")),"alive_at_packet":bool(packet.get("alive",false)),"observer_id":brain.actor_id,"origin":[origin.x,origin.y,origin.z],"point":[point.x,point.y,point.z],"observed_sim":observed,"age_sim":maxf(0.0,clock-observed),"fresh":observed>=0.0 and clock<=observed+0.200001,"self_to_seen_point_planar_m":Vector2(point.x-global_position.x,point.z-global_position.z).length()})
   result.merge({"counter_scope":"actor_lifetime","perception_refreshes":_timing_perception_refreshes,"perception_granted":_timing_perception_granted,"perception_denied":_timing_perception_denied,"skipped_callbacks":_timing_skipped.duplicate(),"own_visible_packets":own_packets,"own_packet_clock_sim":clock})
-  result["locomotion"]={"enabled":locomotion_lod_enabled,"target_hz":locomotion_hz,"callbacks":_timing_locomotion_callbacks,"solves":_timing_locomotion_solves,"lowrisk_solves":_timing_locomotion_lowrisk,"highrisk_solves":_timing_locomotion_highrisk,"deferred":_timing_locomotion_deferred,"integrated_sim_seconds":_timing_locomotion_sim,"maximum_step_sim_seconds":_timing_locomotion_max_delta,"pending_sim_seconds":_locomotion_pending,"effective_solve_hz":float(_timing_locomotion_solves)/_timing_locomotion_sim if _timing_locomotion_sim>0.0 else 0.0,"current_risk":_locomotion_risk,"risk_counts":_timing_locomotion_risks.duplicate(),"actual_velocity":[_locomotion_actual_velocity.x,_locomotion_actual_velocity.y,_locomotion_actual_velocity.z],"public_velocity":[velocity.x,velocity.y,velocity.z],"support_layer":int(_locomotion_floor.collision_layer) if is_instance_valid(_locomotion_floor) else 0}
+  result["locomotion"]={"enabled":locomotion_lod_enabled,"target_hz":locomotion_hz,"callbacks":_timing_locomotion_callbacks,"solves":_timing_locomotion_solves,"lowrisk_solves":_timing_locomotion_lowrisk,"highrisk_solves":_timing_locomotion_highrisk,"deferred":_timing_locomotion_deferred,"integrated_sim_seconds":_timing_locomotion_sim,"maximum_step_sim_seconds":_timing_locomotion_max_delta,"pending_sim_seconds":_locomotion_pending,"effective_solve_hz":float(_timing_locomotion_solves)/_timing_locomotion_sim if _timing_locomotion_sim>0.0 else 0.0,"current_risk":_locomotion_risk,"risk_counts":_timing_locomotion_risks.duplicate(),"actual_velocity":[_locomotion_actual_velocity.x,_locomotion_actual_velocity.y,_locomotion_actual_velocity.z],"public_velocity":[velocity.x,velocity.y,velocity.z],"support_probe_calls":_timing_support_probe_calls,"support_probe_hits":_timing_support_probe_hits,"support_probe_terrain":_timing_support_probe_terrain,"support_probe_usec":_timing_support_probe_usec,"support_layer":int(_locomotion_floor.collision_layer) if is_instance_valid(_locomotion_floor) else 0}
  return result
 
 func _record_battle_timing(operation: String, start_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "", motor_solve_usec: int = 0, motor_heading_usec: int = 0) -> void:
  var end_usec: int = Time.get_ticks_usec()
  if not skipped.is_empty(): _timing_skipped[skipped] = int(_timing_skipped.get(skipped,0))+1
- if is_instance_valid(host): host.record_actor_timing(brain.actor_id,operation,start_usec,end_usec,sense_usec,nav_usec,motor_usec,skipped,motor_solve_usec,motor_heading_usec,_timing_sense_candidates if operation=="actor" else 0,_timing_sense_visibility if operation=="actor" else 0,_timing_sense_ray if operation=="actor" else 0,_timing_sense_shared if operation=="actor" else 0)
+ if is_instance_valid(host): host.record_actor_timing(brain.actor_id,operation,start_usec,end_usec,sense_usec,nav_usec,motor_usec,skipped,motor_solve_usec,motor_heading_usec,_timing_sense_candidates if operation=="actor" else 0,_timing_sense_visibility if operation=="actor" else 0,_timing_sense_ray if operation=="actor" else 0,_timing_sense_shared if operation=="actor" else 0,_timing_motor_support if operation=="actor" else 0,_timing_other_brain if operation=="actor" else 0,_timing_other_risk if operation=="actor" else 0,_timing_other_sync if operation=="actor" else 0,_timing_other_aim_fire if operation=="actor" else 0)
 
 var _observation_generation: int = 0
 var _observation_sample_clock: float = -1.0
@@ -110,6 +114,13 @@ var _cached_direct_observations: Array = []
 func _observation_clock() -> float:
  var value: Variant = host.get("_loot_clock") if is_instance_valid(host) else null
  return float(value) if value!=null else 0.0
+
+func _shared_contact_packets() -> Array:
+ if not is_instance_valid(host) or not host.has_method("shared_contacts"): return []
+ var clock: Variant = host.get("_loot_clock")
+ if (clock is float or clock is int) and float(clock)>=0.0:
+  return host.shared_contacts(brain.team_id,true)
+ return host.shared_contacts(brain.team_id)
 
 func perception_request_eligible() -> bool:
  if not _configured or embarked or brain.hp<=0.0 or not is_physics_processing() or not can_process(): return false
@@ -131,7 +142,7 @@ func _scheduled_observations() -> Array:
   if is_instance_valid(host) and host.has_method("performance_snapshot"): host._perception_updates += 1
  elif not _observation_memory_only and _observation_clock()>_observation_sample_clock+0.200001:
   # A deferred budget cannot keep an old visible packet alive as a new sighting.
-  _cached_observations = host.shared_contacts(brain.team_id) if host.has_method("shared_contacts") else []
+  _cached_observations = _shared_contact_packets()
   _observation_memory_only = true
   _cached_direct_observations.clear()
   _observation_generation += 1
@@ -187,6 +198,11 @@ func _physics_process(delta: float) -> void:
   _timing_sense_visibility=0
   _timing_sense_ray=0
   _timing_sense_shared=0
+  _timing_motor_support=0
+  _timing_other_brain=0
+  _timing_other_risk=0
+  _timing_other_sync=0
+  _timing_other_aim_fire=0
  var timing_sense: int = 0
  var timing_nav: int = 0
  var timing_motor: int = 0
@@ -243,9 +259,13 @@ func _physics_process(delta: float) -> void:
   var loot_command: Dictionary = {}
   if brain.hp>0.0 and not bool(get_meta("construction_order",false)) and brain.order.is_empty() and brain.tactical_order.is_empty() and is_instance_valid(host) and host.has_method("infantry_loot_command"):
    loot_command = host.infantry_loot_command(self,delta)
+  phase_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
   var source_generation: int = _observation_generation if engagement_delay<=0.0 and weapon!="" and not bool(get_meta("construction_order",false)) else -1
   command = brain.tick(delta,global_position,observations,false,source_generation,_observation_clock() if is_instance_valid(host) else -1.0,weapon) if loot_command.is_empty() else loot_command
+  if _battle_timing_enabled: _timing_other_brain=Time.get_ticks_usec()-phase_start
+ phase_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
  var motion_delta: float = _locomotion_step_delta(delta,command)
+ if _battle_timing_enabled: _timing_other_risk=Time.get_ticks_usec()-phase_start
  if motion_delta>0.0:
   _advance_locomotion(command,motion_delta,delta)
   if _battle_timing_enabled:
@@ -253,13 +273,17 @@ func _physics_process(delta: float) -> void:
    timing_motor=_locomotion_motor_usec
    timing_motor_solve=_locomotion_solve_usec
    timing_motor_heading=_locomotion_heading_usec
+ phase_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
  if brain.state in ["see_target","fire"] and not brain.target_id.is_empty():
   _aim_autonomous_weapon(_shot_aim_point(brain.last_known),delta)
  if command.fire:
   if not _shoot(str(command.target_id),command.destination,true):
    # Rejected intents do not consume ammunition. Bound retries while obstructed.
    brain.cooldown = maxf(brain.cooldown,0.15)
+ if _battle_timing_enabled: _timing_other_aim_fire=Time.get_ticks_usec()-phase_start
+ phase_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
  _sync_person_state()
+ if _battle_timing_enabled: _timing_other_sync=Time.get_ticks_usec()-phase_start
  if command.build:
   _emit({"kind":"build_requested","actor_id":brain.actor_id,"preset":command.preset,"position":global_position})
  if _battle_timing_enabled: _record_battle_timing("actor",timing_start,timing_sense,timing_nav,timing_motor,"",timing_motor_solve,timing_motor_heading)
@@ -277,6 +301,12 @@ var _locomotion_last_hp: float = -1.0
 var _locomotion_last_shape: Vector3 = Vector3.ZERO
 var _locomotion_floor: CollisionObject3D
 var _locomotion_floor_terrain: bool = false
+var _locomotion_support_contact: KinematicCollision3D = KinematicCollision3D.new()
+var _timing_support_probe_calls: int = 0
+var _timing_support_probe_hits: int = 0
+var _timing_support_probe_terrain: int = 0
+var _timing_support_probe_usec: int = 0
+var _timing_motor_support: int = 0
 var _locomotion_epoch: int = -1
 var _locomotion_risk: String = "initial"
 var _locomotion_nav_usec: int = 0
@@ -445,6 +475,27 @@ func _advance_locomotion(command: Dictionary, delta: float, physics_delta: float
   if collision.get_normal().dot(Vector3.UP)>=cos(floor_max_angle):
    _locomotion_floor=collision.get_collider() as CollisionObject3D
    _locomotion_floor_terrain=_locomotion_floor is StaticBody3D and is_instance_valid(support_terrain) and support_terrain.is_ancestor_of(_locomotion_floor)
+ # Floor snap may set is_on_floor without adding a slide collision. Supplement only
+ # that missing evidence, using the same complete native body; never move/snap it here.
+ if locomotion_lod_enabled and brain.hp>0.0 and _locomotion_floor==null and is_on_floor():
+  var support_started: int = Time.get_ticks_usec() if _battle_timing_enabled else 0
+  if _battle_timing_enabled: _timing_support_probe_calls+=1
+  if test_move(global_transform,Vector3.DOWN*floor_snap_length,_locomotion_support_contact,safe_margin,true,8):
+   if _battle_timing_enabled: _timing_support_probe_hits+=1
+   var floor_candidate: CollisionObject3D = null
+   var all_terrain: bool = true
+   for index: int in _locomotion_support_contact.get_collision_count():
+    if _locomotion_support_contact.get_normal(index).dot(Vector3.UP)<cos(floor_max_angle): continue
+    var support: CollisionObject3D = _locomotion_support_contact.get_collider(index) as CollisionObject3D
+    if floor_candidate==null: floor_candidate=support
+    if not (support is StaticBody3D and is_instance_valid(support_terrain) and support_terrain.is_ancestor_of(support)): all_terrain=false
+   _locomotion_floor=floor_candidate
+   _locomotion_floor_terrain=is_instance_valid(floor_candidate) and all_terrain
+   if _battle_timing_enabled and _locomotion_floor_terrain: _timing_support_probe_terrain+=1
+  if _battle_timing_enabled:
+   var support_usec: int = Time.get_ticks_usec()-support_started
+   _timing_motor_support+=support_usec
+   _timing_support_probe_usec+=support_usec
  if is_instance_valid(host):
   if host.has_method("note_actor_moved"): host.note_actor_moved(self)
   if host.has_method("locomotion_geometry_epoch"): _locomotion_epoch=host.locomotion_geometry_epoch()
@@ -468,12 +519,16 @@ func _observations() -> Array:
   if str(candidates[index].actor_id)==brain.target_id:
    current_index=index
    break
- var indices: Array[int] = []
- if current_index>=0: indices.append(current_index)
- for offset: int in candidates.size():
-  var index: int = (_candidate_cursor+offset)%candidates.size()
-  if index!=current_index: indices.append(index)
- for index: int in indices:
+ var cyclic_offset: int = 0
+ for iteration: int in candidates.size():
+  var index: int
+  if current_index>=0 and iteration==0: index=current_index
+  else:
+   index=(_candidate_cursor+cyclic_offset)%candidates.size()
+   cyclic_offset+=1
+   if index==current_index:
+    index=(_candidate_cursor+cyclic_offset)%candidates.size()
+    cyclic_offset+=1
   var candidate: Dictionary = candidates[index]
   if str(candidate.get("actor_id","")) == brain.actor_id: continue
   if str(candidate.get("team_id",brain.team_id)) == brain.team_id: continue
@@ -507,7 +562,7 @@ func _observations() -> Array:
    result.append(observation)
    if host.has_method("report_contact"): host.report_contact(brain.team_id,observation)
  sense_started = Time.get_ticks_usec() if _battle_timing_enabled else 0
- if host.has_method("shared_contacts"): result.append_array(host.shared_contacts(brain.team_id))
+ if host.has_method("shared_contacts"): result.append_array(_shared_contact_packets())
  if _battle_timing_enabled: _timing_sense_shared += Time.get_ticks_usec()-sense_started
  return result
 
