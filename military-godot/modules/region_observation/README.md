@@ -22,30 +22,34 @@ res://modules/region_observation/layered_terrain.gd
 - `update_view(center: Vector2, span_m: float)`: change observation targets without creating world facts.
 - `sample_height(x: float, z: float) -> float`: source-backed local height. Returns `NAN` before data or outside coverage.
 - `is_ready()`: the first real source-backed patch is installed, not the whole queue.
-- `is_collision_ready(position: Vector3)`: all tiles for the local safety square are installed. Visual readiness alone is insufficient.
-- `get_status()`: bounded presentation status, counts and `resource_notes`; not a world snapshot.
-- `close()`: stop processing, join the worker and release owned resources. Also called on tree exit.
+- `is_collision_ready(position: Vector3)`: the native fine surface and every raw collision tile for the local safety square are installed. Returns false while an external native owner is active.
+- `set_external_native_owner(active: bool)`: true hides this module's native/fine surfaces, clears its local collision and stops native requests; the surrounding 99 regional tiles remain available. False reuses the observation cache. The external owner remains solely responsible for its actors, terrain edits, collision and authoritative support queries.
+- `create_surface_material(options: Dictionary = {}) -> ShaderMaterial`: reuse the common surface rules and seven existing textures. Options are `native_surface`, `coverage_enabled`, `far_mesh`, `coverage_cells` (default 10), `detail_coverage: Texture2D` and `use_vertex_damage`. The original editable training terrain supplies its own 100x100 coverage for 50m chunks; close uses coverage false, far uses coverage true. Optional damage reads the original owner's real `COLOR.r - COLOR.g` crater data, not simulated edits in this observer.
+- `apply_command(...)` / `apply_explosion(...)`: explicitly return `ok: false, error: unsupported`. This presentation component does not deform terrain or silently report edit success.
+- `get_status()`: bounded presentation status, counts, owner state and `resource_notes`; not a world snapshot. `last_mesh_install_usec` / `last_shape_install_usec` report the last corresponding installation. `max_mesh_install_usec` / `max_shape_install_usec` retain all corresponding installation maxima for the current lifecycle, including staged mesh uploads. Owner switches do not reset them. These are installation timings, not a measurement or attribution of total frame time.
+- `close()`: stop processing, join the worker and release owned resources; reset last/max installation timings. Also called on tree exit. `begin()` starts a fresh lifecycle through `close()`.
 
-`TerrainHeightSource` is pure data work. `read_sources`, `sample` and `build_patch` do not access the scene tree.
-Height sampling uses the same triangle diagonal as fine meshes and local collision.
+Factory materials are updated when shared textures finish loading. Connect `changed` to the host's frame request when using a static `UPDATE_ONCE` viewport. It is emitted after material updates. Static completed observation work sleeps until the view or owner changes.
+
+`TerrainHeightSource` is pure data work. Reading, sampling, patch/transition construction and raw collision-face generation do not access the scene tree.
+Height sampling uses the same b-c triangle diagonal as the original 4m fine meshes and observer collision. External editable training retains its own support/collision implementation.
 
 ## Bounds and sources
 
-At most 100 coarse 5 km tiles, one 5 km overview, nine fine 500 m tiles and four local collision tiles.
-One data/mesh worker runs at a time. At most one mesh and one collider are installed per frame.
-Local collision covers the view centre's +/-64 m safety square only when fine detail is active.
-No whole-region collision or full-world preload is created.
+The regional cache contains at most 100 coarse 5km tiles rendered at 250m spacing. The central native 5km cache contains 100 tiles of 500m, normally rendered at 20m spacing. Once prepared, that native cache is retained and shown at every observation span: there is no 8500m whole-patch visibility switch. The central regional tile is hidden while native terrain or an external native owner is visible.
 
-The 50 km view uses the original 50 m height grid. A 25 km view uses that same source, not a new dataset.
-The native 5 km patch uses the original 4 m height grid. No source heights are exaggerated.
+Only spans below 1800m request the local 3x3 native fine neighborhood: at most nine of those native tiles are replaced by original 4m meshes, not an additional full native fine layer. Native20/fine4 and region250/native boundaries are joined by coarse-side boundary polygon fans following the finer contour. There are no skirts, fine-vertex flattening or observer coverage-mask seam concealment. Only changed LOD/neighbor signatures rebuild. A bounded transition stages one mesh upload per frame, then replaces all matched boundary partners atomically. Temporary transition arrays/nodes are additional to the steady cache.
 
-Assets remain incomplete in this source extraction. This PR copies no large assets.
-Required metadata and regional height data are resolved under `base_path`:
+One worker runs at a time. At most one mesh or one collider installation occurs per frame. Observer collision uses worker-generated raw 4m b-c triangle faces, independently of stitched display geometry and without display-mesh readback. Its 100m tiles cover only the view centre's +/-64m safety square: at most nine tiles, each 25x25 cells / 1250 triangles. No whole-5km or whole-region collision is created.
+
+The 50km and 25km views share the original regional 50m height source; native terrain uses the original 4m source. No source height is exaggerated or overwritten. All LODs use the same regional macro color and original Y-up RGB normal. Local road/field/rock controls enter continuously at 8–64m/pixel, retaining the native boundary fade; grain/bump has a separate finer footprint limit. No extra 5x normal or secondary hillshade is applied. The shared shader uses mip/anisotropic texture filtering. The main host's seven texture imports enable mipmaps; this module-only synchronization does not modify military assets or their import settings.
+
+This module sync copies no binary assets, heights or import files and does not independently verify their availability. Required metadata and regional height data are resolved under `base_path`:
 
 ```text
 continuous/assets/region.json       # continuous-training-region-v1, training_only
-continuous/assets/height_50m.f32     # 1001 x 1001 float32; required, currently absent here
-ridgevale/assets/height_4m.f32       # 1251 x 1251 float32; optional native detail, absent here
+continuous/assets/height_50m.f32     # 1001 x 1001 float32; required
+ridgevale/assets/height_4m.f32       # 1251 x 1251 float32; optional native detail
 ```
 
 Missing required regional data emits `failed`; missing native detail leaves the valid regional view available.
@@ -71,8 +75,8 @@ Treat these files as vendored copies of that canonical implementation, not an in
 
 ## Validation boundary
 
-No Godot run, tests, audit or export was performed for this military-module PR.
-This source extraction has no default main scene and lacks external host/vehicle dependencies and original assets.
-No claim is made that the military project is independently runnable.
-The main host's initial window routing was previously verified by the lead; that is not validation of this module extraction.
-Final integration validation remains with the lead.
+The new common algorithms have completed one real-window route in the main host, as reported by the lead. That main-host run is not an independent engine run of this military module or a claim that every subsequent small source adjustment has been independently validated here.
+
+This synchronization performed no Godot run, tests or export. The module has no independent main scene or game entry. It does not make the military extraction independently runnable or restore external host/vehicle/assets dependencies. Main-host routing and isolated training acceptance remain with the lead.
+
+An observed roughly 152ms frame spike is still unexplained. The lifecycle maximum installation counters help distinguish mesh and shape installation, but do not prove a cause or that the frame spike has disappeared. No shader/physics attribution or disappearance is claimed.
