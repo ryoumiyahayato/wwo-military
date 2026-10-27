@@ -5,11 +5,43 @@ const SWEEP_STEP := 0.045
 var main: Node3D
 var encounters: Dictionary = {}
 var last_debug: Dictionary = {}
+# Same explicit opt-in as Armor. Fixed operation keys, no event/log buffer.
+var _slow_timing_enabled: bool = OS.get_environment("WWO_BATTLE_SLOW_TIMING") == "1"
+var _slow_timing_operations: Dictionary = {}
+
+func _timing_sample(operation: String, duration: int) -> void:
+	var row: Dictionary = _slow_timing_operations.get(operation,{"calls":0,"total_usec":0,"max_usec":0})
+	row.calls += 1
+	row.total_usec += duration
+	row.max_usec = maxi(int(row.max_usec),duration)
+	_slow_timing_operations[operation] = row
+
+func slow_timing_snapshot() -> Dictionary:
+	return {"enabled":_slow_timing_enabled,"scope":"resolver_lifetime_all_callers","clock":"cpu_call_usec_not_gpu","operations_are_inclusive":true,"operations":_slow_timing_operations.duplicate(true)}
+
+func _timed_intersect_shape(space: PhysicsDirectSpaceState3D, query: PhysicsShapeQueryParameters3D, max_results: int) -> Array[Dictionary]:
+	var started: int = Time.get_ticks_usec()
+	var result: Array[Dictionary] = space.intersect_shape(query,max_results)
+	_timing_sample("intersect_shape",Time.get_ticks_usec()-started)
+	return result
+
+func _timed_cast_motion(space: PhysicsDirectSpaceState3D, query: PhysicsShapeQueryParameters3D) -> PackedFloat32Array:
+	var started: int = Time.get_ticks_usec()
+	var result: PackedFloat32Array = space.cast_motion(query)
+	_timing_sample("cast_motion",Time.get_ticks_usec()-started)
+	return result
+
+func _timed_collide_shape(space: PhysicsDirectSpaceState3D, query: PhysicsShapeQueryParameters3D, max_results: int) -> PackedVector3Array:
+	var started: int = Time.get_ticks_usec()
+	var result: PackedVector3Array = space.collide_shape(query,max_results)
+	_timing_sample("collide_shape",Time.get_ticks_usec()-started)
+	return result
 
 func setup(owner_node: Node3D) -> void:
 	main=owner_node
 
 func capture_pose(vehicle: Node3D) -> Dictionary:
+	var timing_started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
 	var pose: Dictionary={"root":vehicle.global_transform,"nodes":{},"shapes":[]}
 	for key in ["Turret","Barrel"]:
 		var node:=vehicle.find_child(key,true,false) as Node3D
@@ -18,6 +50,7 @@ func capture_pose(vehicle: Node3D) -> Dictionary:
 	var barrel: Node3D=pose.nodes.get("Barrel",{}).get("node") as Node3D
 	pose.layout=_capture_layout(vehicle,barrel)
 	pose.shapes=_shape_pose(pose,pose,1.0)
+	if _slow_timing_enabled: _timing_sample("capture_pose",Time.get_ticks_usec()-timing_started)
 	return pose
 
 func _apply(vehicle: Node3D,a: Dictionary,b: Dictionary,weight: float) -> void:
@@ -39,6 +72,7 @@ func _path_from(vehicle:Node3D,node:Node3D)->Array:
 	return path
 
 func _capture_layout(vehicle:Node3D,barrel:Node3D)->Array:
+	var timing_started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
 	var layout:Array=[]
 	for node in vehicle.find_children("*","CollisionShape3D",true,false):
 		var body:=node.get_parent() as CollisionObject3D
@@ -48,6 +82,7 @@ func _capture_layout(vehicle:Node3D,barrel:Node3D)->Array:
 	var muzzle:=vehicle.find_child("Muzzle",true,false) as Node3D
 	if barrel!=null and muzzle!=null and barrel.global_position.distance_to(muzzle.global_position)>0.05:
 		layout.append({"shape":CapsuleShape3D.new(),"path":_path_from(vehicle,barrel),"muzzle_path":_path_from(vehicle,muzzle),"radius":float(barrel.get_meta("contact_radius",0.075)),"barrel":true})
+	if _slow_timing_enabled: _timing_sample("layout_including_path_capture",Time.get_ticks_usec()-timing_started)
 	return layout
 
 ## Memoize only within this interpolated pose. No cross-frame topology, motion,
@@ -64,6 +99,7 @@ func _path_pose(path:Array,root_pose:Transform3D,locals:Dictionary,resolved:Dict
 	return transform
 
 func _shape_pose(a:Dictionary,b:Dictionary,weight:float)->Array:
+	var timing_started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
 	var result:Array=[]
 	var root_pose:Transform3D=(a.root as Transform3D).interpolate_with(b.root,weight)
 	var locals:Dictionary={}
@@ -83,17 +119,21 @@ func _shape_pose(a:Dictionary,b:Dictionary,weight:float)->Array:
 			if not is_equal_approx(entry.shape.height,height):entry.shape.height=height
 			transform=Transform3D(Basis(right,axis,right.cross(axis)).orthonormalized(),(start+end)*0.5)
 		result.append({"shape":entry.shape,"transform":transform,"barrel":entry.barrel})
+	if _slow_timing_enabled: _timing_sample("shape_pose_including_paths",Time.get_ticks_usec()-timing_started)
 	return result
 
 func _shapes(vehicle:Node3D)->Array:
 	return capture_pose(vehicle).shapes
 
 func _exclusions(vehicle:Node3D,exclude_ground:bool=true) -> Array[RID]:
+	var timing_started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
 	var own:Array[RID]=[]
 	for body in vehicle.find_children("*","CollisionObject3D",true,false):own.append(body.get_rid())
+	if _slow_timing_enabled: _timing_sample("own_rid_collection",Time.get_ticks_usec()-timing_started)
 	return _with_ground_exclusions(vehicle,own) if exclude_ground else own
 
 func _with_ground_exclusions(vehicle:Node3D,own:Array[RID]) -> Array[RID]:
+	var timing_started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
 	# The two query classes share one fresh own-RID scan per synchronous resolve.
 	var excluded:Array[RID]=own.duplicate()
 	for ground in vehicle.get_tree().get_nodes_in_group("drivable_ground"):
@@ -101,26 +141,34 @@ func _with_ground_exclusions(vehicle:Node3D,own:Array[RID]) -> Array[RID]:
 	if is_instance_valid(main) and is_instance_valid(main.get("terrain_damage")):
 		var terrain:Node=main.get("terrain_damage")
 		if is_instance_valid(terrain.get("body")):excluded.append(terrain.get("body").get_rid())
+	if _slow_timing_enabled: _timing_sample("ground_rid_collection",Time.get_ticks_usec()-timing_started)
 	return excluded
 
 func resolve_pose(vehicle:Node3D,previous:Dictionary,speed:float,_delta:float) -> Dictionary:
+	var timing_started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
 	# The caller changes only transforms between capture and resolve. Reuse the
 	# captured topology within this synchronous sweep, never across frames.
 	var desired:Dictionary={"root":vehicle.global_transform,"nodes":{},"layout":previous.layout}
 	for key in previous.nodes:
 		var node:Node3D=previous.nodes[key].node
-		if not is_instance_valid(node):return {"blocked":true,"fraction":0.0,"contacts":[]}
+		if not is_instance_valid(node):
+			if _slow_timing_enabled: _timing_sample("resolve_pose",Time.get_ticks_usec()-timing_started)
+			return {"blocked":true,"fraction":0.0,"contacts":[]}
 		desired.nodes[key]={"node":node,"transform":node.transform}
 	desired.shapes=_shape_pose(desired,desired,1.0)
 	var before:Array=previous.shapes
 	var after:Array=desired.shapes
-	if before.size()!=after.size():return {"blocked":false,"fraction":1.0,"contacts":[]}
+	if before.size()!=after.size():
+		if _slow_timing_enabled: _timing_sample("resolve_pose",Time.get_ticks_usec()-timing_started)
+		return {"blocked":false,"fraction":1.0,"contacts":[]}
 	var travel:=0.0
 	for i in before.size():
 		var ta:Transform3D=before[i].transform
 		var tb:Transform3D=after[i].transform
 		travel=maxf(travel,ta.origin.distance_to(tb.origin)+ta.basis.get_rotation_quaternion().angle_to(tb.basis.get_rotation_quaternion())*_radius(before[i].shape))
-	if travel<0.000001:return {"blocked":false,"fraction":1.0,"contacts":[]}
+	if travel<0.000001:
+		if _slow_timing_enabled: _timing_sample("resolve_pose",Time.get_ticks_usec()-timing_started)
+		return {"blocked":false,"fraction":1.0,"contacts":[]}
 	# No substep cap: large rotations must not tunnel between clear endpoints.
 	var count:=maxi(1,int(ceil(travel/SWEEP_STEP)))
 	var barrel_exclusions:=_exclusions(vehicle,false)
@@ -138,20 +186,22 @@ func resolve_pose(vehicle:Node3D,previous:Dictionary,speed:float,_delta:float) -
 		for i in current.size():
 			var item:Dictionary=current[i]
 			# Reset every item, including state left by the preceding cast/contact.
+			var query_setup_started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
 			query.shape=item.shape;query.transform=item.transform
 			query.collision_mask=CONTACT_MASK
 			query.exclude=barrel_exclusions if item.barrel else exclusions
 			query.margin=SWEEP_STEP*0.55
 			query.motion=Vector3.ZERO
 			query.collide_with_bodies=true;query.collide_with_areas=false
-			var hits:=space.intersect_shape(query,32)
+			if _slow_timing_enabled: _timing_sample("query_setup",Time.get_ticks_usec()-query_setup_started)
+			var hits:=(_timed_intersect_shape(space,query,32) if _slow_timing_enabled else space.intersect_shape(query,32))
 			query.transform=old_shapes[i].transform
 			query.motion=(item.transform as Transform3D).origin-query.transform.origin
-			var sweep:=space.cast_motion(query) if query.motion.length_squared()>0.000000000001 else PackedFloat32Array([1.0,1.0])
+			var sweep:=(_timed_cast_motion(space,query) if _slow_timing_enabled else space.cast_motion(query)) if query.motion.length_squared()>0.000000000001 else PackedFloat32Array([1.0,1.0])
 			if sweep.size()==2 and sweep[0]<1.0:
 				query.transform.origin+=query.motion*minf(1.0,sweep[1]+0.001)
 				query.motion=Vector3.ZERO
-				hits.append_array(space.intersect_shape(query,32))
+				hits.append_array((_timed_intersect_shape(space,query,32) if _slow_timing_enabled else space.intersect_shape(query,32)))
 			for hit in hits:
 				var collider:Object=hit.collider
 				if not is_instance_valid(collider):continue
@@ -168,7 +218,7 @@ func resolve_pose(vehicle:Node3D,previous:Dictionary,speed:float,_delta:float) -
 					encounters[id]=true
 					if cleared and collider is CollisionObject3D and collider.collision_layer!=0:
 						query.transform=item.transform;query.motion=Vector3.ZERO
-						for remaining in space.intersect_shape(query,32):
+						for remaining in (_timed_intersect_shape(space,query,32) if _slow_timing_enabled else space.intersect_shape(query,32)):
 							if remaining.collider==collider:cleared=false
 				elif collider is Node and collider.has_meta("contact_tree"):
 					cleared=_tree_contact(collider,contact_direction,speed,not item.barrel)
@@ -178,12 +228,14 @@ func resolve_pose(vehicle:Node3D,previous:Dictionary,speed:float,_delta:float) -
 				if not cleared:
 					_apply(vehicle,previous,desired,accepted)
 					last_debug={"before":before,"requested":after,"accepted":_shape_pose(previous,desired,accepted),"contacts":contacts}
+					if _slow_timing_enabled: _timing_sample("resolve_pose",Time.get_ticks_usec()-timing_started)
 					return {"blocked":true,"fraction":accepted,"contacts":contacts}
 		accepted=fraction;old_shapes=current
 	# Desired pose is already installed by the caller; no physical rewrite needed.
 	for id in encounters.keys():
 		if not seen.has(id):encounters.erase(id)
 	last_debug={"before":before,"requested":after,"accepted":desired.shapes,"contacts":contacts}
+	if _slow_timing_enabled: _timing_sample("resolve_pose",Time.get_ticks_usec()-timing_started)
 	return {"blocked":false,"fraction":1.0,"contacts":contacts}
 
 func _radius(shape:Shape3D) -> float:
@@ -197,7 +249,7 @@ func _relieves_overlap(space:PhysicsDirectSpaceState3D,current:Dictionary,old:Di
 	var query:=PhysicsShapeQueryParameters3D.new()
 	query.shape=current.shape;query.transform=old.transform
 	query.collision_mask=CONTACT_MASK;query.exclude=excluded;query.margin=margin
-	var previous_hits:=space.intersect_shape(query,64)
+	var previous_hits:=(_timed_intersect_shape(space,query,64) if _slow_timing_enabled else space.intersect_shape(query,64))
 	var was_overlapping:=false
 	var isolate:Array[RID]=excluded.duplicate()
 	for hit in previous_hits:
@@ -205,10 +257,10 @@ func _relieves_overlap(space:PhysicsDirectSpaceState3D,current:Dictionary,old:Di
 		elif hit.collider is CollisionObject3D:isolate.append(hit.collider.get_rid())
 	if not was_overlapping:return false
 	query.transform=current.transform
-	for hit in space.intersect_shape(query,64):
+	for hit in (_timed_intersect_shape(space,query,64) if _slow_timing_enabled else space.intersect_shape(query,64)):
 		if hit.collider!=target and hit.collider is CollisionObject3D:isolate.append(hit.collider.get_rid())
 	query.exclude=isolate;query.transform=old.transform
-	var old_points:=space.collide_shape(query,64)
+	var old_points:=(_timed_collide_shape(space,query,64) if _slow_timing_enabled else space.collide_shape(query,64))
 	var before_depth:=_contact_depth(old_points)
 	var old_transform:Transform3D=old.transform
 	var new_transform:Transform3D=current.transform
@@ -217,7 +269,7 @@ func _relieves_overlap(space:PhysicsDirectSpaceState3D,current:Dictionary,old:Di
 		var moved_point:=new_transform*(old_transform.affine_inverse()*old_points[index])
 		if (moved_point-old_points[index]).dot(normal)>0.0000001:return false
 	query.transform=current.transform
-	var after_depth:=_contact_depth(space.collide_shape(query,64))
+	var after_depth:=_contact_depth((_timed_collide_shape(space,query,64) if _slow_timing_enabled else space.collide_shape(query,64)))
 	return before_depth>0.000001 and after_depth<before_depth-0.0000001
 
 func _contact_depth(points:PackedVector3Array) -> float:

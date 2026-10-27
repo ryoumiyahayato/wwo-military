@@ -176,6 +176,8 @@ func start(options: Dictionary) -> void:
 	# Install only once: preserves injured commander and already-spent 9 rounds.
 	_battle.session_locked = true
 	var encounter: Dictionary = await _battle.prepare_encounter()
+	if generation != _generation or not is_instance_valid(_battle):
+		return
 	if not bool(encounter.get("ok", false)):
 		_fail(str(encounter.get("reason", "encounter_install_failed")))
 		return
