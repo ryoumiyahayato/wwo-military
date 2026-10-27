@@ -260,13 +260,13 @@ func _relieves_overlap(space:PhysicsDirectSpaceState3D,current:Dictionary,old:Di
 	for hit in (_timed_intersect_shape(space,query,64) if _slow_timing_enabled else space.intersect_shape(query,64)):
 		if hit.collider!=target and hit.collider is CollisionObject3D:isolate.append(hit.collider.get_rid())
 	query.exclude=isolate;query.transform=old.transform
-	var old_points:=(_timed_collide_shape(space,query,64) if _slow_timing_enabled else space.collide_shape(query,64))
+	var old_points: PackedVector3Array = (_timed_collide_shape(space,query,64) if _slow_timing_enabled else space.collide_shape(query,64))
 	var before_depth:=_contact_depth(old_points)
 	var old_transform:Transform3D=old.transform
 	var new_transform:Transform3D=current.transform
 	for index in range(0,old_points.size()-1,2):
-		var normal:=old_points[index]-old_points[index+1]
-		var moved_point:=new_transform*(old_transform.affine_inverse()*old_points[index])
+		var normal: Vector3 = old_points[index]-old_points[index+1]
+		var moved_point: Vector3 = new_transform*(old_transform.affine_inverse()*old_points[index])
 		if (moved_point-old_points[index]).dot(normal)>0.0000001:return false
 	query.transform=current.transform
 	var after_depth:=_contact_depth((_timed_collide_shape(space,query,64) if _slow_timing_enabled else space.collide_shape(query,64)))

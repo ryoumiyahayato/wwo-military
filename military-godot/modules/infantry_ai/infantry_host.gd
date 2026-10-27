@@ -48,7 +48,7 @@ func _battle_timing_advance_frame() -> void:
  if frame == _battle_timing_frame: return
  if not _battle_timing_current.is_empty():
   _battle_timing_frames += 1
-  for key: String in ["total_usec","actor_total_usec","sense_usec","nav_usec","motor_usec","other_usec","pose_usec"]:
+  for key: String in ["total_usec","actor_total_usec","sense_usec","nav_usec","motor_usec","motor_solve_usec","motor_heading_usec","other_usec","pose_usec"]:
    _battle_timing_maxima[key] = maxi(int(_battle_timing_maxima.get(key,0)),int(_battle_timing_current[key]))
   if int(_battle_timing_current.total_usec)>=16000:
    if _battle_timing_events.size()>=64:
@@ -56,9 +56,9 @@ func _battle_timing_advance_frame() -> void:
     _battle_timing_overwritten += 1
    _battle_timing_events.append(_battle_timing_current.duplicate(true))
  _battle_timing_frame = frame
- _battle_timing_current = {"frame":frame,"frame_role":"render","physics_frame_first":Engine.get_physics_frames(),"physics_frame_last":Engine.get_physics_frames(),"start_usec":0,"end_usec":0,"total_usec":0,"actor_total_usec":0,"sense_usec":0,"nav_usec":0,"motor_usec":0,"other_usec":0,"pose_usec":0,"actor_callbacks":0,"pose_callbacks":0,"skipped":{},"slowest_callback":{}}
+ _battle_timing_current = {"frame":frame,"frame_role":"render","physics_frame_first":Engine.get_physics_frames(),"physics_frame_last":Engine.get_physics_frames(),"start_usec":0,"end_usec":0,"total_usec":0,"actor_total_usec":0,"sense_usec":0,"nav_usec":0,"motor_usec":0,"motor_solve_usec":0,"motor_heading_usec":0,"other_usec":0,"pose_usec":0,"actor_callbacks":0,"pose_callbacks":0,"skipped":{},"slowest_callback":{}}
 
-func record_actor_timing(id: String, operation: String, start_usec: int, end_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "") -> void:
+func record_actor_timing(id: String, operation: String, start_usec: int, end_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "", motor_solve_usec: int = 0, motor_heading_usec: int = 0) -> void:
  if not _battle_timing_enabled: return
  _battle_timing_advance_frame()
  var duration: int = maxi(0,end_usec-start_usec)
@@ -71,6 +71,8 @@ func record_actor_timing(id: String, operation: String, start_usec: int, end_use
   _battle_timing_current.sense_usec += sense_usec
   _battle_timing_current.nav_usec += nav_usec
   _battle_timing_current.motor_usec += motor_usec
+  _battle_timing_current.motor_solve_usec += motor_solve_usec
+  _battle_timing_current.motor_heading_usec += motor_heading_usec
   _battle_timing_current.other_usec += maxi(0,duration-sense_usec-nav_usec-motor_usec)
   if not skipped.is_empty(): _battle_timing_current.skipped[skipped] = int(_battle_timing_current.skipped.get(skipped,0))+1
  else:
@@ -78,7 +80,15 @@ func record_actor_timing(id: String, operation: String, start_usec: int, end_use
   _battle_timing_current.pose_usec += duration
  _battle_timing_current.total_usec = int(_battle_timing_current.actor_total_usec)+int(_battle_timing_current.pose_usec)
  if duration>int(_battle_timing_current.slowest_callback.get("total_usec",-1)):
-  _battle_timing_current.slowest_callback = {"actor_id":id,"operation":operation,"total_usec":duration,"sense_usec":sense_usec,"nav_usec":nav_usec,"motor_usec":motor_usec}
+  _battle_timing_current.slowest_callback = {"actor_id":id,"operation":operation,"total_usec":duration,"sense_usec":sense_usec,"nav_usec":nav_usec,"motor_usec":motor_usec,"motor_solve_usec":motor_solve_usec,"motor_heading_usec":motor_heading_usec}
+
+var _perception_next: Dictionary = {}
+var _perception_quota: Dictionary = {}
+var _perception_used: Dictionary = {}
+# Gameplay scheduling state, independent of opt-in diagnostic counters.
+var _perception_granted_total: Dictionary = {}
+var _perception_last_turn: Dictionary = {}
+var _perception_turn: int = 0
 
 func _refresh_budget() -> void:
  var frame := Engine.get_physics_frames()
@@ -86,16 +96,51 @@ func _refresh_budget() -> void:
   _budget_frame=frame
   _frame_rays=0
   _frame_plans=0
-var _perception_next:Dictionary={}
+  _perception_quota.clear()
+  _perception_used.clear()
+  if optimization_enabled:
+   var due_slots: Array[int] = []
+   for actor in actors.values():
+    if not is_instance_valid(actor) or not actor.perception_request_eligible(): continue
+    var slot: int = int(actor.perception_slot)
+    var due: float = float(_perception_next.get(slot,(slot%12)*(.2/12.0)))
+    if _loot_clock+0.000001>=due: due_slots.append(slot)
+   due_slots.sort_custom(func(a: int,b: int) -> bool:
+    var ga: int = int(_perception_granted_total.get(a,0))
+    var gb: int = int(_perception_granted_total.get(b,0))
+    if ga!=gb: return ga<gb
+    var ta: int = int(_perception_last_turn.get(a,-1))
+    var tb: int = int(_perception_last_turn.get(b,-1))
+    return ta<tb if ta!=tb else a<b)
+   if not due_slots.is_empty():
+    var budget: int = ceili(64.0*60.0/Engine.physics_ticks_per_second)
+    var share: int = floori(float(budget)/due_slots.size())
+    var extra: int = budget%due_slots.size()
+    for index: int in due_slots.size():
+     _perception_quota[due_slots[index]] = share+(1 if index<extra else 0)
+
 func perception_due(slot: int) -> bool:
  if not optimization_enabled:return true
+ _refresh_budget()
  var due:float=_perception_next.get(slot,(slot%12)*(.2/12.0))
  if _loot_clock+0.000001<due:return false
+ # No service means the original deadline stays pending, not a fake refresh.
+ if int(_perception_quota.get(slot,0))<=0:return false
  _perception_next[slot]=due+.2*(floori(maxf(0.0,_loot_clock-due)/.2)+1)
+ _perception_turn += 1
+ _perception_last_turn[slot] = _perception_turn
  return true
-func consume_perception_ray() -> bool:
+
+func consume_perception_ray(observer_id: String = "") -> bool:
  _refresh_budget()
- if optimization_enabled and _frame_rays>=ceili(64.0*60.0/Engine.physics_ticks_per_second): return false
+ var observer = actors.get(observer_id)
+ var slot: int = int(observer.perception_slot) if is_instance_valid(observer) else -1
+ if optimization_enabled:
+  if _frame_rays>=ceili(64.0*60.0/Engine.physics_ticks_per_second): return false
+  if slot>=0 and int(_perception_used.get(slot,0))>=int(_perception_quota.get(slot,0)): return false
+ if slot>=0:
+  _perception_used[slot] = int(_perception_used.get(slot,0))+1
+  _perception_granted_total[slot] = int(_perception_granted_total.get(slot,0))+1
  _frame_rays+=1
  _perception_rays+=1
  _peak_frame_rays=maxi(_peak_frame_rays,_frame_rays)
@@ -176,6 +221,17 @@ func clear() -> void:
  arsenal = Drops.new()
  _loot_clock = 0.0
  _perception_next.clear()
+ _perception_quota.clear()
+ _perception_used.clear()
+ _perception_granted_total.clear()
+ _perception_last_turn.clear()
+ _perception_turn=0
+ _candidate_frame=-1
+ _candidate_grid.clear()
+ _candidate_records.clear()
+ _candidate_cells.clear()
+ _near_vehicle_frame=-1
+ _near_vehicle_teams.clear()
  _spawn_sequence=0
  team_contacts.clear()
  _loot_reach_cache.clear()
@@ -211,9 +267,54 @@ func spawn_actor(id: String, team: String, position: Vector3, patrol: Array = []
  persons[id]["person_id"] = id
  persons[id]["ammo"] = actor.brain.ammo
  actor.bind_person_state(persons[id])
+ _candidate_frame=-1
  return actor
 
-func infantry_candidates(_observer_id: String) -> Array:
+const SENSE_CELL_SIZE: float = 128.0
+var _candidate_frame: int = -1
+var _candidate_grid: Dictionary = {}
+var _candidate_records: Dictionary = {}
+var _candidate_cells: Dictionary = {}
+var _sense_offsets: Dictionary = {}
+var _near_vehicle_frame: int = -1
+var _near_vehicle_teams: Dictionary = {}
+
+func _sense_cell(point: Vector3) -> Vector2i:
+ return Vector2i(floori(point.x/SENSE_CELL_SIZE),floori(point.z/SENSE_CELL_SIZE))
+
+func _ensure_candidate_frame() -> void:
+ var frame: int = Engine.get_physics_frames()
+ if frame==_candidate_frame: return
+ _candidate_frame=frame
+ _candidate_grid.clear()
+ _candidate_records.clear()
+ _candidate_cells.clear()
+ for id in actors:
+  var actor = actors[id]
+  if not is_instance_valid(actor) or actor.embarked or actor.brain.hp<=0.0: continue
+  var cell: Vector2i = _sense_cell(actor.global_position)
+  if not _candidate_grid.has(cell): _candidate_grid[cell]=[]
+  _candidate_grid[cell].append(id)
+  _candidate_cells[id]=cell
+  _candidate_records[id]={"actor_id":id,"team_id":actor.brain.team_id,"actor_kind":"infantry","node":actor,"alive":true}
+
+func note_actor_moved(actor: Node3D) -> void:
+ if _candidate_frame!=Engine.get_physics_frames(): return
+ if actor.embarked or actor.brain.hp<=0.0: return
+ var id: String = str(actor.brain.actor_id)
+ if not _candidate_cells.has(id):
+  _candidate_frame=-1
+  return
+ var cell: Vector2i = _sense_cell(actor.global_position)
+ var previous: Vector2i = _candidate_cells[id]
+ if cell==previous: return
+ _candidate_grid[previous].erase(id)
+ if not _candidate_grid.has(cell): _candidate_grid[cell]=[]
+ _candidate_grid[cell].append(id)
+ _candidate_cells[id]=cell
+
+func _unfiltered_infantry_candidates() -> Array:
+ # Armor and existing diagnostics also use this API with non-infantry observer ids.
  var result: Array = []
  for id in actors:
   var actor = actors[id]
@@ -221,11 +322,78 @@ func infantry_candidates(_observer_id: String) -> Array:
    result.append({"actor_id":id,"team_id":actor.brain.team_id,"actor_kind":"infantry","position":actor.global_position+Vector3.UP*actor.aim_height,"alive":actor.brain.hp>0.0})
  for id in fortifications:
   var fort: Dictionary = fortifications[id]
-  if is_instance_valid(fort.node) and float(fort.hp)>0.0:
-   result.append({"actor_id":id,"team_id":fort.team_id,"actor_kind":"fortification","position":fort.node.global_position,"alive":true})
- if is_instance_valid(player_actor):
-  result.append({"actor_id":player_id,"team_id":player_team,"actor_kind":"vehicle" if int(main.get("unit"))!=2 else "infantry","position":player_actor.global_position+Vector3.UP*1.1,"alive":true})
+  if is_instance_valid(fort.node) and float(fort.hp)>0.0: result.append({"actor_id":id,"team_id":fort.team_id,"actor_kind":"fortification","position":fort.node.global_position,"alive":true})
+ if is_instance_valid(player_actor): result.append({"actor_id":player_id,"team_id":player_team,"actor_kind":"vehicle" if int(main.get("unit"))!=2 else "infantry","position":player_actor.global_position+Vector3.UP*1.1,"alive":true})
  result.append_array(armor_candidates())
+ return result
+
+func infantry_candidates(observer_id: String) -> Array:
+ var observer = actors.get(observer_id)
+ if not is_instance_valid(observer): return _unfiltered_infantry_candidates()
+ _ensure_candidate_frame()
+ var weather: String = ["clear","rain","fog"][clampi(int(main.weather_index),0,2)]
+ var radius: float = float(Visibility.VISION.get(weather,85.0))
+ # One extra cell is a conservative broad phase; final tests always read live points.
+ var reach: int = ceili(radius/SENSE_CELL_SIZE)+1
+ if not _sense_offsets.has(reach):
+  var offsets: Array[Vector2i] = []
+  for x: int in range(-reach,reach+1):
+   for z: int in range(-reach,reach+1): offsets.append(Vector2i(x,z))
+  offsets.sort_custom(func(a: Vector2i,b: Vector2i) -> bool:
+   if a.length_squared()!=b.length_squared(): return a.length_squared()<b.length_squared()
+   return a.x<b.x if a.x!=b.x else a.y<b.y)
+  _sense_offsets[reach]=offsets
+ var center: Vector2i = _sense_cell(observer.global_position)
+ var result: Array = []
+ for offset: Vector2i in _sense_offsets[reach]:
+  for id in _candidate_grid.get(center+offset,[]):
+   var record: Dictionary = _candidate_records[id]
+   var actor = record.node
+   if not is_instance_valid(actor) or actor.embarked or actor.brain.hp<=0.0 or actor.brain.team_id==observer.brain.team_id: continue
+   record.position=actor.global_position+Vector3.UP*actor.aim_height
+   record.visibility_position=actor.global_position+Vector3.UP*1.1
+   if observer.global_position.distance_to(record.position)>radius+2.0: continue
+   result.append(record)
+ if observer.weapon in ["at","rocket","grenade","grenade_launcher","heavy_grenade"]:
+  for id in fortifications:
+   var fort: Dictionary = fortifications[id]
+   if is_instance_valid(fort.node) and float(fort.hp)>0.0:
+    result.append({"actor_id":id,"team_id":fort.team_id,"actor_kind":"fortification","position":fort.node.global_position,"alive":true})
+  if is_instance_valid(player_actor): result.append({"actor_id":player_id,"team_id":player_team,"actor_kind":"vehicle" if int(main.get("unit"))!=2 else "infantry","position":player_actor.global_position+Vector3.UP*1.1,"alive":true})
+  result.append_array(armor_candidates())
+ elif int(main.get("unit"))==2 and is_instance_valid(player_actor):
+  result.append({"actor_id":player_id,"team_id":player_team,"actor_kind":"infantry","position":player_actor.global_position+Vector3.UP*1.1,"alive":true})
+ return result
+
+func infantry_visibility_context(observer_id: String) -> Dictionary:
+ var actor = actors.get(observer_id)
+ if not is_instance_valid(actor): return {}
+ var smoke: Dictionary = _smoke_data()
+ return {"origin":actor.global_position+Vector3.UP*actor.aim_height,"weather":["clear","rain","fog"][clampi(int(main.weather_index),0,2)],"smoke":smoke}
+
+func infantry_candidate_visible(candidate: Dictionary, context: Dictionary) -> bool:
+ if context.is_empty(): return false
+ var smoke: Dictionary = context.smoke
+ return Visibility.reason(context.origin,candidate.get("visibility_position",candidate.position),context.weather,smoke.center,smoke.active,false,float(smoke.radius))=="visible"
+
+func nearby_friendly_vehicles(actor: Node3D, team: String) -> Array[Node3D]:
+ var result: Array[Node3D] = []
+ if not is_instance_valid(main): return result
+ var frame: int = Engine.get_physics_frames()
+ if frame!=_near_vehicle_frame:
+  _near_vehicle_frame=frame
+  _near_vehicle_teams.clear()
+  var armor = main.get("armor_host")
+  if is_instance_valid(armor):
+   for unit in armor.units.values():
+    if not is_instance_valid(unit.model): continue
+    var side: String = str(unit.team)
+    if not _near_vehicle_teams.has(side): _near_vehicle_teams[side]=[]
+    _near_vehicle_teams[side].append(unit.model)
+ # Cache only membership, never positions: no missed fast movers at cell boundaries.
+ for vehicle in _near_vehicle_teams.get(team,[]):
+  if is_instance_valid(vehicle) and actor.global_position.distance_squared_to(vehicle.global_position)<144.0: result.append(vehicle)
+ if int(main.unit)!=2 and is_instance_valid(player_actor) and player_team==team and actor.global_position.distance_squared_to(player_actor.global_position)<144.0: result.append(player_actor)
  return result
 
 func _smoke_data() -> Dictionary:
@@ -399,6 +567,7 @@ func set_crew_embarked(person_id: String, value: bool, world_position: Vector3 =
   _loot_choice_cache.erase(person_id)
   actor.brain.patrol_points = [world_position,world_position+Vector3(3,0,0)]
  actor.set_embarked(value)
+ _candidate_frame=-1
  return true
 
 func infantry_weapon_tick(actor, _delta: float) -> void:

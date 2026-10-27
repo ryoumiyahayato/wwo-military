@@ -84,19 +84,51 @@ func performance_snapshot() -> Dictionary:
   result.merge({"counter_scope":"actor_lifetime","perception_refreshes":_timing_perception_refreshes,"perception_granted":_timing_perception_granted,"perception_denied":_timing_perception_denied,"skipped_callbacks":_timing_skipped.duplicate()})
  return result
 
-func _record_battle_timing(operation: String, start_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "") -> void:
+func _record_battle_timing(operation: String, start_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "", motor_solve_usec: int = 0, motor_heading_usec: int = 0) -> void:
  var end_usec: int = Time.get_ticks_usec()
  if not skipped.is_empty(): _timing_skipped[skipped] = int(_timing_skipped.get(skipped,0))+1
- if is_instance_valid(host): host.record_actor_timing(brain.actor_id,operation,start_usec,end_usec,sense_usec,nav_usec,motor_usec,skipped)
+ if is_instance_valid(host): host.record_actor_timing(brain.actor_id,operation,start_usec,end_usec,sense_usec,nav_usec,motor_usec,skipped,motor_solve_usec,motor_heading_usec)
+
+var _observation_generation: int = 0
+var _observation_sample_clock: float = -1.0
+var _observation_memory_only: bool = false
+var _cached_direct_observations: Array = []
+
+func _observation_clock() -> float:
+ var value: Variant = host.get("_loot_clock") if is_instance_valid(host) else null
+ return float(value) if value!=null else 0.0
+
+func perception_request_eligible() -> bool:
+ if not _configured or embarked or brain.hp<=0.0 or not is_physics_processing() or not can_process(): return false
+ if weapon=="" or engagement_delay>0.0 or bool(get_meta("player_controlled",false)) or bool(get_meta("construction_order",false)): return false
+ var returning: Dictionary = get_meta("crew_return_order",{})
+ return returning.is_empty() or not brain.order.is_empty()
 
 func _scheduled_observations() -> Array:
  if brain.hp<=0.0:
+  if not _cached_observations.is_empty(): _observation_generation += 1
   _cached_observations.clear()
   return []
  if not is_instance_valid(host) or not host.has_method("perception_due") or host.perception_due(perception_slot):
   _cached_observations = _observations()
+  _observation_sample_clock = _observation_clock() if is_instance_valid(host) else 0.0
+  _observation_memory_only = false
+  _observation_generation += 1
   if _battle_timing_enabled: _timing_perception_refreshes += 1
   if is_instance_valid(host) and host.has_method("performance_snapshot"): host._perception_updates += 1
+ elif not _observation_memory_only and _observation_clock()>_observation_sample_clock+0.200001:
+  # A deferred budget cannot keep an old visible packet alive as a new sighting.
+  _cached_observations = host.shared_contacts(brain.team_id) if host.has_method("shared_contacts") else []
+  _observation_memory_only = true
+  _cached_direct_observations.clear()
+  _observation_generation += 1
+ # Death/embark invalidates own positive facts without scanning all team reports.
+ for packet: Dictionary in _cached_direct_observations:
+  if not bool(packet.get("alive",false)) or not packet.has("node") or str(packet.get("actor_kind",""))!="infantry": continue
+  var subject = host.actors.get(str(packet.actor_id)) if is_instance_valid(host) else null
+  if is_instance_valid(subject) and (subject.embarked or subject.brain.hp<=0.0):
+   packet.alive=false
+   _observation_generation += 1
  return _cached_observations
 
 
@@ -140,6 +172,9 @@ func _physics_process(delta: float) -> void:
  var timing_sense: int = 0
  var timing_nav: int = 0
  var timing_motor: int = 0
+ var timing_motor_solve: int = 0
+ var timing_motor_heading: int = 0
+ var motor_sub_start: int = 0
  var phase_start: int = 0
  var owner_main = host.get("main") if is_instance_valid(host) else null
  if is_instance_valid(owner_main):
@@ -173,6 +208,7 @@ func _physics_process(delta: float) -> void:
    phase_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
    controller.physics_tick(self,delta)
    if _battle_timing_enabled: timing_motor = Time.get_ticks_usec()-phase_start
+  if is_instance_valid(host) and host.has_method("note_actor_moved"): host.note_actor_moved(self)
   if _battle_timing_enabled: _record_battle_timing("actor",timing_start,0,0,timing_motor)
   return
  if suppression_level>=0.6: brain.cooldown += delta*0.65
@@ -190,7 +226,8 @@ func _physics_process(delta: float) -> void:
   var loot_command: Dictionary = {}
   if brain.hp>0.0 and not bool(get_meta("construction_order",false)) and brain.order.is_empty() and brain.tactical_order.is_empty() and is_instance_valid(host) and host.has_method("infantry_loot_command"):
    loot_command = host.infantry_loot_command(self,delta)
-  command = brain.tick(delta,global_position,observations,false) if loot_command.is_empty() else loot_command
+  var source_generation: int = _observation_generation if engagement_delay<=0.0 and weapon!="" and not bool(get_meta("construction_order",false)) else -1
+  command = brain.tick(delta,global_position,observations,false,source_generation,_observation_clock() if is_instance_valid(host) else -1.0,weapon) if loot_command.is_empty() else loot_command
  var direction: Vector3 = command.destination - global_position
  direction.y = 0.0
  direction = direction.normalized() if bool(command.move) and direction.length() > 0.1 else Vector3.ZERO
@@ -257,9 +294,15 @@ func _physics_process(delta: float) -> void:
  velocity.z = direction.z * effective_speed
  if not is_on_floor(): velocity.y -= gravity * delta
  else: velocity.y = -0.1
+ motor_sub_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
  move_and_slide()
+ if _battle_timing_enabled: timing_motor_solve = Time.get_ticks_usec()-motor_sub_start
+ if is_instance_valid(host) and host.has_method("note_actor_moved"): host.note_actor_moved(self)
+ motor_sub_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
  if direction.length_squared() > 0.01: _set_body_heading(lerp_angle(rotation.y,atan2(-direction.x,-direction.z),minf(1.0,delta*9.0)))
- if _battle_timing_enabled: timing_motor = Time.get_ticks_usec()-phase_start
+ if _battle_timing_enabled:
+  timing_motor_heading = Time.get_ticks_usec()-motor_sub_start
+  timing_motor = Time.get_ticks_usec()-phase_start
  if brain.state in ["see_target","fire"] and not brain.target_id.is_empty():
   _aim_autonomous_weapon(_shot_aim_point(brain.last_known),delta)
  if command.fire:
@@ -269,35 +312,51 @@ func _physics_process(delta: float) -> void:
  _sync_person_state()
  if command.build:
   _emit({"kind":"build_requested","actor_id":brain.actor_id,"preset":command.preset,"position":global_position})
- if _battle_timing_enabled: _record_battle_timing("actor",timing_start,timing_sense,timing_nav,timing_motor)
+ if _battle_timing_enabled: _record_battle_timing("actor",timing_start,timing_sense,timing_nav,timing_motor,"",timing_motor_solve,timing_motor_heading)
 
 func _observations() -> Array:
  var result: Array = []
+ _cached_direct_observations.clear()
  if bool(get_meta("construction_order",false)): return result
  if not is_instance_valid(host) or not host.has_method("infantry_candidates"): return result
  var candidates: Array = host.infantry_candidates(brain.actor_id)
- for offset in candidates.size():
-  var candidate: Dictionary = candidates[(_candidate_cursor+offset)%candidates.size()]
+ var context: Dictionary = host.infantry_visibility_context(brain.actor_id) if host.has_method("infantry_visibility_context") else {}
+ var current_index: int = -1
+ for index: int in candidates.size():
+  if str(candidates[index].actor_id)==brain.target_id:
+   current_index=index
+   break
+ var indices: Array[int] = []
+ if current_index>=0: indices.append(current_index)
+ for offset: int in candidates.size():
+  var index: int = (_candidate_cursor+offset)%candidates.size()
+  if index!=current_index: indices.append(index)
+ for index: int in indices:
+  var candidate: Dictionary = candidates[index]
   if str(candidate.get("actor_id","")) == brain.actor_id: continue
   if str(candidate.get("team_id",brain.team_id)) == brain.team_id: continue
   if not bool(candidate.get("alive",false)): continue
   if str(candidate.get("actor_kind","infantry")) in ["vehicle","fortification"] and weapon not in ["at","rocket","grenade","grenade_launcher","heavy_grenade"]: continue
   var point: Vector3 = candidate.position
-  var visible := false
-  # Missing visibility integration fails closed; never grants omniscience.
-  if host.has_method("infantry_visibility"):
-   visible = float(host.infantry_visibility(brain.actor_id,str(candidate.actor_id))) > 0.0
+  var visible: bool = false
+  if not context.is_empty() and host.has_method("infantry_candidate_visible"):
+   visible=host.infantry_candidate_visible(candidate,context)
+  elif host.has_method("infantry_visibility"):
+   visible=float(host.infantry_visibility(brain.actor_id,str(candidate.actor_id)))>0.0
   if visible:
-   if host.has_method("consume_perception_ray") and not host.consume_perception_ray():
+   if host.has_method("consume_perception_ray") and not host.consume_perception_ray(brain.actor_id):
     if _battle_timing_enabled: _timing_perception_denied += 1
-    _candidate_cursor = (_candidate_cursor+offset)%maxi(1,candidates.size())
+    _candidate_cursor=index
     break
    if _battle_timing_enabled: _timing_perception_granted += 1
    var hit := _ray(point)
-   visible = not hit.is_empty() and _collision_actor_id(hit.collider) == str(candidate.actor_id)
+   visible=not hit.is_empty() and _collision_actor_id(hit.collider)==str(candidate.actor_id)
   if visible:
    var observation: Dictionary = candidate.duplicate()
-   observation.visible = true
+   observation.visible=true
+   observation.observer_id=brain.actor_id
+   observation.observed_sim=_observation_clock()
+   _cached_direct_observations.append(observation)
    result.append(observation)
    if host.has_method("report_contact"): host.report_contact(brain.team_id,observation)
  if host.has_method("shared_contacts"): result.append_array(host.shared_contacts(brain.team_id))
@@ -642,7 +701,7 @@ func _update_vehicle_yield(intended:Vector3,delta:float)->void:
  _vehicle_yield_clock=.15
  _vehicle_yield_active=false
  _vehicle_yield_direction=Vector3.ZERO
- var neighbors:Array[Node3D]=FriendlySafety.nearby_friendly_vehicles(self,host,brain.team_id)
+ var neighbors:Array[Node3D]=host.nearby_friendly_vehicles(self,brain.team_id) if is_instance_valid(host) and host.has_method("nearby_friendly_vehicles") else FriendlySafety.nearby_friendly_vehicles(self,host,brain.team_id)
  for vehicle in neighbors:
   # A stopped vehicle remains a real navigation/collision obstacle, not an endless moving-track wait.
   # Approximate zero is the engine epsilon, not a gameplay low-speed threshold.

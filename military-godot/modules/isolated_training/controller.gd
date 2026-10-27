@@ -129,6 +129,9 @@ func start(options: Dictionary) -> void:
 		if not ResourceLoader.exists(path):
 			_fail("missing_original_training_resource: " + path)
 			return
+	if not NativeBattle.can_instantiate() or not NativePort.can_instantiate():
+		_fail("original_runtime_source_not_instantiable")
+		return
 	_port = NativePort.new()
 	if not _port.read_request(REQUEST_PATH):
 		_fail(_port.error)
