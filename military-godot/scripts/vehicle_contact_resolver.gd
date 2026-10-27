@@ -8,8 +8,7 @@ var last_debug: Dictionary = {}
 # Same explicit opt-in as Armor. Fixed operation keys, no event/log buffer.
 var _slow_timing_enabled: bool = OS.get_environment("WWO_BATTLE_SLOW_TIMING") == "1"
 var _slow_timing_operations: Dictionary = {}
-# Structural membership plus immutable local snapshots, validated by a fresh exact
-# Transform read on every capture. No world pose, shape state or query result cache.
+# Structural membership only. No cached Transform, shape resource/state or query result.
 var _metadata_tree: SceneTree
 var _vehicle_metadata: Dictionary = {}
 var _metadata_roots: Dictionary = {}
@@ -21,11 +20,6 @@ var _metadata_invalidations: int = 0
 var _metadata_capture_hits: int = 0
 var _metadata_cross_physics_capture_hits: int = 0
 var _metadata_order_watch_failed: bool = false
-var _capture_serial: int = 0
-var _cow_record_reuse: int = 0
-var _cow_record_new: int = 0
-var _cow_path_reuse: int = 0
-var _cow_path_new: int = 0
 
 func _timing_sample(operation: String, duration: int) -> void:
 	var row: Dictionary = _slow_timing_operations.get(operation,{"calls":0,"total_usec":0,"max_usec":0})
@@ -35,7 +29,7 @@ func _timing_sample(operation: String, duration: int) -> void:
 	_slow_timing_operations[operation] = row
 
 func slow_timing_snapshot() -> Dictionary:
-	return {"enabled":_slow_timing_enabled,"scope":"resolver_lifetime_all_callers","clock":"cpu_call_usec_not_gpu","operations_are_inclusive":true,"operations":_slow_timing_operations.duplicate(true),"metadata_cache":{"enabled":is_instance_valid(_metadata_tree) and not _metadata_order_watch_failed,"entries":_vehicle_metadata.size(),"hits":_metadata_hits,"misses":_metadata_misses,"invalidations":_metadata_invalidations,"capture_hits":_metadata_capture_hits,"cross_physics_capture_hits":_metadata_cross_physics_capture_hits},"snapshot_cow":{"record_reuse":_cow_record_reuse,"record_new":_cow_record_new,"path_reuse":_cow_path_reuse,"path_new":_cow_path_new}}
+	return {"enabled":_slow_timing_enabled,"scope":"resolver_lifetime_all_callers","clock":"cpu_call_usec_not_gpu","operations_are_inclusive":true,"operations":_slow_timing_operations.duplicate(true),"metadata_cache":{"enabled":is_instance_valid(_metadata_tree) and not _metadata_order_watch_failed,"entries":_vehicle_metadata.size(),"hits":_metadata_hits,"misses":_metadata_misses,"invalidations":_metadata_invalidations,"capture_hits":_metadata_capture_hits,"cross_physics_capture_hits":_metadata_cross_physics_capture_hits}}
 
 func _timed_intersect_shape(space: PhysicsDirectSpaceState3D, query: PhysicsShapeQueryParameters3D, max_results: int) -> Array[Dictionary]:
 	var started: int = Time.get_ticks_usec()
@@ -173,7 +167,7 @@ func _watch_parent_order(parent: Node, vehicle_id: int) -> void:
 		return
 	_order_observers[id]={"node":parent,"callback":callback,"vehicles":{vehicle_id:true}}
 
-func _path_nodes_from(vehicle: Node3D, node: Node, observe: bool, slots: Dictionary) -> Array:
+func _path_nodes_from(vehicle: Node3D, node: Node, observe: bool) -> Array:
 	var path: Array=[]
 	var vehicle_id: int=vehicle.get_instance_id()
 	var cursor: Node=node
@@ -184,43 +178,33 @@ func _path_nodes_from(vehicle: Node3D, node: Node, observe: bool, slots: Diction
 			members[vehicle_id]=true
 			_metadata_members[cursor.get_instance_id()]=members
 			_watch_parent_order(parent,vehicle_id)
-		if cursor is Node3D:
-			var id: int=cursor.get_instance_id()
-			if not slots.has(id):slots[id]={"node":cursor,"id":id,"record":{},"version":0,"sample":-1}
-			path.push_front(slots[id])
+		if cursor is Node3D:path.push_front({"node":cursor,"id":cursor.get_instance_id()})
 		cursor=parent
 	return path
 
-func _new_path_snapshot(nodes: Array) -> Dictionary:
-	return {"nodes":nodes,"snapshot":[],"versions":[],"ready":false}
-
 func _build_vehicle_metadata(vehicle: Node3D, observe: bool) -> Dictionary:
 	var named: Dictionary={}
-	var slots: Dictionary={}
-	var named_slots: Dictionary={}
 	for key: String in ["Turret","Barrel","Muzzle"]:
 		var found: Node=vehicle.find_child(key,true,false)
 		named[key]=found as Node3D
 		# Watch even a non-Node3D first match: reordering can change that match.
-		if found!=null:_path_nodes_from(vehicle,found,observe,slots)
-		var articulated: Node3D=named[key]
-		if articulated!=null:named_slots[key]=slots[articulated.get_instance_id()]
+		if found!=null:_path_nodes_from(vehicle,found,observe)
 	var shapes: Array[Dictionary]=[]
 	for shape_child: Node in vehicle.find_children("*","CollisionShape3D",true,false):
 		var shape_node: CollisionShape3D=shape_child as CollisionShape3D
 		var body: CollisionObject3D=shape_node.get_parent() as CollisionObject3D
 		if body!=null:
-			shapes.append({"node":shape_node,"body":body,"path":_new_path_snapshot(_path_nodes_from(vehicle,shape_node,observe,slots))})
+			shapes.append({"node":shape_node,"body":body,"path":_path_nodes_from(vehicle,shape_node,observe)})
 	var own: Array[RID]=[]
 	for body_child: Node in vehicle.find_children("*","CollisionObject3D",true,false):
 		var body: CollisionObject3D=body_child as CollisionObject3D
 		own.append(body.get_rid())
-		if observe:_path_nodes_from(vehicle,body,true,slots)
-	var barrel_path: Dictionary=_new_path_snapshot([])
-	var muzzle_path: Dictionary=_new_path_snapshot([])
-	if named.Barrel!=null:barrel_path=_new_path_snapshot(_path_nodes_from(vehicle,named.Barrel,observe,slots))
-	if named.Muzzle!=null:muzzle_path=_new_path_snapshot(_path_nodes_from(vehicle,named.Muzzle,observe,slots))
-	return {"vehicle":vehicle,"named":named,"named_slots":named_slots,"shapes":shapes,"own":own,"barrel_path":barrel_path,"muzzle_path":muzzle_path}
+		if observe:_path_nodes_from(vehicle,body,true)
+	var barrel_path: Array=[]
+	var muzzle_path: Array=[]
+	if named.Barrel!=null:barrel_path=_path_nodes_from(vehicle,named.Barrel,observe)
+	if named.Muzzle!=null:muzzle_path=_path_nodes_from(vehicle,named.Muzzle,observe)
+	return {"vehicle":vehicle,"named":named,"shapes":shapes,"own":own,"barrel_path":barrel_path,"muzzle_path":muzzle_path}
 
 func _metadata_for_vehicle(vehicle: Node3D, capture_lookup: bool=false) -> Dictionary:
 	var observed: bool=_metadata_observation_ready(vehicle)
@@ -245,58 +229,25 @@ func _metadata_for_vehicle(vehicle: Node3D, capture_lookup: bool=false) -> Dicti
 	if observed and not _metadata_order_watch_failed:_vehicle_metadata[id]=metadata
 	return metadata
 
-func _local_snapshot(slot: Dictionary, sample: int) -> Dictionary:
-	# The serial deduplicates getters only inside one synchronous capture.
-	if int(slot.sample)==sample:return slot.record
-	var node: Node3D=slot.node
-	var live: Transform3D=node.transform
-	var previous: Dictionary=slot.record
-	slot.sample=sample
-	if not previous.is_empty():
-		var old_transform: Transform3D=previous.transform
-		if live.is_finite() and old_transform.is_finite() and live==old_transform:
-			if _slow_timing_enabled:_cow_record_reuse+=1
-			return previous
-	# Only replace the slot pointer. Historical pose records are never written.
-	var record: Dictionary={"node":node,"id":int(slot.id),"transform":live}
-	slot.record=record
-	slot.version=int(slot.version)+1
-	if _slow_timing_enabled:_cow_record_new+=1
-	return record
-
-func _snapshot_path(path: Dictionary, sample: int) -> Array:
-	var nodes: Array=path.nodes
-	var versions: Array=path.versions
-	var unchanged: bool=bool(path.ready) and versions.size()==nodes.size()
-	for index: int in nodes.size():
-		var slot: Dictionary=nodes[index]
-		if int(slot.sample)!=sample:_local_snapshot(slot,sample)
-		if unchanged and int(versions[index])!=int(slot.version):unchanged=false
-	if unchanged:
-		if _slow_timing_enabled:_cow_path_reuse+=1
-		return path.snapshot
+func _snapshot_path(path: Array, captured: Dictionary) -> Array:
 	var result: Array=[]
-	var new_versions: Array[int]=[]
-	for slot: Dictionary in nodes:
-		# Append immutable records, never the mutable cache slots themselves.
-		result.append(slot.record)
-		new_versions.append(int(slot.version))
-	path.snapshot=result
-	path.versions=new_versions
-	path.ready=true
-	if _slow_timing_enabled:_cow_path_new+=1
+	for entry: Dictionary in path:
+		var id: int=int(entry.id)
+		if not captured.has(id):
+			var node: Node3D=entry.node
+			captured[id]={"node":node,"id":id,"transform":node.transform}
+		result.append(captured[id])
 	return result
 
 func capture_pose(vehicle: Node3D) -> Dictionary:
 	var timing_started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
-	_capture_serial+=1
-	var sample: int=_capture_serial
 	var metadata: Dictionary=_metadata_for_vehicle(vehicle,true)
 	var pose: Dictionary={"root":vehicle.global_transform,"nodes":{},"shapes":[]}
 	for key: String in ["Turret","Barrel"]:
-		if metadata.named_slots.has(key):pose.nodes[key]=_local_snapshot(metadata.named_slots[key],sample)
+		var node: Node3D=metadata.named[key]
+		if node!=null:pose.nodes[key]={"node":node,"id":node.get_instance_id(),"transform":node.transform}
 	var barrel: Node3D=metadata.named.Barrel
-	pose.layout=_capture_layout(vehicle,barrel,metadata,sample)
+	pose.layout=_capture_layout(vehicle,barrel,metadata,pose.nodes)
 	# Used by travel/substep and old-pose collision tests; not dead data.
 	pose.shapes=_shape_pose(pose,pose,1.0)
 	if _slow_timing_enabled: _timing_sample("capture_pose",Time.get_ticks_usec()-timing_started)
@@ -309,34 +260,31 @@ func _apply(vehicle: Node3D,a: Dictionary,b: Dictionary,weight: float) -> void:
 			var item:Dictionary=a.nodes[key]
 			if is_instance_valid(item.node):item.node.transform=item.transform if weight==0.0 else (item.transform as Transform3D).interpolate_with(b.nodes[key].transform,weight)
 
-## Every capture still reads shape state, metadata and local transforms. Only
-## exactly unchanged immutable local records/path arrays are shared with old poses.
+## A sweep still snapshots all geometry. Only tree membership/path nodes persist;
+## each capture reads shape state, metadata and local transforms again.
 func _path_from(vehicle:Node3D,node:Node3D)->Array:
-	_capture_serial+=1
-	var path: Dictionary=_new_path_snapshot(_path_nodes_from(vehicle,node,false,{}))
-	return _snapshot_path(path,_capture_serial)
+	return _snapshot_path(_path_nodes_from(vehicle,node,false),{})
 
-func _capture_layout(vehicle:Node3D,barrel:Node3D,metadata:Dictionary={},sample:int=-1)->Array:
+func _capture_layout(vehicle:Node3D,barrel:Node3D,metadata:Dictionary={},articulated:Dictionary={})->Array:
 	var timing_started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
-	if sample<0:
-		_capture_serial+=1
-		sample=_capture_serial
 	if metadata.is_empty():metadata=_metadata_for_vehicle(vehicle)
 	var layout:Array=[]
+	var captured:Dictionary={}
+	for record:Dictionary in articulated.values():captured[int(record.id)]=record
 	for entry:Dictionary in metadata.shapes:
 		var node:CollisionShape3D=entry.node
 		var body:CollisionObject3D=entry.body
 		if node.disabled or node.shape==null:continue
 		if str(body.get_meta("kind","")) not in ["armor","armor_group"]:continue
-		layout.append({"shape":node.shape,"path":_snapshot_path(entry.path,sample),"barrel":false})
+		layout.append({"shape":node.shape,"path":_snapshot_path(entry.path,captured),"barrel":false})
 	var muzzle:Node3D=metadata.named.Muzzle
 	if barrel!=null and muzzle!=null and barrel.global_position.distance_to(muzzle.global_position)>0.05:
-		layout.append({"shape":CapsuleShape3D.new(),"path":_snapshot_path(metadata.barrel_path,sample),"muzzle_path":_snapshot_path(metadata.muzzle_path,sample),"radius":float(barrel.get_meta("contact_radius",0.075)),"barrel":true})
+		layout.append({"shape":CapsuleShape3D.new(),"path":_snapshot_path(metadata.barrel_path,captured),"muzzle_path":_snapshot_path(metadata.muzzle_path,captured),"radius":float(barrel.get_meta("contact_radius",0.075)),"barrel":true})
 	if _slow_timing_enabled: _timing_sample("layout_including_path_capture",Time.get_ticks_usec()-timing_started)
 	return layout
 
-## World transforms are memoized only within this interpolated pose. Local
-## snapshots may be shared only after a fresh exact comparison on this capture.
+## World transforms are memoized only within this interpolated pose. Structural
+## path IDs persist, but no Transform, shape state or visibility result does.
 func _path_pose(path:Array,root_pose:Transform3D,locals:Dictionary,resolved:Dictionary)->Transform3D:
 	var transform:=root_pose
 	for entry in path:
