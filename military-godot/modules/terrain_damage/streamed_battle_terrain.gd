@@ -285,17 +285,20 @@ func _build_chunk(key: Vector2i) -> void:
 	var nodes_done_usec: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
 	tile.get_node("Surface").mesh=mesh
 	var visual_done_usec: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
-	# ArrayMesh.create_trimesh_shape() reads the just-uploaded arrays back. Expand
-	# the exact original CPU vertices/indices instead; winding, BVH shape type and
-	# backface=false are unchanged. An unrelated override keeps its old fallback.
+	# Avoid ArrayMesh readback/intermediate TriangleMesh, but retain its legacy
+	# 0.0001 collision-only snap. Render/source data, winding, Concave/BVH type
+	# and backface=false are unchanged. Other overrides keep their old fallback.
 	var collision: Shape3D
 	var collision_data_done_usec: int = visual_done_usec
 	var direct_cpu_faces: bool = _collision_build_mesh == mesh and not _collision_build_indices.is_empty()
 	if direct_cpu_faces:
+		var collision_vertices: PackedVector3Array = _collision_build_vertices.duplicate()
+		for vertex_index: int in collision_vertices.size():
+			collision_vertices[vertex_index] = collision_vertices[vertex_index].snappedf(0.0001)
 		var faces: PackedVector3Array = PackedVector3Array()
 		faces.resize(_collision_build_indices.size())
 		for index: int in _collision_build_indices.size():
-			faces[index] = _collision_build_vertices[_collision_build_indices[index]]
+			faces[index] = collision_vertices[_collision_build_indices[index]]
 		if _slow_timing_enabled: collision_data_done_usec = Time.get_ticks_usec()
 		var concave: ConcavePolygonShape3D = ConcavePolygonShape3D.new()
 		concave.set_faces(faces)
