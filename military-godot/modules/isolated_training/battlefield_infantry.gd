@@ -5,6 +5,8 @@ const DEPLOY_BATCH_SIZE: int = 8
 var field_roster: Array[String] = []
 var _field_deploying: bool = false
 var _field_active: bool = false
+# Explicit A/B setting; only newly deployed field_roster actors receive it.
+var field_locomotion_hz: float = 20.0
 
 func deploy_infantry(rows: Array[Dictionary]) -> Dictionary:
 	if _field_deploying or not field_roster.is_empty():
@@ -42,6 +44,8 @@ func deploy_infantry(rows: Array[Dictionary]) -> Dictionary:
 		actor.set_physics_process(false)
 		actor.set_meta("initial_dismounted", true)
 		actor.set_meta("battlefield_infantry", true)
+		actor.locomotion_hz = clampf(field_locomotion_hz, 20.0, 60.0)
+		actor.locomotion_lod_enabled = actor.locomotion_hz < 60.0
 		if row.has("squad_id"):
 			actor.set_meta("fireteam", row.squad_id)
 			actor.set_meta("squad_id", row.squad_id)

@@ -48,7 +48,7 @@ func _battle_timing_advance_frame() -> void:
  if frame == _battle_timing_frame: return
  if not _battle_timing_current.is_empty():
   _battle_timing_frames += 1
-  for key: String in ["total_usec","actor_total_usec","sense_usec","nav_usec","motor_usec","motor_solve_usec","motor_heading_usec","other_usec","pose_usec"]:
+  for key: String in ["total_usec","actor_total_usec","sense_usec","sense_candidates_usec","sense_visibility_usec","sense_ray_usec","sense_shared_usec","nav_usec","motor_usec","motor_solve_usec","motor_heading_usec","other_usec","pose_usec"]:
    _battle_timing_maxima[key] = maxi(int(_battle_timing_maxima.get(key,0)),int(_battle_timing_current[key]))
   if int(_battle_timing_current.total_usec)>=16000:
    if _battle_timing_events.size()>=64:
@@ -56,9 +56,9 @@ func _battle_timing_advance_frame() -> void:
     _battle_timing_overwritten += 1
    _battle_timing_events.append(_battle_timing_current.duplicate(true))
  _battle_timing_frame = frame
- _battle_timing_current = {"frame":frame,"frame_role":"render","physics_frame_first":Engine.get_physics_frames(),"physics_frame_last":Engine.get_physics_frames(),"start_usec":0,"end_usec":0,"total_usec":0,"actor_total_usec":0,"sense_usec":0,"nav_usec":0,"motor_usec":0,"motor_solve_usec":0,"motor_heading_usec":0,"other_usec":0,"pose_usec":0,"actor_callbacks":0,"pose_callbacks":0,"skipped":{},"slowest_callback":{}}
+ _battle_timing_current = {"frame":frame,"frame_role":"render","physics_frame_first":Engine.get_physics_frames(),"physics_frame_last":Engine.get_physics_frames(),"start_usec":0,"end_usec":0,"total_usec":0,"actor_total_usec":0,"sense_usec":0,"sense_candidates_usec":0,"sense_visibility_usec":0,"sense_ray_usec":0,"sense_shared_usec":0,"nav_usec":0,"motor_usec":0,"motor_solve_usec":0,"motor_heading_usec":0,"other_usec":0,"pose_usec":0,"actor_callbacks":0,"pose_callbacks":0,"skipped":{},"slowest_callback":{}}
 
-func record_actor_timing(id: String, operation: String, start_usec: int, end_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "", motor_solve_usec: int = 0, motor_heading_usec: int = 0) -> void:
+func record_actor_timing(id: String, operation: String, start_usec: int, end_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "", motor_solve_usec: int = 0, motor_heading_usec: int = 0, sense_candidates_usec: int = 0, sense_visibility_usec: int = 0, sense_ray_usec: int = 0, sense_shared_usec: int = 0) -> void:
  if not _battle_timing_enabled: return
  _battle_timing_advance_frame()
  var duration: int = maxi(0,end_usec-start_usec)
@@ -69,6 +69,10 @@ func record_actor_timing(id: String, operation: String, start_usec: int, end_use
   _battle_timing_current.actor_callbacks += 1
   _battle_timing_current.actor_total_usec += duration
   _battle_timing_current.sense_usec += sense_usec
+  _battle_timing_current.sense_candidates_usec += sense_candidates_usec
+  _battle_timing_current.sense_visibility_usec += sense_visibility_usec
+  _battle_timing_current.sense_ray_usec += sense_ray_usec
+  _battle_timing_current.sense_shared_usec += sense_shared_usec
   _battle_timing_current.nav_usec += nav_usec
   _battle_timing_current.motor_usec += motor_usec
   _battle_timing_current.motor_solve_usec += motor_solve_usec
@@ -80,7 +84,7 @@ func record_actor_timing(id: String, operation: String, start_usec: int, end_use
   _battle_timing_current.pose_usec += duration
  _battle_timing_current.total_usec = int(_battle_timing_current.actor_total_usec)+int(_battle_timing_current.pose_usec)
  if duration>int(_battle_timing_current.slowest_callback.get("total_usec",-1)):
-  _battle_timing_current.slowest_callback = {"actor_id":id,"operation":operation,"total_usec":duration,"sense_usec":sense_usec,"nav_usec":nav_usec,"motor_usec":motor_usec,"motor_solve_usec":motor_solve_usec,"motor_heading_usec":motor_heading_usec}
+  _battle_timing_current.slowest_callback = {"actor_id":id,"operation":operation,"total_usec":duration,"sense_usec":sense_usec,"nav_usec":nav_usec,"motor_usec":motor_usec,"motor_solve_usec":motor_solve_usec,"motor_heading_usec":motor_heading_usec,"sense_candidates_usec":sense_candidates_usec,"sense_visibility_usec":sense_visibility_usec,"sense_ray_usec":sense_ray_usec,"sense_shared_usec":sense_shared_usec}
 
 var _perception_next: Dictionary = {}
 var _perception_quota: Dictionary = {}
@@ -155,6 +159,7 @@ func request_path_plan() -> bool:
 func performance_snapshot() -> Dictionary:
  var result: Dictionary = {"optimization_enabled":optimization_enabled,"perception_updates":_perception_updates,"perception_rays":_perception_rays,"path_plans":_path_plans,"peak_perception_rays_per_frame":_peak_frame_rays,"peak_path_plans_per_frame":_peak_frame_plans}
  if _battle_timing_enabled:
+  result["minimap_timing"]=_minimap_timing.duplicate()
   result["battle_slow_timing"] = {"enabled":true,"threshold_usec":16000,"event_limit":64,"frame_role":"render","completed_frames":_battle_timing_frames,"overwritten":_battle_timing_overwritten,"maxima_usec":_battle_timing_maxima.duplicate(),"events":_battle_timing_events.duplicate(true),"current_frame_partial":_battle_timing_current.duplicate(true)}
  return result
 func reset_performance_counters() -> void:
@@ -168,6 +173,7 @@ func reset_performance_counters() -> void:
  _battle_timing_current.clear()
  _battle_timing_events.clear()
  _battle_timing_maxima.clear()
+ _minimap_timing={"calls":0,"total_usec":0,"maximum_usec":0,"ray_count":0}
  _battle_timing_overwritten=0
  _battle_timing_frames=0
 func armor_candidates() -> Array:
@@ -230,6 +236,11 @@ func clear() -> void:
  _candidate_grid.clear()
  _candidate_records.clear()
  _candidate_cells.clear()
+ _locomotion_grid_frame=-1
+ _locomotion_people.clear()
+ _locomotion_person_cells.clear()
+ _locomotion_vehicles.clear()
+ _locomotion_geometry_revision+=1
  _near_vehicle_frame=-1
  _near_vehicle_teams.clear()
  _spawn_sequence=0
@@ -268,6 +279,7 @@ func spawn_actor(id: String, team: String, position: Vector3, patrol: Array = []
  persons[id]["ammo"] = actor.brain.ammo
  actor.bind_person_state(persons[id])
  _candidate_frame=-1
+ _locomotion_grid_frame=-1
  return actor
 
 const SENSE_CELL_SIZE: float = 128.0
@@ -299,6 +311,7 @@ func _ensure_candidate_frame() -> void:
   _candidate_records[id]={"actor_id":id,"team_id":actor.brain.team_id,"actor_kind":"infantry","node":actor,"alive":true}
 
 func note_actor_moved(actor: Node3D) -> void:
+ if _locomotion_grid_frame==Engine.get_physics_frames(): _locomotion_note_actor(actor)
  if _candidate_frame!=Engine.get_physics_frames(): return
  if actor.embarked or actor.brain.hp<=0.0: return
  var id: String = str(actor.brain.actor_id)
@@ -312,6 +325,94 @@ func note_actor_moved(actor: Node3D) -> void:
  if not _candidate_grid.has(cell): _candidate_grid[cell]=[]
  _candidate_grid[cell].append(id)
  _candidate_cells[id]=cell
+
+var _locomotion_grid_frame: int = -1
+var _locomotion_people: Dictionary = {}
+var _locomotion_person_cells: Dictionary = {}
+var _locomotion_vehicles: Dictionary = {}
+var _locomotion_terrain: Node
+var _locomotion_geometry_revision: int = 0
+
+func locomotion_geometry_epoch() -> int:
+ return _locomotion_geometry_revision
+
+func _locomotion_terrain_changed(_event: Dictionary) -> void:
+ _locomotion_geometry_revision+=1
+
+func _locomotion_cell(point: Vector3, size: float) -> Vector2i:
+ return Vector2i(floori(point.x/size),floori(point.z/size))
+
+func _locomotion_note_actor(actor: Node3D) -> void:
+ var id: String = str(actor.brain.actor_id)
+ if actor.embarked or actor.collision_layer==0:
+  if _locomotion_person_cells.has(id):
+   _locomotion_people[_locomotion_person_cells[id]].erase(id)
+   _locomotion_person_cells.erase(id)
+  return
+ var cell: Vector2i = _locomotion_cell(actor.global_position,4.0)
+ if _locomotion_person_cells.has(id):
+  var old: Vector2i = _locomotion_person_cells[id]
+  if old==cell: return
+  _locomotion_people[old].erase(id)
+ if not _locomotion_people.has(cell): _locomotion_people[cell]=[]
+ _locomotion_people[cell].append(id)
+ _locomotion_person_cells[id]=cell
+
+func _ensure_locomotion_grid() -> void:
+ var terrain = main.get("terrain_damage") if is_instance_valid(main) else null
+ if terrain!=_locomotion_terrain:
+  var callback: Callable = Callable(self,"_locomotion_terrain_changed")
+  if is_instance_valid(_locomotion_terrain) and _locomotion_terrain.has_signal("terrain_changed") and _locomotion_terrain.is_connected("terrain_changed",callback): _locomotion_terrain.disconnect("terrain_changed",callback)
+  _locomotion_terrain=terrain
+  _locomotion_geometry_revision+=1
+  if is_instance_valid(terrain) and terrain.has_signal("terrain_changed"): terrain.connect("terrain_changed",callback)
+ var frame: int = Engine.get_physics_frames()
+ if _locomotion_grid_frame==frame: return
+ _locomotion_grid_frame=frame
+ _locomotion_people.clear()
+ _locomotion_person_cells.clear()
+ _locomotion_vehicles.clear()
+ for actor in actors.values():
+  if is_instance_valid(actor): _locomotion_note_actor(actor)
+ var vehicles: Array = []
+ var armor = main.get("armor_host") if is_instance_valid(main) else null
+ if is_instance_valid(armor):
+  for unit in armor.units.values():
+   if is_instance_valid(unit.model): vehicles.append(unit.model)
+ if is_instance_valid(player_actor) and int(main.unit)!=2: vehicles.append(player_actor)
+ for vehicle in vehicles:
+  var cell: Vector2i = _locomotion_cell(vehicle.global_position,16.0)
+  if not _locomotion_vehicles.has(cell): _locomotion_vehicles[cell]=[]
+  _locomotion_vehicles[cell].append(vehicle)
+
+func locomotion_contact_risk(actor: Node3D, seen_epoch: int) -> String:
+ _ensure_locomotion_grid()
+ if seen_epoch!=_locomotion_geometry_revision: return "terrain_dirty"
+ if not is_instance_valid(_locomotion_terrain) or not _locomotion_terrain.has_signal("terrain_changed"): return "terrain_dirty_unavailable"
+ var own_radius: float = actor.locomotion_footprint_radius()
+ if own_radius<0.0: return "shape_unknown"
+ var origin: Vector3 = actor.global_position
+ var cell: Vector2i = _locomotion_cell(origin,4.0)
+ # Radius plus one conservative cell; memberships update after actual solves.
+ for x: int in range(-2,3):
+  for z: int in range(-2,3):
+   for id in _locomotion_people.get(cell+Vector2i(x,z),[]):
+    var other = actors.get(id)
+    if not is_instance_valid(other) or other==actor or other.embarked or other.collision_layer==0: continue
+    var point: Vector3 = other.global_position
+    if absf(point.y-origin.y)>3.0+absf(other.velocity.y)*0.05: continue
+    var radius: float = other.locomotion_footprint_radius()
+    if radius<0.0: return "neighbor_shape_unknown"
+    var speed: float = maxf(float(actor.move_speed)*1.65,actor.velocity.length())+maxf(float(other.move_speed)*1.65,other.velocity.length())
+    var clearance: float = own_radius+radius+speed*0.05+0.3
+    if clearance>4.0: return "fast_or_large_neighbor"
+    if Vector2(point.x-origin.x,point.z-origin.z).length_squared()<clearance*clearance: return "near_person"
+ cell=_locomotion_cell(origin,16.0)
+ for x: int in range(-2,3):
+  for z: int in range(-2,3):
+   for vehicle in _locomotion_vehicles.get(cell+Vector2i(x,z),[]):
+    if is_instance_valid(vehicle) and origin.distance_squared_to(vehicle.global_position)<144.0: return "near_vehicle"
+ return ""
 
 func _unfiltered_infantry_candidates() -> Array:
  # Armor and existing diagnostics also use this API with non-infantry observer ids.
@@ -422,9 +523,13 @@ func infantry_visibility(observer_id: String, target_id: String) -> float:
  var smoke:=_smoke_data()
  return 1.0 if Visibility.reason(observer.global_position+Vector3.UP*observer.aim_height,end,["clear","rain","fog"][clampi(int(main.weather_index),0,2)],smoke.center,smoke.active,false,float(smoke.radius))=="visible" else 0.0
 
+var _minimap_timing: Dictionary = {"calls":0,"total_usec":0,"maximum_usec":0,"ray_count":0}
+
 func minimap_visible_enemy_ids() -> Array[String]:
  var result: Array[String]=[]
  if not is_instance_valid(main) or not main.is_inside_tree(): return result
+ var timing_start: int = Time.get_ticks_usec() if _battle_timing_enabled else 0
+ if _battle_timing_enabled: _minimap_timing.calls+=1
  var observers: Array=[]
  var occupied := false
  var targets: Array=[]
@@ -459,10 +564,15 @@ func minimap_visible_enemy_ids() -> Array[String]:
    excluded.assign(observer.exclude)
    var query:=PhysicsRayQueryParameters3D.create(observer.position,target.position,1|8|16|32|128,excluded)
    var hit:=main.get_world_3d().direct_space_state.intersect_ray(query)
+   if _battle_timing_enabled: _minimap_timing.ray_count+=1
    if not hit.is_empty() and _contact_actor_id(hit.collider)==str(target.actor_id):
     result.append(str(target.actor_id))
     break
  result.sort()
+ if _battle_timing_enabled:
+  var elapsed: int = Time.get_ticks_usec()-timing_start
+  _minimap_timing.total_usec+=elapsed
+  _minimap_timing.maximum_usec=maxi(int(_minimap_timing.maximum_usec),elapsed)
  return result
 func _contact_actor_id(collider: Object) -> String:
  var node:=collider as Node
@@ -568,6 +678,7 @@ func set_crew_embarked(person_id: String, value: bool, world_position: Vector3 =
   actor.brain.patrol_points = [world_position,world_position+Vector3(3,0,0)]
  actor.set_embarked(value)
  _candidate_frame=-1
+ _locomotion_grid_frame=-1
  return true
 
 func infantry_weapon_tick(actor, _delta: float) -> void:
