@@ -72,6 +72,22 @@ var _stalled := 0.0
 var mg_suppression := 0.0
 var blast_suppression := 0.0
 var suppression_level := 0.0
+var _battle_timing_enabled: bool = false
+var _timing_perception_refreshes: int = 0
+var _timing_perception_granted: int = 0
+var _timing_perception_denied: int = 0
+var _timing_skipped: Dictionary = {}
+
+func performance_snapshot() -> Dictionary:
+ var result: Dictionary = {"enabled":_battle_timing_enabled,"shot_sequence":shot_sequence}
+ if _battle_timing_enabled:
+  result.merge({"counter_scope":"actor_lifetime","perception_refreshes":_timing_perception_refreshes,"perception_granted":_timing_perception_granted,"perception_denied":_timing_perception_denied,"skipped_callbacks":_timing_skipped.duplicate()})
+ return result
+
+func _record_battle_timing(operation: String, start_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "") -> void:
+ var end_usec: int = Time.get_ticks_usec()
+ if not skipped.is_empty(): _timing_skipped[skipped] = int(_timing_skipped.get(skipped,0))+1
+ if is_instance_valid(host): host.record_actor_timing(brain.actor_id,operation,start_usec,end_usec,sense_usec,nav_usec,motor_usec,skipped)
 
 func _scheduled_observations() -> Array:
  if brain.hp<=0.0:
@@ -79,6 +95,7 @@ func _scheduled_observations() -> Array:
   return []
  if not is_instance_valid(host) or not host.has_method("perception_due") or host.perception_due(perception_slot):
   _cached_observations = _observations()
+  if _battle_timing_enabled: _timing_perception_refreshes += 1
   if is_instance_valid(host) and host.has_method("performance_snapshot"): host._perception_updates += 1
  return _cached_observations
 
@@ -95,6 +112,7 @@ func _process(delta: float) -> void:
 func configure(id: String, team: String, owner_host: Node) -> void:
  brain.setup(id,team)
  host = owner_host
+ _battle_timing_enabled = bool(owner_host.get("_battle_timing_enabled")) if is_instance_valid(owner_host) else false
  set_meta("actor_id",id)
  set_meta("actor_kind","infantry")
  set_meta("kind","ai_person")
@@ -118,12 +136,20 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
  if not _configured or embarked: return
+ var timing_start: int = Time.get_ticks_usec() if _battle_timing_enabled else 0
+ var timing_sense: int = 0
+ var timing_nav: int = 0
+ var timing_motor: int = 0
+ var phase_start: int = 0
  var owner_main = host.get("main") if is_instance_valid(host) else null
  if is_instance_valid(owner_main):
-  if owner_main.has_method("is_battle_active") and not owner_main.is_battle_active(): return
+  if owner_main.has_method("is_battle_active") and not owner_main.is_battle_active():
+   if _battle_timing_enabled: _record_battle_timing("actor",timing_start,0,0,0,"battle_inactive")
+   return
   var terrain = owner_main.get("terrain_damage")
   if is_instance_valid(terrain) and terrain.has_method("is_position_loaded") and not terrain.is_position_loaded(global_position):
    velocity = Vector3.ZERO
+   if _battle_timing_enabled: _record_battle_timing("actor",timing_start,0,0,0,"terrain_unloaded")
    return
  _advance_stance(delta)
  _advance_suppression(delta)
@@ -143,7 +169,11 @@ func _physics_process(delta: float) -> void:
   host.infantry_weapon_tick(self,delta)
  if bool(get_meta("player_controlled",false)):
   var controller = get_meta("player_controller",null)
-  if is_instance_valid(controller): controller.physics_tick(self,delta)
+  if is_instance_valid(controller):
+   phase_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
+   controller.physics_tick(self,delta)
+   if _battle_timing_enabled: timing_motor = Time.get_ticks_usec()-phase_start
+  if _battle_timing_enabled: _record_battle_timing("actor",timing_start,0,0,timing_motor)
   return
  if suppression_level>=0.6: brain.cooldown += delta*0.65
  # Crew host owns this temporary movement request; never replace construction orders.
@@ -154,7 +184,9 @@ func _physics_process(delta: float) -> void:
   brain._set_state("return_to_vehicle")
   command = {"move":global_position.distance_to(destination)>float(returning.get("stop_distance",5.6)), "destination":destination, "fire":false, "target_id":"", "build":false}
  else:
+  phase_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
   var observations := _scheduled_observations() if engagement_delay<=0.0 and weapon!="" and not bool(get_meta("construction_order",false)) else []
+  if _battle_timing_enabled: timing_sense = Time.get_ticks_usec()-phase_start
   var loot_command: Dictionary = {}
   if brain.hp>0.0 and not bool(get_meta("construction_order",false)) and brain.order.is_empty() and brain.tactical_order.is_empty() and is_instance_valid(host) and host.has_method("infantry_loot_command"):
    loot_command = host.infantry_loot_command(self,delta)
@@ -162,6 +194,7 @@ func _physics_process(delta: float) -> void:
  var direction: Vector3 = command.destination - global_position
  direction.y = 0.0
  direction = direction.normalized() if bool(command.move) and direction.length() > 0.1 else Vector3.ZERO
+ phase_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
  _route_retry = maxf(0.0,_route_retry-delta)
  _ground_probe_clock -= delta
  if direction.length_squared()>0.01 and _ground_probe_clock<=0.0:
@@ -212,6 +245,8 @@ func _physics_process(delta: float) -> void:
      _route_retry = 0.25
     direction = Vector3.ZERO
   elif path_blocked_now or not _ground_safe: direction = Vector3.ZERO
+ if _battle_timing_enabled: timing_nav = Time.get_ticks_usec()-phase_start
+ phase_start = Time.get_ticks_usec() if _battle_timing_enabled else 0
  var effective_speed := locomotion_speed()*(0.6 if suppression_level>=0.6 else 1.0)
  if not person_state.is_empty():
   var parts: Dictionary = person_state.get("parts",{})
@@ -224,6 +259,7 @@ func _physics_process(delta: float) -> void:
  else: velocity.y = -0.1
  move_and_slide()
  if direction.length_squared() > 0.01: _set_body_heading(lerp_angle(rotation.y,atan2(-direction.x,-direction.z),minf(1.0,delta*9.0)))
+ if _battle_timing_enabled: timing_motor = Time.get_ticks_usec()-phase_start
  if brain.state in ["see_target","fire"] and not brain.target_id.is_empty():
   _aim_autonomous_weapon(_shot_aim_point(brain.last_known),delta)
  if command.fire:
@@ -233,6 +269,7 @@ func _physics_process(delta: float) -> void:
  _sync_person_state()
  if command.build:
   _emit({"kind":"build_requested","actor_id":brain.actor_id,"preset":command.preset,"position":global_position})
+ if _battle_timing_enabled: _record_battle_timing("actor",timing_start,timing_sense,timing_nav,timing_motor)
 
 func _observations() -> Array:
  var result: Array = []
@@ -252,8 +289,10 @@ func _observations() -> Array:
    visible = float(host.infantry_visibility(brain.actor_id,str(candidate.actor_id))) > 0.0
   if visible:
    if host.has_method("consume_perception_ray") and not host.consume_perception_ray():
+    if _battle_timing_enabled: _timing_perception_denied += 1
     _candidate_cursor = (_candidate_cursor+offset)%maxi(1,candidates.size())
     break
+   if _battle_timing_enabled: _timing_perception_granted += 1
    var hit := _ray(point)
    visible = not hit.is_empty() and _collision_actor_id(hit.collider) == str(candidate.actor_id)
   if visible:
@@ -475,17 +514,21 @@ func set_embarked(value: bool) -> void:
  _sync_person_state()
 
 func update_visual_pose(delta: float) -> void:
+ var timing_start: int = Time.get_ticks_usec() if _battle_timing_enabled else 0
  # Already-prone casualties retain their supported last articulated pose.
  # Applying the standing fall tilt on top of prone would twist limbs into ground.
  if brain.hp<=0.0 and _stance_enabled and float(_stance_pose.prone)>0.5:
   if is_instance_valid(weapon_pivot): weapon_pivot.visible = false
+  if _battle_timing_enabled: _record_battle_timing("pose",timing_start)
   return
  var body_shape := get_node_or_null("BodyCollision") as CollisionShape3D
  if is_instance_valid(body_shape) and body_shape.shape is CapsuleShape3D and not _stance_enabled:
   body_shape.shape.height = 0.56 if brain.hp<=0.0 else 1.65
   body_shape.position.y = 0.28 if brain.hp<=0.0 else 0.825
  var visual := get_node_or_null("InfantryVisual") as Node3D
- if not is_instance_valid(visual): return
+ if not is_instance_valid(visual):
+  if _battle_timing_enabled: _record_battle_timing("pose",timing_start)
+  return
  if _limbs.is_empty():
   for part in ["Thigh_L","Thigh_R","Shin_L","Shin_R","Foot_L","Foot_R","UpperArm_L","UpperArm_R","Forearm_L","Forearm_R"]:
    var limb := visual.find_child("*"+part,true,false) as Node3D
@@ -524,6 +567,7 @@ func update_visual_pose(delta: float) -> void:
  visual.position.y = move_toward(visual.position.y,0.24 if dead else 0.0,delta*1.5)
  visual.scale.y = move_toward(visual.scale.y,0.58 if dead else 1.0,delta*1.2)
  if is_instance_valid(weapon_pivot): weapon_pivot.visible = not dead and not weapon.is_empty()
+ if _battle_timing_enabled: _record_battle_timing("pose",timing_start)
 
 func _path_blocked(direction: Vector3, probe_distance := 0.65) -> bool:
  # A grounded capsule's horizontal probe commonly touches its walkable floor.

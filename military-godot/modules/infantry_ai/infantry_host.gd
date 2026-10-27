@@ -33,6 +33,52 @@ var team_contacts: Dictionary = {}
 var _loot_reach_cache: Dictionary = {}
 var _loot_choice_cache: Dictionary = {}
 var character_detail_lod: Node
+# Opt-in callback wall durations, aggregated by RENDER frame (possibly many physics ticks).
+# actor_total contains sense/nav/motor/other; pose is a separate callback, not a child.
+var _battle_timing_enabled: bool = false
+var _battle_timing_frame: int = -1
+var _battle_timing_current: Dictionary = {}
+var _battle_timing_events: Array[Dictionary] = []
+var _battle_timing_maxima: Dictionary = {}
+var _battle_timing_overwritten: int = 0
+var _battle_timing_frames: int = 0
+
+func _battle_timing_advance_frame() -> void:
+ var frame: int = Engine.get_process_frames()
+ if frame == _battle_timing_frame: return
+ if not _battle_timing_current.is_empty():
+  _battle_timing_frames += 1
+  for key: String in ["total_usec","actor_total_usec","sense_usec","nav_usec","motor_usec","other_usec","pose_usec"]:
+   _battle_timing_maxima[key] = maxi(int(_battle_timing_maxima.get(key,0)),int(_battle_timing_current[key]))
+  if int(_battle_timing_current.total_usec)>=16000:
+   if _battle_timing_events.size()>=64:
+    _battle_timing_events.pop_front()
+    _battle_timing_overwritten += 1
+   _battle_timing_events.append(_battle_timing_current.duplicate(true))
+ _battle_timing_frame = frame
+ _battle_timing_current = {"frame":frame,"frame_role":"render","physics_frame_first":Engine.get_physics_frames(),"physics_frame_last":Engine.get_physics_frames(),"start_usec":0,"end_usec":0,"total_usec":0,"actor_total_usec":0,"sense_usec":0,"nav_usec":0,"motor_usec":0,"other_usec":0,"pose_usec":0,"actor_callbacks":0,"pose_callbacks":0,"skipped":{},"slowest_callback":{}}
+
+func record_actor_timing(id: String, operation: String, start_usec: int, end_usec: int, sense_usec: int = 0, nav_usec: int = 0, motor_usec: int = 0, skipped: String = "") -> void:
+ if not _battle_timing_enabled: return
+ _battle_timing_advance_frame()
+ var duration: int = maxi(0,end_usec-start_usec)
+ if int(_battle_timing_current.start_usec)==0: _battle_timing_current.start_usec = start_usec
+ _battle_timing_current.end_usec = end_usec
+ _battle_timing_current.physics_frame_last = Engine.get_physics_frames()
+ if operation=="actor":
+  _battle_timing_current.actor_callbacks += 1
+  _battle_timing_current.actor_total_usec += duration
+  _battle_timing_current.sense_usec += sense_usec
+  _battle_timing_current.nav_usec += nav_usec
+  _battle_timing_current.motor_usec += motor_usec
+  _battle_timing_current.other_usec += maxi(0,duration-sense_usec-nav_usec-motor_usec)
+  if not skipped.is_empty(): _battle_timing_current.skipped[skipped] = int(_battle_timing_current.skipped.get(skipped,0))+1
+ else:
+  _battle_timing_current.pose_callbacks += 1
+  _battle_timing_current.pose_usec += duration
+ _battle_timing_current.total_usec = int(_battle_timing_current.actor_total_usec)+int(_battle_timing_current.pose_usec)
+ if duration>int(_battle_timing_current.slowest_callback.get("total_usec",-1)):
+  _battle_timing_current.slowest_callback = {"actor_id":id,"operation":operation,"total_usec":duration,"sense_usec":sense_usec,"nav_usec":nav_usec,"motor_usec":motor_usec}
 
 func _refresh_budget() -> void:
  var frame := Engine.get_physics_frames()
@@ -62,7 +108,10 @@ func request_path_plan() -> bool:
  _peak_frame_plans=maxi(_peak_frame_plans,_frame_plans)
  return true
 func performance_snapshot() -> Dictionary:
- return {"optimization_enabled":optimization_enabled,"perception_updates":_perception_updates,"perception_rays":_perception_rays,"path_plans":_path_plans,"peak_perception_rays_per_frame":_peak_frame_rays,"peak_path_plans_per_frame":_peak_frame_plans}
+ var result: Dictionary = {"optimization_enabled":optimization_enabled,"perception_updates":_perception_updates,"perception_rays":_perception_rays,"path_plans":_path_plans,"peak_perception_rays_per_frame":_peak_frame_rays,"peak_path_plans_per_frame":_peak_frame_plans}
+ if _battle_timing_enabled:
+  result["battle_slow_timing"] = {"enabled":true,"threshold_usec":16000,"event_limit":64,"frame_role":"render","completed_frames":_battle_timing_frames,"overwritten":_battle_timing_overwritten,"maxima_usec":_battle_timing_maxima.duplicate(),"events":_battle_timing_events.duplicate(true),"current_frame_partial":_battle_timing_current.duplicate(true)}
+ return result
 func reset_performance_counters() -> void:
  _perception_updates=0
  _perception_rays=0
@@ -70,6 +119,12 @@ func reset_performance_counters() -> void:
  _peak_frame_rays=0
  _peak_frame_plans=0
  _budget_frame=-1
+ _battle_timing_frame=-1
+ _battle_timing_current.clear()
+ _battle_timing_events.clear()
+ _battle_timing_maxima.clear()
+ _battle_timing_overwritten=0
+ _battle_timing_frames=0
 func armor_candidates() -> Array:
  var armor = main.get("armor_host") if is_instance_valid(main) else null
  return armor.candidates() if is_instance_valid(armor) and armor.has_method("candidates") else []
@@ -97,6 +152,7 @@ func shared_contacts(team: String) -> Array:
 
 
 func setup(owner_main: Node3D) -> void:
+ _battle_timing_enabled = OS.get_environment("WWO_BATTLE_SLOW_TIMING")=="1"
  main = owner_main
  var near_path := "res://assets/user_derived/models/user_rifleman_near.glb"
  var view_camera = main.get("camera")
@@ -432,6 +488,7 @@ func infantry_loot_command(actor, delta: float) -> Dictionary:
 
 func _physics_process(delta: float) -> void:
  _loot_clock += delta
+ if _battle_timing_enabled: _battle_timing_advance_frame()
 
 func suppress_near_segment(origin: Vector3, endpoint: Vector3, source_team: String, weapon_kind := "rifle") -> void:
  var strength := 0.24 if weapon_kind in ["mg","hmg","smg"] else 0.05

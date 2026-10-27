@@ -19,6 +19,13 @@ var optimization_enabled := true
 var elapsed := 0.0
 var shots_fired := 0
 var blocked_moves := 0
+# Opt-in CPU timings only; no change to perception, movement or firing schedules.
+const SLOW_TIMING_LIMIT: int = 64
+const SLOW_TIMING_THRESHOLD_USEC: int = 16000
+var _slow_timing_enabled: bool = OS.get_environment("WWO_BATTLE_SLOW_TIMING") == "1"
+var _slow_timing_operations: Dictionary = {}
+var _slow_timing_events: Array[Dictionary] = []
+var _slow_timing_overwritten: int = 0
 
 func setup(owner_main: Node3D) -> void:
 	main=owner_main
@@ -31,6 +38,9 @@ func on_stage_reset() -> void:
 	elapsed=0.0
 	shots_fired=0
 	blocked_moves=0
+	_slow_timing_operations.clear()
+	_slow_timing_events.clear()
+	_slow_timing_overwritten=0
 
 func spawn(stage: Node3D) -> void:
 	on_stage_reset()
@@ -136,12 +146,19 @@ func _role_alive(u: Dictionary, role: String) -> bool:
 
 func _process(_delta:float) -> void:
 	if not is_instance_valid(main) or main.garage:return
+	var started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
 	for u in units.values():
 		if is_instance_valid(u.model):u.model.visible=main.visibility_for_node(u.model)=="visible"
+	if _slow_timing_enabled:
+		_record_slow_timing("visibility", started, {"visibility": Time.get_ticks_usec()-started})
 
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(main) or main.garage or main.game_mode!="skirmish": return
 	if main.has_method("is_battle_active") and not main.is_battle_active(): return
+	var started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
+	var think_usec: int = 0
+	var move_usec: int = 0
+	var aim_usec: int = 0
 	elapsed+=delta
 	for u in units.values():
 		if not is_instance_valid(u.model): continue
@@ -154,12 +171,43 @@ func _physics_process(delta: float) -> void:
 		u.reload=maxf(0,u.reload-delta)
 		u.mg_reload=maxf(0,u.mg_reload-delta)
 		u.think-=delta
+		var phase_started: int = Time.get_ticks_usec() if _slow_timing_enabled else 0
 		if u.think<=0 or not optimization_enabled:
 			u.think=.65
 			damage_feedback.sync(u)
 			_think(u)
+		if _slow_timing_enabled:
+			think_usec += Time.get_ticks_usec()-phase_started
+			phase_started = Time.get_ticks_usec()
 		_move(u,delta)
+		if _slow_timing_enabled:
+			move_usec += Time.get_ticks_usec()-phase_started
+			phase_started = Time.get_ticks_usec()
 		_aim(u,delta)
+		if _slow_timing_enabled:
+			aim_usec += Time.get_ticks_usec()-phase_started
+	if _slow_timing_enabled:
+		_record_slow_timing("physics", started, {"think": think_usec, "move": move_usec, "aim": aim_usec})
+
+func _record_slow_timing(operation: String, started: int, segments: Dictionary) -> void:
+	var total: int = Time.get_ticks_usec()-started
+	var aggregate: Dictionary = _slow_timing_operations.get(operation, {"calls": 0, "total_usec": 0, "max_usec": 0, "segments_total_usec": {}, "segments_max_usec": {}})
+	aggregate.calls += 1
+	aggregate.total_usec += total
+	aggregate.max_usec = maxi(int(aggregate.max_usec), total)
+	for key: String in segments:
+		aggregate.segments_total_usec[key] = int(aggregate.segments_total_usec.get(key, 0)) + int(segments[key])
+		aggregate.segments_max_usec[key] = maxi(int(aggregate.segments_max_usec.get(key, 0)), int(segments[key]))
+	_slow_timing_operations[operation] = aggregate
+	if total < SLOW_TIMING_THRESHOLD_USEC:
+		return
+	_slow_timing_events.append({"operation": operation, "frame": Engine.get_process_frames(), "physics_frame": Engine.get_physics_frames(), "units": units.size(), "elapsed": elapsed, "total_usec": total, "segments_usec": segments})
+	if _slow_timing_events.size() > SLOW_TIMING_LIMIT:
+		_slow_timing_events.pop_front()
+		_slow_timing_overwritten += 1
+
+func _slow_timing_snapshot() -> Dictionary:
+	return {"enabled": _slow_timing_enabled, "source": "ai_armor", "clock": "cpu_call_usec_not_gpu", "event_limit": SLOW_TIMING_LIMIT, "threshold_usec": SLOW_TIMING_THRESHOLD_USEC, "operations": _slow_timing_operations.duplicate(true), "events": _slow_timing_events.duplicate(true), "overwritten": _slow_timing_overwritten}
 
 func _advance_unit_combat(u: Dictionary, delta: float) -> void:
 	# Default per-unit owner. An adopting host may already own this exact Combat.
@@ -528,4 +576,6 @@ func snapshot() -> Dictionary:
 	for u in units.values():
 		result["blue_ai" if u.team=="blue" else "red_ai"]+=1
 		result.units[u.id]={"team":u.team,"position":u.model.global_position,"travel":u.travel,"shots":u.shots,"blocked":u.blocked,"alive":_alive(u),"damage_status":DamageFeedback.status(u),"driver":_role_alive(u,"驾驶员"),"gunner":_role_alive(u,"炮手"),"modules":u.combat.modules.duplicate(true),"crew":u.combat.crew.duplicate(true)}
+	if _slow_timing_enabled:
+		result["slow_timing"] = _slow_timing_snapshot()
 	return result
