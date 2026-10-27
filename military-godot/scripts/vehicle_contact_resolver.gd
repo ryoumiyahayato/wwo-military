@@ -14,7 +14,9 @@ func capture_pose(vehicle: Node3D) -> Dictionary:
 	for key in ["Turret","Barrel"]:
 		var node:=vehicle.find_child(key,true,false) as Node3D
 		if node!=null:pose.nodes[key]={"node":node,"transform":node.transform}
-	pose.layout=_capture_layout(vehicle)
+	# Reuse only this capture's fresh lookup, never a retained unit/node cache.
+	var barrel: Node3D=pose.nodes.get("Barrel",{}).get("node") as Node3D
+	pose.layout=_capture_layout(vehicle,barrel)
 	pose.shapes=_shape_pose(pose,pose,1.0)
 	return pose
 
@@ -36,14 +38,13 @@ func _path_from(vehicle:Node3D,node:Node3D)->Array:
 		cursor=cursor.get_parent()
 	return path
 
-func _capture_layout(vehicle:Node3D)->Array:
+func _capture_layout(vehicle:Node3D,barrel:Node3D)->Array:
 	var layout:Array=[]
 	for node in vehicle.find_children("*","CollisionShape3D",true,false):
 		var body:=node.get_parent() as CollisionObject3D
 		if body==null or node.disabled or node.shape==null:continue
 		if str(body.get_meta("kind","")) not in ["armor","armor_group"]:continue
 		layout.append({"shape":node.shape,"path":_path_from(vehicle,node),"barrel":false})
-	var barrel:=vehicle.find_child("Barrel",true,false) as Node3D
 	var muzzle:=vehicle.find_child("Muzzle",true,false) as Node3D
 	if barrel!=null and muzzle!=null and barrel.global_position.distance_to(muzzle.global_position)>0.05:
 		layout.append({"shape":CapsuleShape3D.new(),"path":_path_from(vehicle,barrel),"muzzle_path":_path_from(vehicle,muzzle),"radius":float(barrel.get_meta("contact_radius",0.075)),"barrel":true})
@@ -88,9 +89,13 @@ func _shapes(vehicle:Node3D)->Array:
 	return capture_pose(vehicle).shapes
 
 func _exclusions(vehicle:Node3D,exclude_ground:bool=true) -> Array[RID]:
-	var excluded:Array[RID]=[]
-	for body in vehicle.find_children("*","CollisionObject3D",true,false):excluded.append(body.get_rid())
-	if not exclude_ground:return excluded
+	var own:Array[RID]=[]
+	for body in vehicle.find_children("*","CollisionObject3D",true,false):own.append(body.get_rid())
+	return _with_ground_exclusions(vehicle,own) if exclude_ground else own
+
+func _with_ground_exclusions(vehicle:Node3D,own:Array[RID]) -> Array[RID]:
+	# The two query classes share one fresh own-RID scan per synchronous resolve.
+	var excluded:Array[RID]=own.duplicate()
 	for ground in vehicle.get_tree().get_nodes_in_group("drivable_ground"):
 		if ground is CollisionObject3D:excluded.append(ground.get_rid())
 	if is_instance_valid(main) and is_instance_valid(main.get("terrain_damage")):
@@ -118,9 +123,10 @@ func resolve_pose(vehicle:Node3D,previous:Dictionary,speed:float,_delta:float) -
 	if travel<0.000001:return {"blocked":false,"fraction":1.0,"contacts":[]}
 	# No substep cap: large rotations must not tunnel between clear endpoints.
 	var count:=maxi(1,int(ceil(travel/SWEEP_STEP)))
-	var exclusions:=_exclusions(vehicle)
 	var barrel_exclusions:=_exclusions(vehicle,false)
+	var exclusions:=_with_ground_exclusions(vehicle,barrel_exclusions)
 	var space:=vehicle.get_world_3d().direct_space_state
+	var query:PhysicsShapeQueryParameters3D=PhysicsShapeQueryParameters3D.new()
 	var contacts:Array=[]
 	var seen:Dictionary={}
 	var old_shapes:Array=before
@@ -131,11 +137,13 @@ func resolve_pose(vehicle:Node3D,previous:Dictionary,speed:float,_delta:float) -
 		var current:=_shape_pose(previous,desired,fraction)
 		for i in current.size():
 			var item:Dictionary=current[i]
-			var query:=PhysicsShapeQueryParameters3D.new()
+			# Reset every item, including state left by the preceding cast/contact.
 			query.shape=item.shape;query.transform=item.transform
 			query.collision_mask=CONTACT_MASK
 			query.exclude=barrel_exclusions if item.barrel else exclusions
 			query.margin=SWEEP_STEP*0.55
+			query.motion=Vector3.ZERO
+			query.collide_with_bodies=true;query.collide_with_areas=false
 			var hits:=space.intersect_shape(query,32)
 			query.transform=old_shapes[i].transform
 			query.motion=(item.transform as Transform3D).origin-query.transform.origin
