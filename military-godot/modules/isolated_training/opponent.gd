@@ -190,7 +190,7 @@ func _fire(unit: Dictionary, direction: Vector3, machinegun: bool = false) -> vo
 func _launch_feedback(unit: Dictionary, visual_weapon: Dictionary) -> void:
 	var origin: Vector3 = unit.muzzle.global_position
 	var axis: Vector3 = -unit.muzzle.global_basis.z.normalized()
-	if main.combat_effects.fire(origin, origin + axis * 0.5, "cannon", false, "ground", false, true, Callable(main, "effect_point_visible"), "muzzle_only", {"visual_weapon": visual_weapon}):
+	if main.combat_effects.fire(origin, origin + axis * 0.5, "cannon", false, "ground", true, false, Callable(main, "effect_point_visible"), "muzzle_only", {"visual_weapon": visual_weapon}):
 		var effect: Dictionary = main.combat_effects.events.back()
 		effect.tracer = false
 		effect.projectile.hide()
