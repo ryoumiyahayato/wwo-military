@@ -39,7 +39,7 @@ controller.start({"viewport": observer_viewport, "world_root": optional_identity
 
 军事 canonical 另从 raw staging 原字节恢复九个必要 JSON：rifleman hitboxes、两份 armor geometry、catalog 及代理、车辆 manifest 及代理、metric 代理、MLRS manifest；原 res 路径和元数据不变，不逆算 prefixed JSON，也不复制八个 GLB。
 
-## 2026-10-27 单敌车有限对抗（实现，未运行）
+## 2026-10-27 单敌车有限对抗（主宿主有限实测，非独立启动）
 
 `opponent.gd` 继承原 `ai_armor/armor_host.gd`，只把既有 Kestrel/同 Combat 三乘员接入一次。准备阶段放置于既有 central_saddle 道路 (0,110)m、距入场玩家约117m；原高程、GroundSupport 与真实空间检查通过后才启用。失败不强行放置，暂停/返回观察不重生。
 
@@ -50,7 +50,7 @@ controller.start({"viewport": observer_viewport, "world_root": optional_identity
 - `get_status().encounter` 保存单敌车当前位置、乘员/模块、有限弹药、观察/记忆和原 shot audit，仅供本地事实/driver。它不是 UI 情报源；模型、原敌情小地图和弹着反馈继续受原合法观察限制。主车五个 person/Actor 与原座不替换；HP7只是入场伤情，真实来袭可使其继续受伤或死亡，不免费治伤/补弹。
 - 敌车/炮塔/后坐/可见性实际变化及敌炮飞行唤醒 UPDATE_ONCE；暂停冻结同一节点、记忆、弹药与飞行，结局冻结的 flying 记录不永久唤醒画面。scenery 第二参数 `route_dressing=true` 由 Lead 的兼容 world 接口配套。
 
-新增原源码依赖：`modules/ai_armor/{armor_host,combat_audit,deployment_terrain,gunnery_solution,vehicle_damage_feedback,visual_contact}.gd`、`modules/ai_safety/friendly_safety.gd`。Shell/ballistics、role capability、GroundSupport、weapon VFX、font 与上述模型均复用已有资源，不新增 GLB。主仓 namespace 同步、来源记录与实机验证由 Lead 完成；本轮没有引擎/测试/Git运行，对抗效果尚未验证。
+新增原源码依赖：`modules/ai_armor/{armor_host,combat_audit,deployment_terrain,gunnery_solution,vehicle_damage_feedback,visual_contact}.gd`、`modules/ai_safety/friendly_safety.gd`。Shell/ballistics、role capability、GroundSupport、weapon VFX、font 与上述模型均复用已有资源，不新增 GLB。主仓 namespace 同步、来源记录与下述有限实机由Lead完成；实现子任务未运行引擎/测试/Git，不把主宿主结果扩称军事工程独立启动。
 
 ## 2026-10-26 主宿主窗口有限事实
 
@@ -60,4 +60,14 @@ controller.start({"viewport": observer_viewport, "world_root": optional_identity
 - 原车长 HP7、左臂 injured 未被治好。经原 UI 下车，实走位移3.446m，离原车达6.310m，再步行返回并占回原 seat0；上下车未补回弹药。
 - sameActor、sameSession、同载具实例、暂停恢复状态保留及正式世界快照不变，均为既有 driver 比较报告，不是此文重新运行或独立重算；不能据此宣称全部军事能力通过或用户已验收。
 
-NOT_RUN：HE、MG、smoke、incoming、拒绝负例、长时运行、正式部署、存读。正式保存、export、合并均未执行。
+## 2026-10-27 主宿主对抗事实
+
+运行源码提交`01caf7907a8fe063e89ad16baf2e96f27f56abef`，通过主仓确定性namespace/resource同步使用。主宿主Godot4.6.3 Compatibility正常菜单/世界进入，成功轮退出0，无SCRIPT ERROR/ERROR，保留原两类warning。
+
+- 首个独立会话先冲近暴露侧面，敌第二发真实穿透并使我方车长阵亡；未算完整通过，不降低AI伤害、不复活该会话。
+- 新独立会话使用原标尺真实点击0→50→100m、短瞄首射和短程正面接近。玩家/敌车实驶20.263/55.691m；玩家2发实飞105.076m/0.657463s、51.731m/0.323464s。敌front完整度100→85→78，一发穿透、一发被挡；厚度不变。三crew10/10/10→0/6/7，炮手/驾驶员仍有效，各毁伤全失能标志false，不宣称胜利。
+- 敌两发fresh年龄0.45/.0167s，实飞后命中我方front/turret_front，等效328.294/120.021挡110；我方front100→90、炮塔完整度未降，五crew仍7/10/10/10/10。敌扣2发40→38；玩家31→29，AP既耗6→8，HE/SMK不变。
+- 同一原车长实走3.286m、离车6.283m，原UI返seat0同Actor，HP7伤臂未治好。原菜单、主机暂停、恢复和原菜单返回实际点击；敌状态/弹药/记忆在暂停冻结。回同正式世界及完整快照/人物/相机选择是driver比较结果，不是独立重算或用户接受。
+- `get_player_status()`仅提供本车薄状态给2Hz横幅；`get_status().encounter`不作为隐藏敌情HUD。敌炮口效果不使用player priority，避免污染玩家准星反馈。
+
+原167.555ms仍未重现/归因，局部native碰撞构建优化不证明整体稳定。NOT_RUN：HE、MG、smoke、拒绝负例、长时运行、正式部署、存读。正式保存、export、合并均未执行。
