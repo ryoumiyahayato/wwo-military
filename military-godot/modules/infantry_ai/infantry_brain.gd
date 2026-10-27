@@ -108,9 +108,17 @@ func tick(delta: float, position: Vector3, observations: Array, commit_immediate
   if prefer_vehicles and str(item.get("actor_kind","infantry"))=="vehicle" and _planar_distance(position,item.position)>nearby_vehicle_radius: continue
   seen.append(item)
  if not seen.is_empty():
-  var target: Dictionary = seen[0]
-  # Only this observer's actual LOS packet may stabilize an acquired target.
+  # Do not keep approaching a distant sighting while an actually observed
+  # opponent is already inside this weapon's unchanged engagement threshold.
+  # This pool contains only filtered, fresh self-observations, never world truth.
+  var engaging: Array = []
   for candidate: Dictionary in seen:
+   if _planar_distance(position,candidate.position)<=engagement_range*0.88:
+    engaging.append(candidate)
+  var selectable: Array = seen if engaging.is_empty() else engaging
+  var target: Dictionary = selectable[0]
+  # Only this observer's actual LOS packet may stabilize an acquired target.
+  for candidate: Dictionary in selectable:
    if str(candidate.actor_id)==target_id and str(candidate.get("observer_id",""))==actor_id:
     target=candidate
     break
