@@ -129,7 +129,9 @@ func start(options: Dictionary) -> void:
 		if not ResourceLoader.exists(path):
 			_fail("missing_original_training_resource: " + path)
 			return
-	if not NativeBattle.can_instantiate() or not NativePort.can_instantiate():
+	var battle_script: Script = NativeBattle
+	var port_script: Script = NativePort
+	if not battle_script.can_instantiate() or not port_script.can_instantiate():
 		_fail("original_runtime_source_not_instantiable")
 		return
 	_port = NativePort.new()
