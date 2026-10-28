@@ -35,6 +35,7 @@ func plan(body: CharacterBody3D, destination: Vector3) -> Array[Vector3]:
   if not found: return []
  var open: Array[Vector2i] = [zero]
  var costs := {zero:0.0}
+ var open_scores: Array[float] = [float(costs[zero])+Vector2(zero-goal).length()]
  var previous := {}
  var closed := {}
  for _iteration in MAX_EXPANSIONS:
@@ -42,13 +43,13 @@ func plan(body: CharacterBody3D, destination: Vector3) -> Array[Vector3]:
   var best := 0
   var best_score := INF
   for index in open.size():
-   var key: Vector2i = open[index]
-   var score: float = float(costs[key])+Vector2(key-goal).length()
+   var score: float = open_scores[index]
    if score<best_score:
     best = index
     best_score = score
   var current: Vector2i = open[best]
   open.remove_at(best)
+  open_scores.remove_at(best)
   # Lazy edge validation: at most one capsule sweep per popped node, not
   # eight sweeps per expansion. Clear endpoints alone miss thin barriers.
   if current!=zero and not _edge_clear(previous[current],current):
@@ -74,6 +75,7 @@ func plan(body: CharacterBody3D, destination: Vector3) -> Array[Vector3]:
     costs[current]=alternative_cost
     previous[current]=alternative
     open.append(current)
+    open_scores.append(float(costs[current])+Vector2(current-goal).length())
    continue
   if current==goal:
    var path: Array[Vector3] = []
@@ -98,7 +100,12 @@ func plan(body: CharacterBody3D, destination: Vector3) -> Array[Vector3]:
     if costs.has(next) and score>=float(costs[next]): continue
     costs[next] = score
     previous[next] = current
-    if not open.has(next): open.append(next)
+    var open_index: int = open.find(next)
+    var open_score: float = float(costs[next])+Vector2(next-goal).length()
+    if open_index<0:
+     open.append(next)
+     open_scores.append(open_score)
+    else: open_scores[open_index]=open_score
  return []
 func _cell(key: Vector2i) -> Dictionary:
  if cells.has(key): return cells[key]
