@@ -20,14 +20,14 @@ var _vehicle_yield_clock:=0.0
 var _vehicle_yield_active:=false
 var _vehicle_yield_direction:=Vector3.ZERO
 const LocalNavigation = preload("res://modules/infantry_ai/infantry_navigation.gd")
-var _route_planner: LocalNavigation = LocalNavigation.new()
+var _route_planner = LocalNavigation.new()
 var _route: Array[Vector3] = []
 var _route_goal := Vector3.ZERO
 var _route_retry := 0.0
 const BattlePresets = preload("res://scripts/battle_ai_presets.gd")
 const Brain = preload("res://modules/infantry_ai/infantry_brain.gd")
 signal combat_event(event: Dictionary)
-var brain: Brain = Brain.new()
+var brain = Brain.new()
 var host: Node
 var move_speed := 1.7
 var gravity := 18.0
