@@ -114,3 +114,11 @@ controller.start({"viewport": observer_viewport, "world_root": optional_identity
 [Godot4.6.3计时源码](https://github.com/godotengine/godot/blob/4.6.3-stable/main/main.cpp#L4960-L5001)说明两个Performance时间是约一秒窗的独立最大值，可不同frame且滞后；process含sync/draw调用而不含前面的physics循环，physics非8tick合计，也不是GPU完成时间。不能physics×8盲相加或把process 400ms归罪HUD。旧167.555ms/51.777ms和未分离draw/同步成本仍保留。
 
 `8613038`同RTX默认复核前段运动1.888FPS/P99 589.587ms、玩家静止1.907/574.050、HE1.961/658.239，相对c5未证实净收益。150人全移动、82射手166枪、19AI车全移动/实射，HE段4发/驾驶2.972m仍失败。后段原车长真实HP7→0，全场原规则结束，physics-active=0；持续混合26.411/重入60.100FPS均无效，244.638s累计测量墙时不是全程活动。没有治疗/减员/阻断来袭去保数字。保留该条件门只表示确定无最终显示的重建减少，不称主要瓶颈已解或长期承载通过；完整活战斗RTX参考仍为c5默认轮。
+
+## 第二组同RTX诊断窗：新候选未采纳（2026-10-28）
+
+实际原码abcf与Nav772f单变量、battle timing=1均跑约244s累计测量墙时（后段停场，非全程活动）。Nav仅原open平行精确f、保留strict<及所有query/tie/220pop，没有堆/平台。运动2.264→2.040FPS/P99 488.870→571.180，静止2.300→1.950/500.842→620.949，HE2.961→2.924/414.042→431.287；按150callback归一Nav4.671→5.136ms，未改车辆14.133→15.665ms/physics也慢约11%，不能说算法致慢或有净收益。开场累计plan仅11/6次，不把Nav全区间当A*容器；ring覆盖不同，不混生命周期分母。已9d3902c回退，runtime净回abcf，无新提速版本。
+
+初始20车/150活兵/62座/212人，两窗150兵全移动，77射手181枪→64射手161枪；HE阶段5发，驾驶5.139→4.007m仍无30FPS。原车长同Actor伤弹保留且后来真实HP0停场，60/43.957等FPS无效。正式世界/人物/相机/步行比较true，无身份丢换/脚本错误。原生运动/几何查询仍大项，支撑/前探/抬高test不能互代；外部桌面负载未改且缺全时轨迹，整卡GPU仍非PID。详主仓既有逐阶段表与CPU/内存/模拟墙时。
+
+0935类型声明虽parse通过但跨对象script成员/方法仍GET_NAMED/CALL_RETURN，无direct-dispatch机制证据，已4eba回退、未跑该候选性能窗。query桶候选有setter重复事实，但setup全消掉也仅约开场30s的1.2%上界，未commit/运行且已原样还原；不为微项新增cache/计时或平台。旧167.555/51.777与有效持续30FPS仍未解决。
