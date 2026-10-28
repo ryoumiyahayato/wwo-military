@@ -96,3 +96,11 @@ controller.start({"viewport": observer_viewport, "world_root": optional_identity
 - 默认开场1.165FPS/P95 1034.489/P99 1073.738ms，玩家静止1.105/1061.497/1125.734，接战1.295/912.870/954.539，HE1.232/962.184/1035.569，持续1.421/845.245/896.630。CPU约一核99–101%，工作集1323–1351MiB、private1738–1775MiB，整卡GPU1–4%含桌面，不是进程GPU帧时间。模拟/墙时约.132–.190。默认HE阶段仅2发，不称爆炸密集已通过；诊断轮3发实际达成但FPS仍失败。
 - 开场风险81.985→39.481→69.282µs/callback，同时未改的车辆控制组32.763→16.993ms/physics；未证实稳定净增益，不拿行数/容器压缩/原始减半归因。`a20df84`尾44–60FPS时车长阵亡、battle_finished且physics-active=0，已作无效失败，绝不是承载通过。后续原部署密度、自然伤亡/空弹/全局结束都不能替代初始负载。
 - 当前native terrain保留64阈值事件中main_update最大49.481ms（同次两块build42.479），单块最大35.003ms含mesh_data16.888/shape_set_faces8.673/space_registration7.761；不是旧观察51.777ms同帧归因，旧167.555ms仍未关闭。无SCRIPT ERROR/ERROR，仍原两类warning；正式世界/人物/相机与同会话重入比较保留。不合并、导出或发布。详表与四轮原始本地报告位置在主仓既有[说明](https://github.com/ryoumiyahayato/wwo/blob/feat/layered-military-region-20261026/docs/maps/layered_military_region.md)。
+
+## 原热路径第二轮：局部候选不等于净收益
+
+- `f0ab400`曾以单weight parent-first active world数组替代每shape父链查表，保留原矩阵顺序/全部形状/子步/query。串行开场shape均值20.070→17.680µs，但capture97.637→102.579、resolve178.562→180.706、父段合计276.199→283.285µs；未改Actor风险也37.909→39.261µs/callback。全军运动1.980→1.899FPS、P99 564.250→665.258ms，不宣称净收益；`e3b2bcc`已完整回退，最终不保留该active表。原150人身份/移动仍成立，不用末21/26活兵减载称通过。
+- `a6b279c`只在原时钟已保证本tick服务时跳过无决策作用的邻格分类：保留[Actor](../infantry_ai/infantry_actor.gd)原精确pending/phase谓词、全部标量门及[Host](../infantry_ai/infantry_host.gd)原ensure/terrain/epoch/自身shape时机，非mandatory仍全live风险。`scheduled_unclassified_solves`单列，不混入low/high或risk_counts；原服务delta、完整native运动/支撑、Brain/fire/感知/伤弹不变。不是把未知邻居当安全，不是降服务频率。
+- 未实施零输入/零Euler接触快门、尸体/远AI睡眠、部署稀释或HeightMap后端替换，也未把每physics已统一建格误判为每Actor全重建。性能保留与验收仍看父段和完整真实窗口，不以helper/容器数量或诊断标签下降代替。
+- `a6b279c` RTX诊断首次样本17953次mandatory分类未求值，solves=0 classified-low+4973 classified-high+17953 scheduled；服务max.05sim、pending max.0333，150人计数恒等式成立。但开场1.446/P99 1080.156ms、持续1.515/1138.110，未改Armor控制组也变慢，稳定净收益未证实。77射手180枪，HE段2发/驾驶1.322m仍失败。
+- 同源码默认轮实际adapter是**Intel Iris Xe**，不是RTX；NVIDIA整卡0%/0MiB不能当游戏GPU数据，不作RTX关闭诊断AB/验收。245.827s活动采样仍1.091–1.405FPS，150ID保留且全部移动、19AI车全移动/实射；63射手159枪，末59活兵/144physics，原车长HP7同Actor伤弹保留。驾驶1.321m、HE段2发，观察步行collision检查也false；Intel/进程GPU未采到。详表与设备漂移边界见主仓既有说明，不用结束/自然减员或设备混比过线。
