@@ -863,8 +863,7 @@ func _path_blocked(direction: Vector3, probe_distance := 0.65) -> bool:
  # The second diagnostic sweep avoids a zero-distance floor contact masking a wall.
  # Neither sweep changes the actor transform; real movement still uses move_and_slide.
  for probe in [global_transform,raised]:
-  # Each successful native test_move fully rewrites this private scratch before use.
-  var contact: KinematicCollision3D = _locomotion_support_contact
+  var contact:=KinematicCollision3D.new()
   if not test_move(probe,direction*probe_distance,contact,0.001,false,8): continue
   for index in range(contact.get_collision_count()):
    if contact.get_normal(index).dot(up_direction)<walkable_dot: return true
