@@ -106,3 +106,11 @@ controller.start({"viewport": observer_viewport, "world_root": optional_identity
 - 同源码默认轮实际adapter是**Intel Iris Xe**，不是RTX；NVIDIA整卡0%/0MiB不能当游戏GPU数据，不作RTX关闭诊断AB/验收。245.827s活动采样仍1.091–1.405FPS，150ID保留且全部移动、19AI车全移动/实射；63射手159枪，末59活兵/144physics，原车长HP7同Actor伤弹保留。驾驶1.321m、HE段2发，观察步行collision检查也false；Intel/进程GPU未采到。详表与设备漂移边界见主仓既有说明，不用结束/自然减员或设备混比过线。
 - 10月28日固定`c5cab17`再跑默认轮，日志与报告均实际RTX3050/Compatibility，244.470s活动采样；开场1.923/P95 558.533/P99 562.804ms、静止1.944/555.633/588.301、接战2.087/542.419/594.554、HE2.393/475.742/503.101、持续2.752/417.446/445.165，模拟/墙时.256–.367。CPU约满一核、工作集1317–1347MiB/private1735–1768MiB；NVIDIA整卡2.2–4.7%不等于进程GPU时间。
 - 该RTX轮150人全移动、19AI车全移动/18实射、75步兵射手159枪；末31活兵不作满载验收。AP1/HE5/SMK2、HE阶段4发过原密集门但FPS仍失败；驾驶2.973m仍失败。原车长同Actor伤弹/返原座保留、自然HP7→3，观察步行/同会话/正式世界比较通过，无SCRIPT ERROR/ERROR。稳定净收益与30FPS仍未证实；没有因补scope标签而新增采样或改GPU选择。
+
+## 隐藏旧UI的主题分配（`8613038`）
+
+第三条窄路径只给原refresh_hud的旧按钮纯主题loop加末尾显隐条件的补集：skirmish最终会hide这20个旧按钮，不再为它们每refresh创建60个StyleBoxFlat。其它文本/disabled/reticle/显隐/权限/消息不跳，回车库或练习仍原样恢复主题；不新增style缓存、UI平台或降频，不停止Main/Minimap（其中有真实地形事件、VFX/军令与合法观察）。静态省掉确定无最终显示的重建，不是已测净FPS收益。
+
+[Godot4.6.3计时源码](https://github.com/godotengine/godot/blob/4.6.3-stable/main/main.cpp#L4960-L5001)说明两个Performance时间是约一秒窗的独立最大值，可不同frame且滞后；process含sync/draw调用而不含前面的physics循环，physics非8tick合计，也不是GPU完成时间。不能physics×8盲相加或把process 400ms归罪HUD。旧167.555ms/51.777ms和未分离draw/同步成本仍保留。
+
+`8613038`同RTX默认复核前段运动1.888FPS/P99 589.587ms、玩家静止1.907/574.050、HE1.961/658.239，相对c5未证实净收益。150人全移动、82射手166枪、19AI车全移动/实射，HE段4发/驾驶2.972m仍失败。后段原车长真实HP7→0，全场原规则结束，physics-active=0；持续混合26.411/重入60.100FPS均无效，244.638s累计测量墙时不是全程活动。没有治疗/减员/阻断来袭去保数字。保留该条件门只表示确定无最终显示的重建减少，不称主要瓶颈已解或长期承载通过；完整活战斗RTX参考仍为c5默认轮。
